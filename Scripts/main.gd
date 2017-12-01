@@ -31,6 +31,5 @@ func goWorldScreen():
 func goGameOverScreen():
 	worldScreenLoaded = false
 	var gameOver = preload("res://Scenes/gameOver.tscn").instance()
-	get_node("Camera2D").set_zoom(Vector2(1.2,1.2))
 	add_child(gameOver)
 	

@@ -12,7 +12,7 @@ var touched = false
 
 func _ready():
 	if (get_node("/root/GameState").debug == true):
-		get_node("../debug").set_hidden(false)
+		get_node("../hud/debug").set_hidden(false)
 
 	get_node("/root/GameState").points = 0
 	add_to_group("player")
@@ -23,7 +23,7 @@ func _fixed_process(delta):
 		energy = 10
 	if (bonusSpeed > 600):
 		bonusSpeed = 600
-	get_node("../energy").set_text("ENERGY : " +str(energy))
+	get_node("../hud/energy").set_text("ENERGY : " +str(energy))
 	var motion = Vector2()
 	get_node("anim").play("idle")
 	#particle effets
@@ -82,7 +82,7 @@ func _fixed_process(delta):
 			get_node("../").add_child(rShot)		
 	prev_shooting = shooting	
 	# Update points counter
-	get_node("../score").set_text("SCORE : " +str(get_node("/root/GameState").points))
+	get_node("../hud/score").set_text("SCORE : " +str(get_node("/root/GameState").points))
 
 func _hit_something(dmg):
 	if (touched):
