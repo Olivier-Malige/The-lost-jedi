@@ -18,6 +18,7 @@ func goStartScreen():
 		var start = preload("res://Scenes/Start.tscn").instance()
 		add_child(start)
 		startScreenLoaded = true
+		get_node("Camera2D").set_zoom(Vector2(1.2,1.2))
 
 func goWorldScreen():
 	
@@ -25,9 +26,11 @@ func goWorldScreen():
 		var world = preload("res://Scenes/World.tscn").instance()
 		add_child(world)
 		worldScreenLoaded = true
+		get_node("Camera2D").set_zoom(Vector2(0.9,0.9))
 
 func goGameOverScreen():
 	worldScreenLoaded = false
 	var gameOver = preload("res://Scenes/gameOver.tscn").instance()
+	get_node("Camera2D").set_zoom(Vector2(1.2,1.2))
 	add_child(gameOver)
 	
