@@ -41,6 +41,10 @@ func _hit_something(dmg):
 		get_node("anim").play("explode")
 		get_node("CollisionShape2D").queue_free()
 		if (touchedByPlayerShot):
+			var score = preload("res://Prefabs/score.tscn").instance()
+			score.set_pos(get_pos())
+			score.setScore = points
+			get_node("../").add_child(score)
 			get_node("/root/GameState").points += points
 		_fixed_process(false)
 		get_node("../enemySfx").play("asteroidExplode")

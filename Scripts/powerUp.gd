@@ -1,9 +1,10 @@
 extends Area2D
 const SPEED = 100
-const BONUS_SPEED_PLAYER = 5 #speedUp
-const BONUS_SHOT_POWER = 0.30    #damage
+const BONUS_SPEED_PLAYER = 7 #speedUp
+const BONUS_SHOT_POWER = 0.25    #damage
 const BONUS_SHOT_LATERAL = 80 #degree
 const BONUS_SHOT_LATERAL_POWER = 0.15 #damage
+const BONUS_SHOOTING_SPEED = 0.005 #Seconde
 
 
 func _ready():
@@ -16,7 +17,7 @@ func _ready():
 		get_node("anim").play("laserUp")
 	if (rndPowers <= 25 ):
 		get_node("anim").play("lateralShot")
-	if (rndPowers <= 8):
+	if (rndPowers <= 4):
 		get_node("anim").play("energieUp")
 
 func _process(delta):
@@ -29,6 +30,8 @@ func _on_powerUp_area_enter( area ):
 	if (area.is_in_group("player")):
 		if (get_node("anim").get_current_animation() == "speedUp"):
 			area.bonusSpeed += BONUS_SPEED_PLAYER
+			area.shoot_Delay -= BONUS_SHOOTING_SPEED
+			area.setShootingDelay()
 			area.get_node("sfx").play("speedUp")
 		if (get_node("anim").get_current_animation() == "energieUp"):
 			area.energy += 1

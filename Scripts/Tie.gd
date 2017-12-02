@@ -1,8 +1,8 @@
 
 extends Area2D
 
-
-const SPEED = 250
+const SHOOT_TIMER_BASE = 4
+const SPEED = 225
 const X_RANDOM = 1
 var life = 3
 var points = 60
@@ -16,9 +16,10 @@ func _fixed_process(delta):
 	translate(Vector2(speed_x, SPEED)*delta)
 
 func _ready():
+	get_node("shootTimer").set_wait_time(SHOOT_TIMER_BASE)
 	add_to_group("enemy")
 	randomize()
-	speed_x = rand_range(-X_RANDOM+50, X_RANDOM+50)
+	speed_x = rand_range(-X_RANDOM-25, X_RANDOM+25)
 	set_fixed_process(true)
 	get_node("anim").play("idle")
 	shoot()
@@ -36,9 +37,12 @@ func _hit_something(dmg):
 	get_node("../enemySfx").play("tieHit")
 	if (life <= 0) :
 		destroyed = true
-		_fixed_process(false)
 		get_node("anim").play("explode")
 		if (touchedByPlayerShot) :
+			var score = preload("res://Prefabs/score.tscn").instance()
+			score.setScore = points
+			score.set_pos(get_pos())
+			get_node("../").add_child(score)
 			get_node("/root/GameState").points += points
 		get_node("shootTimer").queue_free()
 		get_node("../enemySfx").play("tieExplode")

@@ -1,16 +1,21 @@
 extends Area2D
-
+const SHOOT_DELAY_BASE = 0.30
+const SHOOT_DELAY_MIN = 0.15
 const SPEED = 200
+const ENERGY_MAX = 10
+var shoot_Delay = SHOOT_DELAY_BASE
 var shotPower = 0
 var bonusSpeed = 0
 var shotLateral = false
 var bonusLateralShotPower = 0
-var energy = 3
+var energy = ENERGY_MAX
 var screen_size
 var prev_shooting = false
 var touched = false
+var canShooting = true
 
 func _ready():
+	get_node("ShootingDelay").set_wait_time(shoot_Delay)
 	if (get_node("/root/GameState").debug == true):
 		get_node("../hud/debug").set_hidden(false)
 
@@ -19,8 +24,11 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	if (energy > 10):
-		energy = 10
+	
+	if (energy > ENERGY_MAX):
+		energy = ENERGY_MAX
+	if (shoot_Delay < 0.08):
+		shoot_Delay = 0.08
 	if (bonusSpeed > 600):
 		bonusSpeed = 600
 	get_node("../hud/energy").set_text("ENERGY : " +str(energy))
@@ -50,16 +58,16 @@ func _fixed_process(delta):
 	var shooting = Input.is_action_pressed("shoot")
 	var pos = get_pos()	
 	pos += motion*delta*(SPEED+bonusSpeed)
-	if (pos.x < 16):
-		pos.x = 16
-	if (pos.x > 800 - 16):
-		pos.x = 800 -16
+	if (pos.x < 20):
+		pos.x = 20
+	if (pos.x > 800 - 20):
+		pos.x = 800 -20
 	if (pos.y < 16):
 		pos.y = 16
-	if (pos.y > 600-16):
-		pos.y = 600-16
+	if (pos.y > 616):
+		pos.y = 616
 	set_pos(pos)	
-	if (shooting and not prev_shooting):
+	if (shooting and canShooting):
 		# Just pressed
 		var shot = preload("res://Prefabs/playerShot.tscn").instance()
 		# Use the Position2D as reference
@@ -69,6 +77,8 @@ func _fixed_process(delta):
 		# Play sound
 		get_node("sfx").play("shoot")
 		shot.shotPower += shotPower 
+		canShooting = false
+		get_node("ShootingDelay").start()
 		if (shotLateral):
 			var lShot = preload("res://Prefabs/singleShot.tscn").instance()
 			var rShot = preload("res://Prefabs/singleShot.tscn").instance()
@@ -79,8 +89,7 @@ func _fixed_process(delta):
 			rShot.shotPower += bonusLateralShotPower
 			lShot.shotPower += bonusLateralShotPower
 			get_node("../").add_child(lShot)
-			get_node("../").add_child(rShot)		
-	prev_shooting = shooting	
+			get_node("../").add_child(rShot)			
 	# Update points counter
 	get_node("../hud/score").set_text("SCORE : " +str(get_node("/root/GameState").points))
 
@@ -94,6 +103,8 @@ func _hit_something(dmg):
 		#speed malus
 		bonusSpeed = -120
 		#Reset all powersUp
+		shoot_Delay = SHOOT_DELAY_BASE
+		setShootingDelay()
 		shotPower = 0
 		shotLateral = false
 		bonusLateralShotPower = 0
@@ -121,3 +132,10 @@ func _on_anim_finished():
 		get_node("../../").goGameOverScreen()
 		get_parent().queue_free()
 		
+func setShootingDelay():
+	if (shoot_Delay < SHOOT_DELAY_MIN):
+		shoot_Delay = SHOOT_DELAY_MIN
+	get_node("ShootingDelay").set_wait_time(shoot_Delay)
+
+func _on_ShootingDelay_timeout():
+	canShooting = true

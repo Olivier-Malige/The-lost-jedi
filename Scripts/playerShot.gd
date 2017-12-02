@@ -1,18 +1,21 @@
 extends Area2D
 
 # Member variables
-var speed = -800
-var shotPower = 1
+var speed = -1000
+var shotPower = 1.5
+const SHOT_DMG_MAX = 6
 
 func _process(delta):
+	if (shotPower >= SHOT_DMG_MAX):
+		shotPower = SHOT_DMG_MAX
 	translate(Vector2(0, delta*speed))
-	if (shotPower == 1):
+	if (shotPower >= 1):
 		get_node("anim").play("normal")
 	if (shotPower >= 2):
 		get_node("anim").play("big")
 	if (shotPower >= 3):
 		get_node("anim").play("veryBig")
-	if (shotPower >= 4):
+	if (shotPower >= 5):
 		get_node("anim").play("full")
 
 func _ready():

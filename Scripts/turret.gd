@@ -2,11 +2,11 @@ extends Area2D
 
 const SPEED = 25
 const X_RANDOM = 0
-var life = 20
+var life = 30
 var points = 1500
 var speed_x = 0.0
 var destroyed = false
-var randPowerUp = 60 #of  100%
+var randPowerUp = 100 #of  100%
 var touchedByPlayerShot = false
 var rotationSpeed = 5
  
@@ -49,6 +49,10 @@ func _hit_something(dmg):
 		get_node("anim").play("explode")
 		get_node("CollisionShape2D").queue_free()
 		if (touchedByPlayerShot):
+			var score = preload("res://Prefabs/score.tscn").instance()
+			score.set_pos(get_pos())
+			score.setScore = points
+			get_node("../").add_child(score)
 			get_node("/root/GameState").points += points
 		#get_node("../enemySfx").play("interceptorExplode")
 		
