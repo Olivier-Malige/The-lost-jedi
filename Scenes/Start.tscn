@@ -86,7 +86,7 @@ margin/top = 582.0
 margin/right = 1145.0
 margin/bottom = 599.0
 custom_fonts/font = ExtResource( 2 )
-text = "Alpha 2 "
+text = "Nub Version"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
@@ -172,7 +172,7 @@ max_lines_visible = -1
 
 editor/display_folded = false
 visibility/opacity = 0.0
-transform/pos = Vector2( -93.0962, 10.3666 )
+transform/pos = Vector2( -93.0962, 12.0368 )
 z/z = -20
 
 [node name="ScrollingBackground1" parent="Background"]
