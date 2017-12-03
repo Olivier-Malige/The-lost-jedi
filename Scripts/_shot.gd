@@ -4,7 +4,6 @@ extends Area2D
 var speedY = 0
 var speedX = 0
 
-
 func _process(delta):
 	translate(Vector2(speedX*delta, delta*speedY))
 	

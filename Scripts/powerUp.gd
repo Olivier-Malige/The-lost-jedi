@@ -5,7 +5,6 @@ const BONUS_SHOT_POWER = 0.25    #damage
 const BONUS_SIDE_SHOT_POWER = 0.20 #damage
 const BONUS_SHOOTING_SPEED = 0.004 #Seconde
 
-
 func _ready():
 	var rndPowers = randi()%100 +1
 	set_process(true)

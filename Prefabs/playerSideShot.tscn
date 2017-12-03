@@ -198,7 +198,7 @@ tracks/2/keys = {
 transform/pos = Vector2( 0, -10 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 0.206201, 0, 0, 0.614852, -1.97673, -3.93599 )
+shapes/0/transform = Matrix32( 0.198474, 0, 0, 0.208338, -2.00774, 4.07355 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -211,16 +211,16 @@ script/script = ExtResource( 1 )
 transform/pos = Vector2( 0, -2 )
 texture = ExtResource( 2 )
 hframes = 5
-frame = 2
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
+transform/pos = Vector2( -2.0783, 0.188936 )
 rect = Rect2( -10, -10, 20, 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( -1.97673, -3.93599 )
-transform/scale = Vector2( 0.206201, 0.614852 )
+transform/pos = Vector2( -2.00774, 4.07355 )
+transform/scale = Vector2( 0.198474, 0.208338 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
