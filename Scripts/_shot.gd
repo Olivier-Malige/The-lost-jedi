@@ -3,8 +3,12 @@ extends Area2D
 # Member variables
 var speedY = 0
 var speedX = 0
+export var setRotation = false
+var speedRotation = 10
 
 func _process(delta):
+	if (setRotation):
+		set_rotd(get_rotd()+speedRotation)
 	translate(Vector2(speedX*delta, delta*speedY))
 	
 func _ready():

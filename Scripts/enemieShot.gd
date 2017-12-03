@@ -1,6 +1,6 @@
 extends "_shot.gd"
-
-const SPEED_Y = 450
+const SPEED_Y = 400
+# Member variables
 
 func _ready():
 	speedY = SPEED_Y
@@ -8,8 +8,7 @@ func _ready():
 func is_enemy():
 	return true
 
-func _on_interceptorShot_area_enter(area):
-		#Hit an enemy or asteroid
+func _on_shot_area_enter( area ):
 	if (area.is_in_group("player") or area.is_in_group("asteroid")):
-		area._hit_something(1)
+		area._hit_something(10)
 		queue_free()

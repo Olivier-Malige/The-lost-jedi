@@ -81,7 +81,7 @@ func _on_ShootTimer_timeout():
 	get_node("../").add_child(shot2)
 	get_node("../").add_child(shot3)
 	get_node("../enemySfx").play("interceptorShot")
-	shot1.xDir = -200
-	shot2.xDir = 0
-	shot3.xDir = 200
+	shot1.speedX = -200
+	shot2.speedX = 0
+	shot3.speedX = 200
 	
