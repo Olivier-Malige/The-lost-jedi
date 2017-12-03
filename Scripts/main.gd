@@ -26,7 +26,7 @@ func goWorldScreen():
 		var world = preload("res://Scenes/World.tscn").instance()
 		add_child(world)
 		worldScreenLoaded = true
-		get_node("Camera2D").set_zoom(Vector2(0.9,0.9))
+		get_node("Camera2D").set_zoom(Vector2(1,1))
 
 func goGameOverScreen():
 	worldScreenLoaded = false

@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://Scripts/playerShot.gd" type="Script" id=1]
-[ext_resource path="res://Assets/rLaser.png" type="Texture" id=2]
+[ext_resource path="res://Assets/playerShot.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -15,14 +15,34 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("rShot:frame")
+tracks/0/path = NodePath("sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 1,
-"values": [ 1 ]
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.00886536, -10.4772 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:transform/scale")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.60584, 0.802293 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -32,7 +52,44 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("rShot:frame")
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.00886536, -14.404 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:transform/scale")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.60584, 1.19254 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource/name = "large"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
@@ -41,6 +98,26 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 3 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:transform/scale")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.60584, 0.997416 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:transform/pos")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.00886536, -11.9406 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 
@@ -48,7 +125,44 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("rShot:frame")
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.00886536, -7.9772 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:transform/scale")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.60584, 0.609985 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource/name = "small"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
@@ -57,28 +171,32 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0 ]
 }
-
-[sub_resource type="Animation" id=5]
-
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("rShot:frame")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 2 ]
+"update": 0,
+"values": [ Vector2( 0.00886536, -7.9772 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:transform/scale")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.60584, 0.609985 ) ]
 }
 
 [node name="playerShot" type="Area2D"]
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1.60584, 0, 0, 0.73639, 0.00886512, -14.4269 )
+shapes/0/transform = Matrix32( 1.60584, 0, 0, 1.19254, 0.00886536, -14.404 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -86,16 +204,17 @@ linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
 
-[node name="rShot" type="Sprite" parent="."]
+[node name="sprite" type="Sprite" parent="."]
 
 transform/pos = Vector2( 0, -10 )
 texture = ExtResource( 2 )
-hframes = 4
+hframes = 5
+frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( 0.00886512, -14.4269 )
-transform/scale = Vector2( 1.60584, 0.73639 )
+transform/pos = Vector2( 0.00886536, -14.404 )
+transform/scale = Vector2( 1.60584, 1.19254 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
@@ -111,8 +230,9 @@ playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/big = SubResource( 2 )
 anims/full = SubResource( 3 )
+anims/large = SubResource( 6 )
 anims/normal = SubResource( 4 )
-anims/veryBig = SubResource( 5 )
+anims/small = SubResource( 5 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

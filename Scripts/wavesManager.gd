@@ -127,7 +127,7 @@ func _ready():
 	
 func _process(delta):
 
-	get_node("../hud/debug").set_text("Wave : "+str(nubWave+1))
+	get_node("../hud/wave").set_text("Wave : "+str(nubWave+1))
 	
 func spawn(asteroid,bigAsteroid,tie,interceptor,drone,motherShip,turret):
 

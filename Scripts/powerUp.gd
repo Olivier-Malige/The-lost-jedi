@@ -2,9 +2,8 @@ extends Area2D
 const SPEED = 100
 const BONUS_SPEED_PLAYER = 7 #speedUp
 const BONUS_SHOT_POWER = 0.25    #damage
-const BONUS_SHOT_LATERAL = 80 #degree
-const BONUS_SHOT_LATERAL_POWER = 0.15 #damage
-const BONUS_SHOOTING_SPEED = 0.005 #Seconde
+const BONUS_SIDE_SHOT_POWER = 0.20 #damage
+const BONUS_SHOOTING_SPEED = 0.004 #Seconde
 
 
 func _ready():
@@ -33,14 +32,14 @@ func _on_powerUp_area_enter( area ):
 			area.shoot_Delay -= BONUS_SHOOTING_SPEED
 			area.setShootingDelay()
 			area.get_node("sfx").play("speedUp")
-		if (get_node("anim").get_current_animation() == "energieUp"):
+		elif (get_node("anim").get_current_animation() == "energieUp"):
 			area.energy += 1
 			area.get_node("sfx").play("energieUp")
-		if (get_node("anim").get_current_animation() == "lateralShot"):
-			area.shotLateral = true
-			area.bonusLateralShotPower += BONUS_SHOT_LATERAL_POWER
+		elif (get_node("anim").get_current_animation() == "lateralShot"):
+			area.shotSide = true
+			area.bonusPowerSideShot += BONUS_SIDE_SHOT_POWER
 			area.get_node("sfx").play("lateralShotUp")
-		if (get_node("anim").get_current_animation() == "laserUp"):
-			area.shotPower += BONUS_SHOT_POWER
+		elif (get_node("anim").get_current_animation() == "laserUp"):
+			area.shotPowerBonus += BONUS_SHOT_POWER
 			area.get_node("sfx").play("shotUp")
 		queue_free()

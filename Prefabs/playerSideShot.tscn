@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=1]
 
-[ext_resource path="res://Scripts/singlePlayerShot.gd" type="Script" id=1]
-[ext_resource path="res://Assets/singleRLaser.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/playerSideShot.gd" type="Script" id=1]
+[ext_resource path="res://Assets/playerSideShot.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 11.09, 10 )
 
 [sub_resource type="Animation" id=2]
 
@@ -32,7 +32,7 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( -2.05367, -7.70359 ) ]
+"values": [ Vector2( -1.97673, -3.93599 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:transform/scale")
@@ -42,7 +42,7 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.206201, 0.236254 ) ]
+"values": [ Vector2( 0.206201, 0.614852 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -69,7 +69,7 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.406971, 0.216774 ) ]
+"values": [ Vector2( 0.362573, 0.846708 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:transform/pos")
@@ -79,7 +79,7 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.0525548, -11.9845 ) ]
+"values": [ Vector2( 0.0139972, -5.71899 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -106,7 +106,7 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( -0.0168879, -7.63415 ) ]
+"values": [ Vector2( -0.00465822, -4.05516 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:transform/scale")
@@ -116,7 +116,7 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.406971, 0.236254 ) ]
+"values": [ Vector2( 0.375846, 0.606263 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -143,7 +143,7 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1.98423, -3.60645 ) ]
+"values": [ Vector2( -1.98423, -1.88742 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:transform/scale")
@@ -153,7 +153,7 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.206201, 0.236254 ) ]
+"values": [ Vector2( 0.206201, 0.398082 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -180,7 +180,7 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1.98423, 4.17117 ) ]
+"values": [ Vector2( -2.00774, 4.07355 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:transform/scale")
@@ -190,15 +190,15 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.206201, 0.236254 ) ]
+"values": [ Vector2( 0.198474, 0.208338 ) ]
 }
 
-[node name="singleShot" type="Area2D"]
+[node name="playerSideShot" type="Area2D"]
 
 transform/pos = Vector2( 0, -10 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 0.206201, 0, 0, 0.236254, -1.98423, -3.60645 )
+shapes/0/transform = Matrix32( 0.206201, 0, 0, 0.614852, -1.97673, -3.93599 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -211,7 +211,7 @@ script/script = ExtResource( 1 )
 transform/pos = Vector2( 0, -2 )
 texture = ExtResource( 2 )
 hframes = 5
-frame = 1
+frame = 2
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
@@ -219,8 +219,8 @@ rect = Rect2( -10, -10, 20, 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( -1.98423, -3.60645 )
-transform/scale = Vector2( 0.206201, 0.236254 )
+transform/pos = Vector2( -1.97673, -3.93599 )
+transform/scale = Vector2( 0.206201, 0.614852 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0

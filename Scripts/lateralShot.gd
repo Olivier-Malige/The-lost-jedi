@@ -5,6 +5,9 @@ const SHOT_DMG_MAX = 3
 const SHOT_DMG_BASE = 0.4
 var speed = -800
 var shotPower = 0.5
+var dir = 0
+
+
 
 func _process(delta):
 	if (shotPower > SHOT_DMG_MAX):

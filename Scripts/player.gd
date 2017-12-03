@@ -3,28 +3,23 @@ const SHOOT_DELAY_BASE = 0.30
 const SHOOT_DELAY_MIN = 0.15
 const SPEED = 200
 const ENERGY_MAX = 10
-var shoot_Delay = SHOOT_DELAY_BASE
-var shotPower = 0
-var bonusSpeed = 0
-var shotLateral = false
-var bonusLateralShotPower = 0
-var energy = ENERGY_MAX
-var screen_size
-var prev_shooting = false
-var touched = false
-var canShooting = true
+onready var shoot_Delay = SHOOT_DELAY_BASE
+onready var shotPowerBonus = 0
+onready var bonusSpeed = 0
+onready var shotSide = false
+onready var bonusPowerSideShot = 0
+onready var energy = ENERGY_MAX
+onready var touched = false
+onready var canShooting = true
 
 func _ready():
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
-	if (get_node("/root/GameState").debug == true):
-		get_node("../hud/debug").set_hidden(false)
-
 	get_node("/root/GameState").points = 0
 	add_to_group("player")
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-	
+
 	if (energy > ENERGY_MAX):
 		energy = ENERGY_MAX
 	if (shoot_Delay < 0.08):
@@ -66,28 +61,30 @@ func _fixed_process(delta):
 		pos.y = 16
 	if (pos.y > 616):
 		pos.y = 616
-	set_pos(pos)	
+	set_pos(pos)
 	if (shooting and canShooting):
-		# Just pressed
 		var shot = preload("res://Prefabs/playerShot.tscn").instance()
+		shot.shotPower += shotPowerBonus 
+		print(str(shotPowerBonus))
 		# Use the Position2D as reference
 		shot.set_pos(get_node("shootFrom").get_global_pos())
 		# Put it two parents above, so it is not moved by us
 		get_node("../").add_child(shot)
+		
 		# Play sound
 		get_node("sfx").play("shoot")
-		shot.shotPower += shotPower 
+		
 		canShooting = false
 		get_node("ShootingDelay").start()
-		if (shotLateral):
-			var lShot = preload("res://Prefabs/singleShot.tscn").instance()
-			var rShot = preload("res://Prefabs/singleShot.tscn").instance()
+		if (shotSide):
+			var lShot = preload("res://Prefabs/playerSideShot.tscn").instance()
+			var rShot = preload("res://Prefabs/playerSideShot.tscn").instance()
 			lShot.set_pos(get_node("shootFromLeft").get_global_pos())
 			rShot.set_pos(get_node("shootFromRight").get_global_pos())
-			rShot.dir = -80
-			lShot.dir = 80
-			rShot.shotPower += bonusLateralShotPower
-			lShot.shotPower += bonusLateralShotPower
+			rShot.speedX = -150
+			lShot.speedX = 150
+			rShot.shotPower += bonusPowerSideShot
+			lShot.shotPower += bonusPowerSideShot
 			get_node("../").add_child(lShot)
 			get_node("../").add_child(rShot)			
 	# Update points counter
@@ -105,9 +102,9 @@ func _hit_something(dmg):
 		#Reset all powersUp
 		shoot_Delay = SHOOT_DELAY_BASE
 		setShootingDelay()
-		shotPower = 0
-		shotLateral = false
-		bonusLateralShotPower = 0
+		shotPowerBonus = 0
+		shotSide = false
+		bonusPowerSideShot = 0
 		touched = true
 	else :
 		get_node("anim").play("explode")

@@ -1,33 +1,19 @@
-extends Area2D
+extends "_shot.gd"
 
-# Member variables
-var speed = -1000
-var shotPower = 1.5
-const SHOT_DMG_MAX = 6
+const  PLAYER_SHOT_POWER = 1.5
+const  PlAYER_SHOT_SPEED_Y = -1000
+const  PLAYER_SHOT_POWER_MAX = 6
+const  SHOT_PLAYER_ANIME =  {POWER1 = 1 , POWER2 = 2, POWER3 = 3 ,POWER4 = 4,POWER5 = 6}
+var shotPower =  PLAYER_SHOT_POWER
 
-func _process(delta):
-	if (shotPower >= SHOT_DMG_MAX):
-		shotPower = SHOT_DMG_MAX
-	translate(Vector2(0, delta*speed))
-	if (shotPower >= 1):
-		get_node("anim").play("normal")
-	if (shotPower >= 2):
-		get_node("anim").play("big")
-	if (shotPower >= 3):
-		get_node("anim").play("veryBig")
-	if (shotPower >= 5):
-		get_node("anim").play("full")
 
 func _ready():
-	add_to_group("shot")
-	set_process(true)
-
-func is_enemy():
-	return true
-
-func _on_VisibilityNotifier2D_exit_screen():
-	queue_free()
-
+	if (shotPower > PLAYER_SHOT_POWER_MAX):
+		shotPower = PLAYER_SHOT_POWER_MAX
+	speedY = PlAYER_SHOT_SPEED_Y
+	setPowerAnim(SHOT_PLAYER_ANIME.POWER1,SHOT_PLAYER_ANIME.POWER2,
+				SHOT_PLAYER_ANIME.POWER3,SHOT_PLAYER_ANIME.POWER4,SHOT_PLAYER_ANIME.POWER5,shotPower) #set sprite scale  = to power
+	
 func _on_playerShot_area_enter( area ):
 	#Hit an enemy or asteroid
 	if (area.is_in_group("enemy") or area.is_in_group("asteroid") or area.is_in_group("turret")):

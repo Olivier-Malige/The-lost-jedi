@@ -5,7 +5,11 @@ extends Node
 var debug = true
 var points = 0
 var max_points = 0
-var nubVersion = "Alpha 3"
+
+const VERSION_NUMBER = "Alpha 3"
+
+
+
 
 
 func _ready():
