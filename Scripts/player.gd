@@ -65,7 +65,6 @@ func _fixed_process(delta):
 	if (shooting and canShooting):
 		var shot = preload("res://Prefabs/playerShot.tscn").instance()
 		shot.shotPower += shotPowerBonus 
-		print(str(shotPowerBonus))
 		# Use the Position2D as reference
 		shot.set_pos(get_node("shootFrom").get_global_pos())
 		# Put it two parents above, so it is not moved by us

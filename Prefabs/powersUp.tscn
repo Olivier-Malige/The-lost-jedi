@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 resource/name = "energieUp"
 length = 1.0
@@ -25,9 +25,8 @@ tracks/0/keys = {
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
-resource/name = "laserUp"
 length = 1.0
 loop = false
 step = 0.1
@@ -111,8 +110,8 @@ rect = Rect2( -10, -10, 20, 20 )
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/energieUp = SubResource( 3 )
-anims/laserUp = SubResource( 2 )
+anims/energieUp = SubResource( 2 )
+anims/laserUp = SubResource( 3 )
 anims/lateralShot = SubResource( 4 )
 anims/speedUp = SubResource( 5 )
 playback/active = true

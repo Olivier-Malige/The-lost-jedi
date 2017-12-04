@@ -6,7 +6,7 @@ const SPEED = 250
 var life = 2
 var points = 20
 var destroyed = false
-var randPowerUp = 100  #of  100%
+var randPowerUp = 10  #of  100%
 var touchedByPlayerShot = false 
 
 func _fixed_process(delta):
