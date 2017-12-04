@@ -30,7 +30,7 @@ func shooting():
 		shot[i].set_pos(get_node("shootPos").get_global_pos())
 		get_node("../").add_child(shot[i])
 		dir = rand_range(-150,150)
-		shot[i].xDir = dir
+		shot[i].speedX = dir
 		get_node("ShotDelay").start()
 		get_node("../enemySfx").play("interceptorShot")
 		i += 1
