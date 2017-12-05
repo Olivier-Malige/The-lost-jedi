@@ -1,5 +1,5 @@
 extends "_shot.gd"
-const SPEED_Y = 400
+const SPEED_Y = 500
 # Member variables
 
 func _ready():

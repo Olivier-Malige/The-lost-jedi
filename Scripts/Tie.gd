@@ -2,7 +2,7 @@
 extends Area2D
 
 const SHOOT_TIMER_BASE = 4
-const SPEED = 225
+const SPEED = 250
 const X_RANDOM = 1
 var life = 3
 var points = 60
@@ -16,7 +16,7 @@ func _fixed_process(delta):
 	translate(Vector2(speed_x, SPEED)*delta)
 
 func _ready():
-	get_node("shootTimer").set_wait_time(SHOOT_TIMER_BASE)
+	#get_node("shootTimer").set_wait_time(SHOOT_TIMER_BASE)
 	add_to_group("enemy")
 	randomize()
 	speed_x = rand_range(-X_RANDOM-25, X_RANDOM+25)

@@ -107,7 +107,7 @@ _update_shape_index = 0
 process_mode = 1
 wait_time = 2.2
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="shootFrom" type="Position2D" parent="."]
 
