@@ -3,7 +3,7 @@ extends Area2D
 
 # Member variables
 const SPEED = 50
-var life = 25
+var life = 30
 var points = 1000
 var speed_x = 0
 var destroyed = false

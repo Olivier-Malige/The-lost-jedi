@@ -2,7 +2,7 @@ extends Area2D
 
 const SPEED = 25
 const X_RANDOM = 0
-var life = 30
+var life = 35
 var points = 1500
 var speed_x = 0.0
 var destroyed = false
