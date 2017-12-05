@@ -1,7 +1,8 @@
 extends Area2D
 const SHOOT_DELAY_BASE = 0.30
 const SHOOT_DELAY_MIN = 0.15
-const SPEED = 200
+const SPEED = 300
+const MALUS_SPEED = 100
 const ENERGY_MAX = 10
 onready var shoot_Delay = SHOOT_DELAY_BASE
 onready var shotPowerBonus = 0
@@ -11,6 +12,7 @@ onready var bonusPowerSideShot = 0
 onready var energy = ENERGY_MAX
 onready var touched = false
 onready var canShooting = true
+onready var malusSpeed = 0
 
 func _ready():
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
@@ -52,7 +54,7 @@ func _fixed_process(delta):
 		get_node("anim").play("right")
 	var shooting = Input.is_action_pressed("shoot")
 	var pos = get_pos()	
-	pos += motion*delta*(SPEED+bonusSpeed)
+	pos += motion*delta*(SPEED+bonusSpeed-malusSpeed)
 	if (pos.x < 20):
 		pos.x = 20
 	if (pos.x > 800 - 20):
@@ -62,6 +64,8 @@ func _fixed_process(delta):
 	if (pos.y > 616):
 		pos.y = 616
 	set_pos(pos)
+	if(shooting):
+		malusSpeed = MALUS_SPEED
 	if (shooting and canShooting):
 		var shot = preload("res://Prefabs/playerShot.tscn").instance()
 		shot.shotPower += shotPowerBonus 
@@ -87,8 +91,8 @@ func _fixed_process(delta):
 			get_node("../").add_child(lShot)
 			get_node("../").add_child(rShot)			
 	# Update points counter
-	get_node("../hud/score").set_text("SCORE : " +str(get_node("/root/GameState").points))
 
+	get_node("../hud/score").set_text("SCORE : " +str(get_node("/root/GameState").points)) 
 func _hit_something(dmg):
 	if (touched):
 		return
@@ -134,4 +138,5 @@ func setShootingDelay():
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
 
 func _on_ShootingDelay_timeout():
+	malusSpeed = 0
 	canShooting = true
