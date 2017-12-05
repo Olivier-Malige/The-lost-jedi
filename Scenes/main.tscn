@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://Scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/cpu.png" type="Texture" id=2]
@@ -7,6 +7,57 @@
 [ext_resource path="res://Fonts/pixel.fnt" type="BitmapFont" id=5]
 [ext_resource path="res://Assets/godot-Sheet.png" type="Texture" id=6]
 [ext_resource path="res://Sounds/intro.ogg" type="AudioStream" id=7]
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "Start"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1.2, 1.2 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "startToWorld"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+
+resource/name = "worldToGameOver"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 
@@ -73,10 +124,23 @@ drag_margin/bottom = 0.2
 
 [node name="CpuBackground" type="Sprite" parent="."]
 
-transform/pos = Vector2( 508.198, 418.9 )
+transform/pos = Vector2( 508.198, 420.751 )
 transform/scale = Vector2( 1.57299, 1.62576 )
 z/z = 100
 texture = ExtResource( 2 )
+
+[node name="animCamera" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Start = SubResource( 2 )
+anims/startToWorld = SubResource( 3 )
+anims/worldToGameOver = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
 
 [node name="loader" type="Node2D" parent="."]
 
