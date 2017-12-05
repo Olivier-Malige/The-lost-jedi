@@ -64,7 +64,7 @@ func _fixed_process(delta):
 	if (pos.y > 616):
 		pos.y = 616
 	set_pos(pos)
-	if(shooting):
+	if(shooting): #speed malus on fire 
 		malusSpeed = MALUS_SPEED
 	if (shooting and canShooting):
 		var shot = preload("res://Prefabs/playerShot.tscn").instance()
@@ -100,7 +100,7 @@ func _hit_something(dmg):
 		energy -= 1
 		get_node("touchedReset").start()
 		get_node("xWing").set_modulate(Color(2,0.4,0.4,1)) #Set player Red color
-		#speed malus
+		#low speed
 		bonusSpeed = -120
 		#Reset all powersUp
 		shoot_Delay = SHOOT_DELAY_BASE
@@ -138,5 +138,6 @@ func setShootingDelay():
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
 
 func _on_ShootingDelay_timeout():
+	#reset speed malus
 	malusSpeed = 0
 	canShooting = true
