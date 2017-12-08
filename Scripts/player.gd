@@ -16,6 +16,7 @@ onready var canShooting = true
 onready var malusSpeed = 0
 
 func _ready():
+	set_process_input(true)
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
 	get_node("/root/GameState").points = 0
 	add_to_group("player")

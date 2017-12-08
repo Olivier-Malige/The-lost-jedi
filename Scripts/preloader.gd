@@ -5,7 +5,7 @@ func _ready():
 	get_node("anim").play("start")
 
 func _process(delta):
-	if Input.is_action_pressed("restart") :
+	if Input.is_action_pressed("start") :
 		get_parent().goStartScreen()
 		queue_free()
 
