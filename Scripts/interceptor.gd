@@ -4,7 +4,7 @@ extends Area2D
 # Member variables
 const SPEED = 150
 const X_RANDOM = 0
-var life = 8
+var life = 10
 var points = 250
 var speed_x = 0.0
 var destroyed = false
@@ -71,9 +71,9 @@ func _on_interceptor_area_enter( area ):
 			area._hit_something(5)
 
 func _on_ShootTimer_timeout():
-	var shot1 = preload("res://Prefabs/interceptorShot.tscn").instance()
-	var shot2 = preload("res://Prefabs/interceptorShot.tscn").instance()
-	var shot3 = preload("res://Prefabs/interceptorShot.tscn").instance()
+	var shot1 = preload("res://Prefabs/interceptorSideShot.tscn").instance()
+	var shot2 = preload("res://Prefabs/tieShot.tscn").instance()
+	var shot3 = preload("res://Prefabs/interceptorSideShot.tscn").instance()
 	shot1.set_pos(get_node("shootFrom").get_global_pos())
 	shot2.set_pos(get_node("shootFrom").get_global_pos())
 	shot3.set_pos(get_node("shootFrom").get_global_pos())
@@ -81,7 +81,9 @@ func _on_ShootTimer_timeout():
 	get_node("../").add_child(shot2)
 	get_node("../").add_child(shot3)
 	get_node("../enemySfx").play("interceptorShot")
+	shot1.set_rotd(-20)
 	shot1.speedX = -200
 	shot2.speedX = 0
+	shot3.set_rotd(20)
 	shot3.speedX = 200
 	

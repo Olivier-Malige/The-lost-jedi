@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://Scripts/interceptorShot.gd" type="Script" id=1]
+[ext_resource path="res://Assets/interceptorSideLaser.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 11.09, 10 )
+
+[node name="interceptorSideShot" type="Area2D"]
+
+transform/pos = Vector2( 0.148499, -10 )
+transform/scale = Vector2( 1.00608, 1 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 0.185245, 0, 0, 0.501356, -0.0253603, 2.93637 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+script/script = ExtResource( 1 )
+setRotation = false
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 0, -2 )
+texture = ExtResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+transform/pos = Vector2( 0.0240227, -1.87489 )
+transform/scale = Vector2( 0.210662, 1 )
+rect = Rect2( -10, -10, 20, 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -0.0253603, 2.93637 )
+transform/scale = Vector2( 0.185245, 0.501356 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[connection signal="area_enter" from="." to="." method="_on_interceptorSideShot_area_enter"]
+
+[connection signal="exit_screen" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_exit_screen"]
+
+

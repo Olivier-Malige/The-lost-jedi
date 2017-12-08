@@ -107,7 +107,7 @@ rect = Rect2( -10, -10, 20, 20 )
 
 process_mode = 1
 wait_time = 2.0
-one_shot = false
+one_shot = true
 autostart = true
 
 [node name="shootFrom" type="Position2D" parent="."]

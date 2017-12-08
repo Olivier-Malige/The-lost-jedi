@@ -91,9 +91,8 @@ func _fixed_process(delta):
 			rShot.shotPower += bonusPowerSideShot
 			lShot.shotPower += bonusPowerSideShot
 			get_node("../").add_child(lShot)
-			get_node("../").add_child(rShot)			
+			get_node("../").add_child(rShot)
 	# Update points counter
-
 	get_node("../hud/score").set_text("SCORE : " +str(get_node("/root/GameState").points)) 
 func _hit_something(dmg):
 	if (touched):
