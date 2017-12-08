@@ -4,6 +4,7 @@ const SHOOT_DELAY_MIN = 0.15
 const SPEED = 300
 const MALUS_SPEED = 100
 const ENERGY_MAX = 10
+const SPEED_MAX  = 500
 onready var shoot_Delay = SHOOT_DELAY_BASE
 onready var shotPowerBonus = 0
 onready var bonusSpeed = 0
@@ -24,10 +25,10 @@ func _fixed_process(delta):
 
 	if (energy > ENERGY_MAX):
 		energy = ENERGY_MAX
-	if (shoot_Delay < 0.08):
-		shoot_Delay = 0.08
-	if (bonusSpeed > 600):
-		bonusSpeed = 600
+	if (shoot_Delay < SHOOT_DELAY_MIN):
+		shoot_Delay = SHOOT_DELAY_MIN
+	if (bonusSpeed > SPEED_MAX):
+		bonusSpeed = SPEED_MAX
 	get_node("../hud/energy").set_text("ENERGY : " +str(energy))
 	var motion = Vector2()
 	get_node("anim").play("idle")
