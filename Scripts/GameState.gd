@@ -6,7 +6,7 @@ var debug = true
 var points = 0
 var max_points = 0
 
-const VERSION_NUMBER = "Alpha 4"
+const VERSION_NUMBER = "Alpha 5"
 
 func _ready():
 	var f = File.new()
