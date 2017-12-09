@@ -53,7 +53,7 @@ tracks/3/keys = {
 "values": [ Vector2( -198, 347 ), Vector2( -198, 347 ), Vector2( -198, 347 ), Vector2( 288, 347 ) ]
 }
 
-[node name="Start" type="Node2D"]
+[node name="gameOver" type="Node2D"]
 
 z/z = 10
 script/script = ExtResource( 1 )

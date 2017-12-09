@@ -1,6 +1,7 @@
 extends Node2D
-var startScreenLoaded = false
-var worldScreenLoaded = false
+var startScreen = false
+var worldScreen = false
+var gameOverScreen = false
 var input = load("res://Scripts/input.gd")
 var start
 func _ready():
@@ -13,15 +14,22 @@ func _ready():
 	
 
 func _input(event):
-	if start.key_down():
-		pause()
+	if (worldScreen):
+		if start.key_down():
+			pause()
+	if (startScreen):
+		goWorldScreen()
+		get_node("Start").queue_free()
+	if (gameOverScreen):
+		goWorldScreen()
+		get_node("gameOver").queue_free()
 
 func _on_Timer_timeout():
 	get_node("loader").queue_free()
 	goStartScreen()
 
 func pause():
-	if (worldScreenLoaded == true):
+	if (worldScreen == true):
 		if get_tree().is_paused():
 			get_tree().set_pause(false)
 			get_node("menu/paused").hide()
@@ -33,22 +41,25 @@ func pause():
 
 func goStartScreen():
 	
-	if (not startScreenLoaded):
+	if (not startScreen):
 		var start = preload("res://Scenes/Start.tscn").instance()
 		add_child(start)
-		startScreenLoaded = true
+		startScreen = true
 		get_node("animCamera").play("Start")
 
 func goWorldScreen():
 	
-	if (not worldScreenLoaded):
+	if (not worldScreen):
 		var world = preload("res://Scenes/World.tscn").instance()
 		add_child(world)
-		worldScreenLoaded = true
+		worldScreen = true
+		startScreen = false
+		gameOverScreen = false
 		get_node("animCamera").play("startToWorld")
 
 func goGameOverScreen():
-	worldScreenLoaded = false
+	gameOverScreen = true
+	worldScreen = false
 	get_node("animCamera").play("worldToGameOver")
 	var gameOver = preload("res://Scenes/gameOver.tscn").instance()
 	add_child(gameOver)
