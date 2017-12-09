@@ -70,6 +70,7 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
+life = 15
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -106,7 +107,7 @@ rect = Rect2( -10, -10, 20, 20 )
 [node name="ShootTimer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 2.0
+wait_time = 1.0
 one_shot = true
 autostart = true
 

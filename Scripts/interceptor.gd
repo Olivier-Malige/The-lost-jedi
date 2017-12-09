@@ -4,7 +4,7 @@ extends Area2D
 # Member variables
 const SPEED = 150
 const X_RANDOM = 0
-var life = 10
+export var life = 15
 var points = 250
 var speed_x = 0.0
 var destroyed = false

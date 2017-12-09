@@ -3,7 +3,7 @@ extends Area2D
 
 const SHOOT_TIMER_BASE = 4
 const SPEED = 250
-const X_RANDOM = 1
+const X_RANDOM = 50
 var life = 3
 var points = 60
 var speed_x 
@@ -19,10 +19,9 @@ func _ready():
 	#get_node("shootTimer").set_wait_time(SHOOT_TIMER_BASE)
 	add_to_group("enemy")
 	randomize()
-	speed_x = rand_range(-X_RANDOM-25, X_RANDOM+25)
+	speed_x = rand_range(-X_RANDOM+25, X_RANDOM+25)
 	set_fixed_process(true)
 	get_node("anim").play("idle")
-	shoot()
 	
 func _hit_something(dmg):
 	

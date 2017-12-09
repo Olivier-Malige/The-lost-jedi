@@ -19,9 +19,9 @@ var Wave1 = {
 	turret = [false,4]
 	}	
 var Wave2 = {
-	asteroid = [true,1],
+	asteroid = [true,0.5],
 	bigAsteroid = [false,1],
-	tie = [true,1],
+	tie = [true,3],
 	interceptor=[false,1],
 	drone=[true,2],
 	motherShip=[false,1],
@@ -50,16 +50,16 @@ var Wave5 = {
 	bigAsteroid = [true,1],
 	tie = [false,1],
 	interceptor=[true,3],
-	drone=[true,1.5],
+	drone=[true,2],
 	motherShip=[false,1],
 	turret = [false,4]
 	}
 var Wave6 = {
 	asteroid = [false,1],
-	bigAsteroid = [true,1],
+	bigAsteroid = [true,3],
 	tie = [false,1],
 	interceptor=[true,3],
-	drone=[true,1],
+	drone=[true,2],
 	motherShip=[false,1],
 	turret = [false,4]
 	}
@@ -153,7 +153,7 @@ func _on_asteroidSpawnTimer_timeout():
 	add_child(asteroid)
 
 func _on_tieSpawnTimer_timeout():
-	var rndPos = randi()%11
+	var rndPos = (randi()%9)+1 
 	var tie = preload("res://Prefabs/Tie.tscn").instance()
 	tie.set_pos(get_node("spawnPos"+str(rndPos)).get_pos())
 	add_child(tie)
@@ -171,7 +171,7 @@ func _on_interceptorSpwnTimer_timeout():
 	add_child(interceptor)
 
 func _on_droneSpawnTimer_timeout():
-	var rndPos = randi()%11
+	var rndPos = (randi()%9)+1 
 	var drone = preload("res://Prefabs/drone.tscn").instance()
 	var drone1 = preload("res://Prefabs/drone.tscn").instance()
 	var drone2 = preload("res://Prefabs/drone.tscn").instance()

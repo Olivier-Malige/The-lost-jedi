@@ -105,9 +105,9 @@ _update_shape_index = 0
 [node name="shootTimer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 2.2
-one_shot = false
-autostart = false
+wait_time = 0.5
+one_shot = true
+autostart = true
 
 [node name="shootFrom" type="Position2D" parent="."]
 
@@ -116,7 +116,7 @@ transform/pos = Vector2( -0.237831, 14.5618 )
 [node name="dirTimer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 3.0
+wait_time = 2.0
 one_shot = false
 autostart = true
 

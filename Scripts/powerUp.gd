@@ -1,9 +1,9 @@
 extends Area2D
 const SPEED = 100
-const BONUS_SPEED_PLAYER = 4 #speedUp
+const BONUS_SPEED_PLAYER = 5 #speedUp
 const BONUS_SHOT_POWER = 0.25    #damage
 const BONUS_SIDE_SHOT_POWER = 0.20 #damage
-const BONUS_SHOOTING_SPEED = 0.004 #Seconde
+const BONUS_SHOOTING_SPEED = 0.006 #Seconde
 
 func _ready():
 	var rndPowers = randi()%100 +1

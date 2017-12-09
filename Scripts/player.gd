@@ -1,8 +1,8 @@
 extends Area2D
-const SHOOT_DELAY_BASE = 0.30
+const SHOOT_DELAY_BASE = 0.35
 const SHOOT_DELAY_MIN = 0.15
 const SPEED = 300
-const MALUS_SPEED = 100
+const MALUS_SPEED = 150
 const ENERGY_MAX = 10
 const SPEED_MAX  = 500
 onready var shoot_Delay = SHOOT_DELAY_BASE

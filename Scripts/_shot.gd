@@ -4,7 +4,7 @@ extends Area2D
 var speedY = 0
 var speedX = 0
 export var setRotation = false
-var speedRotation = 10
+var speedRotation = 20
 
 func _process(delta):
 	if (setRotation):

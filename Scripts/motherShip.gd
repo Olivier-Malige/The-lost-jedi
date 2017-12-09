@@ -64,10 +64,10 @@ func _on_anim_finished():
 	else :get_node("anim").play("idle")
 
 func _on_ShootTimer_timeout():
-	var shot = preload("res://Prefabs/interceptorShot.tscn").instance()
-	var shot1 = preload("res://Prefabs/interceptorShot.tscn").instance()
-	var shot2 = preload("res://Prefabs/interceptorShot.tscn").instance()
-	var shot3 = preload("res://Prefabs/interceptorShot.tscn").instance()
+	var shot = preload("res://Prefabs/motherShipShot.tscn").instance()
+	var shot1 = preload("res://Prefabs/motherShipShot.tscn").instance()
+	var shot2 = preload("res://Prefabs/motherShipShot.tscn").instance()
+	var shot3 = preload("res://Prefabs/motherShipShot.tscn").instance()
 	shot.set_pos(get_node("ShootPos").get_global_pos())
 	shot1.set_pos(get_node("ShootPos1").get_global_pos())
 	shot2.set_pos(get_node("ShootPos2").get_global_pos())

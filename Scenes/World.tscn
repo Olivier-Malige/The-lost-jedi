@@ -245,7 +245,6 @@ max_lines_visible = -1
 [node name="WaveGenerator" type="Node2D" parent="."]
 
 process/pause_mode = 1
-editor/display_folded = true
 script/script = ExtResource( 9 )
 
 [node name="masterTimer" type="Timer" parent="WaveGenerator"]
