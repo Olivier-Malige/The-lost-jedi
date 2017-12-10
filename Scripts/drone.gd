@@ -7,10 +7,12 @@ var life = 2
 var points = 20
 var destroyed = false
 var randPowerUp = 10  #of  100%
-var touchedByPlayerShot = false 
+var touchedByPlayer1Shot = false 
+var touchedByPlayer2Shot = false 
 
 func _fixed_process(delta):
-	touchedByPlayerShot = false
+	touchedByPlayer1Shot = false
+	touchedByPlayer2Shot = false
 	translate(Vector2(0, SPEED)*delta)
 
 func _ready():
@@ -33,12 +35,20 @@ func _hit_something(dmg):
 	if (life <= 0) :
 		destroyed = true
 		get_node("anim").play("explode")
-		if (touchedByPlayerShot):
+		if (touchedByPlayer1Shot):
 			var score = preload("res://Prefabs/score.tscn").instance()
+			score.player = 1
 			score.set_pos(get_pos())
 			score.setScore = points
 			get_node("../").add_child(score)
-			get_node("/root/GameState").points += points
+			get_node("/root/GameState").scorePlayer1 += points
+		if (touchedByPlayer2Shot):
+			var score = preload("res://Prefabs/score.tscn").instance()
+			score.set_pos(get_pos())
+			score.setScore = points
+			score.player = 2
+			get_node("../").add_child(score)
+			get_node("/root/GameState").scorePlayer2 += points
 		get_node("../enemySfx").play("tieExplode")
 		get_node("CollisionShape2D").queue_free()
 		#Rand PowersUp

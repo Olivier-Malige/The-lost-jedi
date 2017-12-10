@@ -5,6 +5,7 @@ const SPEED = 300
 const MALUS_SPEED = 150
 const ENERGY_MAX = 10
 const SPEED_MAX  = 500
+export var nbPlayer = 1
 onready var shoot_Delay = SHOOT_DELAY_BASE
 onready var shotPowerBonus = 0
 onready var bonusSpeed = 0
@@ -18,7 +19,8 @@ onready var malusSpeed = 0
 func _ready():
 	set_process_input(true)
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
-	get_node("/root/GameState").points = 0
+	get_node("/root/GameState").scorePlayer1 = 0
+	get_node("/root/GameState").scorePlayer2 = 0
 	add_to_group("player")
 	set_fixed_process(true)
 
@@ -30,32 +32,32 @@ func _fixed_process(delta):
 		shoot_Delay = SHOOT_DELAY_MIN
 	if (bonusSpeed > SPEED_MAX):
 		bonusSpeed = SPEED_MAX
-	get_node("../hud/energy").set_text("ENERGY : " +str(energy))
+	get_node("../hud/energy_player"+str(nbPlayer)).set_text("ENERGY : " +str(energy))
+
 	var motion = Vector2()
 	get_node("anim").play("idle")
 	#particle effets
 	get_node("Particles2D1").set_time_scale(1)
 	get_node("Particles2D").set_time_scale(1)
-
-	if Input.is_action_pressed("move_up"):
+	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_up"):
 		motion += Vector2(0, -1)
 		#particle effets
 		get_node("Particles2D1").set_time_scale(3)
 		get_node("Particles2D").set_time_scale(3)
-	if Input.is_action_pressed("move_down"):
+	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_down"):
 		motion += Vector2(0, 1)
 		#particle effets
 		get_node("Particles2D1").set_time_scale(0)
 		get_node("Particles2D").set_time_scale(0)
-
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_left"):
 		motion += Vector2(-1, 0)
 		get_node("anim").play("left")
-	if Input.is_action_pressed("move_right"):
+	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_right"):
 		motion += Vector2(1, 0)
 		get_node("anim").play("right")
-	var shooting = Input.is_action_pressed("shoot")
-	var pos = get_pos()	
+	
+	
+	var pos = get_pos()
 	pos += motion*delta*(SPEED+bonusSpeed-malusSpeed)
 	if (pos.x < 20):
 		pos.x = 20
@@ -66,11 +68,18 @@ func _fixed_process(delta):
 	if (pos.y > 616):
 		pos.y = 616
 	set_pos(pos)
-	if(shooting): #speed malus on fire 
+	var shooting = Input.is_action_pressed("player"+str(nbPlayer)+"_shoot")
+	if(shooting): #speed malus on fire
 		malusSpeed = MALUS_SPEED
+	var shot
 	if (shooting and canShooting):
-		var shot = preload("res://Prefabs/playerShot.tscn").instance()
-		shot.shotPower += shotPowerBonus 
+		if (nbPlayer == 1) :
+			shot = preload("res://Prefabs/playerShot.tscn").instance()
+			shot.player = 1
+		else :
+			shot = preload("res://Prefabs/player2_Shot.tscn").instance()
+			shot.player = 2
+		shot.shotPower += shotPowerBonus
 		# Use the Position2D as reference
 		shot.set_pos(get_node("shootFrom").get_global_pos())
 		# Put it two parents above, so it is not moved by us
@@ -82,8 +91,14 @@ func _fixed_process(delta):
 		canShooting = false
 		get_node("ShootingDelay").start()
 		if (shotSide):
-			var lShot = preload("res://Prefabs/playerSideShot.tscn").instance()
-			var rShot = preload("res://Prefabs/playerSideShot.tscn").instance()
+			var lShot
+			var rShot
+			if (nbPlayer == 1):
+				lShot = preload("res://Prefabs/playerSideShot.tscn").instance()
+				rShot = preload("res://Prefabs/playerSideShot.tscn").instance()
+			else :
+				lShot = preload("res://Prefabs/player2_Side_Shot.tscn").instance()
+				rShot = preload("res://Prefabs/player2_Side_Shot.tscn").instance()
 			lShot.set_pos(get_node("shootFromLeft").get_global_pos())
 			rShot.set_pos(get_node("shootFromRight").get_global_pos())
 			rShot.speedX = -150
@@ -93,7 +108,8 @@ func _fixed_process(delta):
 			get_node("../").add_child(lShot)
 			get_node("../").add_child(rShot)
 	# Update points counter
-	get_node("../hud/score").set_text("SCORE : " +str(get_node("/root/GameState").points)) 
+	get_node("../hud/score_player1").set_text("SCORE : " +str(get_node("/root/GameState").scorePlayer1))
+	get_node("../hud/score_player2").set_text("SCORE : " +str(get_node("/root/GameState").scorePlayer2))
 func _hit_something(dmg):
 	if (touched):
 		return
@@ -124,8 +140,9 @@ func _on_touchedReset_timeout():
 	get_node("xWing").set_modulate(Color(1,1,1,1)) #set player normal color
 
 func _on_player_area_enter( area ):
-	if (area.has_method("_hit_something")):
-		area._hit_something(10)
+	if (area.is_in_group("enemy")):
+		if (area.has_method("_hit_something")):
+			area._hit_something(10)
 
 func _on_anim_finished():
 	if (get_node("anim").get_current_animation() == "explode"):

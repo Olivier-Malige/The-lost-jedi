@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=1]
+[gd_scene load_steps=28 format=1]
 
 [ext_resource path="res://Scripts/World.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/Powerup29.wav" type="Sample" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://Prefabs/player.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Sounds/game.ogg" type="AudioStream" id=24]
+[ext_resource path="res://Prefabs/player2.tscn" type="PackedScene" id=25]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -194,15 +195,31 @@ editor/display_folded = true
 transform/pos = Vector2( 640, 8 )
 z/z = 100
 
-[node name="score" type="Label" parent="hud"]
+[node name="score_player1" type="Label" parent="hud"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = -627.0
+margin/left = -617.0
 margin/top = 0.0
-margin/right = -525.0
+margin/right = -515.0
+margin/bottom = 17.0
+custom_fonts/font = ExtResource( 8 )
+text = "Score : "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="score_player2" type="Label" parent="hud"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -23.0
+margin/top = 0.0
+margin/right = 79.0
 margin/bottom = 17.0
 custom_fonts/font = ExtResource( 8 )
 text = "Score : "
@@ -226,16 +243,32 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="energy" type="Label" parent="hud"]
+[node name="energy_player1" type="Label" parent="hud"]
 
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 0.0
-margin/top = 0.0
-margin/right = 109.0
-margin/bottom = 17.0
+margin/left = -621.0
+margin/top = 601.0
+margin/right = -512.0
+margin/bottom = 618.0
+custom_fonts/font = ExtResource( 8 )
+text = "ENERGY :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="energy_player2" type="Label" parent="hud"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = -8.0
+margin/top = 604.0
+margin/right = 101.0
+margin/bottom = 621.0
 custom_fonts/font = ExtResource( 8 )
 text = "ENERGY :"
 percent_visible = 1.0
@@ -245,6 +278,8 @@ max_lines_visible = -1
 [node name="WaveGenerator" type="Node2D" parent="."]
 
 process/pause_mode = 1
+editor/display_folded = true
+transform/pos = Vector2( 0, 5 )
 script/script = ExtResource( 9 )
 
 [node name="masterTimer" type="Timer" parent="WaveGenerator"]
@@ -371,12 +406,14 @@ config/pitch_random = 0.0
 
 [node name="player" parent="." instance=ExtResource( 22 )]
 
+transform/pos = Vector2( 354.112, 563.672 )
 z/z = 10
+nbPlayer = 1
 
 [node name="Background" parent="." instance=ExtResource( 23 )]
 
 process/pause_mode = 1
-transform/pos = Vector2( 27.108, 1.89197 )
+transform/pos = Vector2( 23.6524, 3.39929 )
 
 [node name="musicStream" type="StreamPlayer" parent="."]
 
@@ -388,6 +425,14 @@ stream/autoplay = true
 stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
+
+[node name="player2" parent="." instance=ExtResource( 25 )]
+
+transform/pos = Vector2( 448.112, 563.672 )
+
+[node name="playerSpawn" type="Position2D" parent="."]
+
+transform/pos = Vector2( 400, 560 )
 
 [connection signal="timeout" from="WaveGenerator/masterTimer" to="WaveGenerator" method="_on_masterTimer_timeout"]
 

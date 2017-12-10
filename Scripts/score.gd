@@ -2,7 +2,7 @@ extends Node2D
 
 const DESTROY_DELAY = 1
 var setScore = 0
-
+var player 
 func _ready():
 	if (setScore >=50):
 		get_node("Label").set_scale(Vector2(1.2,1.2))
@@ -16,7 +16,7 @@ func _ready():
 		get_node("Label").set_scale(Vector2(2,2))
 		
 	get_node("Label").set_text(str(setScore))
-	get_node("anim").play("start")
+	get_node("anim").play("player"+str(player))
 	get_node("destroyDelay").set_wait_time(DESTROY_DELAY)
 
 func _on_destroyDelay_timeout():

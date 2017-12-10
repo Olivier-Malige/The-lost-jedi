@@ -10,14 +10,18 @@ var rndRot
 var rndAstSprite
 var randPowerUp = 5  #of  100%
 var touchedByPlayerShot = false 
+var touchedByPlayer1Shot = false 
+var touchedByPlayer2Shot = false 
 
 func _fixed_process(delta):
-	touchedByPlayerShot = false
+	touchedByPlayer1Shot = false 
+	touchedByPlayer2Shot = false 
 	translate(Vector2(speed_x, SPEED)*delta)
 	#rotate 
 	set_rotd(get_rotd()+rndRot)	
 
 func _ready():
+	add_to_group("enemy")
 	add_to_group("asteroid")
 	randomize();
 	rndAstSprite = randi()%3

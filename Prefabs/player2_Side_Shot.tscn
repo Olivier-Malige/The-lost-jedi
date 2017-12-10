@@ -1,12 +1,12 @@
 [gd_scene load_steps=9 format=1]
 
-[ext_resource path="res://Scripts/playerShot.gd" type="Script" id=1]
-[ext_resource path="res://Assets/playerShot.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/player2_Side_Shot.gd" type="Script" id=1]
+[ext_resource path="res://Assets/player2SideShot.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+extents = Vector2( 11.09, 10 )
 
 [sub_resource type="Animation" id=2]
 
@@ -15,7 +15,7 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
@@ -32,7 +32,7 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.00886536, -10.4772 ) ]
+"values": [ Vector2( -1.97673, -3.93599 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:transform/scale")
@@ -42,7 +42,7 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1.60584, 0.802293 ) ]
+"values": [ Vector2( 0.206201, 0.614852 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -52,7 +52,7 @@ length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
@@ -62,43 +62,6 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionShape2D:transform/pos")
-tracks/1/interp = 1
-tracks/1/imported = false
-tracks/1/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0.00886536, -14.404 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CollisionShape2D:transform/scale")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1.60584, 1.19254 ) ]
-}
-
-[sub_resource type="Animation" id=4]
-
-resource/name = "large"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:frame")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 3 ]
-}
-tracks/1/type = "value"
 tracks/1/path = NodePath("CollisionShape2D:transform/scale")
 tracks/1/interp = 1
 tracks/1/imported = false
@@ -106,7 +69,7 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1.60584, 0.997416 ) ]
+"values": [ Vector2( 0.362573, 0.846708 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:transform/pos")
@@ -116,16 +79,54 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.00886536, -11.9406 ) ]
+"values": [ Vector2( 0.0139972, -5.71899 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
+resource/name = "large"
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionShape2D:transform/pos")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.00465822, -4.05516 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:transform/scale")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.375846, 0.606263 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+resource/name = "normal"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
@@ -142,7 +143,7 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.00886536, -7.9772 ) ]
+"values": [ Vector2( -1.98423, -1.88742 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:transform/scale")
@@ -152,16 +153,17 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1.60584, 0.609985 ) ]
+"values": [ Vector2( 0.206201, 0.398082 ) ]
 }
 
 [sub_resource type="Animation" id=6]
 
+resource/name = "small"
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("sprite:frame")
+tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
@@ -178,7 +180,7 @@ tracks/1/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.00886536, -7.9772 ) ]
+"values": [ Vector2( -2.00774, 4.07355 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:transform/scale")
@@ -188,14 +190,15 @@ tracks/2/keys = {
 "times": FloatArray( 0 ),
 "transitions": FloatArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1.60584, 0.609985 ) ]
+"values": [ Vector2( 0.198474, 0.208338 ) ]
 }
 
-[node name="playerShot" type="Area2D"]
+[node name="player2_Side_Shot" type="Area2D"]
 
+transform/pos = Vector2( 0, -10 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1.60584, 0, 0, 1.19254, 0.00886536, -14.404 )
+shapes/0/transform = Matrix32( 0.198474, 0, 0, 0.208338, -2.00774, 4.07355 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -204,24 +207,24 @@ angular_damp = 1.0
 script/script = ExtResource( 1 )
 setRotation = false
 
-[node name="sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="."]
 
-transform/pos = Vector2( 0, -10 )
+transform/pos = Vector2( 0, -2 )
 texture = ExtResource( 2 )
 hframes = 5
-frame = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-
-transform/pos = Vector2( 0.00886536, -14.404 )
-transform/scale = Vector2( 1.60584, 1.19254 )
-shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
+transform/pos = Vector2( -2.0783, 0.188936 )
 rect = Rect2( -10, -10, 20, 20 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -2.00774, 4.07355 )
+transform/scale = Vector2( 0.198474, 0.208338 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
 
 [node name="anim" type="AnimationPlayer" parent="."]
 
@@ -238,7 +241,7 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[connection signal="area_enter" from="." to="." method="_on_playerShot_area_enter"]
+[connection signal="area_enter" from="." to="." method="_on_singleShot_area_enter"]
 
 [connection signal="exit_screen" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_exit_screen"]
 
