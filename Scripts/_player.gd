@@ -42,6 +42,7 @@ func _fixed_process(delta):
 func _hit_something(dmg):
 	if (touched):
 		return
+		
 	if (energy > 0):
 		energy -= 1
 		get_node("touchedReset").start()

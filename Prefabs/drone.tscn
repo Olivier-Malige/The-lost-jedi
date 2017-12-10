@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=8 format=1]
 
-[ext_resource path="res://Scripts/drone.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/_enemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/drone.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -64,6 +64,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 
+resource/name = "start"
 length = 1.0
 loop = true
 step = 0.1
@@ -78,6 +79,9 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="SampleLibrary" id=5]
+
+
 [node name="drone" type="Area2D"]
 
 transform/pos = Vector2( 0.157784, 0 )
@@ -90,6 +94,19 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
+nbrSprites = 1
+useMultiSprites = false
+life = 2
+hitSomething = 1
+points = 10
+speedX = 0.0
+speedY = 200.0
+randomX = 0
+randomY = 0
+randPowerUp = 10
+setRotation = false
+speedRotation = 10
+rndRotation = false
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -103,7 +120,7 @@ playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/explode = SubResource( 2 )
 anims/hit = SubResource( 3 )
-anims/idle = SubResource( 4 )
+anims/start = SubResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -171,7 +188,18 @@ params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
 color/color = Color( 1, 0, 0, 1 )
 
-[connection signal="area_enter" from="." to="." method="_on_drone_area_enter"]
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = SubResource( 5 )
+config/pitch_random = 0.0
+
+[connection signal="area_enter" from="." to="." method="_on_area_enter"]
 
 [connection signal="finished" from="anim" to="." method="_on_anim_finished"]
 

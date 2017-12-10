@@ -70,7 +70,19 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
-life = 15
+nbrSprites = 1
+useMultiSprites = false
+life = 10
+hitSomething = 1
+points = 250
+speedX = 0
+speedY = 150.0
+randomX = 0
+randomY = 0
+randPowerUp = 80
+setRotation = false
+speedRotation = 0
+rndRotation = false
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -115,7 +127,7 @@ autostart = true
 
 transform/pos = Vector2( 0, 28.7237 )
 
-[connection signal="area_enter" from="." to="." method="_on_interceptor_area_enter"]
+[connection signal="area_enter" from="." to="." method="_on_area_enter"]
 
 [connection signal="finished" from="anim" to="." method="_on_anim_finished"]
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=7 format=1]
 
-[ext_resource path="res://Scripts/bigAsteroid.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/asteroid.gd" type="Script" id=1]
 [ext_resource path="res://Assets/bigAsteroidSheet.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -8,141 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10.9474, 11.5802 )
 
-[sub_resource type="Animation" id=2]
-
-resource/name = "bigAsteroid"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteAsteroid:frame")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=3]
-
-resource/name = "asteroid0Hit"
-length = 0.5
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteAsteroid:frame")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 0, 1, 0 ]
-}
-
 [sub_resource type="Animation" id=4]
-
-resource/name = "asteroid1"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteAsteroid:frame")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 2 ]
-}
-
-[sub_resource type="Animation" id=5]
-
-resource/name = "asteroid1Hit"
-length = 0.5
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteAsteroid:frame")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 3, 2, 3, 2 ]
-}
-
-[sub_resource type="Animation" id=6]
-
-resource/name = "asteroid2"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteAsteroid:frame")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 4 ]
-}
-
-[sub_resource type="Animation" id=7]
-
-resource/name = "asteroid2Hit"
-length = 0.5
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteAsteroid:frame")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 5, 4, 5, 4 ]
-}
-
-[sub_resource type="Animation" id=8]
-
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteAsteroid:frame")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=9]
-
-length = 0.5
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteAsteroid:frame")
-tracks/0/interp = 1
-tracks/0/imported = false
-tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 0, 1, 0 ]
-}
-
-[sub_resource type="Animation" id=10]
 
 length = 0.5
 loop = false
@@ -158,6 +24,40 @@ tracks/0/keys = {
 "values": [ 3, 4, 5, 6, 7 ]
 }
 
+[sub_resource type="Animation" id=3]
+
+resource/name = "hit"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteAsteroid:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 0, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "start"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpriteAsteroid:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = {
+"times": FloatArray( 0 ),
+"transitions": FloatArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
 [node name="bigAsteroid" type="Area2D" groups=[
 "asteroid",
 ]]
@@ -171,12 +71,24 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
+nbrSprites = 1
+useMultiSprites = false
+life = 10
+hitSomething = 1
+points = 10
+speedX = 0.0
+speedY = 150.0
+randomX = 0
+randomY = 0
+randPowerUp = 10
+setRotation = true
+speedRotation = 1
+rndRotation = false
 
 [node name="SpriteAsteroid" type="Sprite" parent="."]
 
 texture = ExtResource( 2 )
 hframes = 9
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -191,15 +103,9 @@ _update_shape_index = 0
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/asteroid0 = SubResource( 2 )
-anims/asteroid0Hit = SubResource( 3 )
-anims/asteroid1 = SubResource( 4 )
-anims/asteroid1Hit = SubResource( 5 )
-anims/asteroid2 = SubResource( 6 )
-anims/asteroid2Hit = SubResource( 7 )
-anims/bigAsteroid = SubResource( 8 )
-anims/bigAsteroidHit = SubResource( 9 )
-anims/explode = SubResource( 10 )
+anims/explode = SubResource( 4 )
+anims/hit = SubResource( 3 )
+anims/start = SubResource( 2 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -209,7 +115,18 @@ autoplay = ""
 
 rect = Rect2( -10, -10, 20, 20 )
 
-[connection signal="area_enter" from="." to="." method="_on_bigAsteroid_area_enter"]
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = null
+config/pitch_random = 0.0
+
+[connection signal="area_enter" from="." to="." method="_on_area_enter"]
 
 [connection signal="finished" from="anim" to="." method="_on_anim_finished"]
 

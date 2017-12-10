@@ -63,6 +63,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=4]
 
+resource/name = "start"
 length = 1.0
 loop = false
 step = 0.1
@@ -88,6 +89,19 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
+nbrSprites = 1
+useMultiSprites = false
+life = 30
+hitSomething = 10
+points = 1000
+speedX = 0.0
+speedY = 50.0
+randomX = 0
+randomY = 0.0
+randPowerUp = 100
+setRotation = false
+speedRotation = 0
+rndRotation = false
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -101,7 +115,7 @@ playback/default_blend_time = 0.0
 root/root = NodePath("..")
 anims/explode = SubResource( 2 )
 anims/hit = SubResource( 3 )
-anims/idle = SubResource( 4 )
+anims/start = SubResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
@@ -192,7 +206,18 @@ wait_time = 1.0
 one_shot = false
 autostart = true
 
-[connection signal="area_enter" from="." to="." method="_on_motherShip_area_enter"]
+[node name="SamplePlayer2D" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = null
+config/pitch_random = 0.0
+
+[connection signal="area_enter" from="." to="." method="_on_area_enter"]
 
 [connection signal="finished" from="anim" to="." method="_on_anim_finished"]
 
