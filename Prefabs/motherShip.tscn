@@ -107,6 +107,7 @@ rndRotation = false
 
 texture = ExtResource( 2 )
 hframes = 11
+frame = 10
 
 [node name="anim" type="AnimationPlayer" parent="."]
 
@@ -127,6 +128,7 @@ transform/pos = Vector2( 15.9221, -61.6786 )
 transform/scale = Vector2( 4, 4 )
 config/amount = 2
 config/lifetime = 0.2
+config/emitting = false
 config/process_mode = 1
 params/direction = 180.0
 params/spread = 10.0
@@ -152,6 +154,7 @@ transform/pos = Vector2( -16.4973, -61.8613 )
 transform/scale = Vector2( 4, 4 )
 config/amount = 2
 config/lifetime = 0.2
+config/emitting = false
 config/process_mode = 1
 params/direction = 180.0
 params/spread = 10.0

@@ -21,4 +21,13 @@ func _on_ShootTimer_timeout():
 	shot3.speedX  = 40
 	get_node("../enemySfx").play("interceptorShot")
 	
-
+func _on_anim_finished():
+	if (get_node("anim").get_current_animation() == "explode"):
+		queue_free()
+		get_node("ShootTimer").stop()
+		_fixed_process(false)
+	else :
+		if (useMultiSprites):
+			get_node("anim").play("start"+str(rndMultiSprites+1))
+		else :
+			get_node("anim").play("start")

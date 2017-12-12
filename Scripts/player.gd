@@ -19,8 +19,7 @@ onready var malusSpeed = 0
 func _ready():
 	set_process_input(true)
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
-	get_node("/root/GameState").scorePlayer1 = 0
-	get_node("/root/GameState").scorePlayer2 = 0
+	get_node("/root/GameState").score = 0
 	add_to_group("player")
 	set_fixed_process(true)
 
@@ -108,8 +107,7 @@ func _fixed_process(delta):
 			get_node("../").add_child(lShot)
 			get_node("../").add_child(rShot)
 	# Update points counter
-	get_node("../hud/score_player1").set_text("SCORE : " +str(get_node("/root/GameState").scorePlayer1))
-	get_node("../hud/score_player2").set_text("SCORE : " +str(get_node("/root/GameState").scorePlayer2))
+	get_node("../hud/score").set_text("SCORE : " +str(get_node("/root/GameState").score))
 func _hit_something(dmg):
 	if (touched):
 		return

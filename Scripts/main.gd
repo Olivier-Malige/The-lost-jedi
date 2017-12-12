@@ -1,9 +1,11 @@
 extends Node2D
+var coop  = false
 var startScreen = false
 var worldScreen = false
 var gameOverScreen = false
 var input = load("res://Scripts/input.gd")
 var start
+
 func _ready():
 	
 	start = input.new("start")
@@ -14,15 +16,15 @@ func _ready():
 	
 
 func _input(event):
-	if (worldScreen):
-		if start.key_down():
-			pause()
-	if (startScreen):
-		goWorldScreen()
-		get_node("Start").queue_free()
-	if (gameOverScreen):
-		goWorldScreen()
-		get_node("gameOver").queue_free()
+	if start.key_down():
+		if (worldScreen):
+				pause()
+		if (startScreen):
+			goWorldScreen()
+			get_node("Start").queue_free()
+		if (gameOverScreen):
+			goWorldScreen()
+			get_node("gameOver").queue_free()
 
 func _on_Timer_timeout():
 	get_node("loader").queue_free()
@@ -42,7 +44,7 @@ func pause():
 func goStartScreen():
 	
 	if (not startScreen):
-		var start = preload("res://Scenes/Start.tscn").instance()
+		var start = preload("res://Scenes/start.tscn").instance()
 		add_child(start)
 		startScreen = true
 		get_node("animCamera").play("Start")

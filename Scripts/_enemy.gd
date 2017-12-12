@@ -18,16 +18,17 @@ onready var destroyed = false
 onready var rndRot 
 onready var hitByPlayerShot = false 
 onready var rndMultiSprites
-
+var bonusCoop = 1
 func _fixed_process(delta):
-	hitByPlayer1Shot = false
-	hitByPlayer2Shot = false
+	hitByPlayerShot = false
 	translate(Vector2(speedX,speedY)*delta)
 	#rotate 
 	if (setRotation):
 		set_rotd(get_rotd()+speedRotation)
 
 func _ready():
+	if (get_node("/root/Main").coop) :
+		life *= bonusCoop
 	randomize();
 	speedX = rand_range(-randomX-speedX, randomY+speedX)
 	#speedy = rand_range(-randomY-speedY, randomY+speedY)
@@ -57,20 +58,13 @@ func _hit_something(dmg):
 		destroyed = true
 		get_node("anim").play("explode")
 		get_node("CollisionShape2D").queue_free()
-		if (hitByPlayer1Shot):
+		if (hitByPlayerShot):
 			var score = preload("res://Prefabs/score.tscn").instance()
 			score.player = 1
 			score.set_pos(get_pos())
 			score.setScore = points
 			get_node("../").add_child(score)
-			get_node("/root/GameState").scorePlayer1 += points
-		if (hitByPlayer2Shot):
-			var score = preload("res://Prefabs/score.tscn").instance()
-			score.set_pos(get_pos())
-			score.setScore = points
-			score.player = 2
-			get_node("../").add_child(score)
-			get_node("/root/GameState").scorePlayer2 += points
+			get_node("/root/GameState").score += points
 		_fixed_process(false)
 		get_node("../enemySfx").play("asteroidExplode")
 		#Rand PowersUp
@@ -86,6 +80,8 @@ func _on_VisibilityNotifier2D_exit_screen():
 func _on_anim_finished():
 	if (get_node("anim").get_current_animation() == "explode"):
 		queue_free()
+		if (has_node("ShootTimer")):
+			get_node("ShootTimer").stop()
 		_fixed_process(false)
 	else :
 		if (useMultiSprites):

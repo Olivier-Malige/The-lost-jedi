@@ -18,9 +18,6 @@ func _ready():
 func _on_playerShot_area_enter( area ):
 	#Hit an enemy or asteroid
 	if (area.is_in_group("enemy") or area.is_in_group("asteroid") or area.is_in_group("turret")):
-		if (player == 1):
-			area.hitByPlayer1Shot = true
-		else : 
-			area.hitByPlayer2Shot = true
+		area.hitByPlayerShot = true
 		area._hit_something(shotPower)
 		queue_free()

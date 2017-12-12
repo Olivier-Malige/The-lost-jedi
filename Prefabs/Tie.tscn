@@ -145,7 +145,7 @@ config/polyphony = 1
 config/samples = null
 config/pitch_random = 0.0
 
-[connection signal="area_enter" from="." to="." method="_on_Tie_area_enter"]
+[connection signal="area_enter" from="." to="." method="_on_area_enter"]
 
 [connection signal="finished" from="anim" to="." method="_on_anim_finished"]
 
