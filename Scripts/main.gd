@@ -11,7 +11,6 @@ func _ready():
 	start = input.new("start")
 	get_node("Camera2D").set_scale(Vector2 (1.5,1.5))
 	set_pause_mode(PAUSE_MODE_PROCESS)
-	set_process(true)
 	set_process_input(true)
 	
 
@@ -19,9 +18,9 @@ func _input(event):
 	if start.key_down():
 		if (worldScreen):
 				pause()
-		if (startScreen):
-			goWorldScreen()
-			get_node("Start").queue_free()
+#		if (startScreen):
+#			goWorldScreen()
+#			get_node("Start").queue_free()
 		if (gameOverScreen):
 			goWorldScreen()
 			get_node("gameOver").queue_free()

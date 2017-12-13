@@ -388,6 +388,7 @@ config/pitch_random = 0.0
 [node name="Background" parent="." instance=ExtResource( 22 )]
 
 process/pause_mode = 1
+editor/display_folded = false
 transform/pos = Vector2( 23.6524, 3.39929 )
 
 [node name="musicStream" type="StreamPlayer" parent="."]
