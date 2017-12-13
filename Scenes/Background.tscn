@@ -6,7 +6,7 @@
 
 [node name="Background" type="Node2D"]
 
-editor/display_folded = true
+transform/pos = Vector2( 8.36853, 5.57904 )
 z/z = -10
 
 [node name="ScrollingBackground1" type="Node" parent="."]
@@ -19,7 +19,7 @@ texture = ExtResource( 3 )
 speed_x = 0
 speed_y = 1
 scale = 1.0
-modulate = null
+modulate = Color( 1, 1, 1, 1 )
 
 [node name="ScrollingBackground" type="Node" parent="."]
 

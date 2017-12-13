@@ -8,7 +8,7 @@ var hiscoreSolo = 0
 var hiscoreCoop = 0
 
 
-const VERSION_NUMBER = "Alpha 5"
+const VERSION_NUMBER = "Alpha 5.1"
 
 func _ready():
 	var f = File.new()

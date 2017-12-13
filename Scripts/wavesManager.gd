@@ -14,7 +14,7 @@ var Wave1 = {
 	bigAsteroid = [false,1],
 	tie = [true,4],
 	interceptor=[false,1],
-	drone=[true,2],
+	drone=[true,3],
 	motherShip=[false,1],
 	turret = [false,4]
 	}	

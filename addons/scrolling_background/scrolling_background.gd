@@ -161,4 +161,3 @@ func _fixed_process(delta):
 		current_position.y = 0 - _texture_size.get_height() * _scale
 	
 	spriteNode.set_pos(current_position)
-

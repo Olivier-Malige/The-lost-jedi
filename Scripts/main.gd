@@ -21,6 +21,7 @@ func _input(event):
 #		if (startScreen):
 #			goWorldScreen()
 #			get_node("Start").queue_free()
+
 		if (gameOverScreen):
 			goWorldScreen()
 			get_node("gameOver").queue_free()
