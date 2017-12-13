@@ -14,15 +14,15 @@ func _ready():
 	
 
 func _input(event):
-	if (worldScreen):
-		if start.key_down():
-			pause()
-	if (startScreen):
-		goWorldScreen()
-		get_node("Start").queue_free()
-	if (gameOverScreen):
-		goWorldScreen()
-		get_node("gameOver").queue_free()
+	if start.key_down():
+		if (worldScreen):
+				pause()
+		if (startScreen):
+			goWorldScreen()
+			get_node("Start").queue_free()
+		if (gameOverScreen):
+			goWorldScreen()
+			get_node("gameOver").queue_free()
 
 func _on_Timer_timeout():
 	get_node("loader").queue_free()
