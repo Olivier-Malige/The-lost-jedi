@@ -259,7 +259,6 @@ max_lines_visible = -1
 [node name="WaveGenerator" type="Node2D" parent="."]
 
 process/pause_mode = 1
-editor/display_folded = true
 transform/pos = Vector2( 0, 5 )
 script/script = ExtResource( 9 )
 
@@ -388,8 +387,15 @@ config/pitch_random = 0.0
 [node name="Background" parent="." instance=ExtResource( 22 )]
 
 process/pause_mode = 1
-editor/display_folded = false
 transform/pos = Vector2( 141.652, 3.39929 )
+
+[node name="ScrollingBackground1" parent="Background"]
+
+modulate = Color( 0.355469, 0.355469, 0.355469, 1 )
+
+[node name="ScrollingBackground" parent="Background"]
+
+scale = 1.2
 
 [node name="musicStream" type="StreamPlayer" parent="."]
 

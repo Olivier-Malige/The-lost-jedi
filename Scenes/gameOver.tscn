@@ -96,10 +96,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 3.0
-margin/top = -123.0
-margin/right = 802.0
-margin/bottom = 472.0
+margin/left = 2.0
+margin/top = -355.0
+margin/right = 801.0
+margin/bottom = 240.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.964844, 0.904541, 0, 1 )
@@ -130,9 +130,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 200.0
-margin/top = 541.0
+margin/top = 628.0
 margin/right = 640.0
-margin/bottom = 598.0
+margin/bottom = 685.0
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 0.929504, 1, 0.0976562, 1 )
 text = "Press Enter or start to Retry
@@ -144,17 +144,18 @@ max_lines_visible = -1
 
 [node name="Background" parent="." instance=ExtResource( 4 )]
 
-editor/display_folded = false
 transform/pos = Vector2( 2.7782, 0 )
 z/z = -20
 
 [node name="ScrollingBackground1" parent="Background"]
 
 speed_y = -1
+scale = 0.8
 
 [node name="ScrollingBackground" parent="Background"]
 
 speed_y = -2
+scale = 1.2
 
 [node name="music" type="StreamPlayer" parent="."]
 
@@ -166,6 +167,8 @@ stream/autoplay = true
 stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 200
+
+[connection signal="finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]
 
 
 [editable path="Background"]

@@ -6,3 +6,7 @@ func _ready():
 	get_node("BestScore").set_text("HISCORE : " +str(get_node("/root/GameState").hiScore))
 
 
+
+
+func _on_AnimationPlayer_finished():
+	pass

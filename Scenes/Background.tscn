@@ -6,7 +6,6 @@
 
 [node name="Background" type="Node2D"]
 
-transform/pos = Vector2( 8.36853, 5.57904 )
 z/z = -10
 
 [node name="ScrollingBackground1" type="Node" parent="."]
@@ -30,7 +29,7 @@ __meta__ = {
 texture = ExtResource( 3 )
 speed_x = 0
 speed_y = 2
-scale = 1.5
+scale = 1.0
 modulate = Color( 1, 1, 1, 1 )
 
 
