@@ -152,17 +152,17 @@ hframes = 12
 
 [node name="shootFrom" type="Position2D" parent="."]
 
-transform/pos = Vector2( 0, -8.40359 )
+transform/pos = Vector2( 0, 0.596414 )
 transform/scale = Vector2( 1, 0.752936 )
 
 [node name="shootFromLeft" type="Position2D" parent="."]
 
-transform/pos = Vector2( 17, -8.40359 )
+transform/pos = Vector2( 17, -3.40359 )
 transform/scale = Vector2( 1, 0.752936 )
 
 [node name="shootFromRight" type="Position2D" parent="."]
 
-transform/pos = Vector2( -17, -8.40359 )
+transform/pos = Vector2( -17, -3.40359 )
 transform/scale = Vector2( 1, 0.752936 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -220,6 +220,7 @@ params/final_size = 1.0
 params/hue_variation = 0.0
 params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
+color/color = Color( 1, 0.00392157, 0.286275, 1 )
 
 [node name="Particles2D1" type="Particles2D" parent="."]
 
@@ -247,6 +248,7 @@ params/final_size = 1.0
 params/hue_variation = 0.0
 params/anim_speed_scale = 1.0
 params/anim_initial_pos = 0.0
+color/color = Color( 1, 0.00392157, 0.286275, 1 )
 
 [node name="ShootingDelay" type="Timer" parent="."]
 

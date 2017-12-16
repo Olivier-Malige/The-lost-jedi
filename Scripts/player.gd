@@ -37,8 +37,8 @@ func _fixed_process(delta):
 	var motion = Vector2()
 	get_node("anim").play("idle")
 	#particle effets
-	get_node("Particles2D1").set_time_scale(1.5)
-	get_node("Particles2D").set_time_scale(1.5)
+	get_node("Particles2D1").set_time_scale(1.2)
+	get_node("Particles2D").set_time_scale(1.2)
 	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_up"):
 		motion += Vector2(0, -1)
 		#particle effets
