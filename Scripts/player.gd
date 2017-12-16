@@ -142,11 +142,10 @@ func _on_player_area_enter( area ):
 		if (area.has_method("_hit_something")):
 			area._hit_something(10)
 
+
 func _on_anim_finished():
 	if (get_node("anim").get_current_animation() == "explode"):
-		get_node("/root/GameState").game_over()
-		get_node("../../").goGameOverScreen()
-		get_parent().queue_free()
+		get_node("/root/Main/World").nbPlayer -= 1
 		
 func setShootingDelay():
 	if (shoot_Delay < SHOOT_DELAY_MIN):

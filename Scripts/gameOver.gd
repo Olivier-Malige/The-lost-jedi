@@ -1,12 +1,16 @@
 extends Node2D
 
+
 func _ready():
 	get_node("AnimationPlayer").play("start")
-	get_node("Score").set_text("SCORE : " +str(get_node("/root/GameState").score))
-	get_node("BestScore").set_text("HISCORE : " +str(get_node("/root/GameState").hiScore))
+	if get_node("/root/Main").coop :
+		get_node("Score").set_text("SCORE : " +str(get_node("/root/GameState").score))
+		get_node("BestScore").set_text("HISCORE : " +str(get_node("/root/GameState").hiscoreCoop))
+
+	else : 
+		get_node("Score").set_text("SCORE : " +str(get_node("/root/GameState").score))
+		get_node("BestScore").set_text("HISCORE : " +str(get_node("/root/GameState").hiscoreSolo))
 
 
+		
 
-
-func _on_AnimationPlayer_finished():
-	pass

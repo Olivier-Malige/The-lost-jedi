@@ -6,19 +6,14 @@ var gameOverScreen = false
 var input = load("res://Scripts/input.gd")
 var menu = load("res://Scenes/Menu.tscn")
 
+
 var menuShow = false
 
 func _ready():
 	
-
 	get_node("Camera2D").set_scale(Vector2 (1.5,1.5))
 	set_pause_mode(PAUSE_MODE_PROCESS)
 	set_process_input(true)
-#
-#func _process(delta):
-#		if (worldScreen ):
-#			if (Input.is_action_pressed("ui_accept")):
-#				setPause()
 
 func _input(event):
 	if (worldScreen ):
