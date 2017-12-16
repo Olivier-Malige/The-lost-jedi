@@ -33,6 +33,7 @@ func _on_powerUp_area_enter( area ):
 			area.get_node("sfx").play("speedUp")
 		elif (get_node("anim").get_current_animation() == "energieUp"):
 			area.energy += 1
+			area.update_lifes()
 			area.get_node("sfx").play("energieUp")
 		elif (get_node("anim").get_current_animation() == "lateralShot"):
 			area.shotSide = true

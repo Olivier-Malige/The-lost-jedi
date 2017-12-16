@@ -168,7 +168,5 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 200
 
-[connection signal="finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]
-
 
 [editable path="Background"]

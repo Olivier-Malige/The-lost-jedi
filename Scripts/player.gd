@@ -17,6 +17,7 @@ onready var canShooting = true
 onready var malusSpeed = 0
 
 func _ready():
+	update_lifes()
 	set_process_input(true)
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
 	get_node("/root/GameState").score = 0
@@ -24,14 +25,13 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
-
 	if (energy > ENERGY_MAX):
 		energy = ENERGY_MAX
 	if (shoot_Delay < SHOOT_DELAY_MIN):
 		shoot_Delay = SHOOT_DELAY_MIN
 	if (bonusSpeed > SPEED_MAX):
 		bonusSpeed = SPEED_MAX
-	get_node("../hud/energy_player"+str(nbPlayer)).set_text("ENERGY : " +str(energy))
+	#get_node("../hud/energy_player"+str(nbPlayer)).set_text("ENERGY : " +str(energy))
 
 	var motion = Vector2()
 	get_node("anim").play("idle")
@@ -111,8 +111,9 @@ func _fixed_process(delta):
 func _hit_something(dmg):
 	if (touched):
 		return
-	if (energy > 0):
+	if (energy > 1):
 		energy -= 1
+		update_lifes()
 		get_node("touchedReset").start()
 		get_node("xWing").set_modulate(Color(2,0.4,0.4,1)) #Set player Red color
 		#low speed
@@ -125,6 +126,8 @@ func _hit_something(dmg):
 		bonusPowerSideShot = 0
 		touched = true
 	else :
+		energy = 0
+		update_lifes()
 		get_node("anim").play("explode")
 		set_fixed_process(false)
 		get_node("Particles2D1").set_emitting(false)
@@ -142,7 +145,6 @@ func _on_player_area_enter( area ):
 		if (area.has_method("_hit_something")):
 			area._hit_something(10)
 
-
 func _on_anim_finished():
 	if (get_node("anim").get_current_animation() == "explode"):
 		get_node("/root/Main/World").nbPlayer -= 1
@@ -156,3 +158,16 @@ func _on_ShootingDelay_timeout():
 	#reset speed malus
 	malusSpeed = 0
 	canShooting = true
+	
+func update_lifes():
+	for el in get_node("/root/Main/World/hud/energy_player"+str(nbPlayer)).get_children():
+		el.queue_free()
+	for i in range(energy):
+		var energy 
+		if nbPlayer == 1 :
+			 energy = preload("res://Prefabs/player1Energy.tscn").instance()
+		elif nbPlayer == 2 :
+			 energy = preload("res://Prefabs/player2Energy.tscn").instance()
+		energy.set_pos(Vector2(i*12,0))
+		get_node("/root/Main/World/hud/energy_player"+str(nbPlayer)).add_child(energy)
+
