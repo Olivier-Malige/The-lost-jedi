@@ -196,9 +196,9 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 194.0
+margin/left = 23.0
 margin/top = 5.0
-margin/right = 296.0
+margin/right = 125.0
 margin/bottom = 25.0
 custom_fonts/font = ExtResource( 8 )
 text = "Score : "
@@ -212,9 +212,9 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 439.0
+margin/left = 649.0
 margin/top = 5.0
-margin/right = 548.0
+margin/right = 758.0
 margin/bottom = 25.0
 custom_fonts/font = ExtResource( 8 )
 text = "waves :"
@@ -224,11 +224,11 @@ max_lines_visible = -1
 
 [node name="energy_player1" type="Node2D" parent="hud"]
 
-transform/pos = Vector2( 25, 15 )
+transform/pos = Vector2( 255, 15 )
 
 [node name="energy_player2" type="Node2D" parent="hud"]
 
-transform/pos = Vector2( 675, 15 )
+transform/pos = Vector2( 468, 15 )
 
 [node name="WaveGenerator" type="Node2D" parent="."]
 

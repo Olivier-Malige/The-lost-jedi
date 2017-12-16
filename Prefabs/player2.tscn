@@ -120,7 +120,6 @@ tracks/0/keys = {
 
 [node name="player2" type="Area2D"]
 
-transform/pos = Vector2( 408.112, 553.672 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1.09504, 0, 0, 0.991978, 0.124329, 2.19885 )
@@ -224,7 +223,7 @@ color/color = Color( 0.176471, 0.65098, 1, 1 )
 
 [node name="Particles2D1" type="Particles2D" parent="."]
 
-transform/pos = Vector2( 4, 14.1319 )
+transform/pos = Vector2( 4, 13.894 )
 transform/scale = Vector2( 4, 4 )
 config/amount = 2
 config/lifetime = 0.2
