@@ -1,6 +1,7 @@
 extends Node2D
 var coop  = false
 var startScreen = false
+var zoomReady = false 
 var worldScreen = false
 var gameOverScreen = false
 var input = load("res://Scripts/input.gd")
@@ -50,12 +51,18 @@ func goStartScreen():
 	var m = menu.instance()
 	m.mode = "start"
 	add_child(m)
-	
-	if (not startScreen):
-		var start = preload("res://Scenes/start.tscn").instance()
-		add_child(start)
-		startScreen = true
+	var start = preload("res://Scenes/start.tscn").instance()
+	add_child(start)
+	startScreen = true
+	if not zoomReady :
 		get_node("animCamera").play("Start")
+		zoomReady = true
+func goHiscoreScreen():
+	startScreen = false
+	var hiscore = preload("res://Scenes/hiscore.tscn").instance()
+	add_child(hiscore)
+	get_node("/root/Main/Start").queue_free()
+
 
 func goWorldScreen():
 	

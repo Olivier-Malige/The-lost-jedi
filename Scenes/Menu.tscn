@@ -449,6 +449,8 @@ autostart = true
 
 [connection signal="button_down" from="ButtonGroup/Coop" to="." method="_on_Coop_button_down"]
 
+[connection signal="button_down" from="ButtonGroup/Hiscore" to="." method="_on_Hiscore_button_down"]
+
 [connection signal="button_down" from="ButtonGroup/Exit" to="." method="_on_Exit_button_down"]
 
 [connection signal="timeout" from="grabFocusTimer" to="." method="_on_grabFocusTimer_timeout"]

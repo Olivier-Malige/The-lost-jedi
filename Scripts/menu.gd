@@ -42,3 +42,8 @@ func _on_Restart_button_down():
 	get_node("/root/Main").setResume()
 	get_node("/root/Main").setRestart()
 	queue_free()
+
+
+func _on_Hiscore_button_down():
+	get_node("/root/Main").goHiscoreScreen()
+	queue_free()

@@ -17,7 +17,7 @@ onready var canShooting = true
 onready var malusSpeed = 0
 
 func _ready():
-	update_lifes()
+	update_energy()
 	set_process_input(true)
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
 	get_node("/root/GameState").score = 0
@@ -114,7 +114,7 @@ func _hit_something(dmg):
 		return
 	if (energy > 1):
 		energy -= 1
-		update_lifes()
+		update_energy()
 		get_node("touchedReset").start()
 		get_node("xWing").set_modulate(Color(2,0.4,0.4,1)) #Set player Red color
 		#low speed
@@ -128,7 +128,7 @@ func _hit_something(dmg):
 		touched = true
 	else :
 		energy = 0
-		update_lifes()
+		update_energy()
 		get_node("anim").play("explode")
 		set_fixed_process(false)
 		get_node("Particles2D1").set_emitting(false)
@@ -160,7 +160,7 @@ func _on_ShootingDelay_timeout():
 	malusSpeed = 0
 	canShooting = true
 	
-func update_lifes():
+func update_energy():
 	for el in get_node("/root/Main/World/hud/energy_player"+str(nbPlayer)).get_children():
 		el.queue_free()
 	for i in range(energy):
