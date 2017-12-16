@@ -130,6 +130,7 @@ gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
 script/script = ExtResource( 1 )
+nbPlayer = 1
 
 [node name="sfx" type="SamplePlayer2D" parent="."]
 
