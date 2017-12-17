@@ -120,6 +120,7 @@ var Wave12 = {
 var metaWave = [Wave0,Wave1,Wave2,Wave3,Wave4,Wave5,Wave6,Wave7,Wave8,Wave9,Wave10,Wave11,Wave12]
 
 func _ready():
+	global.wave = nubWave +1
 	randomize()
 	spawn(metaWave[nubWave].asteroid,metaWave[nubWave].bigAsteroid,metaWave[nubWave].tie,
 	metaWave[nubWave].interceptor,metaWave[nubWave].drone,metaWave[nubWave].motherShip,metaWave[nubWave].turret)
@@ -198,6 +199,10 @@ func _on_motherShipSpawnTimer_timeout():
 	add_child(motherShip)
 func _on_masterTimer_timeout():
 	nubWave += 1
+	
+	#update wave state sor hisocre
+	global.wave = nubWave +1
+
 	if (nubWave < metaWave.size()):
 		spawn(metaWave[nubWave].asteroid,metaWave[nubWave].bigAsteroid,metaWave[nubWave].tie,metaWave[nubWave].interceptor,metaWave[nubWave].drone,metaWave[nubWave].motherShip,metaWave[nubWave].turret)
 	

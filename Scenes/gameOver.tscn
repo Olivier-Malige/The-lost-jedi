@@ -64,11 +64,27 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = -198.0
-margin/top = 292.0
+margin/top = 271.0
 margin/right = -38.0
-margin/bottom = 309.0
+margin/bottom = 291.0
 custom_fonts/font = ExtResource( 2 )
 text = "Best Score :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HigherWave" type="Label" parent="BestScore"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 26.0
+margin/right = 165.0
+margin/bottom = 46.0
+custom_fonts/font = ExtResource( 2 )
+text = "higherWave :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -85,6 +101,22 @@ margin/right = -38.0
 margin/bottom = 364.0
 custom_fonts/font = ExtResource( 2 )
 text = "Score :"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="wave" type="Label" parent="Score"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 0.0
+margin/top = 25.0
+margin/right = 160.0
+margin/bottom = 45.0
+custom_fonts/font = ExtResource( 2 )
+text = "wave :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1

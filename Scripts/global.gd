@@ -4,17 +4,52 @@ extends Node
 # Member variables
 var debug = true
 var score = 0
-var hiscoreSolo = 0
-var hiscoreCoop = 0
-
-
+var wave = 0
+var hiscoreSolo  =0
+var hiscoreCoop =0
+var saveData = { solo = {
+						hiscore = 0 ,
+						bestWave = 0,
+						},
+				 coop = { 
+						hiscore = 0 , 
+						bestWave = 0,
+						}}
+var sav_path = "user://data.json"
 const VERSION_NUMBER = "Alpha 5.1"
 
 func _ready():
+	load_Data()
+	print (saveData)
+func load_Data():
 	var f = File.new()
-	# Load high score
-	if (f.open("user://highScoreSolo", File.READ) == OK):
-		hiscoreSolo = f.get_var()
-	if (f.open("user://highCoopScoreCoop", File.READ) == OK):
-		hiscoreCoop = f.get_var()
+	# Load all game save
+	if (f.file_exists(sav_path)):
+		f.open(sav_path, File.READ)
+		saveData.parse_json(f.get_as_text())
+		f.close()
+	else :
+		f.open("sav_path", File.WRITE)
+		f.store_line(saveData.to_json())
+		f.close()
+func save_Data():
+		# Save all play data
+		var f = File.new()
+		f.open(sav_path, File.WRITE)
+		f.store_line(saveData.to_json())
+		f.close()
+
+func update_Data():
+	if (get_node("/root/main").coop): 
+		if (wave > saveData.coop.bestWave) :
+			saveData.coop.bestWave = wave
+		if (score > saveData.coop.hiscore):
+			saveData.coop.hiscore = score
+			save_Data()
+	else :
+		if (wave > saveData.solo.bestWave) :
+			saveData.solo.bestWave = wave
+		if (score > saveData.solo.hiscore):
+			saveData.solo.hiscore = score
+			save_Data()
 

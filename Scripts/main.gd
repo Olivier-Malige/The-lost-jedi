@@ -20,8 +20,10 @@ func _input(event):
 		if event.is_action_pressed("start") and not event.is_echo():
 			setPause()
 	if (gameOverScreen):
-		goWorldScreen()
-		get_node("gameOver").queue_free()
+		if event.is_action_pressed("start") and not event.is_echo():
+			goStartScreen()
+			gameOverScreen = false
+			get_node("gameOver").queue_free()
 
 func _on_Timer_timeout():
 	get_node("loader").queue_free()
