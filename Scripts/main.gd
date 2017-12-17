@@ -60,7 +60,7 @@ func goHiscoreScreen():
 	startScreen = false
 	var hiscore = preload("res://Scenes/hiscore.tscn").instance()
 	add_child(hiscore)
-	get_node("/root/main/Start").queue_free()
+	get_node("/root/main/start").queue_free()
 
 
 func goWorldScreen():

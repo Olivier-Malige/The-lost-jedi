@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=1]
 
-[ext_resource path="res://Scripts/Start.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/start.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/pixel.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://Fonts/titre.fnt" type="BitmapFont" id=3]
 [ext_resource path="res://Scenes/background.tscn" type="PackedScene" id=4]
@@ -33,7 +33,7 @@ tracks/1/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[node name="Start" type="Node2D"]
+[node name="start" type="Node2D"]
 
 z/z = 10
 script/script = ExtResource( 1 )
