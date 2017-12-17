@@ -17,10 +17,10 @@ tracks/0/path = NodePath("The-Lost-Jedi:rect/pos")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 3.1, 4.5 ),
-"transitions": FloatArray( 1, 1 ),
+"times": FloatArray( 0, 3.1, 4.5 ),
+"transitions": FloatArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, -355 ), Vector2( 3, -123 ) ]
+"values": [ Vector2( 2, -415 ), Vector2( 2, -415 ), Vector2( 3, -123 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Arknoid:visibility/opacity")
@@ -62,9 +62,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
 margin/left = 2.0
-margin/top = -355.0
+margin/top = -415.0
 margin/right = 801.0
-margin/bottom = 268.0
+margin/bottom = 208.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 0.914062, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )

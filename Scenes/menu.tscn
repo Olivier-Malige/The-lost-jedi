@@ -205,7 +205,7 @@ content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
 
-[node name="Menu" type="Control"]
+[node name="menu" type="Control"]
 
 process/pause_mode = 2
 focus/ignore_mouse = false

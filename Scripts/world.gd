@@ -1,7 +1,7 @@
 extends Node2D
 var nbPlayer = 0
 func _ready():
-	if (get_node("/root/Main").coop):
+	if (get_node("/root/main").coop):
 		var player1 = preload("res://Prefabs/player.tscn").instance()
 		var player2 = preload("res://Prefabs/player2.tscn").instance()
 		player1.set_pos(get_node("playerSpawn").get_global_pos()+Vector2(-50,0))
@@ -17,5 +17,5 @@ func _ready():
 	set_process(true)
 func _process(delta):
 	if nbPlayer <=0 :
-		get_node("/root/Main").goGameOverScreen()
+		get_node("/root/main").goGameOverScreen()
 		queue_free()

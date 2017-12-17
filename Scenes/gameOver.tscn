@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://Scripts/gameOver.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/pixel.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://Fonts/titre.fnt" type="BitmapFont" id=3]
-[ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sounds/imperial.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/imperial.ogg" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -142,24 +141,9 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Background" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 2.7782, 0 )
-z/z = -20
-
-[node name="ScrollingBackground1" parent="Background"]
-
-speed_y = -1
-scale = 0.8
-
-[node name="ScrollingBackground" parent="Background"]
-
-speed_y = -2
-scale = 1.2
-
 [node name="music" type="StreamPlayer" parent="."]
 
-stream/stream = ExtResource( 5 )
+stream/stream = ExtResource( 4 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
@@ -169,4 +153,3 @@ stream/loop_restart_time = 0.0
 stream/buffering_ms = 200
 
 
-[editable path="Background"]

@@ -14,22 +14,22 @@ func _ready():
 		get_node("Paused/AnimationPlayer").play("paused")
 
 func _on_Solo_button_down():
-	get_node("/root/Main").coop = false
-	get_node("/root/Main").goWorldScreen()
-	get_node("/root/Main/Start").queue_free()
+	get_node("/root/main").coop = false
+	get_node("/root/main").goWorldScreen()
+	get_node("/root/main/Start").queue_free()
 	queue_free()
 	
 func _on_Coop_button_down():
-	get_node("/root/Main").coop = true
-	get_node("/root/Main").goWorldScreen()
-	get_node("/root/Main/Start").queue_free()
+	get_node("/root/main").coop = true
+	get_node("/root/main").goWorldScreen()
+	get_node("/root/main/Start").queue_free()
 	queue_free()
 
 func _on_Exit_button_down():
 	get_tree().quit()
 
 func _on_Resume_button_down():
-	get_node("/root/Main").setResume()
+	get_node("/root/main").setResume()
 	queue_free()
 
 func _on_grabFocusTimer_timeout():
@@ -39,11 +39,11 @@ func _on_grabFocusTimer_timeout():
 		get_node("ButtonGroup/Solo").grab_focus()
 
 func _on_Restart_button_down():
-	get_node("/root/Main").setResume()
-	get_node("/root/Main").setRestart()
+	get_node("/root/main").setResume()
+	get_node("/root/main").setRestart()
 	queue_free()
 
 
 func _on_Hiscore_button_down():
-	get_node("/root/Main").goHiscoreScreen()
+	get_node("/root/main").goHiscoreScreen()
 	queue_free()

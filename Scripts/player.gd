@@ -20,7 +20,7 @@ func _ready():
 	update_energy()
 	set_process_input(true)
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
-	get_node("/root/GameState").score = 0
+	get_node("/root/global").score = 0
 	add_to_group("player")
 	set_fixed_process(true)
 
@@ -108,7 +108,7 @@ func _fixed_process(delta):
 			get_node("../").add_child(lShot)
 			get_node("../").add_child(rShot)
 	# Update points counter
-	get_node("../hud/score").set_text("SCORE : " +str(get_node("/root/GameState").score))
+	get_node("../hud/score").set_text("SCORE : " +str(get_node("/root/global").score))
 func _hit_something(dmg):
 	if (touched):
 		return
@@ -148,7 +148,7 @@ func _on_player_area_enter( area ):
 
 func _on_anim_finished():
 	if (get_node("anim").get_current_animation() == "explode"):
-		get_node("/root/Main/World").nbPlayer -= 1
+		get_node("/root/main/world").nbPlayer -= 1
 		
 func setShootingDelay():
 	if (shoot_Delay < SHOOT_DELAY_MIN):
@@ -161,7 +161,7 @@ func _on_ShootingDelay_timeout():
 	canShooting = true
 	
 func update_energy():
-	for el in get_node("/root/Main/World/hud/energy_player"+str(nbPlayer)).get_children():
+	for el in get_node("/root/main/world/hud/energy_player"+str(nbPlayer)).get_children():
 		el.queue_free()
 	for i in range(energy):
 		var energy 
@@ -170,5 +170,5 @@ func update_energy():
 		elif nbPlayer == 2 :
 			 energy = preload("res://Prefabs/player2Energy.tscn").instance()
 		energy.set_pos(Vector2(i*12,0))
-		get_node("/root/Main/World/hud/energy_player"+str(nbPlayer)).add_child(energy)
+		get_node("/root/main/world/hud/energy_player"+str(nbPlayer)).add_child(energy)
 

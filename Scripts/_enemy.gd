@@ -27,7 +27,7 @@ func _fixed_process(delta):
 		set_rotd(get_rotd()+speedRotation)
 
 func _ready():
-	if (get_node("/root/Main").coop) :
+	if (get_node("/root/main").coop) :
 		life *= bonusCoop
 	randomize();
 	speedX = rand_range(-randomX-speedX, randomY+speedX)
@@ -64,7 +64,7 @@ func _hit_something(dmg):
 			score.set_pos(get_pos())
 			score.setScore = points
 			get_node("../").add_child(score)
-			get_node("/root/GameState").score += points
+			get_node("/root/global").score += points
 		_fixed_process(false)
 		get_node("../enemySfx").play("asteroidExplode")
 		#Rand PowersUp

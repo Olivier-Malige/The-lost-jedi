@@ -5,8 +5,7 @@ var zoomReady = false
 var worldScreen = false
 var gameOverScreen = false
 var input = load("res://Scripts/input.gd")
-var menu = load("res://Scenes/Menu.tscn")
-
+var menu = load("res://Scenes/menu.tscn")
 
 var menuShow = false
 
@@ -35,17 +34,17 @@ func setPause():
 			m.mode = "pause"
 			add_child(m)
 			menuShow = true
-			get_node("World/musicStream").set_paused(true)
+			get_node("world/musicStream").set_paused(true)
 func setRestart():
 	#get_tree().reload_current_scene()
-	get_node("World").free()
+	get_node("world").free()
 	goWorldScreen()
 	
 func setResume():
 	if (worldScreen):
 		menuShow = false
 		get_tree().set_pause(false)
-		get_node("World/musicStream").set_paused(false)
+		get_node("world/musicStream").set_paused(false)
 
 func goStartScreen():
 	var m = menu.instance()
@@ -61,12 +60,12 @@ func goHiscoreScreen():
 	startScreen = false
 	var hiscore = preload("res://Scenes/hiscore.tscn").instance()
 	add_child(hiscore)
-	get_node("/root/Main/Start").queue_free()
+	get_node("/root/main/Start").queue_free()
 
 
 func goWorldScreen():
 	
-	var world = preload("res://Scenes/World.tscn").instance()
+	var world = preload("res://Scenes/world.tscn").instance()
 	add_child(world)
 	worldScreen = true
 	startScreen = false
