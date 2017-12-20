@@ -2,7 +2,8 @@
 extends Node
 
 # Member variables
-var debug = true
+
+var Debug = true
 var score = 0
 var wave = 0
 var hiscoreSolo  =0
@@ -14,13 +15,31 @@ var saveData = { solo = {
 				 coop = { 
 						hiscore = 0 , 
 						bestWave = 0,
+						},
+				 config = {
+						music = true,
+						sound = true,
 						}}
 var sav_path = "user://data.json"
 const VERSION_NUMBER = "Alpha 5.1"
 
 func _ready():
 	load_Data()
-	print (saveData)
+	setSound(saveData.config.sound)
+	setMusic(saveData.config.music)
+
+func setSound(state):
+	if state :
+		AudioServer.set_fx_global_volume_scale(1)
+	else :
+		AudioServer.set_fx_global_volume_scale(0)
+
+func setMusic(state):
+	if state :
+		AudioServer.set_stream_global_volume_scale(1)
+	else :
+		AudioServer.set_stream_global_volume_scale(0)
+
 func load_Data():
 	var f = File.new()
 	# Load all game save

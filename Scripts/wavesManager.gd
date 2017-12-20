@@ -200,7 +200,7 @@ func _on_motherShipSpawnTimer_timeout():
 func _on_masterTimer_timeout():
 	nubWave += 1
 	
-	#update wave state sor hisocre
+	#update wave  for save higter wave in hiscore
 	global.wave = nubWave +1
 
 	if (nubWave < metaWave.size()):
