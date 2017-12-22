@@ -153,9 +153,8 @@ func _on_fullscreen_button_down():
 	config.fullscreen = not config.fullscreen
 	if config.fullscreen :
 		onOff = "on"
-	else : onOff = "off"
-	get_node("buttonGroup/fullscreen").set_text("fullscreen : "+onOff)
-	if onOff :
 		OS.set_window_fullscreen(true)
-	else : 
+	else : onOff = "off"
 		OS.set_window_fullscreen(false)
+	get_node("buttonGroup/fullscreen").set_text("fullscreen : "+onOff)
+		

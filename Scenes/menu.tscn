@@ -640,6 +640,4 @@ autostart = true
 
 [connection signal="button_down" from="buttonGroup/exit" to="." method="_on_Exit_button_down"]
 
-[connection signal="timeout" from="optionTimer" to="." method="_on_optionTimer_timeout"]
-
 
