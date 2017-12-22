@@ -2,8 +2,9 @@ extends Control
 var menu = load("res://Scenes/menu.tscn")
 var config = global.saveData.config
 
-#Define menu buttons
-enum {RETURN,CONTROLLER,PLAYER1,PLAYER2,MUSIC,SOUND,RESUME,RESTART,SOLO,COOP,OPTIONS,HISCORE,EXIT}
+#Define menu options
+enum {OPTION_RETURN,OPTION_CONTROLLER,OPTION_PLAYER1,OPTION_PLAYER2,OPTION_MUSIC,OPTION_SOUND,
+	  OPTION_RESUME,OPTION_RESTART,OPTION_SOLO,OPTION_COOP,OPTION_OPTIONS,OPTION_HISCORE,OPTION_EXIT,OPTION_FULLSCREEN}
 #Define game Mode
 enum {MODE_SOLO,MODE_COOP}
 #Define menu Mode
@@ -16,56 +17,65 @@ func set_mode(mode):
 	var optionsEnable = []
 	
 	if mode == MENU_START:
-		optionsEnable = [SOLO,COOP,OPTIONS,HISCORE,EXIT]
+	
+		optionsEnable = [OPTION_SOLO,OPTION_COOP,OPTION_OPTIONS,OPTION_HISCORE,OPTION_EXIT]
 		mode(optionsEnable)
 		
 	elif mode == MENU_OPTIONS :
-		optionsEnable = [MUSIC,SOUND,RETURN,CONTROLLER]
+		optionsEnable = [OPTION_MUSIC,OPTION_SOUND,OPTION_RETURN,OPTION_CONTROLLER,OPTION_FULLSCREEN]
 		if get_node("/root/main").worldScreen == false :
 			mode(optionsEnable)
 		else : 
 			mode(optionsEnable,true)
-		if global.saveData.config.music :
+		if config.music :
 			get_node("buttonGroup/music").set_text("music : on")
 		else : get_node("buttonGroup/music").set_text("music : off")
-		if global.saveData.config.sound :
+		if config.sound :
 			get_node("buttonGroup/sound").set_text("sound : on")
 		else : get_node("buttonGroup/sound").set_text("sound : off")
+		if config.fullscreen :
+			get_node("buttonGroup/fullscreen").set_text("fullscreen : on")
+		else : get_node("buttonGroup/fullscreen").set_text("fullscreen : off")
 
 	elif mode == MENU_PAUSE:
-		optionsEnable = [RESUME,OPTIONS,RESTART,EXIT]
+		optionsEnable = [OPTION_RESUME,OPTION_OPTIONS,OPTION_RESTART,OPTION_EXIT]
 		
 	elif mode == MENU_CONTROLLER :
-		optionsEnable = [RETURN,PLAYER1,PLAYER2]
+		optionsEnable = [OPTION_RETURN,OPTION_PLAYER1,OPTION_PLAYER2]
 	
 	#set mode done and then instantiate tweak menu
 	mode(optionsEnable)
 
 func mode (enable= [],paused = false) :
 	for i in enable :
-		if i == RETURN : get_node("buttonGroup/return").add_to_group("enable")
-		elif i == CONTROLLER :get_node("buttonGroup/Controller").add_to_group("enable")
-		elif i == PLAYER1 :get_node("buttonGroup/player1").add_to_group("enable")
-		elif i == PLAYER2 :get_node("buttonGroup/player2").add_to_group("enable")
-		elif i == MUSIC :get_node("buttonGroup/music").add_to_group("enable")
-		elif i == SOUND :get_node("buttonGroup/sound").add_to_group("enable")
-		elif i == MUSIC :get_node("buttonGroup/music").add_to_group("enable")
-		elif i == SOUND :get_node("buttonGroup/sound").add_to_group("enable")
-		elif i == RESUME :get_node("buttonGroup/resume").add_to_group("enable")
-		elif i == RESTART :get_node("buttonGroup/restart").add_to_group("enable")
-		elif i == SOLO :get_node("buttonGroup/solo").add_to_group("enable")
-		elif i == COOP :get_node("buttonGroup/coop").add_to_group("enable")
-		elif i == OPTIONS :get_node("buttonGroup/options").add_to_group("enable")
-		elif i == HISCORE :get_node("buttonGroup/hiscore").add_to_group("enable")
-		elif i == EXIT :get_node("buttonGroup/exit").add_to_group("enable")
+		if i ==   OPTION_RETURN : get_node("buttonGroup/return").add_to_group("enable")
+		elif i == OPTION_CONTROLLER :get_node("buttonGroup/Controller").add_to_group("enable")
+		elif i == OPTION_PLAYER1 :get_node("buttonGroup/player1").add_to_group("enable")
+		elif i == OPTION_PLAYER2 :get_node("buttonGroup/player2").add_to_group("enable")
+		elif i == OPTION_MUSIC :get_node("buttonGroup/music").add_to_group("enable")
+		elif i == OPTION_SOUND :get_node("buttonGroup/sound").add_to_group("enable")
+		elif i == OPTION_MUSIC :get_node("buttonGroup/music").add_to_group("enable")
+		elif i == OPTION_SOUND :get_node("buttonGroup/sound").add_to_group("enable")
+		elif i == OPTION_RESUME :get_node("buttonGroup/resume").add_to_group("enable")
+		elif i == OPTION_RESTART :get_node("buttonGroup/restart").add_to_group("enable")
+		elif i == OPTION_SOLO :get_node("buttonGroup/solo").add_to_group("enable")
+		elif i == OPTION_COOP :get_node("buttonGroup/coop").add_to_group("enable")
+		elif i == OPTION_OPTIONS :get_node("buttonGroup/options").add_to_group("enable")
+		elif i == OPTION_HISCORE :get_node("buttonGroup/hiscore").add_to_group("enable")
+		elif i == OPTION_EXIT :get_node("buttonGroup/exit").add_to_group("enable")
+		elif i == OPTION_FULLSCREEN :get_node("buttonGroup/fullscreen").add_to_group("enable")
 			
 	for node in get_node("buttonGroup").get_children() :
 		if not node.is_in_group("enable") :
 			node.queue_free()
 	if not paused :
 		get_node("paused").queue_free()
+	
 	yield(get_node("optionTimer"),"timeout")
+	
+	#set menu visible
 	set_hidden(false)
+	#set focus of firt node in buttonGroup
 	get_node("buttonGroup").get_child(0).grab_focus()
 	
 func start_game(mode):
@@ -134,6 +144,18 @@ func _on_music_button_down():
 	global.setMusic(config.music)
 	global.save_Data()
 
-
 func _on_Controller_button_down():
 	new_menu(MENU_CONTROLLER)
+
+
+func _on_fullscreen_button_down():
+	var onOff
+	config.fullscreen = not config.fullscreen
+	if config.fullscreen :
+		onOff = "on"
+	else : onOff = "off"
+	get_node("buttonGroup/fullscreen").set_text("fullscreen : "+onOff)
+	if onOff :
+		OS.set_window_fullscreen(true)
+	else : 
+		OS.set_window_fullscreen(false)

@@ -10,7 +10,7 @@ var menu = load("res://Scenes/menu.tscn")
 var menuShow = false
 
 func _ready():
-	
+	OS.set_window_fullscreen(global.saveData.config.fullscreen)
 	get_node("Camera2D").set_scale(Vector2 (1.5,1.5))
 	set_pause_mode(PAUSE_MODE_PROCESS)
 	set_process_input(true)

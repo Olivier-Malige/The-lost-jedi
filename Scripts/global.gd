@@ -19,11 +19,13 @@ var saveData = { solo = {
 				 config = {
 						music = true,
 						sound = true,
+						fullscreen = true,
 						}}
 var sav_path = "user://data.json"
 const VERSION_NUMBER = "Alpha 5.1"
 
 func _ready():
+	#save_Data()
 	load_Data()
 	setSound(saveData.config.sound)
 	setMusic(saveData.config.music)
