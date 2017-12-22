@@ -33,13 +33,13 @@ func setPause():
 	if (not menuShow ):
 			get_tree().set_pause(true)
 			var m = menu.instance()
-			m.mode = "pause"
 			add_child(m)
+			m.set_mode(m.MENU_PAUSE)
 			menuShow = true
 			get_node("world/musicStream").set_paused(true)
 func setRestart():
-	#get_tree().reload_current_scene()
-	get_node("world").free()
+	get_tree().reload_current_scene()
+	#get_node("world").free()
 	goWorldScreen()
 	
 func setResume():
@@ -49,15 +49,13 @@ func setResume():
 		get_node("world/musicStream").set_paused(false)
 
 func goStartScreen():
-	var m = menu.instance()
-	m.mode = "start"
-	add_child(m)
+	startScreen = true
 	var start = preload("res://Scenes/start.tscn").instance()
 	add_child(start)
-	startScreen = true
 	if not zoomReady :
 		get_node("animCamera").play("Start")
 		zoomReady = true
+
 func goHiscoreScreen():
 	startScreen = false
 	var hiscore = preload("res://Scenes/hiscore.tscn").instance()

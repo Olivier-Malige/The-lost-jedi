@@ -259,7 +259,32 @@ margin/right = 865.0
 margin/bottom = 942.0
 alignment = 1
 
-[node name="controller" type="Button" parent="buttonGroup"]
+[node name="return" type="Button" parent="buttonGroup"]
+
+process/pause_mode = 2
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 376.0
+margin/right = 913.0
+margin/bottom = 396.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 0.843137, 0, 1 )
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "return"
+flat = false
+
+[node name="Controller" type="Button" parent="buttonGroup"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -284,7 +309,7 @@ shortcut = null
 text = "controller"
 flat = false
 
-[node name="music" type="Button" parent="buttonGroup"]
+[node name="player1" type="Button" parent="buttonGroup"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -294,6 +319,56 @@ margin/left = 0.0
 margin/top = 416.0
 margin/right = 913.0
 margin/bottom = 436.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "player 1 :"
+flat = false
+
+[node name="player2" type="Button" parent="buttonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 436.0
+margin/right = 913.0
+margin/bottom = 456.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+toggle_mode = true
+click_on_press = true
+enabled_focus_mode = 2
+shortcut = null
+text = "player 2 :"
+flat = false
+
+[node name="music" type="Button" parent="buttonGroup"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 456.0
+margin/right = 913.0
+margin/bottom = 476.0
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
@@ -316,9 +391,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 436.0
+margin/top = 476.0
 margin/right = 913.0
-margin/bottom = 456.0
+margin/bottom = 496.0
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/focus = SubResource( 9 )
@@ -342,9 +417,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 456.0
+margin/top = 496.0
 margin/right = 913.0
-margin/bottom = 476.0
+margin/bottom = 516.0
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
@@ -366,9 +441,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 476.0
+margin/top = 516.0
 margin/right = 913.0
-margin/bottom = 496.0
+margin/bottom = 536.0
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
@@ -391,9 +466,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 496.0
+margin/top = 536.0
 margin/right = 913.0
-margin/bottom = 516.0
+margin/bottom = 556.0
 custom_styles/hover = SubResource( 2 )
 custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
@@ -416,9 +491,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 516.0
+margin/top = 556.0
 margin/right = 913.0
-margin/bottom = 536.0
+margin/bottom = 576.0
 custom_styles/hover = SubResource( 7 )
 custom_styles/pressed = SubResource( 8 )
 custom_styles/focus = SubResource( 9 )
@@ -441,9 +516,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 536.0
+margin/top = 576.0
 margin/right = 913.0
-margin/bottom = 556.0
+margin/bottom = 596.0
 custom_styles/hover = SubResource( 12 )
 custom_styles/pressed = SubResource( 13 )
 custom_styles/focus = SubResource( 14 )
@@ -466,9 +541,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 556.0
+margin/top = 596.0
 margin/right = 913.0
-margin/bottom = 576.0
+margin/bottom = 616.0
 custom_styles/hover = SubResource( 17 )
 custom_styles/pressed = SubResource( 18 )
 custom_styles/focus = SubResource( 19 )
@@ -484,31 +559,6 @@ shortcut = null
 text = "Hiscore"
 flat = false
 
-[node name="return" type="Button" parent="buttonGroup"]
-
-process/pause_mode = 2
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = 0.0
-margin/top = 576.0
-margin/right = 913.0
-margin/bottom = 596.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 1, 0.843137, 0, 1 )
-toggle_mode = true
-click_on_press = true
-enabled_focus_mode = 2
-shortcut = null
-text = "return"
-flat = false
-
 [node name="exit" type="Button" parent="buttonGroup"]
 
 focus/ignore_mouse = false
@@ -516,9 +566,9 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
-margin/top = 596.0
+margin/top = 616.0
 margin/right = 913.0
-margin/bottom = 616.0
+margin/bottom = 636.0
 custom_styles/hover = SubResource( 22 )
 custom_styles/pressed = SubResource( 23 )
 custom_styles/focus = SubResource( 24 )
@@ -534,12 +584,16 @@ shortcut = null
 text = "Exit"
 flat = false
 
-[node name="grabFocusTimer" type="Timer" parent="."]
+[node name="optionTimer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 0.1
+wait_time = 0.05
 one_shot = true
 autostart = true
+
+[connection signal="button_down" from="buttonGroup/return" to="." method="_on_return_button_down"]
+
+[connection signal="button_down" from="buttonGroup/Controller" to="." method="_on_Controller_button_down"]
 
 [connection signal="button_down" from="buttonGroup/music" to="." method="_on_music_button_down"]
 
@@ -557,10 +611,8 @@ autostart = true
 
 [connection signal="button_down" from="buttonGroup/hiscore" to="." method="_on_Hiscore_button_down"]
 
-[connection signal="button_down" from="buttonGroup/return" to="." method="_on_return_button_down"]
-
 [connection signal="button_down" from="buttonGroup/exit" to="." method="_on_Exit_button_down"]
 
-[connection signal="timeout" from="grabFocusTimer" to="." method="_on_grabFocusTimer_timeout"]
+[connection signal="timeout" from="optionTimer" to="." method="_on_optionTimer_timeout"]
 
 

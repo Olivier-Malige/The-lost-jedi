@@ -8,7 +8,7 @@
 [sub_resource type="Animation" id=1]
 
 resource/name = "start"
-length = 6.0
+length = 3.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -16,7 +16,7 @@ tracks/0/path = NodePath("The-Lost-Jedi:rect/pos")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0, 3.1, 4.5 ),
+"times": FloatArray( 0, 2, 3 ),
 "transitions": FloatArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 2, -415 ), Vector2( 2, -415 ), Vector2( 3, -123 ) ]
@@ -26,7 +26,7 @@ tracks/1/path = NodePath("Arknoid:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = {
-"times": FloatArray( 0, 3.1 ),
+"times": FloatArray( 0, 2 ),
 "transitions": FloatArray( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.0 ]
@@ -60,10 +60,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 2.0
-margin/top = -415.0
-margin/right = 801.0
-margin/bottom = 208.0
+margin/left = 2.7
+margin/top = -210.6
+margin/right = 801.7
+margin/bottom = 412.4
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 0.914062, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
@@ -78,6 +78,7 @@ max_lines_visible = -1
 
 [node name="Arknoid" type="Label" parent="."]
 
+visibility/opacity = 0.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -120,5 +121,7 @@ stream/autoplay = true
 stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
+
+[connection signal="finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]
 
 
