@@ -18,7 +18,7 @@ onready var destroyed = false
 onready var rndRot 
 onready var hitByPlayerShot = false 
 onready var rndMultiSprites
-var bonusCoop = 1
+var bonusCoop = 1.5
 func _fixed_process(delta):
 	hitByPlayerShot = false
 	translate(Vector2(speedX,speedY)*delta)
