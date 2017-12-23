@@ -157,4 +157,4 @@ func _on_fullscreen_button_down():
 	else : onOff = "off"
 		OS.set_window_fullscreen(false)
 	get_node("buttonGroup/fullscreen").set_text("fullscreen : "+onOff)
-		
+	global.save_Data()

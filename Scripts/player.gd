@@ -131,8 +131,8 @@ func _hit_something(dmg):
 		update_energy()
 		get_node("anim").play("explode")
 		set_fixed_process(false)
-		get_node("Particles2D1").set_emitting(false)
-		get_node("Particles2D").set_emitting(false)
+		get_node("Particles2D1").queue_free()
+		get_node("Particles2D").queue_free()
 		get_node("CollisionShape2D").queue_free()
 		get_node("sfx").play("explode")
 
