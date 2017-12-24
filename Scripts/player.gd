@@ -3,7 +3,7 @@ const SHOOT_DELAY_BASE = 0.35
 const SHOOT_DELAY_MIN = 0.15
 const SPEED = 300
 const MALUS_SPEED = 150
-const ENERGY_MAX = 10
+const ENERGY_MAX = 12
 const SPEED_MAX  = 500
 export var nbPlayer = 1
 onready var shoot_Delay = SHOOT_DELAY_BASE
@@ -18,11 +18,9 @@ onready var malusSpeed = 0
 
 func _ready():
 	update_energy()
-	set_process_input(true)
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
 	get_node("/root/global").score = 0
 	add_to_group("player")
-	set_fixed_process(true)
 
 
 func _fixed_process(delta):
@@ -130,7 +128,7 @@ func _hit_something(dmg):
 		energy = 0
 		update_energy()
 		get_node("anim").play("explode")
-		set_fixed_process(false)
+		#fixed_process(false)
 		get_node("Particles2D1").queue_free()
 		get_node("Particles2D").queue_free()
 		get_node("CollisionShape2D").queue_free()
@@ -169,6 +167,6 @@ func update_energy():
 			 energy = preload("res://Prefabs/player1Energy.tscn").instance()
 		elif nbPlayer == 2 :
 			 energy = preload("res://Prefabs/player2Energy.tscn").instance()
-		energy.set_pos(Vector2(i*12,0))
+		energy.position = Vector2(i*12,0)
 		get_node("/root/main/world/hud/energy_player"+str(nbPlayer)).add_child(energy)
 

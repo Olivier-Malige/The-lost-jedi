@@ -8,6 +8,6 @@ func _ready():
 
 func _hit_something(dmg):
 	._hit_something(dmg)
-	get_node("../enemySfx").play("asteroidHit")
+	get_node("../enemySfx").play()
 	if (life <= 0) :
-		get_node("../enemySfx").play("asteroidExplode")
+		get_node("../enemySfx").play()

@@ -11,7 +11,7 @@ enum {MODE_SOLO,MODE_COOP}
 enum {MENU_START,MENU_OPTIONS,MENU_PAUSE,MENU_CONTROLLER}
 
 func _ready():
-	set_hidden(true)
+	hide()
 
 func set_mode(mode):
 	var optionsEnable = []
@@ -74,7 +74,7 @@ func mode (enable= [],paused = false) :
 	yield(get_node("optionTimer"),"timeout")
 	
 	#set menu visible
-	set_hidden(false)
+	show()
 	#set focus of firt node in buttonGroup
 	get_node("buttonGroup").get_child(0).grab_focus()
 	
@@ -154,7 +154,8 @@ func _on_fullscreen_button_down():
 	if config.fullscreen :
 		onOff = "on"
 		OS.set_window_fullscreen(true)
-	else : onOff = "off"
+	else : 
+		onOff = "off"
 		OS.set_window_fullscreen(false)
 	get_node("buttonGroup/fullscreen").set_text("fullscreen : "+onOff)
 	global.save_Data()

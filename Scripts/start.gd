@@ -5,7 +5,8 @@ func _ready():
 	get_node("Version").set_text(global.VERSION_NUMBER)
 
 
-func _on_AnimationPlayer_finished():
+
+func _on_AnimationPlayer_animation_finished(name):
 	var m = load("res://Scenes/menu.tscn").instance()
 	add_child(m)
 	m.set_mode(m.MENU_START)

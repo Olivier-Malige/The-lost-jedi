@@ -8,7 +8,7 @@ var speedRotation = 20
 
 func _process(delta):
 	if (setRotation):
-		set_rotd(get_rotd()+speedRotation)
+		rotation += speedRotation
 	translate(Vector2(speedX*delta, delta*speedY))
 	
 func _ready():

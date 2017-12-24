@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=1]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/Powerup33.wav" type="Sample" id=2]
@@ -15,7 +15,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[sub_resource type="SampleLibrary" id=2]
+[sub_resource type="Resource" id=2]
 
 samples/energieUp = {
 "db": 0.0,
@@ -64,8 +64,8 @@ tracks/0/path = NodePath("xWing:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": FloatArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
@@ -80,8 +80,8 @@ tracks/0/path = NodePath("xWing:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
@@ -96,8 +96,8 @@ tracks/0/path = NodePath("xWing:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 2 ]
 }
@@ -112,37 +112,37 @@ tracks/0/path = NodePath("xWing:frame")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 1 ]
 }
 
 [node name="player2" type="Area2D"]
 
-input/pickable = true
+input_pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1.09504, 0, 0, 0.991978, 0.124329, 2.19885 )
+shapes/0/transform = Transform2D( 1.09504, 0, 0, 0.991978, 0.124329, 2.19885 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 1 )
+script = ExtResource( 1 )
 nbPlayer = 2
 
-[node name="sfx" type="SamplePlayer2D" parent="."]
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
 
-transform/pos = Vector2( 4, 14.1319 )
-transform/scale = Vector2( 4, 4 )
-params/volume_db = 0.0
-params/pitch_scale = 1.0
-params/attenuation/min_distance = 1.0
-params/attenuation/max_distance = 2048.0
-params/attenuation/distance_exp = 1.0
-config/polyphony = 1
-config/samples = SubResource( 2 )
-config/pitch_random = 0.0
+position = Vector2( 4, 14.1319 )
+scale = Vector2( 4, 4 )
+volume_db = 0.0
+pitch_scale = 1.0
+attenuation_min_distance = 1.0
+attenuation_max_distance = 2048.0
+attenuation_distance_exp = 1.0
+polyphony = 1
+samples = SubResource( 2 )
+random_pitch = 0.0
 
 [node name="xWing" type="Sprite" parent="."]
 
@@ -151,32 +151,32 @@ hframes = 12
 
 [node name="shootFrom" type="Position2D" parent="."]
 
-transform/pos = Vector2( 0, -0.403587 )
-transform/scale = Vector2( 1, 0.752936 )
+position = Vector2( 0, -0.403587 )
+scale = Vector2( 1, 0.752936 )
 
 [node name="shootFromLeft" type="Position2D" parent="."]
 
-transform/pos = Vector2( 17, -3.40359 )
-transform/scale = Vector2( 1, 0.752936 )
+position = Vector2( 17, -3.40359 )
+scale = Vector2( 1, 0.752936 )
 
 [node name="shootFromRight" type="Position2D" parent="."]
 
-transform/pos = Vector2( -17, -3.40359 )
-transform/scale = Vector2( 1, 0.752936 )
+position = Vector2( -17, -3.40359 )
+scale = Vector2( 1, 0.752936 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( 0.124329, 2.19885 )
-transform/scale = Vector2( 1.09504, 0.991978 )
+position = Vector2( 0.124329, 2.19885 )
+scale = Vector2( 1.09504, 0.991978 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
 [node name="anim" type="AnimationPlayer" parent="."]
 
-playback/process_mode = 1
-playback/default_blend_time = 0.0
-root/root = NodePath("..")
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
 anims/explode = SubResource( 3 )
 anims/idle = SubResource( 4 )
 anims/left = SubResource( 5 )
@@ -195,8 +195,8 @@ autostart = false
 
 [node name="Particles2D" type="Particles2D" parent="."]
 
-transform/pos = Vector2( -8.09427, 14.1319 )
-transform/scale = Vector2( 4, 4 )
+position = Vector2( -8.09427, 14.1319 )
+scale = Vector2( 4, 4 )
 config/amount = 2
 config/lifetime = 0.2
 config/preprocess = 2.0
@@ -223,8 +223,8 @@ color/color = Color( 0.176471, 0.65098, 1, 1 )
 
 [node name="Particles2D1" type="Particles2D" parent="."]
 
-transform/pos = Vector2( 4, 13.894 )
-transform/scale = Vector2( 4, 4 )
+position = Vector2( 4, 13.894 )
+scale = Vector2( 4, 4 )
 config/amount = 2
 config/lifetime = 0.2
 config/preprocess = 2.0
@@ -256,12 +256,10 @@ wait_time = 1.0
 one_shot = true
 autostart = true
 
-[connection signal="area_enter" from="." to="." method="_on_player_area_enter"]
+[connection signal="area_entered"  from="."  to="." method="_on_player_area_enter" binds=[  ]]
 
-[connection signal="finished" from="anim" to="." method="_on_anim_finished"]
+[connection signal="finished"  from="anim"  to="." method="_on_anim_finished" binds=[  ]]
 
-[connection signal="timeout" from="touchedReset" to="." method="_on_touchedReset_timeout"]
+[connection signal="timeout"  from="touchedReset"  to="." method="_on_touchedReset_timeout" binds=[  ]]
 
-[connection signal="timeout" from="ShootingDelay" to="." method="_on_ShootingDelay_timeout"]
-
-
+[connection signal="timeout"  from="ShootingDelay"  to="." method="_on_ShootingDelay_timeout" binds=[  ]]

@@ -2,7 +2,11 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/interceptor.png-570c077125225ae0b3537c8a0486d40c.stex"
+path="res://.import/interceptor.png-27889af95b1a76fe9632ca56a71ae330.stex"
+
+[deps]
+
+source_md5="64f7401744e568cc3cfb6fb46dcf4fcc"
 
 [params]
 
@@ -11,7 +15,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -20,5 +24,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

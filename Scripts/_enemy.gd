@@ -21,10 +21,10 @@ onready var rndMultiSprites
 var bonusCoop = 1.5
 func _fixed_process(delta):
 	hitByPlayerShot = false
-	translate(Vector2(speedX,speedY)*delta)
+	translate(Vector2(speedX,speedY))
 	#rotate 
 	if (setRotation):
-		set_rotd(get_rotd()+speedRotation)
+		rotation += speedRotation
 
 func _ready():
 	if (get_node("/root/main").coop) :
@@ -39,7 +39,7 @@ func _ready():
 		get_node("anim").play("start"+str(rndMultiSprites+1))
 	else :
 		get_node("anim").play("start")
-	set_fixed_process(true)
+
 
 func _hit_something(dmg):
 	if (useMultiSprites):
@@ -50,9 +50,9 @@ func _hit_something(dmg):
 		return
 	life -= dmg
 	#Retreat effect
-	var pos = get_pos()
+	var pos = global_position
 	pos.y -=5
-	set_pos(pos)
+	position = pos
 
 	if (life <= 0) :
 		destroyed = true
@@ -61,16 +61,16 @@ func _hit_something(dmg):
 		if (hitByPlayerShot):
 			var score = preload("res://Prefabs/score.tscn").instance()
 			score.player = 1
-			score.set_pos(get_pos())
+			score.position =global_position
 			score.setScore = points
 			get_node("../").add_child(score)
 			get_node("/root/global").score += points
 		_fixed_process(false)
-		get_node("../enemySfx").play("asteroidExplode")
+		#get_node("../enemySfx").play("asteroidExplode")
 		#Rand PowersUp
 		if (randi()%101 <= randPowerUp):
 			var powerUp = preload("res://Prefabs/powersUp.tscn").instance()
-			powerUp.set_pos(get_pos())
+			powerUp.position =global_position
 			get_node("../").add_child(powerUp)
 
 func _on_VisibilityNotifier2D_exit_screen():

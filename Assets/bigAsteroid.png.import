@@ -2,7 +2,11 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bigAsteroid.png-df4c6a841fefea09a035f9c07ecbddf8.stex"
+path="res://.import/bigAsteroid.png-0a5cb62802493501a06cd2cdfcf93f82.stex"
+
+[deps]
+
+source_md5="4be281f4893c0386d7a790cde500b6b8"
 
 [params]
 
@@ -11,7 +15,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -20,5 +24,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

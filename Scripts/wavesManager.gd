@@ -131,44 +131,46 @@ func _process(delta):
 	get_node("../hud/wave").set_text("Wave : "+str(nubWave+1))
 	
 func spawn(asteroid,bigAsteroid,tie,interceptor,drone,motherShip,turret):
-
-	get_node("asteroidSpawnTimer").set_active(asteroid[0])
-	get_node("asteroidSpawnTimer").set_wait_time(asteroid[1])
-	get_node("bigAsteroidSpawnTimer").set_active(bigAsteroid[0])
-	get_node("bigAsteroidSpawnTimer").set_wait_time(bigAsteroid[1])
-	get_node("tieSpawnTimer").set_active(tie[0])
-	get_node("tieSpawnTimer").set_wait_time(tie[1])
-	get_node("interceptorSpwnTimer").set_active(interceptor[0])
-	get_node("interceptorSpwnTimer").set_wait_time(interceptor[1])
-	get_node("droneSpawnTimer").set_active(drone[0])
-	get_node("droneSpawnTimer").set_wait_time(drone[1])	
-	get_node("motherShipSpawnTimer").set_active(motherShip[0])
-	get_node("motherShipSpawnTimer").set_wait_time(motherShip[1])
-	get_node("turretSpawnTimer").set_active(turret[0])
-	get_node("turretSpawnTimer").set_wait_time(turret[1])
+	if asteroid[0] :
+		$asteroidSpawnTimer.start()
+		$asteroidSpawnTimer.set_wait_time(asteroid[1])
+#	get_node("asteroidSpawnTimer").set_active(asteroid[0])
+#	get_node("asteroidSpawnTimer").set_wait_time(asteroid[1])
+#	get_node("bigAsteroidSpawnTimer").set_active(bigAsteroid[0])
+#	get_node("bigAsteroidSpawnTimer").set_wait_time(bigAsteroid[1])
+#	get_node("tieSpawnTimer").set_active(tie[0])
+#	get_node("tieSpawnTimer").set_wait_time(tie[1])
+#	get_node("interceptorSpwnTimer").set_active(interceptor[0])
+#	get_node("interceptorSpwnTimer").set_wait_time(interceptor[1])
+#	get_node("droneSpawnTimer").set_active(drone[0])
+#	get_node("droneSpawnTimer").set_wait_time(drone[1])	
+#	get_node("motherShipSpawnTimer").set_active(motherShip[0])
+#	get_node("motherShipSpawnTimer").set_wait_time(motherShip[1])
+#	get_node("turretSpawnTimer").set_active(turret[0])
+#	get_node("turretSpawnTimer").set_wait_time(turret[1])
 	
 func _on_asteroidSpawnTimer_timeout():
 	var rndPos = randi()%11
 	var asteroid = preload("res://Prefabs/Asteroid.tscn").instance()
-	asteroid.set_pos(get_node("spawnPos"+str(rndPos)).get_pos())
+	asteroid.position =get_node("spawnPos"+str(rndPos)).global_position
 	add_child(asteroid)
 
 func _on_tieSpawnTimer_timeout():
 	var rndPos = (randi()%9)+1 
 	var tie = preload("res://Prefabs/Tie.tscn").instance()
-	tie.set_pos(get_node("spawnPos"+str(rndPos)).get_pos())
+	tie.position =get_node("spawnPos"+str(rndPos)).global_position
 	add_child(tie)
 
 func _on_bigAsteroidSpawnTimer_timeout():
 	var rndPos = randi()%11
 	var bigAsteroid = preload("res://Prefabs/bigAsteroid.tscn").instance()
-	bigAsteroid.set_pos(get_node("spawnPos"+str(rndPos)).get_pos())
+	bigAsteroid.position =get_node("spawnPos"+str(rndPos)).global_position
 	add_child(bigAsteroid)
 
 func _on_interceptorSpwnTimer_timeout():
 	var rndPos = randi()%11
 	var interceptor = preload("res://Prefabs/interceptor.tscn").instance()
-	interceptor.set_pos(get_node("spawnPos"+str(rndPos)).get_pos())
+	interceptor.position =get_node("spawnPos"+str(rndPos)).global_position
 	add_child(interceptor)
 
 func _on_droneSpawnTimer_timeout():
@@ -177,25 +179,26 @@ func _on_droneSpawnTimer_timeout():
 	var drone1 = preload("res://Prefabs/drone.tscn").instance()
 	var drone2 = preload("res://Prefabs/drone.tscn").instance()
 	
-	drone.set_pos(get_node("spawnPos"+str(rndPos)).get_pos())
+	drone.position = get_node("spawnPos"+str(rndPos)).global_position
 	add_child(drone)
 	get_node("droneResume").start()
 	yield(get_node("droneResume"),"timeout")
 	
 	if (rndPos+1 <= 11):
-		drone1.set_pos(get_node("spawnPos"+str(rndPos+1)).get_pos())
+		drone1.position = get_node("spawnPos"+str(rndPos+1)).global_position
 		add_child(drone1)
 		get_node("droneResume").start()
 		yield(get_node("droneResume"),"timeout")
 	
 	if (rndPos-1 >= 0):
-		drone2.set_pos(get_node("spawnPos"+str(rndPos-1)).get_pos())
+		drone2.position =get_node("spawnPos"+str(rndPos-1)).global_position
+		drone2.position =get_node("spawnPos"+str(rndPos-1)).global_position
 		add_child(drone2)
 	
 func _on_motherShipSpawnTimer_timeout():
 	var rndPos = randi()%11
 	var motherShip = preload("res://Prefabs/motherShip.tscn").instance()
-	motherShip.set_pos(get_node("spawnPos"+str(rndPos)).get_pos())
+	motherShip.position =get_node("spawnPos"+str(rndPos)).global_position
 	add_child(motherShip)
 func _on_masterTimer_timeout():
 	nubWave += 1
@@ -209,5 +212,5 @@ func _on_masterTimer_timeout():
 func _on_turretSpawnTimer_timeout():
 	var rndPos = randi()%11
 	var turret = preload("res://Prefabs/turret.tscn").instance()
-	turret.set_pos(get_node("spawnPos"+str(rndPos)).get_pos())
+	turret.position =get_node("spawnPos"+str(rndPos)).global_position
 	add_child(turret)

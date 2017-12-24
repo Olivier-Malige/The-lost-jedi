@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/asteroid.gd" type="Script" id=1]
 [ext_resource path="res://Assets/AsteroidSheet.png" type="Texture" id=2]
@@ -8,146 +8,168 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10.9474, 11.5802 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 
-resource/name = "explode"
+resource_name = "explode"
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteAsteroid:frame")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": FloatArray( 0, 0.2, 0.4, 0.6, 0.9 ),
-"transitions": FloatArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 6, 7, 8, 9, 10 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("SpriteAsteroid:modulate")
+tracks/1/path = NodePath("SpriteAsteroid:self_modulate")
 tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/keys = {
-"times": FloatArray(  ),
-"transitions": FloatArray(  ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 0,
 "values": [  ]
 }
 
 [sub_resource type="Animation" id=3]
 
-resource/name = "hit1"
+resource_name = "hit1"
 length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteAsteroid:frame")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 0, 1, 0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
-resource/name = "hit2"
+resource_name = "hit2"
 length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteAsteroid:frame")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 3, 2, 3, 2 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 
-resource/name = "hit3"
+resource_name = "hit3"
 length = 0.5
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteAsteroid:frame")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": FloatArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 5, 4, 5, 4 ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=6]
 
-resource/name = "start1"
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteAsteroid:frame")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 
-resource/name = "start2"
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteAsteroid:frame")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 2 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=8]
 
-resource/name = "start3"
 length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpriteAsteroid:frame")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": FloatArray( 0 ),
-"transitions": FloatArray( 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 4 ]
 }
 
-[node name="Asteroid" type="Area2D"]
+[sub_resource type="AudioStreamSample" id=9]
 
-input/pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1.22444, 0, 0, 1.11662, 0.189693, -0.460736 )
-shapes/0/trigger = false
+format = 0
+loop_mode = 0
+loop_begin = 0
+loop_end = 0
+mix_rate = 44100
+stereo = false
+data = PoolByteArray(  )
+
+[node name="Asteroid" type="Area2D" index="0"]
+
+input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 1 )
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
 nbrSprites = 3
 useMultiSprites = true
 life = 3
@@ -162,56 +184,49 @@ setRotation = true
 speedRotation = 1
 rndRotation = true
 
-[node name="SpriteAsteroid" type="Sprite" parent="."]
+[node name="SpriteAsteroid" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 hframes = 11
 frame = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-transform/pos = Vector2( 0.189693, -0.460736 )
-transform/scale = Vector2( 1.22444, 1.11662 )
+position = Vector2( 0.189693, -0.460736 )
+scale = Vector2( 1.22444, 1.11662 )
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[node name="anim" type="AnimationPlayer" parent="."]
+[node name="anim" type="AnimationPlayer" parent="." index="2"]
 
-playback/process_mode = 1
-playback/default_blend_time = 0.0
-root/root = NodePath("..")
-anims/explode = SubResource( 8 )
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+root_node = NodePath("..")
+anims/explode = SubResource( 2 )
 anims/hit1 = SubResource( 3 )
-anims/hit2 = SubResource( 5 )
-anims/hit3 = SubResource( 7 )
-anims/start1 = SubResource( 2 )
-anims/start2 = SubResource( 4 )
-anims/start3 = SubResource( 6 )
+anims/hit2 = SubResource( 4 )
+anims/hit3 = SubResource( 5 )
+anims/start1 = SubResource( 6 )
+anims/start2 = SubResource( 7 )
+anims/start3 = SubResource( 8 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="3"]
 
 rect = Rect2( -10, -10, 20, 20 )
 
-[node name="SamplePlayer2D" type="SamplePlayer2D" parent="."]
+[node name="SamplePlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
 
-params/volume_db = 0.0
-params/pitch_scale = 1.0
-params/attenuation/min_distance = 1.0
-params/attenuation/max_distance = 2048.0
-params/attenuation/distance_exp = 1.0
-config/polyphony = 1
-config/samples = null
-config/pitch_random = 0.0
+stream = SubResource( 9 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
-[connection signal="area_enter" from="." to="." method="_on_area_enter"]
-
-[connection signal="finished" from="anim" to="." method="_on_anim_finished"]
-
-[connection signal="exit_screen" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_exit_screen"]
+[connection signal="area_entered" from="." to="." method="_on_area_enter"]
 
 

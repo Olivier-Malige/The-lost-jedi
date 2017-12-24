@@ -25,39 +25,41 @@ var sav_path = "user://data.json"
 const VERSION_NUMBER = "Alpha 5.1"
 
 func _ready():
-	#save_Data()
+	save_Data()
 	load_Data()
 	setSound(saveData.config.sound)
 	setMusic(saveData.config.music)
 
 func setSound(state):
-	if state :
-		AudioServer.set_fx_global_volume_scale(1)
-	else :
-		AudioServer.set_fx_global_volume_scale(0)
+#	if state :
+#		AudioServer.set_fx_global_volume_scale(1)
+#	else :
+#		AudioServer.set_fx_global_volume_scale(0)
+	pass
 
 func setMusic(state):
-	if state :
-		AudioServer.set_stream_global_volume_scale(1)
-	else :
-		AudioServer.set_stream_global_volume_scale(0)
+#	if state :
+#		AudioServer.set_stream_global_volume_scale(1)
+#	else :
+#		AudioServer.set_stream_global_volume_scale(0)
+	pass
 
 func load_Data():
 	var f = File.new()
 	# Load all game save
 	if (f.file_exists(sav_path)):
 		f.open(sav_path, File.READ)
-		saveData.parse_json(f.get_as_text())
+		saveData = parse_json(f.get_as_text())
 		f.close()
 	else :
 		f.open("sav_path", File.WRITE)
-		f.store_line(saveData.to_json())
+		f.store_line(to_json(saveData))
 		f.close()
 func save_Data():
 		# Save all play data
 		var f = File.new()
 		f.open(sav_path, File.WRITE)
-		f.store_line(saveData.to_json())
+		f.store_line(to_json(saveData))
 		f.close()
 
 func update_Data():

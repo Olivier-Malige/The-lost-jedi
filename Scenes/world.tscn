@@ -1,377 +1,218 @@
-[gd_scene load_steps=25 format=1]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/world.gd" type="Script" id=1]
-[ext_resource path="res://Sounds/Powerup29.wav" type="Sample" id=2]
-[ext_resource path="res://Sounds/Explosion28.wav" type="Sample" id=3]
-[ext_resource path="res://Sounds/Powerup37.wav" type="Sample" id=4]
-[ext_resource path="res://Sounds/Powerup33.wav" type="Sample" id=5]
-[ext_resource path="res://Sounds/playerShot.wav" type="Sample" id=6]
-[ext_resource path="res://Sounds/Powerup43.wav" type="Sample" id=7]
-[ext_resource path="res://Fonts/pixel.fnt" type="BitmapFont" id=8]
-[ext_resource path="res://Scripts/wavesManager.gd" type="Script" id=9]
-[ext_resource path="res://Sounds/Explosion23.wav" type="Sample" id=10]
-[ext_resource path="res://Sounds/Randomize11.wav" type="Sample" id=11]
-[ext_resource path="res://Sounds/Explosion32.wav" type="Sample" id=12]
-[ext_resource path="res://Sounds/Hit_Hurt28.wav" type="Sample" id=13]
-[ext_resource path="res://Sounds/Hit_Hurt2.wav" type="Sample" id=14]
-[ext_resource path="res://Sounds/Explosion26.wav" type="Sample" id=15]
-[ext_resource path="res://Sounds/Explosion14.wav" type="Sample" id=16]
-[ext_resource path="res://Sounds/Randomize3.wav" type="Sample" id=17]
-[ext_resource path="res://Sounds/Laser_Shoot109.wav" type="Sample" id=18]
-[ext_resource path="res://Sounds/Explosion5.wav" type="Sample" id=19]
-[ext_resource path="res://Sounds/Hit_Hurt26.wav" type="Sample" id=20]
-[ext_resource path="res://Sounds/Laser_Shoot38.wav" type="Sample" id=21]
-[ext_resource path="res://Sounds/game.ogg" type="AudioStream" id=22]
+[ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scripts/wavesManager.gd" type="Script" id=3]
+[ext_resource path="res://Sounds/game.ogg" type="AudioStream" id=4]
 
-[sub_resource type="SampleLibrary" id=1]
+[node name="world" type="Node2D" index="0"]
 
-samples/energyUp = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 2 )
-}
-samples/explode = {
-"db": -5.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 3 )
-}
-samples/lateralShotUp = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 4 )
-}
-samples/powerUp = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 5 )
-}
-samples/shoot = {
-"db": -15.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 6 )
-}
-samples/speedUp = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 7 )
-}
+pause_mode = 1
+script = ExtResource( 1 )
 
-[sub_resource type="SampleLibrary" id=2]
+[node name="sfx" type="AudioStreamPlayer2D" parent="." index="0"]
 
-samples/Explosion23 = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 10 )
-}
-samples/Powerup29 = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 2 )
-}
-samples/Powerup33 = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 5 )
-}
-samples/Powerup37 = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 4 )
-}
-samples/Powerup43 = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 7 )
-}
-samples/Randomize11 = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 11 )
-}
-samples/asteroidExplode = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 12 )
-}
-samples/asteroidHit = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 13 )
-}
-samples/bigAsteroidExplode = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 3 )
-}
-samples/bigAsteroidHit = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 14 )
-}
-samples/interceptorExplode = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 15 )
-}
-samples/interceptorHit = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 16 )
-}
-samples/interceptorReady = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 17 )
-}
-samples/interceptorShot = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 18 )
-}
-samples/tieExplode = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 19 )
-}
-samples/tieHit = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 20 )
-}
-samples/tieShot = {
-"db": 0.0,
-"pitch": 1.0,
-"priority": 0,
-"sample": ExtResource( 21 )
-}
+position = Vector2( 413.782, 567.804 )
+scale = Vector2( 4, 4 )
+stream = null
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
-[node name="world" type="Node2D"]
+[node name="hud" type="Node2D" parent="." index="1"]
 
-process/pause_mode = 1
-script/script = ExtResource( 1 )
+pause_mode = 1
+z = 100
 
-[node name="sfx" type="SamplePlayer2D" parent="."]
+[node name="score" type="Label" parent="hud" index="0"]
 
-transform/pos = Vector2( 413.782, 567.804 )
-transform/scale = Vector2( 4, 4 )
-params/volume_db = 0.0
-params/pitch_scale = 1.0
-params/attenuation/min_distance = 1.0
-params/attenuation/max_distance = 2048.0
-params/attenuation/distance_exp = 1.0
-config/polyphony = 1
-config/samples = SubResource( 1 )
-config/pitch_random = 0.0
-
-[node name="hud" type="Node2D" parent="."]
-
-process/pause_mode = 1
-z/z = 100
-
-[node name="score" type="Label" parent="hud"]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 23.0
-margin/top = 5.0
-margin/right = 125.0
-margin/bottom = 25.0
-custom_fonts/font = ExtResource( 8 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 23.0
+margin_top = 5.0
+margin_right = 125.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
 text = "Score : "
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="wave" type="Label" parent="hud"]
+[node name="wave" type="Label" parent="hud" index="1"]
 
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 649.0
-margin/top = 5.0
-margin/right = 758.0
-margin/bottom = 25.0
-custom_fonts/font = ExtResource( 8 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 649.0
+margin_top = 5.0
+margin_right = 758.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
 text = "waves :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="energy_player1" type="Node2D" parent="hud"]
+[node name="energy_player1" type="Node2D" parent="hud" index="2"]
 
-transform/pos = Vector2( 255, 15 )
+position = Vector2( 255, 15 )
 
-[node name="energy_player2" type="Node2D" parent="hud"]
+[node name="energy_player2" type="Node2D" parent="hud" index="3"]
 
-transform/pos = Vector2( 468, 15 )
+position = Vector2( 468, 15 )
 
-[node name="waveGenerator" type="Node2D" parent="."]
+[node name="waveGenerator" type="Node2D" parent="." index="2"]
 
-process/pause_mode = 1
-transform/pos = Vector2( 0, 5 )
-script/script = ExtResource( 9 )
+pause_mode = 1
+position = Vector2( 0, 5 )
+script = ExtResource( 3 )
 
-[node name="masterTimer" type="Timer" parent="waveGenerator"]
+[node name="masterTimer" type="Timer" parent="waveGenerator" index="0"]
 
 process_mode = 1
 wait_time = 30.0
 one_shot = false
 autostart = true
 
-[node name="asteroidSpawnTimer" type="Timer" parent="waveGenerator"]
+[node name="asteroidSpawnTimer" type="Timer" parent="waveGenerator" index="1"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = false
-autostart = true
+autostart = false
 
-[node name="droneResume" type="Timer" parent="waveGenerator"]
+[node name="droneResume" type="Timer" parent="waveGenerator" index="2"]
 
 process_mode = 1
 wait_time = 0.2
 one_shot = false
 autostart = false
 
-[node name="tieSpawnTimer" type="Timer" parent="waveGenerator"]
+[node name="tieSpawnTimer" type="Timer" parent="waveGenerator" index="3"]
 
 process_mode = 1
 wait_time = 2.0
 one_shot = false
 autostart = true
 
-[node name="bigAsteroidSpawnTimer" type="Timer" parent="waveGenerator"]
+[node name="bigAsteroidSpawnTimer" type="Timer" parent="waveGenerator" index="4"]
 
 process_mode = 1
 wait_time = 3.0
 one_shot = false
 autostart = true
 
-[node name="interceptorSpwnTimer" type="Timer" parent="waveGenerator"]
+[node name="interceptorSpwnTimer" type="Timer" parent="waveGenerator" index="5"]
 
 process_mode = 1
 wait_time = 4.0
 one_shot = false
 autostart = true
 
-[node name="droneSpawnTimer" type="Timer" parent="waveGenerator"]
+[node name="droneSpawnTimer" type="Timer" parent="waveGenerator" index="6"]
 
 process_mode = 1
 wait_time = 0.5
 one_shot = false
 autostart = true
 
-[node name="motherShipSpawnTimer" type="Timer" parent="waveGenerator"]
+[node name="motherShipSpawnTimer" type="Timer" parent="waveGenerator" index="7"]
 
 process_mode = 1
 wait_time = 5.0
 one_shot = false
 autostart = true
 
-[node name="turretSpawnTimer" type="Timer" parent="waveGenerator"]
+[node name="turretSpawnTimer" type="Timer" parent="waveGenerator" index="8"]
 
 process_mode = 1
 wait_time = 5.0
 one_shot = false
 autostart = true
 
-[node name="spawnPos0" type="Position2D" parent="waveGenerator"]
+[node name="spawnPos0" type="Position2D" parent="waveGenerator" index="9"]
 
-transform/pos = Vector2( 61, -61 )
+position = Vector2( 61, -61 )
 
-[node name="spawnPos1" type="Position2D" parent="waveGenerator"]
+[node name="spawnPos1" type="Position2D" parent="waveGenerator" index="10"]
 
-transform/pos = Vector2( 122, -61 )
+position = Vector2( 122, -61 )
 
-[node name="spawnPos2" type="Position2D" parent="waveGenerator"]
+[node name="spawnPos2" type="Position2D" parent="waveGenerator" index="11"]
 
-transform/pos = Vector2( 244, -61 )
+position = Vector2( 244, -61 )
 
-[node name="spawnPos3" type="Position2D" parent="waveGenerator"]
+[node name="spawnPos3" type="Position2D" parent="waveGenerator" index="12"]
 
-transform/pos = Vector2( 183, -61 )
+position = Vector2( 183, -61 )
 
-[node name="spawnPos4" type="Position2D" parent="waveGenerator"]
+[node name="spawnPos4" type="Position2D" parent="waveGenerator" index="13"]
 
-transform/pos = Vector2( 305, -61 )
+position = Vector2( 305, -61 )
 
-[node name="spawnPos5" type="Position2D" parent="waveGenerator"]
+[node name="spawnPos5" type="Position2D" parent="waveGenerator" index="14"]
 
-transform/pos = Vector2( 366, -61 )
+position = Vector2( 366, -61 )
 
-[node name="spawnPos6" type="Position2D" parent="waveGenerator"]
+[node name="spawnPos6" type="Position2D" parent="waveGenerator" index="15"]
 
-transform/pos = Vector2( 427, -61 )
+position = Vector2( 427, -61 )
 
-[node name="spawnPos7" type="Position2D" parent="waveGenerator"]
+[node name="spawnPos7" type="Position2D" parent="waveGenerator" index="16"]
 
-transform/pos = Vector2( 488, -61 )
+position = Vector2( 488, -61 )
 
-[node name="spawnPos8" type="Position2D" parent="waveGenerator"]
+[node name="spawnPos8" type="Position2D" parent="waveGenerator" index="17"]
 
-transform/pos = Vector2( 549, -61 )
+position = Vector2( 549, -61 )
 
-[node name="spawnPos9" type="Position2D" parent="waveGenerator"]
+[node name="spawnPos9" type="Position2D" parent="waveGenerator" index="18"]
 
-transform/pos = Vector2( 610, -61 )
+position = Vector2( 610, -61 )
 
-[node name="spawnPos10" type="Position2D" parent="waveGenerator"]
+[node name="spawnPos10" type="Position2D" parent="waveGenerator" index="19"]
 
-transform/pos = Vector2( 671, -61 )
+position = Vector2( 671, -61 )
 
-[node name="spawnPos11" type="Position2D" parent="waveGenerator"]
+[node name="spawnPos11" type="Position2D" parent="waveGenerator" index="20"]
 
-transform/pos = Vector2( 732, -61 )
+position = Vector2( 732, -61 )
 
-[node name="enemySfx" type="SamplePlayer2D" parent="waveGenerator"]
+[node name="enemySfx" type="AudioStreamPlayer2D" parent="waveGenerator" index="21"]
 
-params/volume_db = -5.0
-params/pitch_scale = 1.0
-params/attenuation/min_distance = 1.0
-params/attenuation/max_distance = 2048.0
-params/attenuation/distance_exp = 1.0
-config/polyphony = 1
-config/samples = SubResource( 2 )
-config/pitch_random = 0.0
+stream = null
+volume_db = -5.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Master"
+area_mask = 1
 
-[node name="musicStream" type="StreamPlayer" parent="."]
+[node name="musicStream" type="AudioStreamPlayer" parent="." index="3"]
 
-stream/stream = ExtResource( 22 )
-stream/play = false
-stream/loop = true
-stream/volume_db = 0.0
-stream/autoplay = true
-stream/paused = false
-stream/loop_restart_time = 0.0
-stream/buffering_ms = 500
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
-[node name="playerSpawn" type="Position2D" parent="."]
+[node name="playerSpawn" type="Position2D" parent="." index="4"]
 
-transform/pos = Vector2( 400, 560 )
+position = Vector2( 400, 560 )
 
 [connection signal="timeout" from="waveGenerator/masterTimer" to="waveGenerator" method="_on_masterTimer_timeout"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/enemieShot.gd" type="Script" id=1]
 [ext_resource path="res://Assets/turretShot.png" type="Texture" id=2]
@@ -10,15 +10,15 @@ extents = Vector2( 10, 10.274 )
 
 [node name="turretShot" type="Area2D"]
 
-input/pickable = false
+input_pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 0.711526, 0, 0, 0.79708, -0.528129, 0.242607 )
+shapes/0/transform = Transform2D( 0.711526, 0, 0, 0.79708, -0.528129, 0.242607 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
-script/script = ExtResource( 1 )
+script = ExtResource( 1 )
 setRotation = false
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
@@ -31,14 +31,12 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-transform/pos = Vector2( -0.528129, 0.242607 )
-transform/scale = Vector2( 0.711526, 0.79708 )
+position = Vector2( -0.528129, 0.242607 )
+scale = Vector2( 0.711526, 0.79708 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[connection signal="area_enter" from="." to="." method="_on_shot_area_enter"]
+[connection signal="area_entered"  from="."  to="." method="_on_shot_area_enter" binds=[  ]]
 
-[connection signal="exit_screen" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_exit_screen"]
-
-
+[connection signal="exit_screen"  from="VisibilityNotifier2D"  to="." method="_on_VisibilityNotifier2D_exit_screen" binds=[  ]]

@@ -2,7 +2,11 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gLaser.png-2aecb550524251e56166814a35c10400.stex"
+path="res://.import/gLaser.png-9eff10b578b679a1d47d339bb797b064.stex"
+
+[deps]
+
+source_md5="ed72cf8d9179f25431f21c592758f641"
 
 [params]
 
@@ -11,7 +15,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -20,5 +24,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

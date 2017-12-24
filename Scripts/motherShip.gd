@@ -7,10 +7,10 @@ func _on_ShootTimer_timeout():
 	var shot1 = preload("res://Prefabs/motherShipShot.tscn").instance()
 	var shot2 = preload("res://Prefabs/motherShipShot.tscn").instance()
 	var shot3 = preload("res://Prefabs/motherShipShot.tscn").instance()
-	shot.set_pos(get_node("ShootPos").get_global_pos())
-	shot1.set_pos(get_node("ShootPos1").get_global_pos())
-	shot2.set_pos(get_node("ShootPos2").get_global_pos())
-	shot3.set_pos(get_node("ShootPos3").get_global_pos())
+	shot.position = get_node("ShootPos").global_position
+	shot1.position = get_node("ShootPos1").global_position
+	shot2.position = get_node("ShootPos2").global_position
+	shot3.position = get_node("ShootPos3").global_position
 	get_node("../").add_child(shot)
 	get_node("../").add_child(shot1)
 	get_node("../").add_child(shot2)
@@ -19,7 +19,7 @@ func _on_ShootTimer_timeout():
 	shot1.speedX  = 400
 	shot2.speedX  = -40
 	shot3.speedX  = 40
-	get_node("../enemySfx").play("interceptorShot")
+	#get_node("../enemySfx").play("interceptorShot")
 	
 func _on_anim_finished():
 	if (get_node("anim").get_current_animation() == "explode"):
