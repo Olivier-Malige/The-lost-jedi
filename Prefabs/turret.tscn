@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/turret.gd" type="Script" id=1]
 [ext_resource path="res://Assets/turrett.png" type="Texture" id=2]
@@ -17,7 +17,9 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
@@ -34,7 +36,9 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -51,7 +55,9 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -62,13 +68,12 @@ tracks/0/keys = {
 [node name="turret" type="Area2D"]
 
 input_pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 3.308, 0, 0, 3.15154, 1.94112, -0.433393 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 script = ExtResource( 1 )
 nbrSprites = 1
 useMultiSprites = false
@@ -84,20 +89,18 @@ setRotation = true
 speedRotation = 5
 rndRotation = false
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 hframes = 11
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 position = Vector2( 1.94112, -0.433393 )
 scale = Vector2( 3.308, 3.15154 )
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[node name="anim" type="AnimationPlayer" parent="."]
+[node name="anim" type="AnimationPlayer" parent="." index="2"]
 
 playback_process_mode = 1
 playback_default_blend_time = 0.0
@@ -110,14 +113,21 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="shootPos" type="Position2D" parent="."]
+[node name="shootPos" type="Position2D" parent="." index="3"]
 
-
-[node name="ShotDelay" type="Timer" parent="."]
+[node name="ShotDelay" type="Timer" parent="." index="4"]
 
 process_mode = 1
 wait_time = 0.3
 one_shot = true
 autostart = false
 
-[connection signal="finished"  from="anim"  to="." method="_on_anim_finished" binds=[  ]]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="5"]
+
+rect = Rect2( -10, -10, 20, 20 )
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+
+

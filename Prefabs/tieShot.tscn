@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/enemieShot.gd" type="Script" id=1]
 [ext_resource path="res://Assets/gLaser.png" type="Texture" id=2]
@@ -11,33 +11,32 @@ extents = Vector2( 10, 3.76069 )
 [node name="interceptorShot" type="Area2D"]
 
 input_pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 0.80921, 0, 0, 1.6142, -0.0216088, 14.9543 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 script = ExtResource( 1 )
 setRotation = false
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 0, 11 )
 texture = ExtResource( 2 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="1"]
 
 rect = Rect2( -10, -10, 20, 20 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 position = Vector2( -0.0216088, 14.9543 )
 scale = Vector2( 0.80921, 1.6142 )
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[connection signal="area_entered"  from="."  to="." method="_on_shot_area_enter" binds=[  ]]
+[connection signal="area_entered" from="." to="." method="_on_shot_area_enter"]
 
-[connection signal="exit_screen"  from="VisibilityNotifier2D"  to="." method="_on_VisibilityNotifier2D_exit_screen" binds=[  ]]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+
+

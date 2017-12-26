@@ -23,7 +23,7 @@ func _ready():
 	add_to_group("player")
 
 
-func _fixed_process(delta):
+func _physics_process(delta):
 	if (energy > ENERGY_MAX):
 		energy = ENERGY_MAX
 	if (shoot_Delay < SHOOT_DELAY_MIN):
@@ -35,18 +35,18 @@ func _fixed_process(delta):
 	var motion = Vector2()
 	get_node("anim").play("idle")
 	#particle effets
-	get_node("Particles2D1").set_time_scale(1.2)
-	get_node("Particles2D").set_time_scale(1.2)
+	#get_node("Particles2D1").set_time_scale(1.2)
+	#get_node("Particles2D").set_time_scale(1.2)
 	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_up"):
 		motion += Vector2(0, -1)
 		#particle effets
-		get_node("Particles2D1").set_time_scale(3)
-		get_node("Particles2D").set_time_scale(3)
+		#get_node("Particles2D1").set_time_scale(3)
+		#get_node("Particles2D").set_time_scale(3)
 	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_down"):
 		motion += Vector2(0, 1)
 		#particle effets
-		get_node("Particles2D1").set_time_scale(0)
-		get_node("Particles2D").set_time_scale(0)
+#		get_node("Particles2D1").set_time_scale(0)
+#		get_node("Particles2D").set_time_scale(0)
 	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_left"):
 		motion += Vector2(-1, 0)
 		get_node("anim").play("left")
@@ -55,7 +55,7 @@ func _fixed_process(delta):
 		get_node("anim").play("right")
 	
 	
-	var pos = get_pos()
+	var pos = position
 	pos += motion*delta*(SPEED+bonusSpeed-malusSpeed)
 	if (pos.x < 20):
 		pos.x = 20
@@ -65,7 +65,7 @@ func _fixed_process(delta):
 		pos.y = 16
 	if (pos.y > 616):
 		pos.y = 616
-	set_pos(pos)
+	position = pos
 	var shooting = Input.is_action_pressed("player"+str(nbPlayer)+"_shoot")
 	if(shooting): #speed malus on fire
 		malusSpeed = MALUS_SPEED
@@ -79,12 +79,12 @@ func _fixed_process(delta):
 			shot.player = 2
 		shot.shotPower += shotPowerBonus
 		# Use the Position2D as reference
-		shot.set_pos(get_node("shootFrom").get_global_pos())
+		shot.position = get_node("shootFrom").global_position
 		# Put it two parents above, so it is not moved by us
 		get_node("../").add_child(shot)
 		
 		# Play sound
-		get_node("sfx").play("shoot")
+		 #get_node("sfx").play("shoot")
 		
 		canShooting = false
 		get_node("ShootingDelay").start()
@@ -97,8 +97,8 @@ func _fixed_process(delta):
 			else :
 				lShot = preload("res://Prefabs/player2_Side_Shot.tscn").instance()
 				rShot = preload("res://Prefabs/player2_Side_Shot.tscn").instance()
-			lShot.set_pos(get_node("shootFromLeft").get_global_pos())
-			rShot.set_pos(get_node("shootFromRight").get_global_pos())
+			lShot.position = get_node("shootFromLeft").global_position
+			rShot.position = get_node("shootFromRight").global_position
 			rShot.speedX = -150
 			lShot.speedX = 150
 			rShot.shotPower += bonusPowerSideShot
@@ -128,11 +128,11 @@ func _hit_something(dmg):
 		energy = 0
 		update_energy()
 		get_node("anim").play("explode")
-		#fixed_process(false)
+		set_physics_process(false)
 		get_node("Particles2D1").queue_free()
 		get_node("Particles2D").queue_free()
 		get_node("CollisionShape2D").queue_free()
-		get_node("sfx").play("explode")
+		#get_node("sfx").play("explode")
 
 func _on_touchedReset_timeout():
 	touched = false
@@ -144,10 +144,7 @@ func _on_player_area_enter( area ):
 		if (area.has_method("_hit_something")):
 			area._hit_something(10)
 
-func _on_anim_finished():
-	if (get_node("anim").get_current_animation() == "explode"):
-		get_node("/root/main/world").nbPlayer -= 1
-		
+
 func setShootingDelay():
 	if (shoot_Delay < SHOOT_DELAY_MIN):
 		shoot_Delay = SHOOT_DELAY_MIN
@@ -170,3 +167,11 @@ func update_energy():
 		energy.position = Vector2(i*12,0)
 		get_node("/root/main/world/hud/energy_player"+str(nbPlayer)).add_child(energy)
 
+
+
+func _on_anim_animation_finished(name):
+	if name == "explode":
+		get_node("/root/main/world").nbPlayer -= 1
+		queue_free()
+		
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/interceptorShot.gd" type="Script" id=1]
 [ext_resource path="res://Assets/interceptorSideLaser.png" type="Texture" id=2]
@@ -13,35 +13,34 @@ extents = Vector2( 11.09, 10 )
 position = Vector2( 0.148499, -10 )
 scale = Vector2( 1.00608, 1 )
 input_pickable = true
-shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Transform2D( 0.185245, 0, 0, 0.501356, -0.0253603, 2.93637 )
-shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 script = ExtResource( 1 )
 setRotation = false
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 0, -2 )
 texture = ExtResource( 2 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="1"]
 
 position = Vector2( 0.0240227, -1.87489 )
 scale = Vector2( 0.210662, 1 )
 rect = Rect2( -10, -10, 20, 20 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
 position = Vector2( -0.0253603, 2.93637 )
 scale = Vector2( 0.185245, 0.501356 )
 shape = SubResource( 1 )
-trigger = false
-_update_shape_index = 0
 
-[connection signal="area_entered"  from="."  to="." method="_on_interceptorSideShot_area_enter" binds=[  ]]
+[connection signal="area_entered" from="." to="." method="_on_interceptorSideShot_area_enter"]
 
-[connection signal="exit_screen"  from="VisibilityNotifier2D"  to="." method="_on_VisibilityNotifier2D_exit_screen" binds=[  ]]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+
+

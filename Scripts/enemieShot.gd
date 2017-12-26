@@ -12,3 +12,5 @@ func _on_shot_area_enter( area ):
 	if (area.is_in_group("player") or area.is_in_group("asteroid")):
 		area._hit_something(10)
 		queue_free()
+
+

@@ -14,7 +14,6 @@ func _ready():
 		player1.position = get_node("playerSpawn").global_position
 		add_child(player1)
 		nbPlayer =1
-	set_process(true)
 func _process(delta):
 	if nbPlayer <=0 :
 		get_node("/root/main").goGameOverScreen()

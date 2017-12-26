@@ -13,7 +13,6 @@ func _process(delta):
 	
 func _ready():
 	add_to_group("shot")
-	set_process(true)
 
 func setPowerAnim(a1,a2,a3,a4,a5,shotPower):
 	if (shotPower >= a1):
@@ -27,6 +26,7 @@ func setPowerAnim(a1,a2,a3,a4,a5,shotPower):
 	if (shotPower >= a5):
 		get_node("anim").play("full")
 	
-func _on_VisibilityNotifier2D_exit_screen():
+func _on_VisibilityNotifier2D_screen_exited():
+	set_process(false)
 	queue_free()
 

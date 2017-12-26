@@ -36,7 +36,7 @@ func setPause():
 			add_child(m)
 			m.set_mode(m.MENU_PAUSE)
 			menuShow = true
-			get_node("world/musicStream").set_paused(true)
+#			get_node("world/musicStream").set_paused(true)
 func setRestart():
 	get_tree().reload_current_scene()
 	#get_node("world").free()
@@ -46,7 +46,7 @@ func setResume():
 	if (worldScreen):
 		menuShow = false
 		get_tree().set_pause(false)
-		get_node("world/musicStream").set_paused(false)
+		#get_node("world/musicStream").set_paused(false)
 
 func goStartScreen():
 	startScreen = true

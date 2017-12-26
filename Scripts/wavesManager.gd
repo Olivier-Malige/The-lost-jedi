@@ -1,3 +1,7 @@
+################################################
+#Section unfinished and in the process of development
+################################################
+
 extends Node2D
 var nubWave = 0
 var Wave0 = {
@@ -131,23 +135,35 @@ func _process(delta):
 	get_node("../hud/wave").set_text("Wave : "+str(nubWave+1))
 	
 func spawn(asteroid,bigAsteroid,tie,interceptor,drone,motherShip,turret):
+	$asteroidSpawnTimer.stop()
+	$bigAsteroidSpawnTimer.stop()
+	$tieSpawnTimer.stop()
+	$interceptorSpwnTimer.stop()
+	$droneSpawnTimer.stop()
+	$motherShipSpawnTimer.stop()
+	$turretSpawnTimer.stop()
 	if asteroid[0] :
 		$asteroidSpawnTimer.start()
 		$asteroidSpawnTimer.set_wait_time(asteroid[1])
-#	get_node("asteroidSpawnTimer").set_active(asteroid[0])
-#	get_node("asteroidSpawnTimer").set_wait_time(asteroid[1])
-#	get_node("bigAsteroidSpawnTimer").set_active(bigAsteroid[0])
-#	get_node("bigAsteroidSpawnTimer").set_wait_time(bigAsteroid[1])
-#	get_node("tieSpawnTimer").set_active(tie[0])
-#	get_node("tieSpawnTimer").set_wait_time(tie[1])
-#	get_node("interceptorSpwnTimer").set_active(interceptor[0])
-#	get_node("interceptorSpwnTimer").set_wait_time(interceptor[1])
-#	get_node("droneSpawnTimer").set_active(drone[0])
-#	get_node("droneSpawnTimer").set_wait_time(drone[1])	
-#	get_node("motherShipSpawnTimer").set_active(motherShip[0])
-#	get_node("motherShipSpawnTimer").set_wait_time(motherShip[1])
-#	get_node("turretSpawnTimer").set_active(turret[0])
-#	get_node("turretSpawnTimer").set_wait_time(turret[1])
+	if bigAsteroid[0] :
+		$bigAsteroidSpawnTimer.start()
+		$bigAsteroidSpawnTimer.set_wait_time(bigAsteroid[1])	
+	if tie[0] :
+		$tieSpawnTimer.start()
+		$tieSpawnTimer.set_wait_time(tie[1])	
+	if interceptor[0] :
+		$interceptorSpwnTimer.start()
+		$interceptorSpwnTimer.set_wait_time(interceptor[1])		
+	if drone[0] :
+		$droneSpawnTimer.start()
+		$droneSpawnTimer.set_wait_time(drone[1])		
+	if motherShip[0] :
+		$motherShipSpawnTimer.start()
+		$motherShipSpawnTimer.set_wait_time(motherShip[1])	
+	if turret[0] :
+		$turretSpawnTimer.start()
+		$turretSpawnTimer.set_wait_time(turret[1])	
+
 	
 func _on_asteroidSpawnTimer_timeout():
 	var rndPos = randi()%11

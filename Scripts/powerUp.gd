@@ -30,16 +30,16 @@ func _on_powerUp_area_enter( area ):
 			area.bonusSpeed += BONUS_SPEED_PLAYER
 			area.shoot_Delay -= BONUS_SHOOTING_SPEED
 			area.setShootingDelay()
-			area.get_node("sfx").play("speedUp")
+#			area.get_node("sfx").play("speedUp")
 		elif (get_node("anim").get_current_animation() == "energieUp"):
 			area.energy += 1
 			area.update_energy()
-			area.get_node("sfx").play("energieUp")
+			#area.get_node("sfx").play("energieUp")
 		elif (get_node("anim").get_current_animation() == "lateralShot"):
 			area.shotSide = true
 			area.bonusPowerSideShot += BONUS_SIDE_SHOT_POWER
-			area.get_node("sfx").play("lateralShotUp")
+			#area.get_node("sfx").play("lateralShotUp")
 		elif (get_node("anim").get_current_animation() == "laserUp"):
 			area.shotPowerBonus += BONUS_SHOT_POWER
-			area.get_node("sfx").play("shotUp")
+#			area.get_node("sfx").play("shotUp")
 		queue_free()

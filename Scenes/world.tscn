@@ -5,7 +5,7 @@
 [ext_resource path="res://Scripts/wavesManager.gd" type="Script" id=3]
 [ext_resource path="res://Sounds/game.ogg" type="AudioStream" id=4]
 
-[node name="world" type="Node2D" index="0"]
+[node name="world" type="Node2D"]
 
 pause_mode = 1
 script = ExtResource( 1 )
@@ -107,42 +107,42 @@ autostart = false
 process_mode = 1
 wait_time = 2.0
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="bigAsteroidSpawnTimer" type="Timer" parent="waveGenerator" index="4"]
 
 process_mode = 1
 wait_time = 3.0
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="interceptorSpwnTimer" type="Timer" parent="waveGenerator" index="5"]
 
 process_mode = 1
 wait_time = 4.0
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="droneSpawnTimer" type="Timer" parent="waveGenerator" index="6"]
 
 process_mode = 1
 wait_time = 0.5
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="motherShipSpawnTimer" type="Timer" parent="waveGenerator" index="7"]
 
 process_mode = 1
 wait_time = 5.0
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="turretSpawnTimer" type="Timer" parent="waveGenerator" index="8"]
 
 process_mode = 1
 wait_time = 5.0
 one_shot = false
-autostart = true
+autostart = false
 
 [node name="spawnPos0" type="Position2D" parent="waveGenerator" index="9"]
 

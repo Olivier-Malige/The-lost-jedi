@@ -31,3 +31,5 @@ func _on_anim_finished():
 			get_node("anim").play("start"+str(rndMultiSprites+1))
 		else :
 			get_node("anim").play("start")
+
+

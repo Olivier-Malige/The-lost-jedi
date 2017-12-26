@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/_enemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/drone.png" type="Texture" id=2]
+[ext_resource path="res://Prefabs/droneReactorParticles.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Animation" id=1]
 
 resource_name = "explode"
-length = 0.2
+length = 0.4
 loop = false
 step = 0.02
 tracks/0/type = "value"
@@ -16,34 +17,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.02, 0.04, 0.08, 0.12, 0.18, 0.24, 0.3, 0.38 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 2, 3, 4, 5, 6, 7, 8, 9 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Particles2D:config/emitting")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Particles2D1:config/emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"values": [ 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -128,6 +105,7 @@ rndRotation = false
 
 texture = ExtResource( 2 )
 hframes = 11
+_sections_unfolded = [ "Animation" ]
 
 [node name="anim" type="AnimationPlayer" parent="." index="1"]
 
@@ -152,53 +130,7 @@ position = Vector2( -0.207925, -0.303366 )
 scale = Vector2( 1.08793, 1.20155 )
 shape = SubResource( 4 )
 
-[node name="Particles2D" type="Particles2D" parent="." index="4"]
-
-position = Vector2( -6, -14 )
-scale = Vector2( 4, 4 )
-emitting = true
-amount = 8
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = null
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-
-[node name="Particles2D1" type="Particles2D" parent="." index="5"]
-
-position = Vector2( 6.367, -13.7622 )
-scale = Vector2( 4, 4 )
-emitting = true
-amount = 8
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = null
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-
-[node name="SamplePlayer2D" type="AudioStreamPlayer2D" parent="." index="6"]
+[node name="SamplePlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
 
 stream = SubResource( 5 )
 volume_db = 0.0
@@ -208,6 +140,18 @@ attenuation = 1.0
 bus = "Master"
 area_mask = 1
 
+[node name="droneReactorParticles" parent="." index="5" instance=ExtResource( 3 )]
+
+position = Vector2( -5.99999, -14.8506 )
+
+[node name="droneReactorParticles2" parent="." index="6" instance=ExtResource( 3 )]
+
+position = Vector2( 6, -14.8506 )
+
 [connection signal="area_entered" from="." to="." method="_on_area_enter"]
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 

@@ -72,7 +72,8 @@ func mode (enable= [],paused = false) :
 		get_node("paused").queue_free()
 	
 	yield(get_node("optionTimer"),"timeout")
-	
+	#initialize size for adapative vboxContenaire
+	$buttonGroup.rect_size = Vector2(0,0)
 	#set menu visible
 	show()
 	#set focus of firt node in buttonGroup

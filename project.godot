@@ -10,10 +10,12 @@ config_version=3
 
 [application]
 
+config/name="The-lost-jedi"
 run/main_scene="res://Scenes/main.tscn"
+config/icon="res://icon.png"
 icon="res://icon.png"
 main_scene="res://Scenes/main.tscn"
-name="The-Lost-Jedi"
+name="The-lost-jedi"
 
 [autoload]
 

@@ -12,3 +12,7 @@ func _on_interceptorSideShot_area_enter( area ):
 	if (area.is_in_group("player") or area.is_in_group("asteroid")):
 		area._hit_something(10)
 		queue_free()
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	pass # replace with function body

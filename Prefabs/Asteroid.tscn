@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Scripts/asteroid.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/_enemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/AsteroidSheet.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -172,14 +172,14 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 nbrSprites = 3
 useMultiSprites = true
-life = 3
+life = 4
 hitSomething = 1
 points = 1
-speedX = 0
-speedY = 225.0
+speedX = 0.0
+speedY = 250.0
 randomX = 0
 randomY = 0
-randPowerUp = 5
+randPowerUp = 0
 setRotation = true
 speedRotation = 1
 rndRotation = true
@@ -188,7 +188,6 @@ rndRotation = true
 
 texture = ExtResource( 2 )
 hframes = 11
-frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
@@ -228,5 +227,9 @@ bus = "Master"
 area_mask = 1
 
 [connection signal="area_entered" from="." to="." method="_on_area_enter"]
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 

@@ -21,3 +21,4 @@ func _on_playerShot_area_enter( area ):
 		area.hitByPlayerShot = true
 		area._hit_something(shotPower)
 		queue_free()
+

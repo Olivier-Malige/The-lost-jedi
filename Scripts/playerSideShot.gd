@@ -22,3 +22,4 @@ func _on_singleShot_area_enter( area ):
 		area._hit_something(shotPower)
 		queue_free()
 
+

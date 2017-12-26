@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/xWing.png" type="Texture" id=2]
+[ext_resource path="res://Prefabs/reactorParticles.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/red_particle.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -152,60 +154,26 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
-[node name="Particles2D" type="Particles2D" parent="." index="8"]
-
-position = Vector2( -8.09427, 14.1319 )
-scale = Vector2( 4, 4 )
-emitting = true
-amount = 8
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = null
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-
-[node name="Particles2D1" type="Particles2D" parent="." index="9"]
-
-position = Vector2( 4, 14.1319 )
-scale = Vector2( 4, 4 )
-emitting = true
-amount = 8
-lifetime = 1.0
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
-local_coords = true
-draw_order = 0
-process_material = null
-texture = null
-normal_map = null
-h_frames = 1
-v_frames = 1
-
-[node name="ShootingDelay" type="Timer" parent="." index="10"]
+[node name="ShootingDelay" type="Timer" parent="." index="8"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = true
 autostart = true
 
+[node name="reactorParticles2" parent="." index="9" instance=ExtResource( 3 )]
+
+position = Vector2( 5.99118, 17.3673 )
+texture = ExtResource( 4 )
+
+[node name="reactorParticles" parent="." index="10" instance=ExtResource( 3 )]
+
+position = Vector2( -6.00882, 17.3673 )
+texture = ExtResource( 4 )
+
 [connection signal="area_entered" from="." to="." method="_on_player_area_enter"]
+
+[connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 
 [connection signal="timeout" from="touchedReset" to="." method="_on_touchedReset_timeout"]
 

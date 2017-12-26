@@ -19,12 +19,12 @@ onready var rndRot
 onready var hitByPlayerShot = false 
 onready var rndMultiSprites
 var bonusCoop = 1.5
-func _fixed_process(delta):
+func _physics_process(delta):
 	hitByPlayerShot = false
-	translate(Vector2(speedX,speedY))
+	translate(Vector2(speedX,speedY) * delta)
 	#rotate 
 	if (setRotation):
-		rotation += speedRotation
+		rotation += speedRotation * delta
 
 func _ready():
 	if (get_node("/root/main").coop) :
@@ -65,7 +65,7 @@ func _hit_something(dmg):
 			score.setScore = points
 			get_node("../").add_child(score)
 			get_node("/root/global").score += points
-		_fixed_process(false)
+		set_physics_process(false)
 		#get_node("../enemySfx").play("asteroidExplode")
 		#Rand PowersUp
 		if (randi()%101 <= randPowerUp):
@@ -73,23 +73,22 @@ func _hit_something(dmg):
 			powerUp.position =global_position
 			get_node("../").add_child(powerUp)
 
-func _on_VisibilityNotifier2D_exit_screen():
-	queue_free()
-	#_fixed_process(false)
+func _on_area_enter( area ):
+	if (area.has_method("_hit_something")):
+		area._hit_something(hitSomething)
 
-func _on_anim_finished():
-	if (get_node("anim").get_current_animation() == "explode"):
-		queue_free()
+func _on_VisibilityNotifier2D_screen_exited():
+	set_physics_process(false)
+	queue_free()
+
+func _on_anim_animation_finished( name ):
+	if name == "explode":
 		if (has_node("ShootTimer")):
 			get_node("ShootTimer").stop()
-		_fixed_process(false)
-	else :
+		set_physics_process(false)
+		queue_free()
+	elif name == "hit":
 		if (useMultiSprites):
 			get_node("anim").play("start"+str(rndMultiSprites+1))
 		else :
 			get_node("anim").play("start")
-
-
-func _on_area_enter( area ):
-	if (area.has_method("_hit_something")):
-		area._hit_something(hitSomething)

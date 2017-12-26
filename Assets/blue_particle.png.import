@@ -2,11 +2,11 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/player1Energy.png-b8d583d1c87a0af81230e08945da9b93.stex"
+path="res://.import/blue_particle.png-c134944a99567f79edc9ee61e9694cbf.stex"
 
 [deps]
 
-source_md5="18367da7e98e5d6141d12020e1d556fe"
+source_md5="cc146b8d315890ee9dd02d05fb25e7df"
 
 [params]
 
@@ -25,4 +25,4 @@ process/HDR_as_SRGB=false
 stream=false
 size_limit=0
 detect_3d=false
-svg/scale=4.0
+svg/scale=1.0

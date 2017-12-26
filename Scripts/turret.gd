@@ -21,3 +21,4 @@ func shooting():
 		i += 1
 		yield(get_node("ShotDelay"),"timeout")
 		
+
