@@ -4,7 +4,6 @@ const SPEED_Y = 400
 
 func _ready():
 	speedY = SPEED_Y
-
 func is_enemy():
 	return true
 

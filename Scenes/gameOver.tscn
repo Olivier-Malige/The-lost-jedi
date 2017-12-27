@@ -1,10 +1,36 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/gameOver.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/modeHiscore.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/vermin_vibes_1989.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Fonts/title.tres" type="DynamicFont" id=4]
-[ext_resource path="res://Sounds/imperial.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/imperial.ogg" type="AudioStream" id=4]
+
+[sub_resource type="DynamicFont" id=2]
+
+resource_name = "modeHiscore"
+size = 40
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+resource_name = "modeHiscore"
+size = 40
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Font", "Resource", "Settings" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+resource_name = "title"
+size = 70
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 2 )
+_sections_unfolded = [ "Settings" ]
 
 [sub_resource type="Animation" id=1]
 
@@ -13,7 +39,7 @@ length = 4.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("GameOver:rect/pos")
+tracks/0/path = NodePath("GameOver:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -22,10 +48,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, -355 ), Vector2( 3, -123 ) ]
+"values": [ Vector2( 2, -355 ), Vector2( 2, -189 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BestScore:rect/pos")
+tracks/1/path = NodePath("BestScore:rect_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -34,19 +60,19 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -198, 292 ), Vector2( -198, 292 ), Vector2( 286, 292 ) ]
+"values": [ Vector2( -420, 204 ), Vector2( -420, 204 ), Vector2( 51, 204 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Score:rect/pos")
+tracks/2/path = NodePath("Score:rect_position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2, 4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -198, 347 ), Vector2( -198, 347 ), Vector2( -198, 347 ), Vector2( 288, 347 ) ]
+"values": [ Vector2( 1986, 347 ), Vector2( 1986, 347 ), Vector2( 56, 347 ) ]
 }
 
 [node name="gameOver" type="Node2D" index="0"]
@@ -60,19 +86,20 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -198.0
-margin_top = 271.0
-margin_right = -38.0
-margin_bottom = 291.0
+margin_left = 51.0
+margin_top = 204.0
+margin_right = 398.0
+margin_bottom = 257.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = SubResource( 2 )
 text = "Best Score :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="HigherWave" type="Label" parent="BestScore" index="0"]
 
@@ -80,9 +107,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 40.0
-margin_right = 165.0
-margin_bottom = 60.0
+margin_top = 70.0
+margin_right = 179.0
+margin_bottom = 95.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 size_flags_horizontal = 2
@@ -99,19 +126,20 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -198.0
+margin_left = 56.0
 margin_top = 347.0
-margin_right = -38.0
-margin_bottom = 364.0
+margin_right = 252.0
+margin_bottom = 400.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Score :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="wave" type="Label" parent="Score" index="0"]
 
@@ -119,9 +147,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 40.0
+margin_top = 70.0
 margin_right = 160.0
-margin_bottom = 60.0
+margin_bottom = 95.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 size_flags_horizontal = 2
@@ -139,14 +167,14 @@ anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 2.0
-margin_top = -355.0
+margin_top = -189.0
 margin_right = 801.0
-margin_bottom = 240.0
+margin_bottom = 406.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 4 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.964844, 0.904541, 0, 1 )
 custom_constants/shadow_offset_x = 4
@@ -157,6 +185,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 
@@ -171,9 +200,9 @@ autoplay = ""
 
 [node name="music" type="AudioStreamPlayer" parent="." index="4"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 4 )
 volume_db = 0.0
-autoplay = false
+autoplay = true
 mix_target = 0
 bus = "Master"
 

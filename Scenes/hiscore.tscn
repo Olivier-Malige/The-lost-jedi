@@ -12,9 +12,10 @@ use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 2 )
 
-[node name="hiscore" type="Node2D" index="0"]
+[node name="hiscore" type="Node2D"]
 
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="title" type="Label" parent="." index="0"]
 
@@ -31,12 +32,14 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.941176, 0.172549, 0, 1 )
 text = "Hiscore"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "custom_colors", "custom_constants", "custom_fonts" ]
 
 [node name="wave_solo" type="Label" parent="." index="1"]
 
@@ -114,11 +117,12 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.726562, 0, 1 )
 text = "Solo :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "Size Flags", "Theme", "custom_colors", "custom_fonts" ]
 
 [node name="coop" type="Label" parent="." index="5"]
 
@@ -136,10 +140,12 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
 text = "Coop :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="score_coop" type="Label" parent="." index="6"]
 

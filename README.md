@@ -1,3 +1,8 @@
+The-lost-jedi is a Open-source project for GODOT engine 3 
+
+
+
+
 The project:
 
 The-lost-jedi is basically an idea of four future student of o'clock school (web

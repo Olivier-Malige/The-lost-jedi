@@ -23,12 +23,16 @@ global="*res://Scripts/global.gd"
 
 [display]
 
+window/size/width=1920
+window/size/height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 driver/name="GLES2"
 stretch/aspect="ignore"
 stretch/mode="viewport"
-window/height=1080
+window/height=800
 window/resizable=true
-window/width=1920
+window/width=600
 
 [editor_plugins]
 
@@ -119,5 +123,6 @@ motion_fix_enabled=true
 
 [rendering]
 
+quality/2d/use_pixel_snap=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 viewport/default_clear_color=Color( 0, 0, 0, 1 )

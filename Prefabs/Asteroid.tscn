@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/_enemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/AsteroidSheet.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/asteroid_Hit.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/asteroid_Explode.wav" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -150,17 +152,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="AudioStreamSample" id=9]
-
-format = 0
-loop_mode = 0
-loop_begin = 0
-loop_end = 0
-mix_rate = 44100
-stereo = false
-data = PoolByteArray(  )
-
-[node name="Asteroid" type="Area2D" index="0"]
+[node name="Asteroid" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -216,14 +208,24 @@ autoplay = ""
 
 rect = Rect2( -10, -10, 20, 20 )
 
-[node name="SamplePlayer2D" type="AudioStreamPlayer2D" parent="." index="4"]
+[node name="sound_Hit" type="AudioStreamPlayer2D" parent="." index="4"]
 
-stream = SubResource( 9 )
+stream = ExtResource( 3 )
 volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
-bus = "Master"
+bus = "Sounds"
+area_mask = 1
+
+[node name="sound_Explode" type="AudioStreamPlayer2D" parent="." index="5"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Sounds"
 area_mask = 1
 
 [connection signal="area_entered" from="." to="." method="_on_area_enter"]

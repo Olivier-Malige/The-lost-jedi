@@ -3,6 +3,7 @@ extends "_enemy.gd"
 
 
 func _on_ShootTimer_timeout():
+	$sound_Shooting.playing = true
 	var shot = preload("res://Prefabs/motherShipShot.tscn").instance()
 	var shot1 = preload("res://Prefabs/motherShipShot.tscn").instance()
 	var shot2 = preload("res://Prefabs/motherShipShot.tscn").instance()

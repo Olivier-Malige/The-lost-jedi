@@ -11,6 +11,7 @@ func shooting():
 	var shot =[]
 	var i = 0
 	while (true):
+		$sound_Shooting.playing = true
 		shot.append(preload("res://Prefabs/turretShot.tscn").instance())
 		shot[i].position = get_node("shootPos").global_position
 		get_node("../").add_child(shot[i])

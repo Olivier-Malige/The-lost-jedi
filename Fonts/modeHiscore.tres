@@ -5,7 +5,7 @@
 [resource]
 
 resource_name = "modeHiscore"
-size = 40
+size = 60
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 1 )

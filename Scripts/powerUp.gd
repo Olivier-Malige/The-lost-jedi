@@ -30,16 +30,23 @@ func _on_powerUp_area_enter( area ):
 			area.bonusSpeed += BONUS_SPEED_PLAYER
 			area.shoot_Delay -= BONUS_SHOOTING_SPEED
 			area.setShootingDelay()
-#			area.get_node("sfx").play("speedUp")
+			$speed_Up.playing = true
 		elif (get_node("anim").get_current_animation() == "energieUp"):
 			area.energy += 1
 			area.update_energy()
-			#area.get_node("sfx").play("energieUp")
+			$energy_Up.playing = true
 		elif (get_node("anim").get_current_animation() == "lateralShot"):
 			area.shotSide = true
 			area.bonusPowerSideShot += BONUS_SIDE_SHOT_POWER
-			#area.get_node("sfx").play("lateralShotUp")
+			$lateral_Shot.playing = true
 		elif (get_node("anim").get_current_animation() == "laserUp"):
 			area.shotPowerBonus += BONUS_SHOT_POWER
-#			area.get_node("sfx").play("shotUp")
-		queue_free()
+			$shot_Up.playing = true
+		$Sprite.queue_free()
+		$CollisionShape2D.queue_free()
+
+
+func _on_audio_finished():
+	queue_free()
+
+

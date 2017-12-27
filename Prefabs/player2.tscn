@@ -1,8 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/xWing2.png" type="Texture" id=2]
 [ext_resource path="res://Prefabs/reactorParticles.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sounds/player_Explode.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/player_Hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/player_Shot.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -93,45 +96,33 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 nbPlayer = 2
 
-[node name="sfx" type="AudioStreamPlayer2D" parent="." index="0"]
-
-position = Vector2( 4, 14.1319 )
-scale = Vector2( 4, 4 )
-stream = null
-volume_db = 0.0
-autoplay = false
-max_distance = 2000.0
-attenuation = 1.0
-bus = "Master"
-area_mask = 1
-
-[node name="xWing" type="Sprite" parent="." index="1"]
+[node name="xWing" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 hframes = 12
 
-[node name="shootFrom" type="Position2D" parent="." index="2"]
+[node name="shootFrom" type="Position2D" parent="." index="1"]
 
 position = Vector2( 0, -0.403587 )
 scale = Vector2( 1, 0.752936 )
 
-[node name="shootFromLeft" type="Position2D" parent="." index="3"]
+[node name="shootFromLeft" type="Position2D" parent="." index="2"]
 
 position = Vector2( 17, -3.40359 )
 scale = Vector2( 1, 0.752936 )
 
-[node name="shootFromRight" type="Position2D" parent="." index="4"]
+[node name="shootFromRight" type="Position2D" parent="." index="3"]
 
 position = Vector2( -17, -3.40359 )
 scale = Vector2( 1, 0.752936 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
 
 position = Vector2( 0.124329, 2.19885 )
 scale = Vector2( 1.09504, 0.991978 )
 shape = SubResource( 1 )
 
-[node name="anim" type="AnimationPlayer" parent="." index="6"]
+[node name="anim" type="AnimationPlayer" parent="." index="5"]
 
 playback_process_mode = 1
 playback_default_blend_time = 0.0
@@ -145,25 +136,58 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="touchedReset" type="Timer" parent="." index="7"]
+[node name="touchedReset" type="Timer" parent="." index="6"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = true
 autostart = false
 
-[node name="reactorParticles" parent="." index="8" instance=ExtResource( 3 )]
+[node name="reactorParticles" parent="." index="7" instance=ExtResource( 3 )]
 
-[node name="reactorParticles2" parent="." index="9" instance=ExtResource( 3 )]
+position = Vector2( -6, 17 )
 
-position = Vector2( 5.91638, 17.2912 )
+[node name="reactorParticles2" parent="." index="8" instance=ExtResource( 3 )]
 
-[node name="ShootingDelay" type="Timer" parent="." index="10"]
+position = Vector2( 5.91638, 17 )
+
+[node name="ShootingDelay" type="Timer" parent="." index="9"]
 
 process_mode = 1
 wait_time = 1.0
 one_shot = true
 autostart = true
+
+[node name="sound_Explode" type="AudioStreamPlayer2D" parent="." index="10"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Sounds"
+area_mask = 1
+
+[node name="sound_Hit" type="AudioStreamPlayer2D" parent="." index="11"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Sounds"
+area_mask = 1
+
+[node name="sound_Shooting" type="AudioStreamPlayer2D" parent="." index="12"]
+
+stream = ExtResource( 6 )
+volume_db = -10.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Sounds"
+area_mask = 1
+_sections_unfolded = [ "Z" ]
 
 [connection signal="area_entered" from="." to="." method="_on_player_area_enter"]
 

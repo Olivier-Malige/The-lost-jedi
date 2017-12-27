@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scripts/Tie.gd" type="Script" id=1]
 [ext_resource path="res://Assets/tieSheet.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/ennemy_Hit2.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/tie_explode.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/tie_Shoot.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -137,14 +140,34 @@ wait_time = 2.0
 one_shot = false
 autostart = true
 
-[node name="SamplePlayer2D" type="AudioStreamPlayer2D" parent="." index="7"]
+[node name="sound_Hit" type="AudioStreamPlayer2D" parent="." index="7"]
 
-stream = null
+stream = ExtResource( 3 )
 volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
-bus = "Master"
+bus = "Sounds"
+area_mask = 1
+
+[node name="sound_Explode" type="AudioStreamPlayer2D" parent="." index="8"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Sounds"
+area_mask = 1
+
+[node name="sound_Shooting" type="AudioStreamPlayer2D" parent="." index="9"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Sounds"
 area_mask = 1
 
 [connection signal="area_entered" from="." to="." method="_on_area_enter"]

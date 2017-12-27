@@ -206,13 +206,13 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="StreamPlayer" type="AudioStreamPlayer" parent="loader" index="5"]
+[node name="music" type="AudioStreamPlayer" parent="loader" index="5"]
 
 stream = ExtResource( 7 )
 volume_db = -5.0
-autoplay = false
+autoplay = true
 mix_target = 0
-bus = "Master"
+bus = "Music"
 
 [connection signal="timeout" from="loader/Timer" to="." method="_on_Timer_timeout"]
 

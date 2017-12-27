@@ -1,7 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/powerUp.gd" type="Script" id=1]
 [ext_resource path="res://Assets/powerUp.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/powerUp_Speed.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/powerUp_energy.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/powerUp_lateralShoot.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/powerUp_Shot.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -98,7 +102,7 @@ script = ExtResource( 1 )
 
 texture = ExtResource( 2 )
 hframes = 4
-frame = 3
+frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
@@ -124,6 +128,54 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
+[node name="speed_Up" type="AudioStreamPlayer2D" parent="." index="4"]
+
+stream = ExtResource( 3 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Sounds"
+area_mask = 1
+
+[node name="energy_Up" type="AudioStreamPlayer2D" parent="." index="5"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Sounds"
+area_mask = 1
+
+[node name="lateral_Shot" type="AudioStreamPlayer2D" parent="." index="6"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Sounds"
+area_mask = 1
+
+[node name="shot_Up" type="AudioStreamPlayer2D" parent="." index="7"]
+
+stream = ExtResource( 6 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Sounds"
+area_mask = 1
+
 [connection signal="area_entered" from="." to="." method="_on_powerUp_area_enter"]
+
+[connection signal="finished" from="speed_Up" to="." method="_on_audio_finished"]
+
+[connection signal="finished" from="energy_Up" to="." method="_on_audio_finished"]
+
+[connection signal="finished" from="lateral_Shot" to="." method="_on_audio_finished"]
+
+[connection signal="finished" from="shot_Up" to="." method="_on_audio_finished"]
 
 

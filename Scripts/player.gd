@@ -30,23 +30,26 @@ func _physics_process(delta):
 		shoot_Delay = SHOOT_DELAY_MIN
 	if (bonusSpeed > SPEED_MAX):
 		bonusSpeed = SPEED_MAX
-	#get_node("../hud/energy_player"+str(nbPlayer)).set_text("ENERGY : " +str(energy))
+
 
 	var motion = Vector2()
 	get_node("anim").play("idle")
 	#particle effets
-	#get_node("Particles2D1").set_time_scale(1.2)
-	#get_node("Particles2D").set_time_scale(1.2)
+
+	$reactorParticles.set_emitting(true)
+	$reactorParticles2.set_emitting(true)
+	$reactorParticles.set_lifetime(0.3) 
+	$reactorParticles2.set_lifetime(0.3) 
 	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_up"):
 		motion += Vector2(0, -1)
 		#particle effets
-		#get_node("Particles2D1").set_time_scale(3)
-		#get_node("Particles2D").set_time_scale(3)
+		$reactorParticles.set_lifetime(0.5) 
+		$reactorParticles2.set_lifetime(0.5) 
 	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_down"):
 		motion += Vector2(0, 1)
 		#particle effets
-#		get_node("Particles2D1").set_time_scale(0)
-#		get_node("Particles2D").set_time_scale(0)
+		$reactorParticles.set_emitting(false)
+		$reactorParticles2.set_emitting(false)
 	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_left"):
 		motion += Vector2(-1, 0)
 		get_node("anim").play("left")
@@ -67,7 +70,10 @@ func _physics_process(delta):
 		pos.y = 616
 	position = pos
 	var shooting = Input.is_action_pressed("player"+str(nbPlayer)+"_shoot")
+
 	if(shooting): #speed malus on fire
+		$reactorParticles.set_lifetime(0.1) 
+		$reactorParticles2.set_lifetime(0.1) 
 		malusSpeed = MALUS_SPEED
 	var shot
 	if (shooting and canShooting):
@@ -84,7 +90,7 @@ func _physics_process(delta):
 		get_node("../").add_child(shot)
 		
 		# Play sound
-		 #get_node("sfx").play("shoot")
+		$sound_Shooting.playing = true
 		
 		canShooting = false
 		get_node("ShootingDelay").start()
@@ -111,6 +117,7 @@ func _hit_something(dmg):
 	if (touched):
 		return
 	if (energy > 1):
+		$sound_Hit.playing = true
 		energy -= 1
 		update_energy()
 		get_node("touchedReset").start()
@@ -126,11 +133,12 @@ func _hit_something(dmg):
 		touched = true
 	else :
 		energy = 0
+		$sound_Explode.playing = true
 		update_energy()
 		get_node("anim").play("explode")
 		set_physics_process(false)
-		get_node("Particles2D1").queue_free()
-		get_node("Particles2D").queue_free()
+		$reactorParticles.set_emitting(false)
+		$reactorParticles2.set_emitting(false)
 		get_node("CollisionShape2D").queue_free()
 		#get_node("sfx").play("explode")
 

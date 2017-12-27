@@ -116,13 +116,13 @@ playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="StreamPlayer" type="AudioStreamPlayer" parent="." index="3"]
+[node name="music" type="AudioStreamPlayer" parent="." index="3"]
 
 stream = ExtResource( 4 )
 volume_db = 0.0
-autoplay = false
+autoplay = true
 mix_target = 0
-bus = "Master"
+bus = "Music"
 
 [node name="Node2D" type="Node2D" parent="." index="4"]
 

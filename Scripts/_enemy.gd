@@ -49,12 +49,14 @@ func _hit_something(dmg):
 	if (destroyed):
 		return
 	life -= dmg
+	$sound_Hit.playing = true
 	#Retreat effect
 	var pos = global_position
 	pos.y -=5
 	position = pos
 
 	if (life <= 0) :
+		$sound_Explode.playing = true
 		destroyed = true
 		get_node("anim").play("explode")
 		get_node("CollisionShape2D").queue_free()
@@ -66,7 +68,7 @@ func _hit_something(dmg):
 			get_node("../").add_child(score)
 			get_node("/root/global").score += points
 		set_physics_process(false)
-		#get_node("../enemySfx").play("asteroidExplode")
+		
 		#Rand PowersUp
 		if (randi()%101 <= randPowerUp):
 			var powerUp = preload("res://Prefabs/powersUp.tscn").instance()

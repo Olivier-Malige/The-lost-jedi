@@ -25,24 +25,15 @@ var sav_path = "user://data.json"
 const VERSION_NUMBER = "Alpha 5.1"
 
 func _ready():
-	save_Data()
 	load_Data()
 	setSound(saveData.config.sound)
 	setMusic(saveData.config.music)
 
 func setSound(state):
-#	if state :
-#		AudioServer.set_fx_global_volume_scale(1)
-#	else :
-#		AudioServer.set_fx_global_volume_scale(0)
-	pass
+	AudioServer.set_bus_mute(2,not state)
 
 func setMusic(state):
-#	if state :
-#		AudioServer.set_stream_global_volume_scale(1)
-#	else :
-#		AudioServer.set_stream_global_volume_scale(0)
-	pass
+	AudioServer.set_bus_mute(1,not state)
 
 func load_Data():
 	var f = File.new()
