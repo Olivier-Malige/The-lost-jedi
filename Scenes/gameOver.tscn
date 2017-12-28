@@ -75,7 +75,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1986, 347 ), Vector2( 1986, 347 ), Vector2( 56, 347 ) ]
 }
 
-[node name="gameOver" type="Node2D" index="0"]
+[node name="gameOver" type="Node2D"]
 
 z = 10
 script = ExtResource( 1 )

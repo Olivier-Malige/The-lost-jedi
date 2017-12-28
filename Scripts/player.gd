@@ -60,10 +60,10 @@ func _physics_process(delta):
 	
 	var pos = position
 	pos += motion*delta*(SPEED+bonusSpeed-malusSpeed)
-	if (pos.x < 20):
-		pos.x = 20
-	if (pos.x > 800 - 20):
-		pos.x = 800 -20
+	if (pos.x < 30):
+		pos.x = 30
+	if (pos.x > 800 - 30):
+		pos.x = 800 -30
 	if (pos.y < 16):
 		pos.y = 16
 	if (pos.y > 616):

@@ -23,10 +23,7 @@ func set_mode(mode):
 		
 	elif mode == MENU_OPTIONS :
 		optionsEnable = [OPTION_MUSIC,OPTION_SOUND,OPTION_RETURN,OPTION_CONTROLLER,OPTION_FULLSCREEN]
-		if get_node("/root/main").worldScreen == false :
-			mode(optionsEnable)
-		else : 
-			mode(optionsEnable,true)
+
 		if config.music :
 			get_node("buttonGroup/music").set_text("music : on")
 		else : get_node("buttonGroup/music").set_text("music : off")
@@ -46,30 +43,29 @@ func set_mode(mode):
 	#set mode done and then instantiate tweak menu
 	mode(optionsEnable)
 
-func mode (enable= [],paused = false) :
+func mode (enable= []) :
 	for i in enable :
-		if i ==   OPTION_RETURN : get_node("buttonGroup/return").add_to_group("enable")
-		elif i == OPTION_CONTROLLER :get_node("buttonGroup/Controller").add_to_group("enable")
-		elif i == OPTION_PLAYER1 :get_node("buttonGroup/player1").add_to_group("enable")
-		elif i == OPTION_PLAYER2 :get_node("buttonGroup/player2").add_to_group("enable")
-		elif i == OPTION_MUSIC :get_node("buttonGroup/music").add_to_group("enable")
-		elif i == OPTION_SOUND :get_node("buttonGroup/sound").add_to_group("enable")
-		elif i == OPTION_MUSIC :get_node("buttonGroup/music").add_to_group("enable")
-		elif i == OPTION_SOUND :get_node("buttonGroup/sound").add_to_group("enable")
-		elif i == OPTION_RESUME :get_node("buttonGroup/resume").add_to_group("enable")
-		elif i == OPTION_RESTART :get_node("buttonGroup/restart").add_to_group("enable")
-		elif i == OPTION_SOLO :get_node("buttonGroup/solo").add_to_group("enable")
-		elif i == OPTION_COOP :get_node("buttonGroup/coop").add_to_group("enable")
-		elif i == OPTION_OPTIONS :get_node("buttonGroup/options").add_to_group("enable")
-		elif i == OPTION_HISCORE :get_node("buttonGroup/hiscore").add_to_group("enable")
-		elif i == OPTION_EXIT :get_node("buttonGroup/exit").add_to_group("enable")
-		elif i == OPTION_FULLSCREEN :get_node("buttonGroup/fullscreen").add_to_group("enable")
+		match i :
+			OPTION_RETURN : get_node("buttonGroup/return").add_to_group("enable")
+			OPTION_CONTROLLER :get_node("buttonGroup/Controller").add_to_group("enable")
+			OPTION_PLAYER1 :get_node("buttonGroup/player1").add_to_group("enable")
+			OPTION_PLAYER2 :get_node("buttonGroup/player2").add_to_group("enable")
+			OPTION_MUSIC :get_node("buttonGroup/music").add_to_group("enable")
+			OPTION_SOUND :get_node("buttonGroup/sound").add_to_group("enable")
+			OPTION_MUSIC :get_node("buttonGroup/music").add_to_group("enable")
+			OPTION_SOUND :get_node("buttonGroup/sound").add_to_group("enable")
+			OPTION_RESUME :get_node("buttonGroup/resume").add_to_group("enable")
+			OPTION_RESTART :get_node("buttonGroup/restart").add_to_group("enable")
+			OPTION_SOLO :get_node("buttonGroup/solo").add_to_group("enable")
+			OPTION_COOP :get_node("buttonGroup/coop").add_to_group("enable")
+			OPTION_OPTIONS :get_node("buttonGroup/options").add_to_group("enable")
+			OPTION_HISCORE :get_node("buttonGroup/hiscore").add_to_group("enable")
+			OPTION_EXIT :get_node("buttonGroup/exit").add_to_group("enable")
+			OPTION_FULLSCREEN :get_node("buttonGroup/fullscreen").add_to_group("enable")
 			
 	for node in get_node("buttonGroup").get_children() :
 		if not node.is_in_group("enable") :
 			node.queue_free()
-	if not paused :
-		get_node("paused").queue_free()
 	
 	yield(get_node("optionTimer"),"timeout")
 	#initialize size for adapative vboxContenaire

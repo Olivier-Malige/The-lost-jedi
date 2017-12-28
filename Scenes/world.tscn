@@ -134,51 +134,51 @@ autostart = false
 
 [node name="spawnPos0" type="Position2D" parent="waveGenerator" index="9"]
 
-position = Vector2( 61, -61 )
+position = Vector2( 54, -61 )
 
 [node name="spawnPos1" type="Position2D" parent="waveGenerator" index="10"]
 
-position = Vector2( 122, -61 )
+position = Vector2( 116, -61 )
 
 [node name="spawnPos2" type="Position2D" parent="waveGenerator" index="11"]
 
-position = Vector2( 244, -61 )
+position = Vector2( 241, -61 )
 
 [node name="spawnPos3" type="Position2D" parent="waveGenerator" index="12"]
 
-position = Vector2( 183, -61 )
+position = Vector2( 180, -61 )
 
 [node name="spawnPos4" type="Position2D" parent="waveGenerator" index="13"]
 
-position = Vector2( 305, -61 )
+position = Vector2( 304, -61 )
 
 [node name="spawnPos5" type="Position2D" parent="waveGenerator" index="14"]
 
-position = Vector2( 366, -61 )
+position = Vector2( 369, -61 )
 
 [node name="spawnPos6" type="Position2D" parent="waveGenerator" index="15"]
 
-position = Vector2( 427, -61 )
+position = Vector2( 432.36, -61 )
 
 [node name="spawnPos7" type="Position2D" parent="waveGenerator" index="16"]
 
-position = Vector2( 488, -61 )
+position = Vector2( 499, -61.3604 )
 
 [node name="spawnPos8" type="Position2D" parent="waveGenerator" index="17"]
 
-position = Vector2( 549, -61 )
+position = Vector2( 567, -61 )
 
 [node name="spawnPos9" type="Position2D" parent="waveGenerator" index="18"]
 
-position = Vector2( 610, -61 )
+position = Vector2( 640.36, -61 )
 
 [node name="spawnPos10" type="Position2D" parent="waveGenerator" index="19"]
 
-position = Vector2( 671, -61 )
+position = Vector2( 715, -60 )
 
 [node name="spawnPos11" type="Position2D" parent="waveGenerator" index="20"]
 
-position = Vector2( 732, -61 )
+position = Vector2( 789, -61 )
 
 [node name="music" type="AudioStreamPlayer" parent="." index="2"]
 

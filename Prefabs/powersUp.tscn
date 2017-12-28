@@ -87,7 +87,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[node name="powersUp" type="Area2D"]
+[node name="powersUp" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )

@@ -1,27 +1,7 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scripts/menu.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/modeHiscore.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=3]
-
-[sub_resource type="Animation" id=1]
-
-resource_name = "paused"
-length = 1.0
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
+[ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
@@ -224,39 +204,7 @@ size_flags_vertical = 2
 script = ExtResource( 1 )
 _sections_unfolded = [ "Focus", "Grow Direction", "Hint", "Mouse", "Rect", "Size Flags" ]
 
-[node name="paused" type="Label" parent="." index="0"]
-
-pause_mode = 2
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 330.0
-margin_top = 192.0
-margin_right = 499.0
-margin_bottom = 225.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-size_flags_horizontal = 2
-size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
-text = "Paused"
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="paused" index="0"]
-
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-root_node = NodePath("..")
-anims/paused = SubResource( 1 )
-playback/active = true
-playback/speed = 1.0
-blend_times = [  ]
-autoplay = ""
-
-[node name="buttonGroup" type="VBoxContainer" parent="." index="1"]
+[node name="buttonGroup" type="VBoxContainer" parent="." index="0"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -294,7 +242,7 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.843137, 0, 1 )
 toggle_mode = false
 enabled_focus_mode = 2
@@ -322,7 +270,7 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 toggle_mode = false
@@ -351,7 +299,7 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 toggle_mode = false
@@ -380,7 +328,7 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 toggle_mode = false
@@ -409,7 +357,7 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 toggle_mode = false
@@ -438,7 +386,7 @@ custom_styles/pressed = SubResource( 8 )
 custom_styles/focus = SubResource( 9 )
 custom_styles/disabled = SubResource( 10 )
 custom_styles/normal = SubResource( 11 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 toggle_mode = false
@@ -468,7 +416,7 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.843137, 0, 1 )
 toggle_mode = false
 enabled_focus_mode = 2
@@ -496,7 +444,7 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 toggle_mode = false
@@ -525,7 +473,7 @@ custom_styles/pressed = SubResource( 3 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/disabled = SubResource( 5 )
 custom_styles/normal = SubResource( 6 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 toggle_mode = false
@@ -554,7 +502,7 @@ custom_styles/pressed = SubResource( 8 )
 custom_styles/focus = SubResource( 9 )
 custom_styles/disabled = SubResource( 10 )
 custom_styles/normal = SubResource( 11 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 toggle_mode = false
@@ -583,7 +531,7 @@ custom_styles/pressed = SubResource( 13 )
 custom_styles/focus = SubResource( 14 )
 custom_styles/disabled = SubResource( 15 )
 custom_styles/normal = SubResource( 16 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 toggle_mode = false
@@ -612,7 +560,7 @@ custom_styles/pressed = SubResource( 13 )
 custom_styles/focus = SubResource( 14 )
 custom_styles/disabled = SubResource( 15 )
 custom_styles/normal = SubResource( 16 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 toggle_mode = false
@@ -641,7 +589,7 @@ custom_styles/pressed = SubResource( 18 )
 custom_styles/focus = SubResource( 19 )
 custom_styles/disabled = SubResource( 20 )
 custom_styles/normal = SubResource( 21 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.843137, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 toggle_mode = false
@@ -670,7 +618,7 @@ custom_styles/pressed = SubResource( 23 )
 custom_styles/focus = SubResource( 24 )
 custom_styles/disabled = SubResource( 25 )
 custom_styles/normal = SubResource( 26 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
 toggle_mode = false
@@ -681,7 +629,7 @@ text = "Exit"
 flat = false
 align = 1
 
-[node name="optionTimer" type="Timer" parent="." index="2"]
+[node name="optionTimer" type="Timer" parent="." index="1"]
 
 process_mode = 1
 wait_time = 0.05

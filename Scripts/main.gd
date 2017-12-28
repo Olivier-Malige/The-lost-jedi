@@ -6,6 +6,7 @@ var worldScreen = false
 var gameOverScreen = false
 var input = load("res://Scripts/input.gd")
 var menu = load("res://Scenes/menu.tscn")
+var paused = load ("res://Scenes/paused.tscn")
 
 var menuShow = false
 
@@ -32,11 +33,13 @@ func _on_Timer_timeout():
 func setPause():
 	if (not menuShow ):
 			get_tree().set_pause(true)
+			var p = paused.instance()
+			add_child(p)
 			var m = menu.instance()
 			add_child(m)
 			m.set_mode(m.MENU_PAUSE)
 			menuShow = true
-#			get_node("world/musicStream").set_paused(true)
+			#get_node("world/music").set_paused(true)
 func setRestart():
 	get_tree().reload_current_scene()
 	#get_node("world").free()
@@ -45,6 +48,7 @@ func setRestart():
 func setResume():
 	if (worldScreen):
 		menuShow = false
+		$paused.queue_free()
 		get_tree().set_pause(false)
 		#get_node("world/musicStream").set_paused(false)
 
