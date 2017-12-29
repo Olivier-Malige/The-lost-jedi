@@ -6,7 +6,7 @@ var worldScreen = false
 var gameOverScreen = false
 var input = load("res://Scripts/input.gd")
 var menu = load("res://Scenes/menu.tscn")
-var paused = load ("res://Scenes/paused.tscn")
+var paused = load ("res://Prefabs/paused.tscn")
 
 var menuShow = false
 
@@ -42,7 +42,6 @@ func setPause():
 			#get_node("world/music").set_paused(true)
 func setRestart():
 	get_tree().reload_current_scene()
-	#get_node("world").free()
 	goWorldScreen()
 	
 func setResume():
@@ -50,6 +49,13 @@ func setResume():
 		menuShow = false
 		$paused.queue_free()
 		get_tree().set_pause(false)
+		
+		#update controller config
+		if coop :
+			get_node("world/player").update_controller()
+			get_node("world/player2").update_controller()
+		else :
+			get_node("world/player").update_controller()
 		#get_node("world/musicStream").set_paused(false)
 
 func goStartScreen():

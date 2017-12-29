@@ -3,6 +3,13 @@
 [ext_resource path="res://Scripts/menu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=2]
 
+[sub_resource type="StyleBoxEmpty" id=1]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
 [sub_resource type="StyleBoxEmpty" id=2]
 
 content_margin_left = -1.0
@@ -24,14 +31,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="StyleBoxEmpty" id=5]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=5]
 
 content_margin_left = -1.0
 content_margin_right = -1.0
@@ -47,6 +47,13 @@ expand_margin_top = 0.0
 expand_margin_bottom = 0.0
 modulate_color = Color( 1, 1, 1, 1 )
 draw_center = true
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
 
 [sub_resource type="StyleBoxEmpty" id=7]
 
@@ -181,14 +188,7 @@ content_margin_right = -1.0
 content_margin_top = -1.0
 content_margin_bottom = -1.0
 
-[sub_resource type="StyleBoxEmpty" id=26]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-
-[node name="menu" type="Control"]
+[node name="menu" type="Control" index="0"]
 
 pause_mode = 2
 anchor_left = 0.0
@@ -237,11 +237,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.843137, 0, 1 )
 toggle_mode = false
@@ -265,11 +265,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -294,11 +294,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -323,11 +323,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -352,11 +352,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -381,11 +381,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -411,11 +411,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.843137, 0, 1 )
 toggle_mode = false
@@ -439,11 +439,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -468,11 +468,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 6 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.84375, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -497,11 +497,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 7 )
-custom_styles/pressed = SubResource( 8 )
-custom_styles/focus = SubResource( 9 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -526,11 +526,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 12 )
-custom_styles/pressed = SubResource( 13 )
-custom_styles/focus = SubResource( 14 )
-custom_styles/disabled = SubResource( 15 )
-custom_styles/normal = SubResource( 16 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 15 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -555,11 +555,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 12 )
-custom_styles/pressed = SubResource( 13 )
-custom_styles/focus = SubResource( 14 )
-custom_styles/disabled = SubResource( 15 )
-custom_styles/normal = SubResource( 16 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 15 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -584,11 +584,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 17 )
-custom_styles/pressed = SubResource( 18 )
-custom_styles/focus = SubResource( 19 )
-custom_styles/disabled = SubResource( 20 )
-custom_styles/normal = SubResource( 21 )
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 17 )
+custom_styles/focus = SubResource( 18 )
+custom_styles/disabled = SubResource( 19 )
+custom_styles/normal = SubResource( 20 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.843137, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -613,11 +613,11 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
 size_flags_vertical = 2
-custom_styles/hover = SubResource( 22 )
-custom_styles/pressed = SubResource( 23 )
-custom_styles/focus = SubResource( 24 )
-custom_styles/disabled = SubResource( 25 )
-custom_styles/normal = SubResource( 26 )
+custom_styles/hover = SubResource( 21 )
+custom_styles/pressed = SubResource( 22 )
+custom_styles/focus = SubResource( 23 )
+custom_styles/disabled = SubResource( 24 )
+custom_styles/normal = SubResource( 25 )
 custom_fonts/font = ExtResource( 2 )
 custom_colors/font_color = Color( 1, 0.890196, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -639,6 +639,10 @@ autostart = true
 [connection signal="button_down" from="buttonGroup/return" to="." method="_on_return_button_down"]
 
 [connection signal="button_down" from="buttonGroup/Controller" to="." method="_on_Controller_button_down"]
+
+[connection signal="button_down" from="buttonGroup/player1" to="." method="_on_player1_button_down"]
+
+[connection signal="button_down" from="buttonGroup/player2" to="." method="_on_player2_button_down"]
 
 [connection signal="button_down" from="buttonGroup/music" to="." method="_on_music_button_down"]
 

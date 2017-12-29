@@ -20,11 +20,14 @@ var saveData = { solo = {
 						music = true,
 						sound = true,
 						fullscreen = true,
+						player1 = "gamepad1",
+						player2 = "keyboard1",
 						}}
 var sav_path = "user://data.json"
 const VERSION_NUMBER = "Alpha 5.1"
 
 func _ready():
+#	save_Data()
 	load_Data()
 	setSound(saveData.config.sound)
 	setMusic(saveData.config.music)

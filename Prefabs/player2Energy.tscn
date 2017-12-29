@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Assets/player2Energy.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/player2Energy.png" type="Texture" id=1]
+
 
 [node name="player2Energy" type="Node2D"]
 

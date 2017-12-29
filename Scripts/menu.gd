@@ -9,6 +9,7 @@ enum {OPTION_RETURN,OPTION_CONTROLLER,OPTION_PLAYER1,OPTION_PLAYER2,OPTION_MUSIC
 enum {MODE_SOLO,MODE_COOP}
 #Define menu Mode
 enum {MENU_START,MENU_OPTIONS,MENU_PAUSE,MENU_CONTROLLER}
+var controller = ["gamepad1","gamepad2","keyboard1","keyboard2"]
 
 func _ready():
 	hide()
@@ -39,6 +40,8 @@ func set_mode(mode):
 		
 	elif mode == MENU_CONTROLLER :
 		optionsEnable = [OPTION_RETURN,OPTION_PLAYER1,OPTION_PLAYER2]
+		$buttonGroup/player1.set_text("player 1 : "+config.player1)
+		$buttonGroup/player2.set_text("player 2 : "+config.player2)
 	
 	#set mode done and then instantiate tweak menu
 	mode(optionsEnable)
@@ -156,3 +159,36 @@ func _on_fullscreen_button_down():
 		OS.set_window_fullscreen(false)
 	get_node("buttonGroup/fullscreen").set_text("fullscreen : "+onOff)
 	global.save_Data()
+
+
+func _on_player1_button_down():
+	global.saveData.config.player1 = switch_controller(1)
+	if global.saveData.config.player1 == global.saveData.config.player2 :
+		global.saveData.config.player1 = switch_controller(1)
+	$buttonGroup/player1.set_text("player 1 : "+global.saveData.config.player1)
+	global.save_Data()
+
+
+func _on_player2_button_down():
+	global.saveData.config.player2 = switch_controller(2)
+	if global.saveData.config.player2 == global.saveData.config.player1 :
+		global.saveData.config.player2 = switch_controller(2)
+	$buttonGroup/player2.set_text("player 2 : "+global.saveData.config.player2)
+	global.save_Data()
+	
+
+func switch_controller(player):
+	var configPlayer
+	if player == 1 :
+		configPlayer = global.saveData.config.player1
+	elif player == 2 :
+		configPlayer = global.saveData.config.player2
+	
+	for i in range (controller.size()) :
+		if controller[i] == configPlayer :
+			if configPlayer  == controller.back() :
+				configPlayer = controller.front()
+				return configPlayer
+			else :
+				configPlayer = controller[i + 1]
+				return configPlayer

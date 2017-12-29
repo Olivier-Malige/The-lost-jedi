@@ -15,13 +15,29 @@ onready var energy = ENERGY_MAX/2
 onready var touched = false
 onready var canShooting = true
 onready var malusSpeed = 0
+onready var controller 
 
 func _ready():
+	update_controller()
 	update_energy()
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
 	get_node("/root/global").score = 0
 	add_to_group("player")
 
+func update_controller():
+	if get_node("/root/main").coop :
+
+		#enable player 1 controler
+		if nbPlayer == 1 :
+			controller = global.saveData.config.player1
+
+		#enable player 2 controler
+		elif nbPlayer == 2 :
+			controller = global.saveData.config.player2
+	
+	#on solo mode all controls are enbales
+	else :
+		controller = "all"
 
 func _physics_process(delta):
 	if (energy > ENERGY_MAX):
@@ -34,26 +50,30 @@ func _physics_process(delta):
 
 	var motion = Vector2()
 	get_node("anim").play("idle")
+	
 	#particle effets
-
 	$reactorParticles.set_emitting(true)
 	$reactorParticles2.set_emitting(true)
 	$reactorParticles.set_lifetime(0.3) 
 	$reactorParticles2.set_lifetime(0.3) 
-	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_up"):
+	#UP
+	if Input.is_action_pressed(controller + "_up"):
 		motion += Vector2(0, -1)
 		#particle effets
 		$reactorParticles.set_lifetime(0.5) 
 		$reactorParticles2.set_lifetime(0.5) 
-	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_down"):
+	#Down
+	if Input.is_action_pressed(controller + "_down"):
 		motion += Vector2(0, 1)
 		#particle effets
 		$reactorParticles.set_emitting(false)
 		$reactorParticles2.set_emitting(false)
-	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_left"):
+	#left
+	if Input.is_action_pressed(controller + "_left"):
 		motion += Vector2(-1, 0)
 		get_node("anim").play("left")
-	if Input.is_action_pressed("player"+str(nbPlayer)+"_move_right"):
+	#right
+	if Input.is_action_pressed(controller + "_right"):
 		motion += Vector2(1, 0)
 		get_node("anim").play("right")
 	
@@ -69,7 +89,7 @@ func _physics_process(delta):
 	if (pos.y > 616):
 		pos.y = 616
 	position = pos
-	var shooting = Input.is_action_pressed("player"+str(nbPlayer)+"_shoot")
+	var shooting = Input.is_action_pressed(controller +"_fire")
 
 	if(shooting): #speed malus on fire
 		$reactorParticles.set_lifetime(0.1) 
