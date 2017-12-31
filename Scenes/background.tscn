@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/background.gd" type="Script" id=1]
+[ext_resource path="res://Assets/background.png" type="Texture" id=2]
+[ext_resource path="res://Assets/background2.png" type="Texture" id=3]
+
+[node name="background" type="ParallaxBackground"]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+scroll_offset = Vector2( 0, 0 )
+scroll_base_offset = Vector2( 0, 0 )
+scroll_base_scale = Vector2( 1, 1 )
+scroll_limit_begin = Vector2( 0, 0 )
+scroll_limit_end = Vector2( 0, 0 )
+scroll_ignore_camera_zoom = false
+script = ExtResource( 1 )
+_sections_unfolded = [ "Pause", "Scroll" ]
+speed_Y = 0
+speed_X = 0
+
+[node name="b1" type="ParallaxLayer" parent="." index="0"]
+
+motion_scale = Vector2( 1, 1 )
+motion_offset = Vector2( 1, 1 )
+motion_mirroring = Vector2( 800, 1200 )
+_sections_unfolded = [ "Material", "Motion", "Transform", "Visibility", "Z" ]
+
+[node name="stars" type="Sprite" parent="b1" index="0"]
+
+position = Vector2( 0, -20 )
+texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z" ]
+
+[node name="b2" type="ParallaxLayer" parent="." index="1"]
+
+modulate = Color( 0.619608, 0.619608, 0.619608, 0.894118 )
+motion_scale = Vector2( 0.8, 0.8 )
+motion_offset = Vector2( 1, 1 )
+motion_mirroring = Vector2( 800, 1200 )
+_sections_unfolded = [ "Material", "Motion", "Transform", "Visibility", "Z" ]
+
+[node name="stars2" type="Sprite" parent="b2" index="0"]
+
+texture = ExtResource( 3 )
+centered = false
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z" ]
+
+[node name="b3" type="ParallaxLayer" parent="." index="2"]
+
+modulate = Color( 0.607843, 0.607843, 0.607843, 1 )
+self_modulate = Color( 1, 1, 1, 0.752941 )
+motion_scale = Vector2( 0.6, 0.6 )
+motion_offset = Vector2( 1, 1 )
+motion_mirroring = Vector2( 800, 1200 )
+_sections_unfolded = [ "Material", "Motion", "Transform", "Visibility", "Z" ]
+
+[node name="stars" type="Sprite" parent="b3" index="0"]
+
+modulate = Color( 0.439216, 0.439216, 0.439216, 1 )
+texture = ExtResource( 3 )
+centered = false
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z" ]
+
+

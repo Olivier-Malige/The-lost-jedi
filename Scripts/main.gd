@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 var coop  = false
 var startScreen = false
 var zoomReady = false 
@@ -39,7 +39,11 @@ func setPause():
 			add_child(m)
 			m.set_mode(m.MENU_PAUSE)
 			menuShow = true
-			#get_node("world/music").set_paused(true)
+			
+			#hide background when paused(to prevent show bug)
+			for i in $world.get_node("background").get_children() :
+				i.hide()
+
 func setRestart():
 	get_tree().reload_current_scene()
 	goWorldScreen()
@@ -49,6 +53,11 @@ func setResume():
 		menuShow = false
 		$paused.queue_free()
 		get_tree().set_pause(false)
+		
+		#show background when resume paused(to prevent show bug)
+		for i in $world.get_node("background").get_children() :
+			i.show()
+
 		
 		#update controller config
 		if coop :

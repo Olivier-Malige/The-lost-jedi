@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/start.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fonts/vermin_vibes_1989.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Sounds/imperial.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Scenes/background.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -25,7 +26,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 3 ),
+"times": PoolRealArray( 0.2, 2, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 190, -210 ), Vector2( 190, -210 ), Vector2( 190, 81 ) ]
@@ -41,6 +42,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Node2D/Arknoid:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [sub_resource type="DynamicFont" id=3]
@@ -128,6 +141,7 @@ bus = "Music"
 
 [node name="Arknoid" type="Label" parent="Node2D" index="0"]
 
+visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -151,6 +165,9 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
+
+[node name="background" parent="." index="5" instance=ExtResource( 5 )]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 

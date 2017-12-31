@@ -95,15 +95,15 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 58, 60, 61, 64, 66, 67, 68, 69, 70 ]
 }
 
-[node name="main" type="Node2D"]
+[node name="main" type="Node" index="0"]
 
 pause_mode = 1
-z = 10
 script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform", "Z" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 
-position = Vector2( 452, 374 )
+position = Vector2( 401, 319 )
 scale = Vector2( 1.5, 1.5 )
 anchor_mode = 1
 rotating = false
@@ -125,6 +125,7 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+_sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Smoothing" ]
 
 [node name="CpuBackground" type="Sprite" parent="." index="1"]
 
@@ -162,7 +163,7 @@ frame = 35
 [node name="Timer" type="Timer" parent="loader" index="1"]
 
 process_mode = 1
-wait_time = 7.0
+wait_time = 6.8
 one_shot = true
 autostart = true
 
