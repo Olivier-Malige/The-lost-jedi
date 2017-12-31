@@ -68,7 +68,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 14.1565, 10 )
 
-[node name="drone" type="Area2D"]
+[node name="drone" type="Area2D" index="0"]
 
 position = Vector2( 0.157784, 0 )
 input_pickable = true

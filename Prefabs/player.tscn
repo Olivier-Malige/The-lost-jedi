@@ -84,7 +84,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[node name="player" type="Area2D" index="0"]
+[node name="player" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -95,7 +95,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
-nbPlayer = 1
+set_Player_2 = false
 
 [node name="xWing" type="Sprite" parent="." index="0"]
 

@@ -9,7 +9,7 @@ func is_enemy():
 
 func _on_interceptorSideShot_area_enter( area ):
 	if (area.is_in_group("player") or area.is_in_group("asteroid")):
-		area._hit_something(10)
+		area._hit_something(3)
 		queue_free()
 
 

@@ -15,21 +15,24 @@ export(bool) var rndRotation = false
 onready var hitByPlayer1Shot = false 
 onready var hitByPlayer2Shot = false 
 onready var destroyed = false
-onready var rndRot 
 onready var hitByPlayerShot = false 
 onready var rndMultiSprites
 var bonusCoop = 1.5
-func _physics_process(delta):
+func _process(delta):
 	hitByPlayerShot = false
 	translate(Vector2(speedX,speedY) * delta)
 	#rotate 
-	if (setRotation):
+	if setRotation:
 		rotation += speedRotation * delta
+	
 
 func _ready():
 	if (get_node("/root/main").coop) :
 		life *= bonusCoop
 	randomize();
+	if rndRotation :
+		speedRotation = rand_range(-2,2)
+		
 	speedX = rand_range(-randomX-speedX, randomY+speedX)
 	#speedy = rand_range(-randomY-speedY, randomY+speedY)
 	add_to_group("enemy")
@@ -42,10 +45,6 @@ func _ready():
 
 
 func _hit_something(dmg):
-	if (useMultiSprites):
-		get_node("anim").play("hit"+str(rndMultiSprites+1))
-	else :
-		get_node("anim").play("hit")
 	if (destroyed):
 		return
 	life -= dmg
@@ -55,10 +54,12 @@ func _hit_something(dmg):
 	pos.y -=5
 	position = pos
 
-	if (life <= 0) :
+	if life <= 0 :
+		get_node("anim").play("explode")
+		if (has_node("shootTimer")):
+			get_node("shootTimer").stop()
 		$sound_Explode.playing = true
 		destroyed = true
-		get_node("anim").play("explode")
 		get_node("CollisionShape2D").queue_free()
 		if (hitByPlayerShot):
 			var score = preload("res://Prefabs/score.tscn").instance()
@@ -67,27 +68,29 @@ func _hit_something(dmg):
 			score.setScore = points
 			get_node("../").add_child(score)
 			get_node("/root/global").score += points
-		set_physics_process(false)
-		
-		#Rand PowersUp
-		if (randi()%101 <= randPowerUp):
-			var powerUp = preload("res://Prefabs/powersUp.tscn").instance()
-			powerUp.position =global_position
-			get_node("../").add_child(powerUp)
+			#Rand PowersUp
+			if (randi()%101 <= randPowerUp):
+				var powerUp = preload("res://Prefabs/powersUp.tscn").instance()
+				powerUp.position =global_position
+				get_node("../").add_child(powerUp)
+	else :	
+		if (useMultiSprites):
+			get_node("anim").play("hit"+str(rndMultiSprites+1))
+		else :
+			get_node("anim").play("hit")
 
+	
 func _on_area_enter( area ):
 	if (area.has_method("_hit_something")):
 		area._hit_something(hitSomething)
 
 func _on_VisibilityNotifier2D_screen_exited():
-	set_physics_process(false)
+	set_process(false)
 	queue_free()
 
 func _on_anim_animation_finished( name ):
-	if name == "explode":
-		if (has_node("ShootTimer")):
-			get_node("ShootTimer").stop()
-		set_physics_process(false)
+	if name == "explode":         
+		set_process(false)
 		queue_free()
 	elif name == "hit":
 		if (useMultiSprites):

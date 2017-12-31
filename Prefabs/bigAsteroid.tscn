@@ -79,7 +79,7 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 nbrSprites = 1
 useMultiSprites = false
-life = 8
+life = 10
 hitSomething = 10
 points = 10
 speedX = 0
@@ -88,7 +88,7 @@ randomX = 0
 randomY = 0
 randPowerUp = 0
 setRotation = true
-speedRotation = 2
+speedRotation = 1
 rndRotation = true
 
 [node name="SpriteAsteroid" type="Sprite" parent="." index="0"]

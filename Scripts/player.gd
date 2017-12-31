@@ -5,7 +5,7 @@ const SPEED = 300
 const MALUS_SPEED = 150
 const ENERGY_MAX = 12
 const SPEED_MAX  = 500
-export var nbPlayer = 1
+export(bool) var set_Player_2 = false
 onready var shoot_Delay = SHOOT_DELAY_BASE
 onready var shotPowerBonus = 0
 onready var bonusSpeed = 0
@@ -16,8 +16,14 @@ onready var touched = false
 onready var canShooting = true
 onready var malusSpeed = 0
 onready var controller 
+onready var id_player 
 
 func _ready():
+	#set a string id player for get_node in hud 
+	if set_Player_2 :
+		id_player = "player2"
+	else : id_player = "player1"
+	
 	update_controller()
 	update_energy()
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
@@ -27,26 +33,25 @@ func _ready():
 func update_controller():
 	if get_node("/root/main").coop :
 
-		#enable player 1 controler
-		if nbPlayer == 1 :
-			controller = global.saveData.config.player1
-
-		#enable player 2 controler
-		elif nbPlayer == 2 :
+		#enable player 2 controller
+		if set_Player_2 :
 			controller = global.saveData.config.player2
+
+		#enable player 1 controller
+		else:
+			controller = global.saveData.config.player1
 	
 	#on solo mode all controls are enbales
 	else :
 		controller = "all"
 
-func _physics_process(delta):
+func _process(delta):
 	if (energy > ENERGY_MAX):
 		energy = ENERGY_MAX
 	if (shoot_Delay < SHOOT_DELAY_MIN):
 		shoot_Delay = SHOOT_DELAY_MIN
 	if (bonusSpeed > SPEED_MAX):
 		bonusSpeed = SPEED_MAX
-
 
 	var motion = Vector2()
 	get_node("anim").play("idle")
@@ -97,7 +102,7 @@ func _physics_process(delta):
 		malusSpeed = MALUS_SPEED
 	var shot
 	if (shooting and canShooting):
-		if (nbPlayer == 1) :
+		if (set_Player_2 == false) :
 			shot = preload("res://Prefabs/playerShot.tscn").instance()
 			shot.player = 1
 		else :
@@ -106,7 +111,7 @@ func _physics_process(delta):
 		shot.shotPower += shotPowerBonus
 		# Use the Position2D as reference
 		shot.position = get_node("shootFrom").global_position
-		# Put it two parents above, so it is not moved by us
+		# Put it one  parent above, so it is not moved by us
 		get_node("../").add_child(shot)
 		
 		# Play sound
@@ -114,19 +119,22 @@ func _physics_process(delta):
 		
 		canShooting = false
 		get_node("ShootingDelay").start()
-		if (shotSide):
+		if shotSide:
 			var lShot
 			var rShot
-			if (nbPlayer == 1):
-				lShot = preload("res://Prefabs/playerSideShot.tscn").instance()
-				rShot = preload("res://Prefabs/playerSideShot.tscn").instance()
-			else :
+			
+			#load player colored shot 
+			if set_Player_2:
 				lShot = preload("res://Prefabs/player2_Side_Shot.tscn").instance()
 				rShot = preload("res://Prefabs/player2_Side_Shot.tscn").instance()
+			else :
+				lShot = preload("res://Prefabs/playerSideShot.tscn").instance()
+				rShot = preload("res://Prefabs/playerSideShot.tscn").instance()
+				
 			lShot.position = get_node("shootFromLeft").global_position
 			rShot.position = get_node("shootFromRight").global_position
-			rShot.speedX = -150
-			lShot.speedX = 150
+			rShot.speedX = -100
+			lShot.speedX = 100
 			rShot.shotPower += bonusPowerSideShot
 			lShot.shotPower += bonusPowerSideShot
 			get_node("../").add_child(lShot)
@@ -156,7 +164,7 @@ func _hit_something(dmg):
 		$sound_Explode.playing = true
 		update_energy()
 		get_node("anim").play("explode")
-		set_physics_process(false)
+		set_process(false)
 		$reactorParticles.set_emitting(false)
 		$reactorParticles2.set_emitting(false)
 		get_node("CollisionShape2D").queue_free()
@@ -184,22 +192,22 @@ func _on_ShootingDelay_timeout():
 	canShooting = true
 	
 func update_energy():
-	for el in get_node("/root/main/world/hud/energy_player"+str(nbPlayer)).get_children():
+	for el in get_node("/root/main/world/hud/energy_"+id_player).get_children():
 		el.queue_free()
 	for i in range(energy):
 		var energy 
-		if nbPlayer == 1 :
-			 energy = preload("res://Prefabs/player1Energy.tscn").instance()
-		elif nbPlayer == 2 :
+		if set_Player_2 :
 			 energy = preload("res://Prefabs/player2Energy.tscn").instance()
+		else :
+			 energy = preload("res://Prefabs/player1Energy.tscn").instance()
 		energy.position = Vector2(i*12,0)
-		get_node("/root/main/world/hud/energy_player"+str(nbPlayer)).add_child(energy)
+		get_node("/root/main/world/hud/energy_"+id_player).add_child(energy)
 
 
 
 func _on_anim_animation_finished(name):
 	if name == "explode":
-		get_node("/root/main/world").nbPlayer -= 1
+		get_node("/root/main/world").nbr_Player -= 1
 		queue_free()
 		
 	

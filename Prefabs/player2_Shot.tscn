@@ -239,12 +239,11 @@ setRotation = false
 position = Vector2( 0, -10 )
 texture = ExtResource( 2 )
 hframes = 5
-frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 0.00886536, -14.404 )
-scale = Vector2( 1.60584, 1.19254 )
+position = Vector2( 0.00886536, -7.9772 )
+scale = Vector2( 1.60584, 0.609985 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]

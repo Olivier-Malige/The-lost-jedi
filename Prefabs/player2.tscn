@@ -94,7 +94,7 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-nbPlayer = 2
+set_Player_2 = true
 
 [node name="xWing" type="Sprite" parent="." index="0"]
 
