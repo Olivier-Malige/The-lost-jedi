@@ -12,7 +12,7 @@ var menuShow = false
 
 func _ready():
 	OS.set_window_fullscreen(global.saveData.config.fullscreen)
-	get_node("Camera2D").set_scale(Vector2 (1.5,1.5))
+#	get_node("Camera2D").set_scale(Vector2 (1.5,1.5))
 	set_pause_mode(PAUSE_MODE_PROCESS)
 
 
@@ -71,9 +71,9 @@ func goStartScreen():
 	startScreen = true
 	var start = preload("res://Scenes/start.tscn").instance()
 	add_child(start)
-	if not zoomReady :
-		get_node("animCamera").play("Start")
-		zoomReady = true
+#	if not zoomReady :
+#		get_node("animCamera").play("Start")
+#		zoomReady = true
 
 func goHiscoreScreen():
 	startScreen = false
@@ -89,12 +89,12 @@ func goWorldScreen():
 	worldScreen = true
 	startScreen = false
 	gameOverScreen = false
-	get_node("animCamera").play("startToWorld")
+#	get_node("animCamera").play("startToWorld")
 
 func goGameOverScreen():
 	gameOverScreen = true
 	worldScreen = false
-	get_node("animCamera").play("worldToGameOver")
+#	get_node("animCamera").play("worldToGameOver")
 	var gameOver = preload("res://Scenes/gameOver.tscn").instance()
 	add_child(gameOver)
 	

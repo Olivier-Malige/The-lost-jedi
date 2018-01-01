@@ -1,69 +1,14 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/main.gd" type="Script" id=1]
-[ext_resource path="res://Assets/UI/cpu.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/preloader.gd" type="Script" id=3]
-[ext_resource path="res://Assets/github_logo.png" type="Texture" id=4]
-[ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=5]
-[ext_resource path="res://Assets/godot-Sheet.png" type="Texture" id=6]
-[ext_resource path="res://Sounds/intro.ogg" type="AudioStream" id=7]
-
-[sub_resource type="Animation" id=1]
-
-resource_name = "Start"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Camera2D:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1.5, 1.5 ), Vector2( 1.2, 1.2 ) ]
-}
-
-[sub_resource type="Animation" id=2]
-
-resource_name = "startToWorld"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Camera2D:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
-}
-
-[sub_resource type="Animation" id=3]
-
-resource_name = "worldToGameOver"
-length = 1.0
-loop = false
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Camera2D:zoom")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ) ]
-}
+[ext_resource path="res://Assets/UI/tvbackclean.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/light2.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Light2D.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/preloader.gd" type="Script" id=5]
+[ext_resource path="res://Assets/github_logo.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Assets/godot-Sheet.png" type="Texture" id=8]
+[ext_resource path="res://Sounds/intro.ogg" type="AudioStream" id=9]
 
 [sub_resource type="Animation" id=4]
 
@@ -95,7 +40,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 58, 60, 61, 64, 66, 67, 68, 69, 70 ]
 }
 
-[node name="main" type="Node" index="0"]
+[node name="main" type="Node"]
 
 pause_mode = 1
 script = ExtResource( 1 )
@@ -103,12 +48,12 @@ _sections_unfolded = [ "Material", "Transform", "Z" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 
-position = Vector2( 401, 319 )
+position = Vector2( 552, 442 )
 scale = Vector2( 1.5, 1.5 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 1.5, 1.5 )
+zoom = Vector2( 1.2, 1.2 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
@@ -129,33 +74,51 @@ _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Smoothing" ]
 
 [node name="CpuBackground" type="Sprite" parent="." index="1"]
 
-position = Vector2( 508.198, 420.751 )
-scale = Vector2( 1.57299, 1.62576 )
-z = 100
+position = Vector2( 613.817, 464.24 )
+scale = Vector2( 1.71894, 1.85326 )
+z = 1000
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "Z" ]
 
-[node name="animCamera" type="AnimationPlayer" parent="." index="2"]
+[node name="Light2D" type="Light2D" parent="CpuBackground" index="0"]
 
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-root_node = NodePath("..")
-anims/Start = SubResource( 1 )
-anims/startToWorld = SubResource( 2 )
-anims/worldToGameOver = SubResource( 3 )
-playback/active = true
-playback/speed = 1.0
-blend_times = [  ]
-autoplay = ""
+position = Vector2( -95.3015, -18.4757 )
+scale = Vector2( 11.004, 14.454 )
+enabled = true
+editor_only = false
+texture = ExtResource( 3 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 0.045166, 0, 0.578125, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = 100
+range_z_max = 1000
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+script = ExtResource( 4 )
+_sections_unfolded = [ "Range" ]
+range_Min = 0.7
+range_Max = 1
 
-[node name="loader" type="Node2D" parent="." index="3"]
+[node name="loader" type="Node2D" parent="." index="2"]
 
-script = ExtResource( 3 )
+script = ExtResource( 5 )
 
 [node name="gameoff" type="Sprite" parent="loader" index="0"]
 
 position = Vector2( 407.058, 240.759 )
 scale = Vector2( 2.74596, 2.71345 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 vframes = 12
 hframes = 8
 frame = 35
@@ -181,7 +144,7 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 7 )
 text = "Made with godot engine  3"
 percent_visible = 1.0
 lines_skipped = 0
@@ -193,7 +156,7 @@ _sections_unfolded = [ "custom_fonts" ]
 self_modulate = Color( 0.625, 0.692383, 1, 1 )
 position = Vector2( 702.133, 545.392 )
 scale = Vector2( 2.58092, 2.50322 )
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 hframes = 8
 
 [node name="anim" type="AnimationPlayer" parent="loader" index="4"]
@@ -209,7 +172,7 @@ autoplay = ""
 
 [node name="music" type="AudioStreamPlayer" parent="loader" index="5"]
 
-stream = ExtResource( 7 )
+stream = ExtResource( 9 )
 volume_db = -5.0
 autoplay = true
 mix_target = 0

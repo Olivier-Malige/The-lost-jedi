@@ -169,6 +169,8 @@ _sections_unfolded = [ "Visibility" ]
 
 [node name="background" parent="." index="5" instance=ExtResource( 5 )]
 
+scroll_ignore_camera_zoom = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
 

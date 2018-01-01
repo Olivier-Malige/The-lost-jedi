@@ -27,7 +27,7 @@ _sections_unfolded = [ "Font", "Resource", "Settings" ]
 [sub_resource type="DynamicFont" id=3]
 
 resource_name = "title"
-size = 70
+size = 90
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 2 )
@@ -60,7 +60,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -420, 204 ), Vector2( -420, 204 ), Vector2( 51, 204 ) ]
+"values": [ Vector2( -420, 204 ), Vector2( -420, 204 ), Vector2( 251, 204 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Score:rect_position")
@@ -72,10 +72,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 2, 3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1986, 347 ), Vector2( 1986, 347 ), Vector2( 56, 347 ) ]
+"values": [ Vector2( 1986, 347 ), Vector2( 1986, 347 ), Vector2( 279, 347 ) ]
 }
 
-[node name="gameOver" type="Node2D"]
+[node name="gameOver" type="Node2D" index="0"]
 
 z = 10
 script = ExtResource( 1 )
@@ -208,6 +208,7 @@ bus = "Master"
 
 [node name="background" parent="." index="5" instance=ExtResource( 5 )]
 
-speed_Y = -150
+scroll_ignore_camera_zoom = true
+speed_Y = -100
 
 

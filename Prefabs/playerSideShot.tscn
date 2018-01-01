@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 11.09, 10 )
+extents = Vector2( 19.3589, 10 )
 
 [sub_resource type="Animation" id=2]
 
@@ -79,7 +79,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.362573, 0.846708 ) ]
+"values": [ Vector2( 0.50985, 0.846708 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:position")
@@ -122,7 +122,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -0.00465822, -4.05516 ) ]
+"values": [ Vector2( -0.0648365, -4.05516 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:scale")
@@ -134,7 +134,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.375846, 0.606263 ) ]
+"values": [ Vector2( 0.573138, 0.606263 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -165,7 +165,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1.98423, -1.88742 ) ]
+"values": [ Vector2( -1.8317, -2.39098 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:scale")
@@ -177,7 +177,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.206201, 0.398082 ) ]
+"values": [ Vector2( 0.362599, 0.444304 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -208,7 +208,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -2.00774, 4.07355 ) ]
+"values": [ Vector2( -1.86791, 4.18952 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CollisionShape2D:scale")
@@ -220,7 +220,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.198474, 0.208338 ) ]
+"values": [ Vector2( 0.30918, 0.314353 ) ]
 }
 
 [node name="playerSideShot" type="Area2D"]
@@ -249,9 +249,10 @@ rect = Rect2( -10, -10, 20, 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( -2.00774, 4.07355 )
-scale = Vector2( 0.198474, 0.208338 )
+position = Vector2( -1.86791, 4.18952 )
+scale = Vector2( 0.30918, 0.314353 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="anim" type="AnimationPlayer" parent="." index="3"]
 

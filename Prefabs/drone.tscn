@@ -66,9 +66,9 @@ tracks/0/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 14.1565, 10 )
+extents = Vector2( 16.7428, 12.7418 )
 
-[node name="drone" type="Area2D" index="0"]
+[node name="drone" type="Area2D"]
 
 position = Vector2( 0.157784, 0 )
 input_pickable = true
@@ -118,8 +118,8 @@ rect = Rect2( -10, -10, 20, 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( -0.207925, -0.303366 )
-scale = Vector2( 1.08793, 1.20155 )
+position = Vector2( 0.268349, 0.636912 )
+scale = Vector2( 1.11205, 1.29806 )
 shape = SubResource( 4 )
 
 [node name="droneReactorParticles" parent="." index="4" instance=ExtResource( 3 )]

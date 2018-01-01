@@ -24,9 +24,10 @@ func _on_ShootTimer_timeout():
 	
 func _on_anim_finished():
 	if (get_node("anim").get_current_animation() == "explode"):
+		set_process(false)
 		queue_free()
-		get_node("ShootTimer").stop()
-		_fixed_process(false)
+		
+		
 	else :
 		if (useMultiSprites):
 			get_node("anim").play("start"+str(rndMultiSprites+1))

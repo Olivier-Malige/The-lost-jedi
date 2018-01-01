@@ -35,8 +35,8 @@ rect = Rect2( -10, -10, 20, 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( -0.0253603, 2.93637 )
-scale = Vector2( 0.185245, 0.501356 )
+position = Vector2( 0.140468, 3.55901 )
+scale = Vector2( 0.234321, 0.453461 )
 shape = SubResource( 1 )
 
 [connection signal="area_entered" from="." to="." method="_on_interceptorSideShot_area_enter"]

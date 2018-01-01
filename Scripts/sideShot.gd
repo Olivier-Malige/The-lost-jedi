@@ -26,7 +26,6 @@ func _process(delta):
 
 func _ready():
 	add_to_group("shot")
-	set_process(true)
 
 func is_enemy():
 	return true
