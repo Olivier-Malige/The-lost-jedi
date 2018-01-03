@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/xWing2.png" type="Texture" id=2]
 [ext_resource path="res://Prefabs/reactorParticles.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sounds/player_Explode.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/player_Hit.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sounds/player_Shot.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/blue_particle.png" type="Texture" id=4]
+[ext_resource path="res://Sounds/player_Explode.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/player_Hit.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/player_Shot.wav" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -84,7 +85,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[node name="player2" type="Area2D"]
+[node name="player2" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -146,10 +147,12 @@ autostart = false
 [node name="reactorParticles" parent="." index="7" instance=ExtResource( 3 )]
 
 position = Vector2( -6, 17 )
+texture = ExtResource( 4 )
 
 [node name="reactorParticles2" parent="." index="8" instance=ExtResource( 3 )]
 
 position = Vector2( 5.91638, 17 )
+texture = ExtResource( 4 )
 
 [node name="ShootingDelay" type="Timer" parent="." index="9"]
 
@@ -160,7 +163,7 @@ autostart = true
 
 [node name="sound_Explode" type="AudioStreamPlayer2D" parent="." index="10"]
 
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
@@ -170,7 +173,7 @@ area_mask = 1
 
 [node name="sound_Hit" type="AudioStreamPlayer2D" parent="." index="11"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
@@ -180,7 +183,7 @@ area_mask = 1
 
 [node name="sound_Shooting" type="AudioStreamPlayer2D" parent="." index="12"]
 
-stream = ExtResource( 6 )
+stream = ExtResource( 7 )
 volume_db = -10.0
 autoplay = false
 max_distance = 2000.0
