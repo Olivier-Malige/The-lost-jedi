@@ -24,14 +24,15 @@ func _on_ShootTimer_timeout():
 	
 func _on_anim_finished():
 	if (get_node("anim").get_current_animation() == "explode"):
+		$droneReactorParticles4.queue_free()
+		$droneReactorParticles.queue_free()
+		$droneReactorParticles2.queue_free()
+		$droneReactorParticles3.queue_free()
 		set_process(false)
 		queue_free()
 		
 		
 	else :
-		if (useMultiSprites):
-			get_node("anim").play("start"+str(rndMultiSprites+1))
-		else :
-			get_node("anim").play("start")
+		get_node("anim").play("start")
 
 
