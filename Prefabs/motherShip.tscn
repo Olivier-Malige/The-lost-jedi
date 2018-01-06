@@ -68,7 +68,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="motherShip" type="Area2D"]
+[node name="motherShip" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -94,8 +94,10 @@ rndRotation = false
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 hframes = 11
+_sections_unfolded = [ "Transform" ]
 
 [node name="anim" type="AnimationPlayer" parent="." index="1"]
 

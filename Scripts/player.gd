@@ -59,14 +59,14 @@ func _process(delta):
 	#particle effets
 	$reactorParticles.set_emitting(true)
 	$reactorParticles2.set_emitting(true)
-	$reactorParticles.set_lifetime(0.3) 
-	$reactorParticles2.set_lifetime(0.3) 
+	$reactorParticles.set_lifetime(0.4) 
+	$reactorParticles2.set_lifetime(0.4) 
 	#UP
 	if Input.is_action_pressed(controller + "_up"):
 		motion += Vector2(0, -1)
 		#particle effets
-		$reactorParticles.set_lifetime(0.5) 
-		$reactorParticles2.set_lifetime(0.5) 
+		$reactorParticles.set_lifetime(0.7) 
+		$reactorParticles2.set_lifetime(0.7) 
 	#Down
 	if Input.is_action_pressed(controller + "_down"):
 		motion += Vector2(0, 1)

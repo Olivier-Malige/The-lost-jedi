@@ -24,7 +24,7 @@ var saveData = { solo = {
 						player2 = "keyboard1",
 						}}
 var sav_path = "user://data.json"
-const VERSION_NUMBER = "Alpha 5.1"
+const VERSION_NUMBER = "Alpha dev"
 
 func _ready():
 #	save_Data()

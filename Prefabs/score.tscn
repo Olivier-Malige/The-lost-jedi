@@ -19,7 +19,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 0, 0, 1 ), Color( 0.992188, 1, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0.992188, 1, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0.992188, 1, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0.992188, 1, 0, 1 ), Color( 1, 0, 0, 1 ), Color( 0.992188, 1, 0, 1 ) ]
+"values": [ Color( 0.611765, 0.12549, 0.12549, 1 ), Color( 0.721569, 0.721569, 0.25098, 1 ), Color( 0.611765, 0.12549, 0.12549, 1 ), Color( 0.721569, 0.721569, 0.25098, 1 ), Color( 0.611765, 0.12549, 0.12549, 1 ), Color( 0.721569, 0.721569, 0.25098, 1 ), Color( 0.611765, 0.12549, 0.12549, 1 ), Color( 0.721569, 0.721569, 0.25098, 1 ), Color( 0.611765, 0.12549, 0.12549, 1 ), Color( 0.721569, 0.721569, 0.25098, 1 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -58,12 +58,13 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color = Color( 0.78776, 0.796051, 1, 1 )
+custom_colors/font_color = Color( 0.611765, 0.12549, 0.12549, 1 )
 text = "Points
 "
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 [node name="anim" type="AnimationPlayer" parent="." index="1"]
 

@@ -223,7 +223,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0.299926, 0.357449 ) ]
 }
 
-[node name="player2_Side_Shot" type="Area2D"]
+[node name="player2_Side_Shot" type="Area2D" index="0"]
 
 position = Vector2( 0, -10 )
 input_pickable = true
@@ -239,8 +239,10 @@ setRotation = false
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 0, -2 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 hframes = 5
+_sections_unfolded = [ "Transform" ]
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="1"]
 

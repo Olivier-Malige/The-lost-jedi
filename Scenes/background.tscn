@@ -60,7 +60,7 @@ _sections_unfolded = [ "Material", "Motion", "Transform", "Visibility", "Z" ]
 
 [node name="stars" type="Sprite" parent="b3" index="0"]
 
-modulate = Color( 0.439216, 0.439216, 0.439216, 1 )
+modulate = Color( 0.423529, 0.423529, 0.423529, 1 )
 texture = ExtResource( 3 )
 centered = false
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform", "Visibility", "Z" ]
