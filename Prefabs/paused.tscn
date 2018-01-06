@@ -46,12 +46,13 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 text = "Paused"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = ExtResource( 2 )
-_sections_unfolded = [ "Visibility", "custom_fonts" ]
+_sections_unfolded = [ "Visibility", "custom_colors", "custom_fonts" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
 

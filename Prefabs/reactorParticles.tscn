@@ -1,8 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Assets/yellow_particle.png" type="Texture" id=1]
+[ext_resource path="res://Assets/red_particle.png" type="Texture" id=1]
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=1]
 
 render_priority = 0
 trail_divisor = 1
@@ -40,7 +40,7 @@ anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
 
-[node name="reactorParticles" type="Particles2D"]
+[node name="reactorParticles" type="Particles2D" index="0"]
 
 show_behind_parent = true
 position = Vector2( -6, 16.894 )
@@ -58,7 +58,7 @@ fract_delta = true
 visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = true
 draw_order = 0
-process_material = SubResource( 6 )
+process_material = SubResource( 1 )
 texture = ExtResource( 1 )
 normal_map = null
 h_frames = 1

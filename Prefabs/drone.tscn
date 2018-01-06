@@ -95,9 +95,10 @@ rndRotation = false
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 hframes = 11
-_sections_unfolded = [ "Animation" ]
+_sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="anim" type="AnimationPlayer" parent="." index="1"]
 

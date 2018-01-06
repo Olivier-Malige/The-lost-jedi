@@ -75,7 +75,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1986, 347 ), Vector2( 1986, 347 ), Vector2( 279, 347 ) ]
 }
 
-[node name="gameOver" type="Node2D" index="0"]
+[node name="gameOver" type="Node2D"]
 
 z = 10
 script = ExtResource( 1 )
@@ -95,11 +95,12 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 text = "Best Score :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
 
 [node name="HigherWave" type="Label" parent="BestScore" index="0"]
 
@@ -135,11 +136,12 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 text = "Score :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "custom_colors" ]
 
 [node name="wave" type="Label" parent="Score" index="0"]
 
@@ -175,8 +177,8 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 1, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0.964844, 0.904541, 0, 1 )
+custom_colors/font_color = Color( 0.611765, 0.12549, 0.12549, 1 )
+custom_colors/font_color_shadow = Color( 0.721569, 0.721569, 0.25098, 1 )
 custom_constants/shadow_offset_x = 4
 custom_constants/shadow_offset_y = 2
 text = "GAME OVER"
@@ -185,7 +187,7 @@ valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_fonts" ]
+_sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 

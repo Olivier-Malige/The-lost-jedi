@@ -237,8 +237,10 @@ setRotation = false
 [node name="sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 0, -10 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 hframes = 5
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 

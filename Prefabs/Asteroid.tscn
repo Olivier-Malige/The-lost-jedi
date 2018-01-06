@@ -178,8 +178,10 @@ rndRotation = true
 
 [node name="SpriteAsteroid" type="Sprite" parent="." index="0"]
 
+scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 hframes = 11
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 

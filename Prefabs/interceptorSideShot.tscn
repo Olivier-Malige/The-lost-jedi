@@ -8,9 +8,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 11.09, 10 )
 
-[node name="interceptorSideShot" type="Area2D"]
+[node name="interceptorSideShot" type="Area2D" index="0"]
 
-position = Vector2( 0.148499, -10 )
+position = Vector2( 2.1485, 14 )
 scale = Vector2( 1.00608, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -25,17 +25,19 @@ setRotation = false
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 0, -2 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="1"]
 
-position = Vector2( 0.0240227, -1.87489 )
+position = Vector2( -1.96389, -2.87489 )
 scale = Vector2( 0.210662, 1 )
 rect = Rect2( -10, -10, 20, 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( 0.140468, 3.55901 )
+position = Vector2( -1.84745, 3.55901 )
 scale = Vector2( 0.234321, 0.453461 )
 shape = SubResource( 1 )
 

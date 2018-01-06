@@ -30,6 +30,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("reactorParticles:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("reactorParticles2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=3]
 
@@ -47,6 +71,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("reactorParticles:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6, 17 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("reactorParticles2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 5.91638, 17 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -66,6 +114,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 2 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("reactorParticles2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.91638, 17 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("reactorParticles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6, 17 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 
@@ -84,8 +156,32 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 1 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("reactorParticles2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.91638, 17 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("reactorParticles:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6, 17 ) ]
+}
 
-[node name="player2" type="Area2D" index="0"]
+[node name="player2" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -99,22 +195,24 @@ set_Player_2 = true
 
 [node name="xWing" type="Sprite" parent="." index="0"]
 
+scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 hframes = 12
+_sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="shootFrom" type="Position2D" parent="." index="1"]
 
-position = Vector2( 0, -0.403587 )
+position = Vector2( 0, -11.4036 )
 scale = Vector2( 1, 0.752936 )
 
 [node name="shootFromLeft" type="Position2D" parent="." index="2"]
 
-position = Vector2( 17, -3.40359 )
+position = Vector2( 17, -9.40359 )
 scale = Vector2( 1, 0.752936 )
 
 [node name="shootFromRight" type="Position2D" parent="." index="3"]
 
-position = Vector2( -17, -3.40359 )
+position = Vector2( -17, -9.40359 )
 scale = Vector2( 1, 0.752936 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
@@ -147,11 +245,13 @@ autostart = false
 [node name="reactorParticles" parent="." index="7" instance=ExtResource( 3 )]
 
 position = Vector2( -6, 17 )
+amount = 5
 texture = ExtResource( 4 )
 
 [node name="reactorParticles2" parent="." index="8" instance=ExtResource( 3 )]
 
 position = Vector2( 5.91638, 17 )
+amount = 5
 texture = ExtResource( 4 )
 
 [node name="ShootingDelay" type="Timer" parent="." index="9"]

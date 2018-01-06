@@ -6,7 +6,7 @@ path="res://.import/xWing.png-13568b50432906f7354aab0875195450.stex"
 
 [deps]
 
-source_md5="02a4e5db24a5f4ac6d41e94efe17a777"
+source_md5="09fc91b41c95758aefeadbb82ac802cb"
 
 [params]
 
@@ -25,4 +25,4 @@ process/HDR_as_SRGB=false
 stream=false
 size_limit=0
 detect_3d=false
-svg/scale=1.0
+svg/scale=4.0

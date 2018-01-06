@@ -18,12 +18,15 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z" ]
 setRotation = false
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 position = Vector2( 0, 11 )
+scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="1"]
 

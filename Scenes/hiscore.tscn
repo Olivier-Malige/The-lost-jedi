@@ -32,8 +32,8 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
-custom_colors/font_color_shadow = Color( 0.941176, 0.172549, 0, 1 )
+custom_colors/font_color = Color( 0.721569, 0.721569, 0.25098, 1 )
+custom_colors/font_color_shadow = Color( 0.611765, 0.12549, 0.12549, 1 )
 text = "Hiscore"
 align = 1
 percent_visible = 1.0
@@ -56,10 +56,12 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 text = "higher wave :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="wave_coop" type="Label" parent="." index="2"]
 
@@ -76,10 +78,12 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 text = "higher wave :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="score_solo" type="Label" parent="." index="3"]
 
@@ -96,10 +100,12 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 text = "best score :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="solo" type="Label" parent="." index="4"]
 
@@ -117,7 +123,7 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.726562, 0, 1 )
+custom_colors/font_color = Color( 0.721569, 0.721569, 0.25098, 1 )
 text = "Solo :"
 percent_visible = 1.0
 lines_skipped = 0
@@ -140,7 +146,7 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 1, 0.72549, 0, 1 )
+custom_colors/font_color = Color( 0.721569, 0.721569, 0.25098, 1 )
 text = "Coop :"
 percent_visible = 1.0
 lines_skipped = 0
@@ -162,10 +168,11 @@ mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 text = "best score :"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
 
