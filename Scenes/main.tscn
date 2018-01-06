@@ -150,7 +150,6 @@ delay = 0.002
 
 [node name="LightStar47" type="Light2D" parent="CpuBackground" index="3"]
 
-visible = false
 position = Vector2( 573.568, 34.655 )
 scale = Vector2( 0.15032, 0.0815018 )
 enabled = true
@@ -213,7 +212,6 @@ delay = 0.002
 
 [node name="LightStar52" type="Light2D" parent="CpuBackground" index="5"]
 
-visible = false
 position = Vector2( 638.733, 61.5102 )
 scale = Vector2( 0.0813163, 0.0532157 )
 enabled = true
@@ -1986,7 +1984,6 @@ delay = 0.002
 
 [node name="LightStar37" type="Light2D" parent="CpuBackground" index="61"]
 
-visible = false
 position = Vector2( -541.48, -235.372 )
 rotation = -0.000227519
 scale = Vector2( 0.126826, 0.12714 )
@@ -2115,7 +2112,6 @@ delay = 0.002
 
 [node name="LightStar34" type="Light2D" parent="CpuBackground" index="65"]
 
-visible = false
 position = Vector2( -716.359, -188.572 )
 rotation = -0.000227519
 scale = Vector2( 0.143898, 0.129944 )
@@ -2148,7 +2144,6 @@ delay = 0.005
 
 [node name="LightStar73" type="Light2D" parent="CpuBackground" index="66"]
 
-visible = false
 position = Vector2( -730.769, -188.572 )
 rotation = -0.000227519
 scale = Vector2( 0.143898, 0.129944 )
@@ -2181,7 +2176,6 @@ delay = 0.005
 
 [node name="LightStar74" type="Light2D" parent="CpuBackground" index="67"]
 
-visible = false
 position = Vector2( -742.886, -188.402 )
 rotation = -0.000227519
 scale = Vector2( 0.143898, 0.129944 )
@@ -2214,7 +2208,6 @@ delay = 0.005
 
 [node name="LightStar75" type="Light2D" parent="CpuBackground" index="68"]
 
-visible = false
 position = Vector2( -752.34, -188.402 )
 rotation = -0.000227519
 scale = Vector2( 0.143898, 0.129944 )
@@ -2247,7 +2240,6 @@ delay = 0.005
 
 [node name="LightStar76" type="Light2D" parent="CpuBackground" index="69"]
 
-visible = false
 position = Vector2( -760.27, -188.326 )
 rotation = -0.000227519
 scale = Vector2( 0.139299, 0.0861567 )
@@ -2280,7 +2272,6 @@ delay = 0.005
 
 [node name="LightStar67" type="Light2D" parent="CpuBackground" index="70"]
 
-visible = false
 position = Vector2( -699.708, -188.443 )
 rotation = -0.000227519
 scale = Vector2( 0.143898, 0.129944 )
@@ -2313,7 +2304,6 @@ delay = 0.005
 
 [node name="LightStar68" type="Light2D" parent="CpuBackground" index="71"]
 
-visible = false
 position = Vector2( -682.275, -188.315 )
 rotation = -0.000227519
 scale = Vector2( 0.143898, 0.129944 )
@@ -2346,7 +2336,6 @@ delay = 0.005
 
 [node name="LightStar69" type="Light2D" parent="CpuBackground" index="72"]
 
-visible = false
 position = Vector2( -663.182, -188.315 )
 rotation = -0.000227519
 scale = Vector2( 0.143898, 0.129944 )
@@ -2379,7 +2368,6 @@ delay = 0.005
 
 [node name="LightStar70" type="Light2D" parent="CpuBackground" index="73"]
 
-visible = false
 position = Vector2( -644.503, -188.315 )
 rotation = -0.000227519
 scale = Vector2( 0.143898, 0.129944 )
@@ -2412,7 +2400,6 @@ delay = 0.005
 
 [node name="LightStar71" type="Light2D" parent="CpuBackground" index="74"]
 
-visible = false
 position = Vector2( -609.505, -188.711 )
 rotation = -0.000227519
 scale = Vector2( 0.143898, 0.129944 )
@@ -2445,7 +2432,6 @@ delay = 0.005
 
 [node name="LightStar72" type="Light2D" parent="CpuBackground" index="75"]
 
-visible = false
 position = Vector2( -597.539, -188.736 )
 rotation = -0.000227519
 scale = Vector2( 0.168634, 0.125279 )
@@ -2478,7 +2464,6 @@ delay = 0.005
 
 [node name="LightStar77" type="Light2D" parent="CpuBackground" index="76"]
 
-visible = false
 position = Vector2( -583.354, -188.824 )
 rotation = -0.000227519
 scale = Vector2( 0.149942, 0.103603 )
@@ -2511,7 +2496,6 @@ delay = 0.005
 
 [node name="LightStar78" type="Light2D" parent="CpuBackground" index="77"]
 
-visible = false
 position = Vector2( -565.112, -188.893 )
 rotation = -0.000227519
 scale = Vector2( 0.112562, 0.0862573 )
@@ -2544,7 +2528,6 @@ delay = 0.005
 
 [node name="LightStar79" type="Light2D" parent="CpuBackground" index="78"]
 
-visible = false
 position = Vector2( -552.701, -189.032 )
 rotation = -0.000227519
 scale = Vector2( 0.0751872, 0.0515733 )
@@ -2577,7 +2560,6 @@ delay = 0.005
 
 [node name="LightStar35" type="Light2D" parent="CpuBackground" index="79"]
 
-visible = false
 position = Vector2( -799.325, -171.419 )
 rotation = -0.000227519
 scale = Vector2( 0.132414, 0.106887 )
