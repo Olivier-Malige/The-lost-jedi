@@ -572,15 +572,44 @@ text = "fullscreen :"
 flat = false
 align = 1
 
-[node name="hiscore" type="Button" parent="buttonGroup" index="12"]
+[node name="graphic" type="Button" parent="buttonGroup" index="12"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 312.0
-margin_right = 108.0
+margin_right = 128.0
 margin_bottom = 337.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 15 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.721569, 0.721569, 0.25098, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Graphic :"
+flat = false
+align = 1
+
+[node name="hiscore" type="Button" parent="buttonGroup" index="13"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 338.0
+margin_right = 108.0
+margin_bottom = 363.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
@@ -601,15 +630,15 @@ text = "Hiscore"
 flat = false
 align = 1
 
-[node name="exit" type="Button" parent="buttonGroup" index="13"]
+[node name="exit" type="Button" parent="buttonGroup" index="14"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 338.0
+margin_top = 364.0
 margin_right = 57.0
-margin_bottom = 363.0
+margin_bottom = 389.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 size_flags_horizontal = 2
@@ -660,6 +689,8 @@ autostart = true
 [connection signal="button_down" from="buttonGroup/options" to="." method="_on_options_button_down"]
 
 [connection signal="button_down" from="buttonGroup/fullscreen" to="." method="_on_fullscreen_button_down"]
+
+[connection signal="button_down" from="buttonGroup/graphic" to="." method="_on_graphic_button_down"]
 
 [connection signal="button_down" from="buttonGroup/hiscore" to="." method="_on_Hiscore_button_down"]
 

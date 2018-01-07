@@ -4,7 +4,7 @@ var config = global.saveData.config
 
 #Define menu options
 enum {OPTION_RETURN,OPTION_CONTROLLER,OPTION_PLAYER1,OPTION_PLAYER2,OPTION_MUSIC,OPTION_SOUND,
-	  OPTION_RESUME,OPTION_RESTART,OPTION_SOLO,OPTION_COOP,OPTION_OPTIONS,OPTION_HISCORE,OPTION_EXIT,OPTION_FULLSCREEN}
+	  OPTION_RESUME,OPTION_RESTART,OPTION_SOLO,OPTION_COOP,OPTION_OPTIONS,OPTION_HISCORE,OPTION_EXIT,OPTION_FULLSCREEN,OPTION_GRAPHIC}
 #Define game Mode
 enum {MODE_SOLO,MODE_COOP}
 #Define menu Mode
@@ -23,7 +23,7 @@ func set_mode(mode):
 		mode(optionsEnable)
 		
 	elif mode == MENU_OPTIONS :
-		optionsEnable = [OPTION_MUSIC,OPTION_SOUND,OPTION_RETURN,OPTION_CONTROLLER,OPTION_FULLSCREEN]
+		optionsEnable = [OPTION_MUSIC,OPTION_SOUND,OPTION_RETURN,OPTION_CONTROLLER,OPTION_FULLSCREEN,OPTION_GRAPHIC]
 
 		if config.music :
 			get_node("buttonGroup/music").set_text("music : on")
@@ -34,6 +34,9 @@ func set_mode(mode):
 		if config.fullscreen :
 			get_node("buttonGroup/fullscreen").set_text("fullscreen : on")
 		else : get_node("buttonGroup/fullscreen").set_text("fullscreen : off")
+		if config.graphic == "hight" :
+			get_node("buttonGroup/graphic").set_text("graphic : hight")
+		else : get_node("buttonGroup/graphic").set_text("graphic : low")
 
 	elif mode == MENU_PAUSE:
 		optionsEnable = [OPTION_RESUME,OPTION_OPTIONS,OPTION_RESTART,OPTION_EXIT]
@@ -65,6 +68,7 @@ func mode (enable= []) :
 			OPTION_HISCORE :get_node("buttonGroup/hiscore").add_to_group("enable")
 			OPTION_EXIT :get_node("buttonGroup/exit").add_to_group("enable")
 			OPTION_FULLSCREEN :get_node("buttonGroup/fullscreen").add_to_group("enable")
+			OPTION_GRAPHIC :get_node("buttonGroup/graphic").add_to_group("enable")
 			
 	for node in get_node("buttonGroup").get_children() :
 		if not node.is_in_group("enable") :
@@ -75,7 +79,7 @@ func mode (enable= []) :
 	$buttonGroup.rect_size = Vector2(0,0)
 	#set menu visible
 	show()
-	#set focus of firt node in buttonGroup
+	#set focus of first node in buttonGroup
 	get_node("buttonGroup").get_child(0).grab_focus()
 	
 func start_game(mode):
@@ -192,3 +196,15 @@ func switch_controller(player):
 			else :
 				configPlayer = controller[i + 1]
 				return configPlayer
+
+
+func _on_graphic_button_down():
+	if global.saveData.config.graphic == "hight" :
+		global.saveData.config.graphic = "low"
+		$buttonGroup/graphic.set_text("graphic : low")
+		get_node("/root/main").set_Graphic("low")
+	else :
+		global.saveData.config.graphic = "hight"
+		$buttonGroup/graphic.set_text("graphic : hight")
+		get_node("/root/main").set_Graphic("hight")
+	global.save_Data()

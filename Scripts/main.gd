@@ -11,6 +11,7 @@ var paused = load ("res://Prefabs/paused.tscn")
 var menuShow = false
 
 func _ready():
+	set_Graphic(global.saveData.config.graphic)
 	OS.set_window_fullscreen(global.saveData.config.fullscreen)
 #	get_node("Camera2D").set_scale(Vector2 (1.5,1.5))
 	set_pause_mode(PAUSE_MODE_PROCESS)
@@ -97,4 +98,10 @@ func goGameOverScreen():
 #	get_node("animCamera").play("worldToGameOver")
 	var gameOver = preload("res://Scenes/gameOver.tscn").instance()
 	add_child(gameOver)
-	
+
+func set_Graphic(level):
+		for ch in $background.get_children() :
+			if level == "hight":
+				ch.visible = true
+			elif level == "low":
+				ch.visible = false

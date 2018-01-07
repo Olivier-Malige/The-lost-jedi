@@ -198,7 +198,7 @@ position = Vector2( 400, 560 )
 [node name="background" parent="." index="4" instance=ExtResource( 5 )]
 
 scroll_ignore_camera_zoom = true
-speed_Y = 125
+speed_Y = 140
 
 [connection signal="timeout" from="waveGenerator/masterTimer" to="waveGenerator" method="_on_masterTimer_timeout"]
 

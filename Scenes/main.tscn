@@ -47,17 +47,17 @@ pause_mode = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Material", "Transform", "Z" ]
 
-[node name="CpuBackground" type="Sprite" parent="." index="0"]
+[node name="background" type="Sprite" parent="." index="0"]
 
 position = Vector2( 613.277, 463.7 )
 scale = Vector2( 1.71894, 1.85326 )
-z = 1000
+z_index = 500
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform", "Z" ]
+_sections_unfolded = [ "Transform", "Z", "Z Index" ]
 
-[node name="LightBackground" type="Light2D" parent="CpuBackground" index="0"]
+[node name="LightBackground" type="Light2D" parent="background" index="0"]
 
-position = Vector2( -92.5241, 11.2906 )
+position = Vector2( -81.6124, 12.1752 )
 scale = Vector2( 11.004, 14.454 )
 enabled = true
 editor_only = false
@@ -86,7 +86,7 @@ range_Min = 0.7
 range_Max = 1
 delay = 0.02
 
-[node name="LightButtun" type="Light2D" parent="CpuBackground" index="1"]
+[node name="LightButtun" type="Light2D" parent="background" index="1"]
 
 position = Vector2( 244.541, 64.5844 )
 scale = Vector2( 0.908148, 0.736217 )
@@ -117,7 +117,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.001
 
-[node name="LightStar" type="Light2D" parent="CpuBackground" index="2"]
+[node name="LightStar" type="Light2D" parent="background" index="2"]
 
 position = Vector2( 397.537, 70.7719 )
 scale = Vector2( 0.333149, 0.283935 )
@@ -148,7 +148,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar47" type="Light2D" parent="CpuBackground" index="3"]
+[node name="LightStar47" type="Light2D" parent="background" index="3"]
 
 position = Vector2( 573.568, 34.655 )
 scale = Vector2( 0.15032, 0.0815018 )
@@ -179,7 +179,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar48" type="Light2D" parent="CpuBackground" index="4"]
+[node name="LightStar48" type="Light2D" parent="background" index="4"]
 
 position = Vector2( 598.456, 51.6361 )
 scale = Vector2( 0.15032, 0.0815018 )
@@ -210,7 +210,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar52" type="Light2D" parent="CpuBackground" index="5"]
+[node name="LightStar52" type="Light2D" parent="background" index="5"]
 
 position = Vector2( 638.733, 61.5102 )
 scale = Vector2( 0.0813163, 0.0532157 )
@@ -241,7 +241,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar53" type="Light2D" parent="CpuBackground" index="6"]
+[node name="LightStar53" type="Light2D" parent="background" index="6"]
 
 position = Vector2( 644.426, 57.512 )
 scale = Vector2( 0.05253, 0.0379532 )
@@ -250,7 +250,7 @@ editor_only = false
 texture = ExtResource( 5 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
+color = Color( 1, 1, 1, 0.752941 )
 energy = 1.0
 mode = 0
 range_height = 0.0
@@ -272,9 +272,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar54" type="Light2D" parent="CpuBackground" index="7"]
+[node name="LightStar54" type="Light2D" parent="background" index="7"]
 
-visible = false
 position = Vector2( 645.676, 53.4529 )
 scale = Vector2( 0.05253, 0.0379532 )
 enabled = true
@@ -304,7 +303,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar55" type="Light2D" parent="CpuBackground" index="8"]
+[node name="LightStar55" type="Light2D" parent="background" index="8"]
 
 position = Vector2( 588.475, 102.401 )
 scale = Vector2( 0.05253, 0.0584147 )
@@ -335,9 +334,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar56" type="Light2D" parent="CpuBackground" index="9"]
+[node name="LightStar56" type="Light2D" parent="background" index="9"]
 
-visible = false
 position = Vector2( 641.574, 142.667 )
 scale = Vector2( 0.114472, 0.0800614 )
 enabled = true
@@ -367,7 +365,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar49" type="Light2D" parent="CpuBackground" index="10"]
+[node name="LightStar49" type="Light2D" parent="background" index="10"]
 
 position = Vector2( 581.292, 68.6634 )
 scale = Vector2( 0.15032, 0.0815018 )
@@ -398,9 +396,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar50" type="Light2D" parent="CpuBackground" index="11"]
+[node name="LightStar50" type="Light2D" parent="background" index="11"]
 
-visible = false
 position = Vector2( 477.453, 129.105 )
 scale = Vector2( 0.0789079, 0.0471381 )
 enabled = true
@@ -430,7 +427,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar51" type="Light2D" parent="CpuBackground" index="12"]
+[node name="LightStar51" type="Light2D" parent="background" index="12"]
 
 position = Vector2( 527.841, 158.498 )
 scale = Vector2( 0.158606, 0.113527 )
@@ -461,9 +458,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar63" type="Light2D" parent="CpuBackground" index="13"]
+[node name="LightStar63" type="Light2D" parent="background" index="13"]
 
-visible = false
 position = Vector2( 535.4, 187.671 )
 scale = Vector2( 0.0953192, 0.0727385 )
 enabled = true
@@ -493,9 +489,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar64" type="Light2D" parent="CpuBackground" index="14"]
+[node name="LightStar64" type="Light2D" parent="background" index="14"]
 
-visible = false
 position = Vector2( 545.609, 188.516 )
 scale = Vector2( 0.0953192, 0.0727385 )
 enabled = true
@@ -525,7 +520,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar65" type="Light2D" parent="CpuBackground" index="15"]
+[node name="LightStar65" type="Light2D" parent="background" index="15"]
 
 position = Vector2( 507.554, 179.571 )
 scale = Vector2( 0.0953192, 0.0727385 )
@@ -556,9 +551,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar66" type="Light2D" parent="CpuBackground" index="16"]
+[node name="LightStar66" type="Light2D" parent="background" index="16"]
 
-visible = false
 position = Vector2( 503.592, 166.812 )
 scale = Vector2( 0.0953192, 0.0727385 )
 enabled = true
@@ -588,9 +582,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar2" type="Light2D" parent="CpuBackground" index="17"]
+[node name="LightStar2" type="Light2D" parent="background" index="17"]
 
-visible = false
 position = Vector2( 374.567, -236.225 )
 scale = Vector2( 0.333149, 0.283935 )
 enabled = true
@@ -620,7 +613,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar5" type="Light2D" parent="CpuBackground" index="18"]
+[node name="LightStar5" type="Light2D" parent="background" index="18"]
 
 position = Vector2( 523.539, -207.53 )
 scale = Vector2( 0.1925, 0.153298 )
@@ -651,9 +644,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar6" type="Light2D" parent="CpuBackground" index="19"]
+[node name="LightStar6" type="Light2D" parent="background" index="19"]
 
-visible = false
 position = Vector2( 500.592, -228.275 )
 scale = Vector2( 0.1925, 0.153298 )
 enabled = true
@@ -683,7 +675,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar7" type="Light2D" parent="CpuBackground" index="20"]
+[node name="LightStar7" type="Light2D" parent="background" index="20"]
 
 position = Vector2( 419.562, -160.341 )
 scale = Vector2( 0.13927, 0.110638 )
@@ -714,9 +706,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar8" type="Light2D" parent="CpuBackground" index="21"]
+[node name="LightStar8" type="Light2D" parent="background" index="21"]
 
-visible = false
 position = Vector2( 385.473, -153.392 )
 scale = Vector2( 0.13927, 0.110638 )
 enabled = true
@@ -746,7 +737,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar3" type="Light2D" parent="CpuBackground" index="22"]
+[node name="LightStar3" type="Light2D" parent="background" index="22"]
 
 position = Vector2( 473.739, -72.4322 )
 scale = Vector2( 0.266289, 0.222391 )
@@ -777,9 +768,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar4" type="Light2D" parent="CpuBackground" index="23"]
+[node name="LightStar4" type="Light2D" parent="background" index="23"]
 
-visible = false
 position = Vector2( 426.634, -69.401 )
 scale = Vector2( 0.266289, 0.222391 )
 enabled = true
@@ -809,7 +799,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar9" type="Light2D" parent="CpuBackground" index="24"]
+[node name="LightStar9" type="Light2D" parent="background" index="24"]
 
 position = Vector2( 558.278, 355.071 )
 scale = Vector2( 0.266289, 0.222391 )
@@ -840,9 +830,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar10" type="Light2D" parent="CpuBackground" index="25"]
+[node name="LightStar10" type="Light2D" parent="background" index="25"]
 
-visible = false
 position = Vector2( 531.551, 385.971 )
 scale = Vector2( 0.266289, 0.222391 )
 enabled = true
@@ -872,7 +861,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar11" type="Light2D" parent="CpuBackground" index="26"]
+[node name="LightStar11" type="Light2D" parent="background" index="26"]
 
 position = Vector2( 389.528, 374.945 )
 scale = Vector2( 0.266289, 0.222391 )
@@ -903,9 +892,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar57" type="Light2D" parent="CpuBackground" index="27"]
+[node name="LightStar57" type="Light2D" parent="background" index="27"]
 
-visible = false
 position = Vector2( 438.62, 316.642 )
 scale = Vector2( 0.14772, 0.150837 )
 enabled = true
@@ -935,7 +923,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar58" type="Light2D" parent="CpuBackground" index="28"]
+[node name="LightStar58" type="Light2D" parent="background" index="28"]
 
 position = Vector2( 423.466, 301.549 )
 scale = Vector2( 0.14772, 0.150837 )
@@ -966,9 +954,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar59" type="Light2D" parent="CpuBackground" index="29"]
+[node name="LightStar59" type="Light2D" parent="background" index="29"]
 
-visible = false
 position = Vector2( 463.538, 280.607 )
 scale = Vector2( 0.14772, 0.150837 )
 enabled = true
@@ -998,7 +985,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar60" type="Light2D" parent="CpuBackground" index="30"]
+[node name="LightStar60" type="Light2D" parent="background" index="30"]
 
 position = Vector2( 477.675, 277.399 )
 scale = Vector2( 0.14772, 0.150837 )
@@ -1029,9 +1016,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar61" type="Light2D" parent="CpuBackground" index="31"]
+[node name="LightStar61" type="Light2D" parent="background" index="31"]
 
-visible = false
 position = Vector2( 477.421, 272.447 )
 scale = Vector2( 0.115942, 0.121365 )
 enabled = true
@@ -1061,7 +1047,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar62" type="Light2D" parent="CpuBackground" index="32"]
+[node name="LightStar62" type="Light2D" parent="background" index="32"]
 
 position = Vector2( 480.472, 271.409 )
 scale = Vector2( 0.115942, 0.121365 )
@@ -1092,9 +1078,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar12" type="Light2D" parent="CpuBackground" index="33"]
+[node name="LightStar12" type="Light2D" parent="background" index="33"]
 
-visible = false
 position = Vector2( -464.316, 404.664 )
 scale = Vector2( 0.266289, 0.222391 )
 enabled = true
@@ -1124,7 +1109,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar13" type="Light2D" parent="CpuBackground" index="34"]
+[node name="LightStar13" type="Light2D" parent="background" index="34"]
 
 position = Vector2( -488.776, 309.303 )
 scale = Vector2( 0.266289, 0.222391 )
@@ -1155,9 +1140,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar14" type="Light2D" parent="CpuBackground" index="35"]
+[node name="LightStar14" type="Light2D" parent="background" index="35"]
 
-visible = false
 position = Vector2( -650.338, 348.607 )
 scale = Vector2( 0.266289, 0.222391 )
 enabled = true
@@ -1187,7 +1171,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar15" type="Light2D" parent="CpuBackground" index="36"]
+[node name="LightStar15" type="Light2D" parent="background" index="36"]
 
 position = Vector2( -744.253, 293.601 )
 scale = Vector2( 0.463467, 0.361643 )
@@ -1218,9 +1202,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar16" type="Light2D" parent="CpuBackground" index="37"]
+[node name="LightStar16" type="Light2D" parent="background" index="37"]
 
-visible = false
 position = Vector2( -782.25, 307.686 )
 scale = Vector2( 0.216087, 0.216342 )
 enabled = true
@@ -1250,7 +1233,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar17" type="Light2D" parent="CpuBackground" index="38"]
+[node name="LightStar17" type="Light2D" parent="background" index="38"]
 
 position = Vector2( -658.643, 199.493 )
 scale = Vector2( 0.272354, 0.23198 )
@@ -1281,9 +1264,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar18" type="Light2D" parent="CpuBackground" index="39"]
+[node name="LightStar18" type="Light2D" parent="background" index="39"]
 
-visible = false
 position = Vector2( -692.246, 142.603 )
 scale = Vector2( 0.272354, 0.23198 )
 enabled = true
@@ -1313,7 +1295,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar19" type="Light2D" parent="CpuBackground" index="40"]
+[node name="LightStar19" type="Light2D" parent="background" index="40"]
 
 position = Vector2( -743.408, 122.535 )
 scale = Vector2( 0.272354, 0.23198 )
@@ -1344,9 +1326,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar20" type="Light2D" parent="CpuBackground" index="41"]
+[node name="LightStar20" type="Light2D" parent="background" index="41"]
 
-visible = false
 position = Vector2( -726.551, 117.508 )
 scale = Vector2( 0.224267, 0.191581 )
 enabled = true
@@ -1376,7 +1357,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar21" type="Light2D" parent="CpuBackground" index="42"]
+[node name="LightStar21" type="Light2D" parent="background" index="42"]
 
 position = Vector2( -727.396, 112.177 )
 scale = Vector2( 0.160869, 0.12625 )
@@ -1407,9 +1388,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar22" type="Light2D" parent="CpuBackground" index="43"]
+[node name="LightStar22" type="Light2D" parent="background" index="43"]
 
-visible = false
 position = Vector2( -742.755, 69.6723 )
 scale = Vector2( 0.160869, 0.12625 )
 enabled = true
@@ -1439,7 +1419,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar23" type="Light2D" parent="CpuBackground" index="44"]
+[node name="LightStar23" type="Light2D" parent="background" index="44"]
 
 position = Vector2( -565.45, 27.6631 )
 scale = Vector2( 0.160869, 0.12625 )
@@ -1470,9 +1450,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar24" type="Light2D" parent="CpuBackground" index="45"]
+[node name="LightStar24" type="Light2D" parent="background" index="45"]
 
-visible = false
 position = Vector2( -553.438, 40.6482 )
 scale = Vector2( 0.160869, 0.12625 )
 enabled = true
@@ -1502,7 +1481,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar25" type="Light2D" parent="CpuBackground" index="46"]
+[node name="LightStar25" type="Light2D" parent="background" index="46"]
 
 position = Vector2( -555.332, 42.6008 )
 scale = Vector2( 0.110526, 0.0917919 )
@@ -1533,9 +1512,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar26" type="Light2D" parent="CpuBackground" index="47"]
+[node name="LightStar26" type="Light2D" parent="background" index="47"]
 
-visible = false
 position = Vector2( -566.35, 15.6317 )
 scale = Vector2( 0.110526, 0.0917919 )
 enabled = true
@@ -1565,7 +1543,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar27" type="Light2D" parent="CpuBackground" index="48"]
+[node name="LightStar27" type="Light2D" parent="background" index="48"]
 
 position = Vector2( -617.579, 56.707 )
 scale = Vector2( 0.110526, 0.0917919 )
@@ -1596,9 +1574,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar28" type="Light2D" parent="CpuBackground" index="49"]
+[node name="LightStar28" type="Light2D" parent="background" index="49"]
 
-visible = false
 position = Vector2( -730.298, -11.2047 )
 scale = Vector2( 0.110526, 0.0917919 )
 enabled = true
@@ -1628,7 +1605,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar29" type="Light2D" parent="CpuBackground" index="50"]
+[node name="LightStar29" type="Light2D" parent="background" index="50"]
 
 position = Vector2( -803.424, 0.775696 )
 scale = Vector2( 0.110526, 0.0917919 )
@@ -1659,9 +1636,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar30" type="Light2D" parent="CpuBackground" index="51"]
+[node name="LightStar30" type="Light2D" parent="background" index="51"]
 
-visible = false
 position = Vector2( -458.424, -3.38687 )
 scale = Vector2( 0.110526, 0.0917919 )
 enabled = true
@@ -1691,7 +1667,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar31" type="Light2D" parent="CpuBackground" index="52"]
+[node name="LightStar31" type="Light2D" parent="background" index="52"]
 
 position = Vector2( -464.565, -7.55002 )
 scale = Vector2( 0.0780353, 0.0708244 )
@@ -1722,9 +1698,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar32" type="Light2D" parent="CpuBackground" index="53"]
+[node name="LightStar32" type="Light2D" parent="background" index="53"]
 
-visible = false
 position = Vector2( -472.23, -192.381 )
 rotation = -0.000227519
 scale = Vector2( 0.207374, 0.237813 )
@@ -1755,7 +1730,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar40" type="Light2D" parent="CpuBackground" index="54"]
+[node name="LightStar40" type="Light2D" parent="background" index="54"]
 
 position = Vector2( -446.364, -294.533 )
 rotation = -0.000227519
@@ -1787,9 +1762,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar41" type="Light2D" parent="CpuBackground" index="55"]
+[node name="LightStar41" type="Light2D" parent="background" index="55"]
 
-visible = false
 position = Vector2( -428.556, -297.54 )
 rotation = -0.000227519
 scale = Vector2( 0.0940829, 0.102642 )
@@ -1820,7 +1794,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar42" type="Light2D" parent="CpuBackground" index="56"]
+[node name="LightStar42" type="Light2D" parent="background" index="56"]
 
 position = Vector2( -379.365, -354.353 )
 rotation = -0.000227519
@@ -1852,9 +1826,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar43" type="Light2D" parent="CpuBackground" index="57"]
+[node name="LightStar43" type="Light2D" parent="background" index="57"]
 
-visible = false
 position = Vector2( -359.235, -350.28 )
 rotation = -0.000227519
 scale = Vector2( 0.0940829, 0.102642 )
@@ -1885,7 +1858,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar44" type="Light2D" parent="CpuBackground" index="58"]
+[node name="LightStar44" type="Light2D" parent="background" index="58"]
 
 position = Vector2( -310.172, -330.333 )
 rotation = -0.000227519
@@ -1917,9 +1890,8 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar45" type="Light2D" parent="CpuBackground" index="59"]
+[node name="LightStar45" type="Light2D" parent="background" index="59"]
 
-visible = false
 position = Vector2( -308.477, -349.57 )
 rotation = -0.000227519
 scale = Vector2( 0.154128, 0.0922825 )
@@ -1950,7 +1922,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar46" type="Light2D" parent="CpuBackground" index="60"]
+[node name="LightStar46" type="Light2D" parent="background" index="60"]
 
 position = Vector2( -227.532, -326.417 )
 rotation = -0.000227519
@@ -1982,7 +1954,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar37" type="Light2D" parent="CpuBackground" index="61"]
+[node name="LightStar37" type="Light2D" parent="background" index="61"]
 
 position = Vector2( -541.48, -235.372 )
 rotation = -0.000227519
@@ -2014,7 +1986,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar33" type="Light2D" parent="CpuBackground" index="62"]
+[node name="LightStar33" type="Light2D" parent="background" index="62"]
 
 position = Vector2( -519.392, -155.46 )
 rotation = -0.000227519
@@ -2046,7 +2018,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar38" type="Light2D" parent="CpuBackground" index="63"]
+[node name="LightStar38" type="Light2D" parent="background" index="63"]
 
 position = Vector2( -460.434, -143.303 )
 rotation = -0.000227519
@@ -2078,7 +2050,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar39" type="Light2D" parent="CpuBackground" index="64"]
+[node name="LightStar39" type="Light2D" parent="background" index="64"]
 
 position = Vector2( -453.59, -146.355 )
 rotation = -0.000227519
@@ -2110,7 +2082,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar34" type="Light2D" parent="CpuBackground" index="65"]
+[node name="LightStar34" type="Light2D" parent="background" index="65"]
 
 position = Vector2( -716.359, -188.572 )
 rotation = -0.000227519
@@ -2142,7 +2114,7 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar73" type="Light2D" parent="CpuBackground" index="66"]
+[node name="LightStar73" type="Light2D" parent="background" index="66"]
 
 position = Vector2( -730.769, -188.572 )
 rotation = -0.000227519
@@ -2174,7 +2146,7 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar74" type="Light2D" parent="CpuBackground" index="67"]
+[node name="LightStar74" type="Light2D" parent="background" index="67"]
 
 position = Vector2( -742.886, -188.402 )
 rotation = -0.000227519
@@ -2206,7 +2178,7 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar75" type="Light2D" parent="CpuBackground" index="68"]
+[node name="LightStar75" type="Light2D" parent="background" index="68"]
 
 position = Vector2( -752.34, -188.402 )
 rotation = -0.000227519
@@ -2233,12 +2205,12 @@ shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
+_sections_unfolded = [ "Range", "Visibility" ]
 range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar76" type="Light2D" parent="CpuBackground" index="69"]
+[node name="LightStar76" type="Light2D" parent="background" index="69"]
 
 position = Vector2( -760.27, -188.326 )
 rotation = -0.000227519
@@ -2270,7 +2242,7 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar67" type="Light2D" parent="CpuBackground" index="70"]
+[node name="LightStar67" type="Light2D" parent="background" index="70"]
 
 position = Vector2( -699.708, -188.443 )
 rotation = -0.000227519
@@ -2302,7 +2274,7 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar68" type="Light2D" parent="CpuBackground" index="71"]
+[node name="LightStar68" type="Light2D" parent="background" index="71"]
 
 position = Vector2( -682.275, -188.315 )
 rotation = -0.000227519
@@ -2334,7 +2306,7 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar69" type="Light2D" parent="CpuBackground" index="72"]
+[node name="LightStar69" type="Light2D" parent="background" index="72"]
 
 position = Vector2( -663.182, -188.315 )
 rotation = -0.000227519
@@ -2366,11 +2338,11 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar70" type="Light2D" parent="CpuBackground" index="73"]
+[node name="LightStar70" type="Light2D" parent="background" index="73"]
 
-position = Vector2( -644.503, -188.315 )
+position = Vector2( -644.65, -188.496 )
 rotation = -0.000227519
-scale = Vector2( 0.143898, 0.129944 )
+scale = Vector2( 0.125479, 0.10675 )
 enabled = true
 editor_only = false
 texture = ExtResource( 5 )
@@ -2398,11 +2370,11 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar71" type="Light2D" parent="CpuBackground" index="74"]
+[node name="LightStar71" type="Light2D" parent="background" index="74"]
 
-position = Vector2( -609.505, -188.711 )
+position = Vector2( -609.386, -188.454 )
 rotation = -0.000227519
-scale = Vector2( 0.143898, 0.129944 )
+scale = Vector2( 0.113209, 0.102844 )
 enabled = true
 editor_only = false
 texture = ExtResource( 5 )
@@ -2430,11 +2402,11 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar72" type="Light2D" parent="CpuBackground" index="75"]
+[node name="LightStar72" type="Light2D" parent="background" index="75"]
 
-position = Vector2( -597.539, -188.736 )
+position = Vector2( -597.705, -188.803 )
 rotation = -0.000227519
-scale = Vector2( 0.168634, 0.125279 )
+scale = Vector2( 0.102343, 0.0788196 )
 enabled = true
 editor_only = false
 texture = ExtResource( 5 )
@@ -2462,7 +2434,7 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar77" type="Light2D" parent="CpuBackground" index="76"]
+[node name="LightStar77" type="Light2D" parent="background" index="76"]
 
 position = Vector2( -583.354, -188.824 )
 rotation = -0.000227519
@@ -2494,7 +2466,7 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar78" type="Light2D" parent="CpuBackground" index="77"]
+[node name="LightStar78" type="Light2D" parent="background" index="77"]
 
 position = Vector2( -565.112, -188.893 )
 rotation = -0.000227519
@@ -2526,7 +2498,7 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar79" type="Light2D" parent="CpuBackground" index="78"]
+[node name="LightStar79" type="Light2D" parent="background" index="78"]
 
 position = Vector2( -552.701, -189.032 )
 rotation = -0.000227519
@@ -2558,7 +2530,7 @@ range_Min = 1.0
 range_Max = 3.0
 delay = 0.005
 
-[node name="LightStar35" type="Light2D" parent="CpuBackground" index="79"]
+[node name="LightStar35" type="Light2D" parent="background" index="79"]
 
 position = Vector2( -799.325, -171.419 )
 rotation = -0.000227519
@@ -2590,7 +2562,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightStar36" type="Light2D" parent="CpuBackground" index="80"]
+[node name="LightStar36" type="Light2D" parent="background" index="80"]
 
 position = Vector2( -732.287, -285.435 )
 rotation = -0.000227519
@@ -2622,7 +2594,7 @@ range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="LightX-Wing_Red" type="Light2D" parent="CpuBackground" index="81"]
+[node name="LightX-Wing_Red" type="Light2D" parent="background" index="81"]
 
 position = Vector2( 550.421, -146.66 )
 scale = Vector2( 1.38778, 1.12395 )
@@ -2653,7 +2625,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.001
 
-[node name="LightX-Wing_Red2" type="Light2D" parent="CpuBackground" index="82"]
+[node name="LightX-Wing_Red2" type="Light2D" parent="background" index="82"]
 
 position = Vector2( 527.071, -151.293 )
 scale = Vector2( 1.38778, 1.12395 )
@@ -2684,7 +2656,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.001
 
-[node name="LightX-Wing_Red3" type="Light2D" parent="CpuBackground" index="83"]
+[node name="LightX-Wing_Red3" type="Light2D" parent="background" index="83"]
 
 position = Vector2( 548.423, -124.886 )
 scale = Vector2( 1.38778, 1.12395 )
@@ -2715,7 +2687,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.001
 
-[node name="LightX-Wing" type="Light2D" parent="CpuBackground" index="84"]
+[node name="LightX-Wing" type="Light2D" parent="background" index="84"]
 
 position = Vector2( 506.98, -52.4875 )
 scale = Vector2( 2.7574, 2.41798 )
@@ -2746,7 +2718,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.001
 
-[node name="LightX-Wing4" type="Light2D" parent="CpuBackground" index="85"]
+[node name="LightX-Wing4" type="Light2D" parent="background" index="85"]
 
 position = Vector2( 420.597, -20.7542 )
 scale = Vector2( 0.526637, 0.474533 )
@@ -2777,7 +2749,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.001
 
-[node name="LightX-Wing2" type="Light2D" parent="CpuBackground" index="86"]
+[node name="LightX-Wing2" type="Light2D" parent="background" index="86"]
 
 position = Vector2( 468.313, -57.6823 )
 scale = Vector2( 2.7574, 1.80593 )
@@ -2808,7 +2780,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.001
 
-[node name="LightX-Wing3" type="Light2D" parent="CpuBackground" index="87"]
+[node name="LightX-Wing3" type="Light2D" parent="background" index="87"]
 
 position = Vector2( 496.959, -5.79062 )
 scale = Vector2( 1.64973, 1.04159 )
@@ -2839,7 +2811,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.001
 
-[node name="LightTie" type="Light2D" parent="CpuBackground" index="88"]
+[node name="LightTie" type="Light2D" parent="background" index="88"]
 
 position = Vector2( -503.218, 168.329 )
 scale = Vector2( 2.73097, 2.38725 )
@@ -2870,7 +2842,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.1
 
-[node name="LightTie2" type="Light2D" parent="CpuBackground" index="89"]
+[node name="LightTie2" type="Light2D" parent="background" index="89"]
 
 position = Vector2( -602.064, -51.7681 )
 scale = Vector2( 1.85447, 1.84087 )
@@ -2901,7 +2873,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.1
 
-[node name="LightTie3" type="Light2D" parent="CpuBackground" index="90"]
+[node name="LightTie3" type="Light2D" parent="background" index="90"]
 
 position = Vector2( -512.699, -203.644 )
 scale = Vector2( 0.506914, 0.537957 )
@@ -2932,7 +2904,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.1
 
-[node name="LightTie4" type="Light2D" parent="CpuBackground" index="91"]
+[node name="LightTie4" type="Light2D" parent="background" index="91"]
 
 position = Vector2( -581.908, -145.416 )
 scale = Vector2( 0.278209, 0.208358 )
@@ -2963,7 +2935,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.1
 
-[node name="LightTie5" type="Light2D" parent="CpuBackground" index="92"]
+[node name="LightTie5" type="Light2D" parent="background" index="92"]
 
 position = Vector2( -574.476, -198.227 )
 scale = Vector2( 0.24927, 0.157795 )
@@ -2994,7 +2966,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.1
 
-[node name="LightTie7" type="Light2D" parent="CpuBackground" index="93"]
+[node name="LightTie7" type="Light2D" parent="background" index="93"]
 
 position = Vector2( -627.025, -212.554 )
 scale = Vector2( 0.1645, 0.109033 )
@@ -3025,7 +2997,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.1
 
-[node name="LightTie8" type="Light2D" parent="CpuBackground" index="94"]
+[node name="LightTie8" type="Light2D" parent="background" index="94"]
 
 position = Vector2( -606.098, -221.193 )
 scale = Vector2( 0.115142, 0.0773676 )
@@ -3056,7 +3028,7 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.1
 
-[node name="LightTie6" type="Light2D" parent="CpuBackground" index="95"]
+[node name="LightTie6" type="Light2D" parent="background" index="95"]
 
 position = Vector2( -628.908, -183.022 )
 scale = Vector2( 0.196149, 0.146067 )
