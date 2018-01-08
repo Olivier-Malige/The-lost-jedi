@@ -84,12 +84,14 @@ func goHiscoreScreen():
 
 
 func goWorldScreen():
-	
+	$Camera2D.position = $camera_Pos_In.position
+	$Camera2D.set_zoom(Vector2(1,1))
 	var world = preload("res://Scenes/world.tscn").instance()
 	add_child(world)
 	worldScreen = true
 	startScreen = false
 	gameOverScreen = false
+	
 #	get_node("animCamera").play("startToWorld")
 
 func goGameOverScreen():

@@ -1,15 +1,18 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/main.gd" type="Script" id=1]
 [ext_resource path="res://Assets/UI/backgroundTv.png" type="Texture" id=2]
 [ext_resource path="res://Assets/UI/light2.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Light2D.gd" type="Script" id=4]
 [ext_resource path="res://Assets/UI/light.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/preloader.gd" type="Script" id=6]
-[ext_resource path="res://Assets/github_logo.png" type="Texture" id=7]
-[ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=8]
-[ext_resource path="res://Assets/godot-Sheet.png" type="Texture" id=9]
-[ext_resource path="res://Sounds/intro.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Prefabs/LightX-Wing_Red.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Prefabs/LightTie.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Prefabs/LightStar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/preloader.gd" type="Script" id=9]
+[ext_resource path="res://Assets/github_logo.png" type="Texture" id=10]
+[ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=11]
+[ext_resource path="res://Assets/godot-Sheet.png" type="Texture" id=12]
+[ext_resource path="res://Sounds/intro.ogg" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=1]
 
@@ -49,22 +52,22 @@ _sections_unfolded = [ "Material", "Transform", "Z" ]
 
 [node name="background" type="Sprite" parent="." index="0"]
 
-position = Vector2( 613.277, 463.7 )
+position = Vector2( 610.772, 463.946 )
 scale = Vector2( 1.71894, 1.85326 )
-z_index = 500
+z = 500
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Z", "Z Index" ]
 
 [node name="LightBackground" type="Light2D" parent="background" index="0"]
 
-position = Vector2( -81.6124, 12.1752 )
-scale = Vector2( 11.004, 14.454 )
+position = Vector2( -83.1416, 62.3617 )
+scale = Vector2( 11.004, 16.1542 )
 enabled = true
 editor_only = false
 texture = ExtResource( 3 )
 offset = Vector2( 0, 0 )
 texture_scale = 1.0
-color = Color( 0.045166, 0, 0.578125, 1 )
+color = Color( 0.0427246, 0, 0.546875, 1 )
 energy = 1.0
 mode = 0
 range_height = 0.0
@@ -86,7 +89,38 @@ range_Min = 0.7
 range_Max = 1
 delay = 0.02
 
-[node name="LightButtun" type="Light2D" parent="background" index="1"]
+[node name="LightBackground2" type="Light2D" parent="background" index="1"]
+
+position = Vector2( -83.1416, 62.3617 )
+scale = Vector2( 11.004, 16.1542 )
+enabled = true
+editor_only = false
+texture = ExtResource( 3 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 0.0427246, 0, 0.546875, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = 100
+range_z_max = 1000
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+script = ExtResource( 4 )
+_sections_unfolded = [ "Range" ]
+range_Min = 0.7
+range_Max = 1
+delay = 0.02
+
+[node name="LightButtun" type="Light2D" parent="background" index="2"]
 
 position = Vector2( 244.541, 64.5844 )
 scale = Vector2( 0.908148, 0.736217 )
@@ -117,2956 +151,510 @@ range_Min = 1.0
 range_Max = 2.0
 delay = 0.001
 
-[node name="LightStar" type="Light2D" parent="background" index="2"]
-
-position = Vector2( 397.537, 70.7719 )
-scale = Vector2( 0.333149, 0.283935 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightX-Wing_Red" parent="background" index="3" instance=ExtResource( 6 )]
 
-[node name="LightStar47" type="Light2D" parent="background" index="3"]
-
-position = Vector2( 573.568, 34.655 )
-scale = Vector2( 0.15032, 0.0815018 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
+position = Vector2( 560.598, -147.677 )
+rotation = -0.312652
+scale = Vector2( 2.76603, 1.38063 )
 delay = 0.002
 
-[node name="LightStar48" type="Light2D" parent="background" index="4"]
-
-position = Vector2( 598.456, 51.6361 )
-scale = Vector2( 0.15032, 0.0815018 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightX-Wing_Red2" parent="background" index="4" instance=ExtResource( 6 )]
 
-[node name="LightStar52" type="Light2D" parent="background" index="5"]
-
-position = Vector2( 638.733, 61.5102 )
-scale = Vector2( 0.0813163, 0.0532157 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
+position = Vector2( 534.142, -153.79 )
+rotation = -0.230694
+scale = Vector2( 2.5998, 1.36388 )
 delay = 0.002
 
-[node name="LightStar53" type="Light2D" parent="background" index="6"]
-
-position = Vector2( 644.426, 57.512 )
-scale = Vector2( 0.05253, 0.0379532 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 0.752941 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightX-Wing_Red3" parent="background" index="5" instance=ExtResource( 6 )]
 
-[node name="LightStar54" type="Light2D" parent="background" index="7"]
-
-position = Vector2( 645.676, 53.4529 )
-scale = Vector2( 0.05253, 0.0379532 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
+position = Vector2( 551.902, -124.643 )
+rotation = -0.243954
+scale = Vector2( 1.77513, 0.666081 )
 delay = 0.002
 
-[node name="LightStar55" type="Light2D" parent="background" index="8"]
-
-position = Vector2( 588.475, 102.401 )
-scale = Vector2( 0.05253, 0.0584147 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightX-Wing4" parent="background" index="6" instance=ExtResource( 6 )]
 
-[node name="LightStar56" type="Light2D" parent="background" index="9"]
-
-position = Vector2( 641.574, 142.667 )
-scale = Vector2( 0.114472, 0.0800614 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
+position = Vector2( 512.871, -51.3616 )
+rotation = -0.570366
+scale = Vector2( 2.65981, 1.94069 )
+color = Color( 0, 0.15625, 1, 1 )
 delay = 0.002
 
-[node name="LightStar49" type="Light2D" parent="background" index="10"]
-
-position = Vector2( 581.292, 68.6634 )
-scale = Vector2( 0.15032, 0.0815018 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightX-Wing6" parent="background" index="7" instance=ExtResource( 6 )]
 
-[node name="LightStar50" type="Light2D" parent="background" index="11"]
-
-position = Vector2( 477.453, 129.105 )
-scale = Vector2( 0.0789079, 0.0471381 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
+position = Vector2( 502.194, -4.43567 )
+scale = Vector2( 3.18869, 1.36485 )
+color = Color( 0, 0.15625, 1, 1 )
 delay = 0.002
 
-[node name="LightStar51" type="Light2D" parent="background" index="12"]
-
-position = Vector2( 527.841, 158.498 )
-scale = Vector2( 0.158606, 0.113527 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightX-Wing7" parent="background" index="8" instance=ExtResource( 6 )]
 
-[node name="LightStar63" type="Light2D" parent="background" index="13"]
-
-position = Vector2( 535.4, 187.671 )
-scale = Vector2( 0.0953192, 0.0727385 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
+position = Vector2( 420.231, -20.8721 )
+rotation = -0.601966
+scale = Vector2( 0.985253, 0.351185 )
+color = Color( 0, 0.15625, 1, 1 )
 delay = 0.002
 
-[node name="LightStar64" type="Light2D" parent="background" index="14"]
-
-position = Vector2( 545.609, 188.516 )
-scale = Vector2( 0.0953192, 0.0727385 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightX-Wing5" parent="background" index="9" instance=ExtResource( 6 )]
 
-[node name="LightStar65" type="Light2D" parent="background" index="15"]
-
-position = Vector2( 507.554, 179.571 )
-scale = Vector2( 0.0953192, 0.0727385 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
+position = Vector2( 472.771, -60.2006 )
+rotation = -0.39611
+scale = Vector2( 3.38751, 1.9655 )
+color = Color( 0, 0.15625, 1, 1 )
 delay = 0.002
 
-[node name="LightStar66" type="Light2D" parent="background" index="16"]
-
-position = Vector2( 503.592, 166.812 )
-scale = Vector2( 0.0953192, 0.0727385 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightTie" parent="background" index="10" instance=ExtResource( 7 )]
 
-[node name="LightStar2" type="Light2D" parent="background" index="17"]
-
-position = Vector2( 374.567, -236.225 )
-scale = Vector2( 0.333149, 0.283935 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -503.218, 167.789 )
 
-[node name="LightStar5" type="Light2D" parent="background" index="18"]
-
-position = Vector2( 523.539, -207.53 )
-scale = Vector2( 0.1925, 0.153298 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightTie2" parent="background" index="11" instance=ExtResource( 7 )]
 
-[node name="LightStar6" type="Light2D" parent="background" index="19"]
-
-position = Vector2( 500.592, -228.275 )
-scale = Vector2( 0.1925, 0.153298 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -602.26, -50.8248 )
+scale = Vector2( 2.20972, 2.22362 )
 
-[node name="LightStar7" type="Light2D" parent="background" index="20"]
-
-position = Vector2( 419.562, -160.341 )
-scale = Vector2( 0.13927, 0.110638 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightTie3" parent="background" index="12" instance=ExtResource( 7 )]
 
-[node name="LightStar8" type="Light2D" parent="background" index="21"]
-
-position = Vector2( 385.473, -153.392 )
-scale = Vector2( 0.13927, 0.110638 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -512.182, -204.072 )
+scale = Vector2( 0.590427, 0.57457 )
 
-[node name="LightStar3" type="Light2D" parent="background" index="22"]
-
-position = Vector2( 473.739, -72.4322 )
-scale = Vector2( 0.266289, 0.222391 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightTie4" parent="background" index="13" instance=ExtResource( 7 )]
 
-[node name="LightStar4" type="Light2D" parent="background" index="23"]
-
-position = Vector2( 426.634, -69.401 )
-scale = Vector2( 0.266289, 0.222391 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -581.893, -145.539 )
+scale = Vector2( 0.279135, 0.21069 )
 
-[node name="LightStar9" type="Light2D" parent="background" index="24"]
-
-position = Vector2( 558.278, 355.071 )
-scale = Vector2( 0.266289, 0.222391 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightTie5" parent="background" index="14" instance=ExtResource( 7 )]
 
-[node name="LightStar10" type="Light2D" parent="background" index="25"]
-
-position = Vector2( 531.551, 385.971 )
-scale = Vector2( 0.266289, 0.222391 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -629.103, -182.982 )
+scale = Vector2( 0.279135, 0.21069 )
 
-[node name="LightStar11" type="Light2D" parent="background" index="26"]
-
-position = Vector2( 389.528, 374.945 )
-scale = Vector2( 0.266289, 0.222391 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightTie7" parent="background" index="15" instance=ExtResource( 7 )]
 
-[node name="LightStar57" type="Light2D" parent="background" index="27"]
-
-position = Vector2( 438.62, 316.642 )
-scale = Vector2( 0.14772, 0.150837 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -626.679, -212.617 )
+scale = Vector2( 0.160391, 0.104936 )
 
-[node name="LightStar58" type="Light2D" parent="background" index="28"]
-
-position = Vector2( 423.466, 301.549 )
-scale = Vector2( 0.14772, 0.150837 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightTie9" parent="background" index="16" instance=ExtResource( 7 )]
 
-[node name="LightStar59" type="Light2D" parent="background" index="29"]
-
-position = Vector2( 463.538, 280.607 )
-scale = Vector2( 0.14772, 0.150837 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -574.562, -198.19 )
+scale = Vector2( 0.195531, 0.135589 )
 
-[node name="LightStar60" type="Light2D" parent="background" index="30"]
-
-position = Vector2( 477.675, 277.399 )
-scale = Vector2( 0.14772, 0.150837 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar" parent="background" index="17" instance=ExtResource( 8 )]
 
-[node name="LightStar61" type="Light2D" parent="background" index="31"]
-
-position = Vector2( 477.421, 272.447 )
-scale = Vector2( 0.115942, 0.121365 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( 397.832, 70.6741 )
+scale = Vector2( 0.18753, 0.165901 )
+color = Color( 0.933472, 1, 0.148438, 1 )
+range_Min = 0.5
 
-[node name="LightStar62" type="Light2D" parent="background" index="32"]
-
-position = Vector2( 480.472, 271.409 )
-scale = Vector2( 0.115942, 0.121365 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar2" parent="background" index="18" instance=ExtResource( 8 )]
 
-[node name="LightStar12" type="Light2D" parent="background" index="33"]
-
-position = Vector2( -464.316, 404.664 )
-scale = Vector2( 0.266289, 0.222391 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( 424.7, 134.799 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar13" type="Light2D" parent="background" index="34"]
-
-position = Vector2( -488.776, 309.303 )
-scale = Vector2( 0.266289, 0.222391 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar62" parent="background" index="19" instance=ExtResource( 8 )]
 
-[node name="LightStar14" type="Light2D" parent="background" index="35"]
-
-position = Vector2( -650.338, 348.607 )
-scale = Vector2( 0.266289, 0.222391 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( 527.353, 158.525 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar15" type="Light2D" parent="background" index="36"]
-
-position = Vector2( -744.253, 293.601 )
-scale = Vector2( 0.463467, 0.361643 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar63" parent="background" index="20" instance=ExtResource( 8 )]
 
-[node name="LightStar16" type="Light2D" parent="background" index="37"]
-
-position = Vector2( -782.25, 307.686 )
-scale = Vector2( 0.216087, 0.216342 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( 503.213, 166.442 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar17" type="Light2D" parent="background" index="38"]
-
-position = Vector2( -658.643, 199.493 )
-scale = Vector2( 0.272354, 0.23198 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar64" parent="background" index="21" instance=ExtResource( 8 )]
 
-[node name="LightStar18" type="Light2D" parent="background" index="39"]
-
-position = Vector2( -692.246, 142.603 )
-scale = Vector2( 0.272354, 0.23198 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( 503.82, 281.385 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar19" type="Light2D" parent="background" index="40"]
-
-position = Vector2( -743.408, 122.535 )
-scale = Vector2( 0.272354, 0.23198 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar8" parent="background" index="22" instance=ExtResource( 8 )]
 
-[node name="LightStar20" type="Light2D" parent="background" index="41"]
-
-position = Vector2( -726.551, 117.508 )
-scale = Vector2( 0.224267, 0.191581 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( 329.447, 195.568 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar21" type="Light2D" parent="background" index="42"]
-
-position = Vector2( -727.396, 112.177 )
-scale = Vector2( 0.160869, 0.12625 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar9" parent="background" index="23" instance=ExtResource( 8 )]
 
-[node name="LightStar22" type="Light2D" parent="background" index="43"]
-
-position = Vector2( -742.755, 69.6723 )
-scale = Vector2( 0.160869, 0.12625 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( 326.742, 206.752 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar23" type="Light2D" parent="background" index="44"]
-
-position = Vector2( -565.45, 27.6631 )
-scale = Vector2( 0.160869, 0.12625 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar29" parent="background" index="24" instance=ExtResource( 8 )]
 
-[node name="LightStar24" type="Light2D" parent="background" index="45"]
-
-position = Vector2( -553.438, 40.6482 )
-scale = Vector2( 0.160869, 0.12625 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -565.424, 27.7941 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar25" type="Light2D" parent="background" index="46"]
-
-position = Vector2( -555.332, 42.6008 )
-scale = Vector2( 0.110526, 0.0917919 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar30" parent="background" index="25" instance=ExtResource( 8 )]
 
-[node name="LightStar26" type="Light2D" parent="background" index="47"]
-
-position = Vector2( -566.35, 15.6317 )
-scale = Vector2( 0.110526, 0.0917919 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -553.216, 40.5645 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar27" type="Light2D" parent="background" index="48"]
-
-position = Vector2( -617.579, 56.707 )
-scale = Vector2( 0.110526, 0.0917919 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar31" parent="background" index="26" instance=ExtResource( 8 )]
 
-[node name="LightStar28" type="Light2D" parent="background" index="49"]
-
-position = Vector2( -730.298, -11.2047 )
-scale = Vector2( 0.110526, 0.0917919 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -617.69, 56.0923 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar29" type="Light2D" parent="background" index="50"]
-
-position = Vector2( -803.424, 0.775696 )
-scale = Vector2( 0.110526, 0.0917919 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar34" parent="background" index="27" instance=ExtResource( 8 )]
 
-[node name="LightStar30" type="Light2D" parent="background" index="51"]
-
-position = Vector2( -458.424, -3.38687 )
-scale = Vector2( 0.110526, 0.0917919 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -742.387, 69.4128 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar31" type="Light2D" parent="background" index="52"]
-
-position = Vector2( -464.565, -7.55002 )
-scale = Vector2( 0.0780353, 0.0708244 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar35" parent="background" index="28" instance=ExtResource( 8 )]
 
-[node name="LightStar32" type="Light2D" parent="background" index="53"]
-
-position = Vector2( -472.23, -192.381 )
-rotation = -0.000227519
-scale = Vector2( 0.207374, 0.237813 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -729.969, -11.3527 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar40" type="Light2D" parent="background" index="54"]
-
-position = Vector2( -446.364, -294.533 )
-rotation = -0.000227519
-scale = Vector2( 0.149593, 0.173746 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar42" parent="background" index="29" instance=ExtResource( 8 )]
 
-[node name="LightStar41" type="Light2D" parent="background" index="55"]
-
-position = Vector2( -428.556, -297.54 )
-rotation = -0.000227519
-scale = Vector2( 0.0940829, 0.102642 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -786.047, -168.369 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar42" type="Light2D" parent="background" index="56"]
-
-position = Vector2( -379.365, -354.353 )
-rotation = -0.000227519
-scale = Vector2( 0.0940829, 0.102642 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar44" parent="background" index="30" instance=ExtResource( 8 )]
 
-[node name="LightStar43" type="Light2D" parent="background" index="57"]
-
-position = Vector2( -359.235, -350.28 )
-rotation = -0.000227519
-scale = Vector2( 0.0940829, 0.102642 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -732.473, -285.756 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar44" type="Light2D" parent="background" index="58"]
-
-position = Vector2( -310.172, -330.333 )
-rotation = -0.000227519
-scale = Vector2( 0.178368, 0.130663 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar45" parent="background" index="31" instance=ExtResource( 8 )]
 
-[node name="LightStar45" type="Light2D" parent="background" index="59"]
-
-position = Vector2( -308.477, -349.57 )
-rotation = -0.000227519
-scale = Vector2( 0.154128, 0.0922825 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -767.463, -342.337 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar46" type="Light2D" parent="background" index="60"]
-
-position = Vector2( -227.532, -326.417 )
-rotation = -0.000227519
-scale = Vector2( 0.0912009, 0.0698684 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar46" parent="background" index="32" instance=ExtResource( 8 )]
 
-[node name="LightStar37" type="Light2D" parent="background" index="61"]
-
-position = Vector2( -541.48, -235.372 )
-rotation = -0.000227519
-scale = Vector2( 0.126826, 0.12714 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -705.792, -338.52 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar33" type="Light2D" parent="background" index="62"]
-
-position = Vector2( -519.392, -155.46 )
-rotation = -0.000227519
-scale = Vector2( 0.160438, 0.146693 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar47" parent="background" index="33" instance=ExtResource( 8 )]
 
-[node name="LightStar38" type="Light2D" parent="background" index="63"]
-
-position = Vector2( -460.434, -143.303 )
-rotation = -0.000227519
-scale = Vector2( 0.100506, 0.0729639 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -546.252, -459.367 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar39" type="Light2D" parent="background" index="64"]
-
-position = Vector2( -453.59, -146.355 )
-rotation = -0.000227519
-scale = Vector2( 0.100506, 0.0729639 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar49" parent="background" index="34" instance=ExtResource( 8 )]
 
-[node name="LightStar34" type="Light2D" parent="background" index="65"]
-
-position = Vector2( -716.359, -188.572 )
-rotation = -0.000227519
-scale = Vector2( 0.143898, 0.129944 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar73" type="Light2D" parent="background" index="66"]
-
-position = Vector2( -730.769, -188.572 )
-rotation = -0.000227519
-scale = Vector2( 0.143898, 0.129944 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar74" type="Light2D" parent="background" index="67"]
-
-position = Vector2( -742.886, -188.402 )
-rotation = -0.000227519
-scale = Vector2( 0.143898, 0.129944 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar75" type="Light2D" parent="background" index="68"]
-
-position = Vector2( -752.34, -188.402 )
-rotation = -0.000227519
-scale = Vector2( 0.143898, 0.129944 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range", "Visibility" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar76" type="Light2D" parent="background" index="69"]
-
-position = Vector2( -760.27, -188.326 )
-rotation = -0.000227519
-scale = Vector2( 0.139299, 0.0861567 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar67" type="Light2D" parent="background" index="70"]
-
-position = Vector2( -699.708, -188.443 )
-rotation = -0.000227519
-scale = Vector2( 0.143898, 0.129944 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar68" type="Light2D" parent="background" index="71"]
-
-position = Vector2( -682.275, -188.315 )
-rotation = -0.000227519
-scale = Vector2( 0.143898, 0.129944 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar69" type="Light2D" parent="background" index="72"]
-
-position = Vector2( -663.182, -188.315 )
-rotation = -0.000227519
-scale = Vector2( 0.143898, 0.129944 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar70" type="Light2D" parent="background" index="73"]
-
-position = Vector2( -644.65, -188.496 )
-rotation = -0.000227519
-scale = Vector2( 0.125479, 0.10675 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar71" type="Light2D" parent="background" index="74"]
-
-position = Vector2( -609.386, -188.454 )
-rotation = -0.000227519
-scale = Vector2( 0.113209, 0.102844 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar72" type="Light2D" parent="background" index="75"]
-
-position = Vector2( -597.705, -188.803 )
-rotation = -0.000227519
-scale = Vector2( 0.102343, 0.0788196 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar77" type="Light2D" parent="background" index="76"]
-
-position = Vector2( -583.354, -188.824 )
-rotation = -0.000227519
-scale = Vector2( 0.149942, 0.103603 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar78" type="Light2D" parent="background" index="77"]
-
-position = Vector2( -565.112, -188.893 )
-rotation = -0.000227519
-scale = Vector2( 0.112562, 0.0862573 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar79" type="Light2D" parent="background" index="78"]
-
-position = Vector2( -552.701, -189.032 )
-rotation = -0.000227519
-scale = Vector2( 0.0751872, 0.0515733 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0.582031, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 3.0
-delay = 0.005
-
-[node name="LightStar35" type="Light2D" parent="background" index="79"]
-
-position = Vector2( -799.325, -171.419 )
-rotation = -0.000227519
-scale = Vector2( 0.132414, 0.106887 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+position = Vector2( -354.271, -395.473 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
 
-[node name="LightStar36" type="Light2D" parent="background" index="80"]
-
-position = Vector2( -732.287, -285.435 )
-rotation = -0.000227519
-scale = Vector2( 0.132414, 0.106887 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 1, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 0.0
-range_Max = 2.0
-delay = 0.002
+[node name="LightStar52" parent="background" index="35" instance=ExtResource( 8 )]
+
+position = Vector2( -386.805, -529.91 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar50" parent="background" index="36" instance=ExtResource( 8 )]
+
+position = Vector2( -379.492, -354.622 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar51" parent="background" index="37" instance=ExtResource( 8 )]
+
+position = Vector2( -310.605, -330.356 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar53" parent="background" index="38" instance=ExtResource( 8 )]
+
+position = Vector2( -36.4354, -392.481 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar54" parent="background" index="39" instance=ExtResource( 8 )]
+
+position = Vector2( 67.2498, -351.585 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar55" parent="background" index="40" instance=ExtResource( 8 )]
+
+position = Vector2( 384.698, -371.356 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar56" parent="background" index="41" instance=ExtResource( 8 )]
+
+position = Vector2( 405.197, -362.486 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar57" parent="background" index="42" instance=ExtResource( 8 )]
+
+position = Vector2( 384.501, -333.764 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar58" parent="background" index="43" instance=ExtResource( 8 )]
+
+position = Vector2( 374.714, -236.001 )
+scale = Vector2( 0.18753, 0.165901 )
+color = Color( 0.0664062, 0.846832, 1, 1 )
+range_Min = 0.5
+
+[node name="LightStar59" parent="background" index="44" instance=ExtResource( 8 )]
+
+position = Vector2( 570.188, -428.886 )
+scale = Vector2( 0.18753, 0.165901 )
+color = Color( 0.0664062, 0.846832, 1, 1 )
+range_Min = 0.5
+
+[node name="LightStar60" parent="background" index="45" instance=ExtResource( 8 )]
+
+position = Vector2( 825.776, -321.142 )
+scale = Vector2( 0.731303, 0.580935 )
+color = Color( 0.0664062, 0.846832, 1, 1 )
+range_Min = 0.5
+
+[node name="LightStar61" parent="background" index="46" instance=ExtResource( 8 )]
+
+position = Vector2( 810.031, -261.37 )
+scale = Vector2( 1.08324, 0.798547 )
+color = Color( 0.994537, 1, 0.300781, 1 )
+range_Min = 0.5
+
+[node name="LightStar48" parent="background" index="47" instance=ExtResource( 8 )]
+
+position = Vector2( -836.185, -517.327 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar43" parent="background" index="48" instance=ExtResource( 8 )]
+
+position = Vector2( -471.878, -192.371 )
+scale = Vector2( 0.18753, 0.165901 )
+color = Color( 0.603516, 0.125, 1, 1 )
+range_Min = 0.5
+
+[node name="LightStar36" parent="background" index="49" instance=ExtResource( 8 )]
+
+position = Vector2( -803.249, 0.733658 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar32" parent="background" index="50" instance=ExtResource( 8 )]
+
+position = Vector2( -541.345, 83.5355 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar33" parent="background" index="51" instance=ExtResource( 8 )]
+
+position = Vector2( -658.577, 199.427 )
+scale = Vector2( 0.27038, 0.236235 )
+color = Color( 1, 0.328125, 0.328125, 1 )
+range_Min = 0.5
+
+[node name="LightStar37" parent="background" index="52" instance=ExtResource( 8 )]
+
+position = Vector2( -671.253, 402.967 )
+scale = Vector2( 0.523745, 0.401616 )
+color = Color( 0, 0.259155, 0.753906, 1 )
+range_Min = 0.5
+
+[node name="LightStar39" parent="background" index="53" instance=ExtResource( 8 )]
+
+position = Vector2( -650.257, 348.819 )
+scale = Vector2( 0.523745, 0.401616 )
+color = Color( 0, 0.259155, 0.753906, 1 )
+range_Min = 0.5
+
+[node name="LightStar40" parent="background" index="54" instance=ExtResource( 8 )]
+
+position = Vector2( -464.766, 404.55 )
+scale = Vector2( 0.523745, 0.401616 )
+color = Color( 0, 0.259155, 0.753906, 1 )
+range_Min = 0.5
+
+[node name="LightStar41" parent="background" index="55" instance=ExtResource( 8 )]
+
+position = Vector2( -463.61, 455.99 )
+scale = Vector2( 0.523745, 0.401616 )
+color = Color( 0, 0.259155, 0.753906, 1 )
+range_Min = 0.5
+
+[node name="LightStar38" parent="background" index="56" instance=ExtResource( 8 )]
+
+position = Vector2( -744.482, 293.722 )
+scale = Vector2( 0.523745, 0.401616 )
+color = Color( 0.230469, 0.783569, 1, 1 )
+range_Min = 0.5
+
+[node name="LightStar3" parent="background" index="57" instance=ExtResource( 8 )]
+
+position = Vector2( 428.574, 150.53 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar4" parent="background" index="58" instance=ExtResource( 8 )]
+
+position = Vector2( 427.628, 49.7495 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar10" parent="background" index="59" instance=ExtResource( 8 )]
+
+position = Vector2( 573.716, 34.7224 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar11" parent="background" index="60" instance=ExtResource( 8 )]
+
+position = Vector2( 581.52, 68.7246 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar12" parent="background" index="61" instance=ExtResource( 8 )]
+
+position = Vector2( 598.667, 51.5972 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar14" parent="background" index="62" instance=ExtResource( 8 )]
+
+position = Vector2( 710.099, 95.7991 )
+scale = Vector2( 0.138971, 0.130162 )
+range_Min = 0.5
+
+[node name="LightStar15" parent="background" index="63" instance=ExtResource( 8 )]
+
+position = Vector2( 702.478, 79.7406 )
+scale = Vector2( 0.138971, 0.130162 )
+range_Min = 0.5
+
+[node name="LightStar16" parent="background" index="64" instance=ExtResource( 8 )]
+
+position = Vector2( 811.568, 3.5997 )
+scale = Vector2( 0.138971, 0.130162 )
+range_Min = 0.5
+
+[node name="LightStar17" parent="background" index="65" instance=ExtResource( 8 )]
+
+position = Vector2( 825.582, 1.56073 )
+scale = Vector2( 0.138971, 0.130162 )
+range_Min = 0.5
+
+[node name="LightStar18" parent="background" index="66" instance=ExtResource( 8 )]
+
+position = Vector2( 735.647, -76.4091 )
+scale = Vector2( 0.138971, 0.130162 )
+range_Min = 0.5
+
+[node name="LightStar22" parent="background" index="67" instance=ExtResource( 8 )]
+
+position = Vector2( 523.94, -207.228 )
+scale = Vector2( 0.138971, 0.130162 )
+range_Min = 0.5
+
+[node name="LightStar23" parent="background" index="68" instance=ExtResource( 8 )]
+
+position = Vector2( 419.737, -160.378 )
+scale = Vector2( 0.138971, 0.130162 )
+range_Min = 0.5
+
+[node name="LightStar24" parent="background" index="69" instance=ExtResource( 8 )]
+
+position = Vector2( 385.276, -153.463 )
+scale = Vector2( 0.138971, 0.130162 )
+range_Min = 0.5
+
+[node name="LightStar25" parent="background" index="70" instance=ExtResource( 8 )]
+
+position = Vector2( 413.76, -121.543 )
+scale = Vector2( 0.138971, 0.130162 )
+range_Min = 0.5
+
+[node name="LightStar19" parent="background" index="71" instance=ExtResource( 8 )]
+
+position = Vector2( 777.386, -104.411 )
+scale = Vector2( 0.138971, 0.130162 )
+range_Min = 0.5
+
+[node name="LightStar21" parent="background" index="72" instance=ExtResource( 8 )]
+
+position = Vector2( 795.56, -98.1963 )
+scale = Vector2( 0.138971, 0.130162 )
+range_Min = 0.5
+
+[node name="LightStar20" parent="background" index="73" instance=ExtResource( 8 )]
+
+position = Vector2( 790.595, -151.268 )
+scale = Vector2( 0.225989, 0.20266 )
+range_Min = 0.5
+
+[node name="LightStar13" parent="background" index="74" instance=ExtResource( 8 )]
+
+position = Vector2( 765.743, 164.787 )
+scale = Vector2( 0.394814, 0.3389 )
+color = Color( 0.938965, 1, 0.21875, 1 )
+range_Min = 0.5
+
+[node name="LightStar5" parent="background" index="75" instance=ExtResource( 8 )]
+
+position = Vector2( 438.735, 54.7725 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar6" parent="background" index="76" instance=ExtResource( 8 )]
+
+position = Vector2( 430.371, 97.5204 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar7" parent="background" index="77" instance=ExtResource( 8 )]
+
+position = Vector2( 381.687, 206.547 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar26" parent="background" index="78" instance=ExtResource( 8 )]
+
+position = Vector2( 389.79, 374.772 )
+scale = Vector2( 0.460152, 0.351175 )
+color = Color( 0.0898438, 0.210724, 1, 1 )
+range_Min = 0.5
+
+[node name="LightStar27" parent="background" index="79" instance=ExtResource( 8 )]
+
+position = Vector2( 557.092, 356.125 )
+scale = Vector2( 0.460152, 0.351175 )
+color = Color( 0.0898438, 0.210724, 1, 1 )
+range_Min = 0.5
+
+[node name="LightStar28" parent="background" index="80" instance=ExtResource( 8 )]
+
+position = Vector2( 530.98, 386.775 )
+scale = Vector2( 0.460152, 0.351175 )
+color = Color( 0.0898438, 0.210724, 1, 1 )
+range_Min = 0.5
+
+[node name="camera_Pos_In" type="Position2D" parent="." index="1"]
+
+position = Vector2( 511, 241 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="camera_Pos_Out" type="Position2D" parent="." index="2"]
+
+position = Vector2( 513, 440 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
 
-[node name="LightX-Wing_Red" type="Light2D" parent="background" index="81"]
-
-position = Vector2( 550.421, -146.66 )
-scale = Vector2( 1.38778, 1.12395 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.001
-
-[node name="LightX-Wing_Red2" type="Light2D" parent="background" index="82"]
-
-position = Vector2( 527.071, -151.293 )
-scale = Vector2( 1.38778, 1.12395 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.001
-
-[node name="LightX-Wing_Red3" type="Light2D" parent="background" index="83"]
-
-position = Vector2( 548.423, -124.886 )
-scale = Vector2( 1.38778, 1.12395 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.001
-
-[node name="LightX-Wing" type="Light2D" parent="background" index="84"]
-
-position = Vector2( 506.98, -52.4875 )
-scale = Vector2( 2.7574, 2.41798 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0, 0.0859375, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.001
-
-[node name="LightX-Wing4" type="Light2D" parent="background" index="85"]
-
-position = Vector2( 420.597, -20.7542 )
-scale = Vector2( 0.526637, 0.474533 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0, 0.0859375, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.001
-
-[node name="LightX-Wing2" type="Light2D" parent="background" index="86"]
-
-position = Vector2( 468.313, -57.6823 )
-scale = Vector2( 2.7574, 1.80593 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0, 0.0859375, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.001
-
-[node name="LightX-Wing3" type="Light2D" parent="background" index="87"]
-
-position = Vector2( 496.959, -5.79062 )
-scale = Vector2( 1.64973, 1.04159 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 0, 0.0859375, 1, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.001
-
-[node name="LightTie" type="Light2D" parent="background" index="88"]
-
-position = Vector2( -503.218, 168.329 )
-scale = Vector2( 2.73097, 2.38725 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.1
-
-[node name="LightTie2" type="Light2D" parent="background" index="89"]
-
-position = Vector2( -602.064, -51.7681 )
-scale = Vector2( 1.85447, 1.84087 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.1
-
-[node name="LightTie3" type="Light2D" parent="background" index="90"]
-
-position = Vector2( -512.699, -203.644 )
-scale = Vector2( 0.506914, 0.537957 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.1
-
-[node name="LightTie4" type="Light2D" parent="background" index="91"]
-
-position = Vector2( -581.908, -145.416 )
-scale = Vector2( 0.278209, 0.208358 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.1
-
-[node name="LightTie5" type="Light2D" parent="background" index="92"]
-
-position = Vector2( -574.476, -198.227 )
-scale = Vector2( 0.24927, 0.157795 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.1
-
-[node name="LightTie7" type="Light2D" parent="background" index="93"]
-
-position = Vector2( -627.025, -212.554 )
-scale = Vector2( 0.1645, 0.109033 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.1
-
-[node name="LightTie8" type="Light2D" parent="background" index="94"]
-
-position = Vector2( -606.098, -221.193 )
-scale = Vector2( 0.115142, 0.0773676 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.1
-
-[node name="LightTie6" type="Light2D" parent="background" index="95"]
-
-position = Vector2( -628.908, -183.022 )
-scale = Vector2( 0.196149, 0.146067 )
-enabled = true
-editor_only = false
-texture = ExtResource( 5 )
-offset = Vector2( 0, 0 )
-texture_scale = 1.0
-color = Color( 1, 0, 0, 1 )
-energy = 1.0
-mode = 0
-range_height = 0.0
-range_z_min = 100
-range_z_max = 1000
-range_layer_min = 0
-range_layer_max = 0
-range_item_cull_mask = 1
-shadow_enabled = false
-shadow_color = Color( 0, 0, 0, 0 )
-shadow_buffer_size = 2048
-shadow_gradient_length = 0.0
-shadow_filter = 0
-shadow_filter_smooth = 0.0
-shadow_item_cull_mask = 1
-script = ExtResource( 4 )
-_sections_unfolded = [ "Range" ]
-range_Min = 1.0
-range_Max = 2.0
-delay = 0.1
-
-[node name="Camera2D" type="Camera2D" parent="." index="1"]
-
-position = Vector2( 521, 410 )
+position = Vector2( 513, 440 )
 scale = Vector2( 1.5, 1.5 )
 anchor_mode = 1
 rotating = false
 current = true
-zoom = Vector2( 1.2, 1.2 )
+zoom = Vector2( 1.4, 1.4 )
 limit_left = -10000000
 limit_top = -10000000
 limit_right = 10000000
@@ -3085,15 +673,15 @@ editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Smoothing" ]
 
-[node name="loader" type="Node2D" parent="." index="2"]
+[node name="loader" type="Node2D" parent="." index="4"]
 
-script = ExtResource( 6 )
+script = ExtResource( 9 )
 
 [node name="gameoff" type="Sprite" parent="loader" index="0"]
 
 position = Vector2( 407.058, 240.759 )
 scale = Vector2( 2.74596, 2.71345 )
-texture = ExtResource( 7 )
+texture = ExtResource( 10 )
 vframes = 12
 hframes = 8
 frame = 35
@@ -3119,7 +707,7 @@ rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 11 )
 text = "Made with godot engine  3"
 percent_visible = 1.0
 lines_skipped = 0
@@ -3131,7 +719,7 @@ _sections_unfolded = [ "custom_fonts" ]
 self_modulate = Color( 0.625, 0.692383, 1, 1 )
 position = Vector2( 702.133, 545.392 )
 scale = Vector2( 2.58092, 2.50322 )
-texture = ExtResource( 9 )
+texture = ExtResource( 12 )
 hframes = 8
 
 [node name="anim" type="AnimationPlayer" parent="loader" index="4"]
@@ -3147,7 +735,7 @@ autoplay = ""
 
 [node name="music" type="AudioStreamPlayer" parent="loader" index="5"]
 
-stream = ExtResource( 10 )
+stream = ExtResource( 13 )
 volume_db = -5.0
 autoplay = true
 mix_target = 0

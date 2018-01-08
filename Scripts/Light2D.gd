@@ -11,3 +11,11 @@ func _process(delta):
 		set_energy(rand_range (range_Min,range_Max))
 		accum = 0
 	
+
+func _on_VisibilityNotifier2D_screen_exited():
+	set_process(false)
+	visible = false
+	queue_free()
+
+
+
