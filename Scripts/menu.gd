@@ -9,7 +9,7 @@ enum {OPTION_RETURN,OPTION_CONTROLLER,OPTION_PLAYER1,OPTION_PLAYER2,OPTION_MUSIC
 enum {MODE_SOLO,MODE_COOP}
 #Define menu Mode
 enum {MENU_START,MENU_OPTIONS,MENU_PAUSE,MENU_CONTROLLER}
-var controller = ["gamepad1","gamepad2","keyboard1","keyboard2"]
+var controller = ["gamepad1","gamepad2","keyboard"]
 
 func _ready():
 	hide()

@@ -21,9 +21,8 @@ var saveData = { solo = {
 						sound = true,
 						fullscreen = true,
 						player1 = "gamepad1",
-						player2 = "keyboard1",
+						player2 = "keyboard",
 						graphic = "high",
-						zoomLevel = 1
 						}}
 var sav_path = "user://data.json"
 const VERSION_NUMBER = "Alpha dev"

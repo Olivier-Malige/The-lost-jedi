@@ -44,7 +44,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 57, 58, 60, 61, 64, 66, 67, 68, 69, 70 ]
 }
 
-[node name="main" type="Node" index="0"]
+[node name="main" type="Node"]
 
 pause_mode = 1
 script = ExtResource( 1 )
@@ -52,7 +52,7 @@ _sections_unfolded = [ "Material", "Transform", "Z" ]
 
 [node name="background" type="Sprite" parent="." index="0"]
 
-position = Vector2( 610.772, 463.946 )
+position = Vector2( 608.5, 466.218 )
 scale = Vector2( 1.71894, 1.85326 )
 z = 500
 texture = ExtResource( 2 )
@@ -292,345 +292,468 @@ position = Vector2( -553.216, 40.5645 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar31" parent="background" index="26" instance=ExtResource( 8 )]
+[node name="LightStar65" parent="background" index="26" instance=ExtResource( 8 )]
+
+position = Vector2( -458.701, -3.54944 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar67" parent="background" index="27" instance=ExtResource( 8 )]
+
+position = Vector2( -513.491, -8.81091 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar31" parent="background" index="28" instance=ExtResource( 8 )]
 
 position = Vector2( -617.69, 56.0923 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar34" parent="background" index="27" instance=ExtResource( 8 )]
+[node name="LightStar34" parent="background" index="29" instance=ExtResource( 8 )]
 
 position = Vector2( -742.387, 69.4128 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar35" parent="background" index="28" instance=ExtResource( 8 )]
+[node name="LightStar35" parent="background" index="30" instance=ExtResource( 8 )]
 
 position = Vector2( -729.969, -11.3527 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar42" parent="background" index="29" instance=ExtResource( 8 )]
+[node name="LightStar42" parent="background" index="31" instance=ExtResource( 8 )]
 
 position = Vector2( -786.047, -168.369 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar44" parent="background" index="30" instance=ExtResource( 8 )]
+[node name="LightStar44" parent="background" index="32" instance=ExtResource( 8 )]
 
 position = Vector2( -732.473, -285.756 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar45" parent="background" index="31" instance=ExtResource( 8 )]
+[node name="LightStar45" parent="background" index="33" instance=ExtResource( 8 )]
 
 position = Vector2( -767.463, -342.337 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar46" parent="background" index="32" instance=ExtResource( 8 )]
+[node name="LightStar46" parent="background" index="34" instance=ExtResource( 8 )]
 
 position = Vector2( -705.792, -338.52 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar47" parent="background" index="33" instance=ExtResource( 8 )]
+[node name="LightStar47" parent="background" index="35" instance=ExtResource( 8 )]
 
 position = Vector2( -546.252, -459.367 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar49" parent="background" index="34" instance=ExtResource( 8 )]
+[node name="LightStar49" parent="background" index="36" instance=ExtResource( 8 )]
 
 position = Vector2( -354.271, -395.473 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar52" parent="background" index="35" instance=ExtResource( 8 )]
+[node name="LightStar52" parent="background" index="37" instance=ExtResource( 8 )]
 
 position = Vector2( -386.805, -529.91 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar50" parent="background" index="36" instance=ExtResource( 8 )]
+[node name="LightStar50" parent="background" index="38" instance=ExtResource( 8 )]
 
 position = Vector2( -379.492, -354.622 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar51" parent="background" index="37" instance=ExtResource( 8 )]
+[node name="LightStar51" parent="background" index="39" instance=ExtResource( 8 )]
 
 position = Vector2( -310.605, -330.356 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar53" parent="background" index="38" instance=ExtResource( 8 )]
+[node name="LightStar53" parent="background" index="40" instance=ExtResource( 8 )]
 
 position = Vector2( -36.4354, -392.481 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar54" parent="background" index="39" instance=ExtResource( 8 )]
+[node name="LightStar54" parent="background" index="41" instance=ExtResource( 8 )]
 
 position = Vector2( 67.2498, -351.585 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar55" parent="background" index="40" instance=ExtResource( 8 )]
+[node name="LightStar55" parent="background" index="42" instance=ExtResource( 8 )]
 
 position = Vector2( 384.698, -371.356 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar56" parent="background" index="41" instance=ExtResource( 8 )]
+[node name="LightStar56" parent="background" index="43" instance=ExtResource( 8 )]
 
 position = Vector2( 405.197, -362.486 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar57" parent="background" index="42" instance=ExtResource( 8 )]
+[node name="LightStar57" parent="background" index="44" instance=ExtResource( 8 )]
 
 position = Vector2( 384.501, -333.764 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar58" parent="background" index="43" instance=ExtResource( 8 )]
+[node name="LightStar58" parent="background" index="45" instance=ExtResource( 8 )]
 
 position = Vector2( 374.714, -236.001 )
 scale = Vector2( 0.18753, 0.165901 )
 color = Color( 0.0664062, 0.846832, 1, 1 )
 range_Min = 0.5
 
-[node name="LightStar59" parent="background" index="44" instance=ExtResource( 8 )]
+[node name="LightStar59" parent="background" index="46" instance=ExtResource( 8 )]
 
 position = Vector2( 570.188, -428.886 )
 scale = Vector2( 0.18753, 0.165901 )
 color = Color( 0.0664062, 0.846832, 1, 1 )
 range_Min = 0.5
 
-[node name="LightStar60" parent="background" index="45" instance=ExtResource( 8 )]
+[node name="LightStar60" parent="background" index="47" instance=ExtResource( 8 )]
 
 position = Vector2( 825.776, -321.142 )
 scale = Vector2( 0.731303, 0.580935 )
 color = Color( 0.0664062, 0.846832, 1, 1 )
 range_Min = 0.5
 
-[node name="LightStar61" parent="background" index="46" instance=ExtResource( 8 )]
+[node name="LightStar61" parent="background" index="48" instance=ExtResource( 8 )]
 
 position = Vector2( 810.031, -261.37 )
 scale = Vector2( 1.08324, 0.798547 )
 color = Color( 0.994537, 1, 0.300781, 1 )
 range_Min = 0.5
 
-[node name="LightStar48" parent="background" index="47" instance=ExtResource( 8 )]
+[node name="LightStar48" parent="background" index="49" instance=ExtResource( 8 )]
 
 position = Vector2( -836.185, -517.327 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar43" parent="background" index="48" instance=ExtResource( 8 )]
+[node name="LightStar43" parent="background" index="50" instance=ExtResource( 8 )]
 
-position = Vector2( -471.878, -192.371 )
-scale = Vector2( 0.18753, 0.165901 )
+position = Vector2( -471.929, -192.332 )
+scale = Vector2( 0.372284, 0.30857 )
 color = Color( 0.603516, 0.125, 1, 1 )
 range_Min = 0.5
 
-[node name="LightStar36" parent="background" index="49" instance=ExtResource( 8 )]
+[node name="LightDeathStar" parent="background" index="51" instance=ExtResource( 8 )]
+
+position = Vector2( -760.576, -188.359 )
+scale = Vector2( 0.201646, 0.147529 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar2" parent="background" index="52" instance=ExtResource( 8 )]
+
+position = Vector2( -752.235, -188.287 )
+scale = Vector2( 0.193635, 0.142719 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar3" parent="background" index="53" instance=ExtResource( 8 )]
+
+position = Vector2( -742.649, -188.236 )
+scale = Vector2( 0.175716, 0.136422 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar4" parent="background" index="54" instance=ExtResource( 8 )]
+
+position = Vector2( -730.064, -188.236 )
+scale = Vector2( 0.188583, 0.15752 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar5" parent="background" index="55" instance=ExtResource( 8 )]
+
+position = Vector2( -716.39, -188.44 )
+scale = Vector2( 0.188386, 0.1534 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar6" parent="background" index="56" instance=ExtResource( 8 )]
+
+position = Vector2( -699.98, -188.297 )
+scale = Vector2( 0.219939, 0.173573 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar7" parent="background" index="57" instance=ExtResource( 8 )]
+
+position = Vector2( -682.006, -188.423 )
+scale = Vector2( 0.188108, 0.151303 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar8" parent="background" index="58" instance=ExtResource( 8 )]
+
+position = Vector2( -663.896, -188.347 )
+scale = Vector2( 0.193991, 0.162908 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar9" parent="background" index="59" instance=ExtResource( 8 )]
+
+position = Vector2( -644.953, -188.211 )
+scale = Vector2( 0.196004, 0.158607 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar10" parent="background" index="60" instance=ExtResource( 8 )]
+
+position = Vector2( -609.553, -188.609 )
+scale = Vector2( 0.178069, 0.136501 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar11" parent="background" index="61" instance=ExtResource( 8 )]
+
+position = Vector2( -593.642, -188.606 )
+scale = Vector2( 0.184665, 0.151332 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar12" parent="background" index="62" instance=ExtResource( 8 )]
+
+position = Vector2( -582.615, -188.872 )
+scale = Vector2( 0.17473, 0.128307 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar13" parent="background" index="63" instance=ExtResource( 8 )]
+
+position = Vector2( -571.219, -188.902 )
+scale = Vector2( 0.154111, 0.118079 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar14" parent="background" index="64" instance=ExtResource( 8 )]
+
+position = Vector2( -560.326, -188.986 )
+scale = Vector2( 0.130693, 0.100441 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightDeathStar15" parent="background" index="65" instance=ExtResource( 8 )]
+
+position = Vector2( -551.701, -189.073 )
+scale = Vector2( 0.12314, 0.0785027 )
+color = Color( 1, 0.0273438, 0.0273438, 1 )
+range_Min = 0.5
+
+[node name="LightStar36" parent="background" index="66" instance=ExtResource( 8 )]
 
 position = Vector2( -803.249, 0.733658 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar32" parent="background" index="50" instance=ExtResource( 8 )]
+[node name="LightStar32" parent="background" index="67" instance=ExtResource( 8 )]
 
 position = Vector2( -541.345, 83.5355 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar33" parent="background" index="51" instance=ExtResource( 8 )]
+[node name="LightStar66" parent="background" index="68" instance=ExtResource( 8 )]
+
+position = Vector2( -537.886, 63.6446 )
+scale = Vector2( 0.18753, 0.165901 )
+range_Min = 0.5
+
+[node name="LightStar33" parent="background" index="69" instance=ExtResource( 8 )]
 
 position = Vector2( -658.577, 199.427 )
 scale = Vector2( 0.27038, 0.236235 )
 color = Color( 1, 0.328125, 0.328125, 1 )
 range_Min = 0.5
 
-[node name="LightStar37" parent="background" index="52" instance=ExtResource( 8 )]
+[node name="LightStar37" parent="background" index="70" instance=ExtResource( 8 )]
 
 position = Vector2( -671.253, 402.967 )
 scale = Vector2( 0.523745, 0.401616 )
 color = Color( 0, 0.259155, 0.753906, 1 )
 range_Min = 0.5
 
-[node name="LightStar39" parent="background" index="53" instance=ExtResource( 8 )]
+[node name="LightStar39" parent="background" index="71" instance=ExtResource( 8 )]
 
 position = Vector2( -650.257, 348.819 )
 scale = Vector2( 0.523745, 0.401616 )
 color = Color( 0, 0.259155, 0.753906, 1 )
 range_Min = 0.5
 
-[node name="LightStar40" parent="background" index="54" instance=ExtResource( 8 )]
+[node name="LightStar40" parent="background" index="72" instance=ExtResource( 8 )]
 
 position = Vector2( -464.766, 404.55 )
 scale = Vector2( 0.523745, 0.401616 )
 color = Color( 0, 0.259155, 0.753906, 1 )
 range_Min = 0.5
 
-[node name="LightStar41" parent="background" index="55" instance=ExtResource( 8 )]
+[node name="LightStar41" parent="background" index="73" instance=ExtResource( 8 )]
 
 position = Vector2( -463.61, 455.99 )
 scale = Vector2( 0.523745, 0.401616 )
 color = Color( 0, 0.259155, 0.753906, 1 )
 range_Min = 0.5
 
-[node name="LightStar38" parent="background" index="56" instance=ExtResource( 8 )]
+[node name="LightStar38" parent="background" index="74" instance=ExtResource( 8 )]
 
 position = Vector2( -744.482, 293.722 )
 scale = Vector2( 0.523745, 0.401616 )
 color = Color( 0.230469, 0.783569, 1, 1 )
 range_Min = 0.5
 
-[node name="LightStar3" parent="background" index="57" instance=ExtResource( 8 )]
+[node name="LightStar3" parent="background" index="75" instance=ExtResource( 8 )]
 
 position = Vector2( 428.574, 150.53 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar4" parent="background" index="58" instance=ExtResource( 8 )]
+[node name="LightStar4" parent="background" index="76" instance=ExtResource( 8 )]
 
 position = Vector2( 427.628, 49.7495 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar10" parent="background" index="59" instance=ExtResource( 8 )]
+[node name="LightStar10" parent="background" index="77" instance=ExtResource( 8 )]
 
 position = Vector2( 573.716, 34.7224 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar11" parent="background" index="60" instance=ExtResource( 8 )]
+[node name="LightStar11" parent="background" index="78" instance=ExtResource( 8 )]
 
 position = Vector2( 581.52, 68.7246 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar12" parent="background" index="61" instance=ExtResource( 8 )]
+[node name="LightStar12" parent="background" index="79" instance=ExtResource( 8 )]
 
 position = Vector2( 598.667, 51.5972 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar14" parent="background" index="62" instance=ExtResource( 8 )]
+[node name="LightStar14" parent="background" index="80" instance=ExtResource( 8 )]
 
 position = Vector2( 710.099, 95.7991 )
 scale = Vector2( 0.138971, 0.130162 )
 range_Min = 0.5
 
-[node name="LightStar15" parent="background" index="63" instance=ExtResource( 8 )]
+[node name="LightStar15" parent="background" index="81" instance=ExtResource( 8 )]
 
 position = Vector2( 702.478, 79.7406 )
 scale = Vector2( 0.138971, 0.130162 )
 range_Min = 0.5
 
-[node name="LightStar16" parent="background" index="64" instance=ExtResource( 8 )]
+[node name="LightStar16" parent="background" index="82" instance=ExtResource( 8 )]
 
 position = Vector2( 811.568, 3.5997 )
 scale = Vector2( 0.138971, 0.130162 )
 range_Min = 0.5
 
-[node name="LightStar17" parent="background" index="65" instance=ExtResource( 8 )]
+[node name="LightStar17" parent="background" index="83" instance=ExtResource( 8 )]
 
 position = Vector2( 825.582, 1.56073 )
 scale = Vector2( 0.138971, 0.130162 )
 range_Min = 0.5
 
-[node name="LightStar18" parent="background" index="66" instance=ExtResource( 8 )]
+[node name="LightStar18" parent="background" index="84" instance=ExtResource( 8 )]
 
 position = Vector2( 735.647, -76.4091 )
 scale = Vector2( 0.138971, 0.130162 )
 range_Min = 0.5
 
-[node name="LightStar22" parent="background" index="67" instance=ExtResource( 8 )]
+[node name="LightStar22" parent="background" index="85" instance=ExtResource( 8 )]
 
 position = Vector2( 523.94, -207.228 )
 scale = Vector2( 0.138971, 0.130162 )
 range_Min = 0.5
 
-[node name="LightStar23" parent="background" index="68" instance=ExtResource( 8 )]
+[node name="LightStar23" parent="background" index="86" instance=ExtResource( 8 )]
 
 position = Vector2( 419.737, -160.378 )
 scale = Vector2( 0.138971, 0.130162 )
 range_Min = 0.5
 
-[node name="LightStar24" parent="background" index="69" instance=ExtResource( 8 )]
+[node name="LightStar24" parent="background" index="87" instance=ExtResource( 8 )]
 
 position = Vector2( 385.276, -153.463 )
 scale = Vector2( 0.138971, 0.130162 )
 range_Min = 0.5
 
-[node name="LightStar25" parent="background" index="70" instance=ExtResource( 8 )]
+[node name="LightStar25" parent="background" index="88" instance=ExtResource( 8 )]
 
 position = Vector2( 413.76, -121.543 )
 scale = Vector2( 0.138971, 0.130162 )
 range_Min = 0.5
 
-[node name="LightStar19" parent="background" index="71" instance=ExtResource( 8 )]
+[node name="LightStar19" parent="background" index="89" instance=ExtResource( 8 )]
 
 position = Vector2( 777.386, -104.411 )
 scale = Vector2( 0.138971, 0.130162 )
 range_Min = 0.5
 
-[node name="LightStar21" parent="background" index="72" instance=ExtResource( 8 )]
+[node name="LightStar21" parent="background" index="90" instance=ExtResource( 8 )]
 
 position = Vector2( 795.56, -98.1963 )
 scale = Vector2( 0.138971, 0.130162 )
 range_Min = 0.5
 
-[node name="LightStar20" parent="background" index="73" instance=ExtResource( 8 )]
+[node name="LightStar20" parent="background" index="91" instance=ExtResource( 8 )]
 
 position = Vector2( 790.595, -151.268 )
 scale = Vector2( 0.225989, 0.20266 )
 range_Min = 0.5
 
-[node name="LightStar13" parent="background" index="74" instance=ExtResource( 8 )]
+[node name="LightStar13" parent="background" index="92" instance=ExtResource( 8 )]
 
 position = Vector2( 765.743, 164.787 )
 scale = Vector2( 0.394814, 0.3389 )
 color = Color( 0.938965, 1, 0.21875, 1 )
 range_Min = 0.5
 
-[node name="LightStar5" parent="background" index="75" instance=ExtResource( 8 )]
+[node name="LightStar5" parent="background" index="93" instance=ExtResource( 8 )]
 
-position = Vector2( 438.735, 54.7725 )
+position = Vector2( 448.642, 73.1781 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar6" parent="background" index="76" instance=ExtResource( 8 )]
+[node name="LightStar6" parent="background" index="94" instance=ExtResource( 8 )]
 
 position = Vector2( 430.371, 97.5204 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar7" parent="background" index="77" instance=ExtResource( 8 )]
+[node name="LightStar7" parent="background" index="95" instance=ExtResource( 8 )]
 
 position = Vector2( 381.687, 206.547 )
 scale = Vector2( 0.18753, 0.165901 )
 range_Min = 0.5
 
-[node name="LightStar26" parent="background" index="78" instance=ExtResource( 8 )]
+[node name="LightStar26" parent="background" index="96" instance=ExtResource( 8 )]
 
 position = Vector2( 389.79, 374.772 )
 scale = Vector2( 0.460152, 0.351175 )
 color = Color( 0.0898438, 0.210724, 1, 1 )
 range_Min = 0.5
 
-[node name="LightStar27" parent="background" index="79" instance=ExtResource( 8 )]
+[node name="LightStar27" parent="background" index="97" instance=ExtResource( 8 )]
 
 position = Vector2( 557.092, 356.125 )
 scale = Vector2( 0.460152, 0.351175 )
 color = Color( 0.0898438, 0.210724, 1, 1 )
 range_Min = 0.5
 
-[node name="LightStar28" parent="background" index="80" instance=ExtResource( 8 )]
+[node name="LightStar28" parent="background" index="98" instance=ExtResource( 8 )]
 
 position = Vector2( 530.98, 386.775 )
 scale = Vector2( 0.460152, 0.351175 )

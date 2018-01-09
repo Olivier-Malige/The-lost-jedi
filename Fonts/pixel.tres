@@ -5,7 +5,7 @@
 [resource]
 
 resource_name = "pixel"
-size = 24
+size = 30
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 1 )
