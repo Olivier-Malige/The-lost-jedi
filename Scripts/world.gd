@@ -9,11 +9,13 @@ func _ready():
 		add_child(player1)
 		add_child(player2)
 		nbr_Player =2
+
 	else :
 		var player1 = preload("res://Prefabs/player.tscn").instance()
 		player1.position = get_node("playerSpawn").global_position
 		add_child(player1)
 		nbr_Player =1
+
 func _process(delta):
 	if nbr_Player <=0 :
 		get_node("/root/main").goGameOverScreen()

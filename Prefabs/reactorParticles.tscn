@@ -40,7 +40,7 @@ anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
 
-[node name="reactorParticles" type="Particles2D" index="0"]
+[node name="reactorParticles" type="Particles2D"]
 
 show_behind_parent = true
 position = Vector2( -6, 16.894 )

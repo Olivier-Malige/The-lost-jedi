@@ -200,7 +200,7 @@ func update_energy():
 			 energy = preload("res://Prefabs/player2Energy.tscn").instance()
 		else :
 			 energy = preload("res://Prefabs/player1Energy.tscn").instance()
-		energy.position = Vector2(i*12,0)
+		energy.position = Vector2(0,-i*12)
 		get_node("/root/main/world/hud/energy_"+id_player).add_child(energy)
 
 
