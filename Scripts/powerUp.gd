@@ -42,6 +42,7 @@ func _on_powerUp_area_enter( area ):
 		elif (get_node("anim").get_current_animation() == "laserUp"):
 			area.shotPowerBonus += BONUS_SHOT_POWER
 			$shot_Up.playing = true
+
 		$anim.queue_free()
 		$Sprite.queue_free()
 		$CollisionShape2D.queue_free()

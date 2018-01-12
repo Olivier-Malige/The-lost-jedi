@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/powerUp.gd" type="Script" id=1]
 [ext_resource path="res://Assets/powerUp.png" type="Texture" id=2]
@@ -70,7 +70,25 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=5]
 
-resource_name = "speedUp"
+resource_name = "shieldUp"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=6]
+
 length = 1.0
 loop = false
 step = 0.1
@@ -87,7 +105,7 @@ tracks/0/keys = {
 "values": [ 1 ]
 }
 
-[node name="powersUp" type="Area2D" index="0"]
+[node name="powersUp" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -102,9 +120,9 @@ script = ExtResource( 1 )
 
 scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
-hframes = 4
-frame = 1
-_sections_unfolded = [ "Transform" ]
+hframes = 5
+frame = 4
+_sections_unfolded = [ "Animation", "Region", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
@@ -124,7 +142,8 @@ root_node = NodePath("..")
 anims/energieUp = SubResource( 2 )
 anims/laserUp = SubResource( 3 )
 anims/lateralShot = SubResource( 4 )
-anims/speedUp = SubResource( 5 )
+anims/shieldUp = SubResource( 5 )
+anims/speedUp = SubResource( 6 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

@@ -18,6 +18,7 @@ onready var malusSpeed = 0
 onready var controller 
 onready var id_player 
 
+
 func _ready():
 	#set a string id player for get_node in hud 
 	if set_Player_2 :
@@ -192,8 +193,8 @@ func _on_ShootingDelay_timeout():
 	canShooting = true
 	
 func update_energy():
-	for el in get_node("/root/main/world/hud/energy_"+id_player).get_children():
-		el.queue_free()
+	for ch in get_node("/root/main/world/hud/energy_"+id_player).get_children():
+		ch.queue_free()
 	for i in range(energy):
 		var energy 
 		if set_Player_2 :
