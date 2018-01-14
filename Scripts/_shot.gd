@@ -4,6 +4,7 @@ extends Area2D
 var speedY = 0
 var speedX = 0
 export var setRotation = false
+export var playerShot = false
 var speedRotation = 20
 
 func _process(delta):
@@ -12,7 +13,11 @@ func _process(delta):
 	translate(Vector2(speedX*delta, delta*speedY))
 	
 func _ready():
-	add_to_group("shot")
+	if playerShot :
+		add_to_group("player_Shot")
+	else :
+		add_to_group("enemy_Shot")
+	
 
 func setPowerAnim(a1,a2,a3,a4,a5,shotPower):
 	if (shotPower >= a1):

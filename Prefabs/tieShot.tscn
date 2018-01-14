@@ -20,6 +20,7 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z" ]
 setRotation = false
+playerShot = false
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 

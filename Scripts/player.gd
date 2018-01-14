@@ -16,7 +16,7 @@ onready var touched = false
 onready var canShooting = true
 onready var malusSpeed = 0
 onready var controller 
-onready var id_player 
+var id_player 
 
 
 func _ready():

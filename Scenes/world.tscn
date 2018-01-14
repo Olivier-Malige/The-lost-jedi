@@ -58,12 +58,12 @@ max_lines_visible = -1
 
 [node name="energy_player1" type="Node2D" parent="hud" index="2"]
 
-position = Vector2( 8, 600 )
+position = Vector2( 5, 170 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="energy_player2" type="Node2D" parent="hud" index="3"]
 
-position = Vector2( 795, 600 )
+position = Vector2( 795, 170 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="waveGenerator" type="Node2D" parent="." index="1"]

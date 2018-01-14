@@ -9,7 +9,7 @@ func is_enemy():
 	return true
 
 func _on_shot_area_enter( area ):
-	if (area.is_in_group("player") or area.is_in_group("asteroid")):
+	if (area.is_in_group("player") or area.is_in_group("asteroid")or area.is_in_group("enemy")):
 		area._hit_something(10)
 		queue_free()
 

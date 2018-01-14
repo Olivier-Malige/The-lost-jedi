@@ -44,7 +44,7 @@ func _ready():
 		get_node("anim").play("start")
 
 
-func _hit_something(dmg):
+func _hit_something(dmg = 0):
 	if (destroyed):
 		return
 	life -= dmg

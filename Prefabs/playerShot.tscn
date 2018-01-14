@@ -221,7 +221,7 @@ tracks/2/keys = {
 "values": [ Vector2( 1.60584, 0.609985 ) ]
 }
 
-[node name="playerShot" type="Area2D" index="0"]
+[node name="playerShot" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -233,6 +233,7 @@ audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 setRotation = false
+playerShot = true
 
 [node name="sprite" type="Sprite" parent="." index="0"]
 
