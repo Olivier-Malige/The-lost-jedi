@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/player.gd" type="Script" id=1]
 [ext_resource path="res://Assets/xWing2.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Sounds/player_Explode.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/player_Hit.wav" type="AudioStream" id=6]
 [ext_resource path="res://Sounds/player_Shot.wav" type="AudioStream" id=7]
+[ext_resource path="res://Prefabs/shield.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -291,6 +292,8 @@ attenuation = 1.0
 bus = "Sounds"
 area_mask = 1
 _sections_unfolded = [ "Z" ]
+
+[node name="shield" parent="." index="13" instance=ExtResource( 8 )]
 
 [connection signal="area_entered" from="." to="." method="_on_player_area_enter"]
 
