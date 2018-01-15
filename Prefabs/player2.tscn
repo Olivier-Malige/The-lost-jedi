@@ -203,17 +203,17 @@ _sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="shootFrom" type="Position2D" parent="." index="1"]
 
-position = Vector2( 0, -11.4036 )
+position = Vector2( 0, -17.4036 )
 scale = Vector2( 1, 0.752936 )
 
 [node name="shootFromLeft" type="Position2D" parent="." index="2"]
 
-position = Vector2( 17, -9.40359 )
+position = Vector2( 14, -17.4036 )
 scale = Vector2( 1, 0.752936 )
 
 [node name="shootFromRight" type="Position2D" parent="." index="3"]
 
-position = Vector2( -17, -9.40359 )
+position = Vector2( -14, -17.4036 )
 scale = Vector2( 1, 0.752936 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
@@ -224,15 +224,15 @@ shape = SubResource( 1 )
 
 [node name="anim" type="AnimationPlayer" parent="." index="5"]
 
+root_node = NodePath("..")
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
+playback_speed = 1.0
 anims/explode = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/left = SubResource( 4 )
 anims/right = SubResource( 5 )
-playback/active = true
-playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 

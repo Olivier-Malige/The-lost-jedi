@@ -219,7 +219,7 @@ anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
 
-[node name="player" type="Area2D" index="0"]
+[node name="player" type="Area2D"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -242,17 +242,17 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="shootFrom" type="Position2D" parent="." index="1"]
 
-position = Vector2( 0, -11.4036 )
+position = Vector2( 0, -18.4036 )
 scale = Vector2( 1, 0.752936 )
 
 [node name="shootFromLeft" type="Position2D" parent="." index="2"]
 
-position = Vector2( 16, -8.40359 )
+position = Vector2( 14, -18.4036 )
 scale = Vector2( 1, 0.752936 )
 
 [node name="shootFromRight" type="Position2D" parent="." index="3"]
 
-position = Vector2( -17, -8.40359 )
+position = Vector2( -14, -18.4036 )
 scale = Vector2( 1, 0.752936 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]

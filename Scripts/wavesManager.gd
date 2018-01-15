@@ -217,16 +217,33 @@ func _on_motherShipSpawnTimer_timeout():
 	motherShip.position =get_node("spawnPos"+str(rndPos)).global_position
 	add_child(motherShip)
 func _on_masterTimer_timeout():
-	nubWave += 1
+	goto_Next_Wave()
+	_update_State()
+	_update_Wave()
 	
-	#update wave  for save higter wave in hiscore
-	global.wave = nubWave +1
-
-	if (nubWave < metaWave.size()):
-		spawn(metaWave[nubWave].asteroid,metaWave[nubWave].bigAsteroid,metaWave[nubWave].tie,metaWave[nubWave].interceptor,metaWave[nubWave].drone,metaWave[nubWave].motherShip,metaWave[nubWave].turret)
 	
 func _on_turretSpawnTimer_timeout():
 	var rndPos = randi()%11
 	var turret = preload("res://Prefabs/turret.tscn").instance()
 	turret.position =get_node("spawnPos"+str(rndPos)).global_position
 	add_child(turret)
+	
+func goto_Previous_Wave():
+	if nubWave > 0 :
+		nubWave -= 1
+		$masterTimer.start()
+	_update_State()
+	_update_Wave()
+	
+func goto_Next_Wave():
+	if (nubWave < metaWave.size()-1):
+		nubWave +=1
+		_update_State()
+		_update_Wave()
+	
+func _update_State():
+	global.wave = nubWave +1
+	
+func _update_Wave():
+	spawn(metaWave[nubWave].asteroid,metaWave[nubWave].bigAsteroid,metaWave[nubWave].tie,metaWave[nubWave].interceptor,
+	metaWave[nubWave].drone,metaWave[nubWave].motherShip,metaWave[nubWave].turret)

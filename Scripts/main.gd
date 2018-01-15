@@ -18,9 +18,42 @@ func _ready():
 
 
 func _input(event):
+	
+		
 	if (worldScreen ):
 		if event.is_action_pressed("start") and not event.is_echo():
 			setPause()
+			
+		#CHEATCODE DEBUG
+		if global.Debug :  
+			#Previous Wave   
+			if  event.is_action_pressed("debug_Key1") and not event.is_echo():
+				get_node("world/waveGenerator").goto_Previous_Wave()
+			#Next Wave
+			elif event.is_action_pressed("debug_Key2") and not event.is_echo():
+				get_node("world/waveGenerator").goto_Next_Wave()
+			#Add Speed PowerUp
+
+			elif event.is_action_pressed("debug_Key3") and not event.is_echo():
+				get_node("world/player").increase_Speed()
+				if coop :
+						get_node("world/player2").increase_Speed()
+			#Add Power PowerUp
+			elif event.is_action_pressed("debug_Key4") and not event.is_echo():
+				get_node("world/player").increase_Shot()
+				if coop :
+						get_node("world/player2").increase_Shot()
+			#Add Lateral PowerUp
+			elif event.is_action_pressed("debug_Key5") and not event.is_echo():
+				get_node("world/player").increase_SideShot()
+				if coop :
+						get_node("world/player2").increase_SideShot()
+			#Add Shiel PowerUp
+			elif event.is_action_pressed("debug_Key6") and not event.is_echo():
+				get_node("world/player").increase_Shield()
+				if coop :
+						get_node("world/player2").increase_Shield()
+
 	if (gameOverScreen):
 		if event.is_action_pressed("start") and not event.is_echo():
 			goStartScreen()

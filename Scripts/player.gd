@@ -204,8 +204,21 @@ func update_energy():
 		energy.position = Vector2(0,-i*12)
 		get_node("/root/main/world/hud/energy_"+id_player).add_child(energy)
 
+func increase_Speed():
+		bonusSpeed += global.POWERUP.player_Speed
+		shoot_Delay -= global.POWERUP.shooting_Speed
+		setShootingDelay()
 
-
+func increase_SideShot():
+		shotSide = true
+		bonusPowerSideShot += global.POWERUP.side_Shot_Power
+		
+func increase_Shot():
+		shotPowerBonus += global.POWERUP.shot_Power
+		
+func increase_Shield():
+	get_node("shield").power = 1    #+1 to  getset function
+	
 func _on_anim_animation_finished(n):
 	if n == "explode":
 		get_node("/root/main/world").nbr_Player -= 1

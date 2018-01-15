@@ -26,7 +26,11 @@ var saveData = { solo = {
 						}}
 var sav_path = "user://data.json"
 const VERSION_NUMBER = "Alpha dev"
-
+var POWERUP = { player_Speed = 5,       #pixel
+				shot_Power = 0.25,      #damage 
+				side_Shot_Power = 0.20, #damage
+				shooting_Speed = 0.006  #seconde
+				}
 func _ready():
 #	save_Data()
 	load_Data()

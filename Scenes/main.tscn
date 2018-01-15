@@ -52,7 +52,7 @@ _sections_unfolded = [ "Material", "Transform", "Z" ]
 
 [node name="background" type="Sprite" parent="." index="0"]
 
-position = Vector2( 608.5, 465.619 )
+position = Vector2( 608.5, 466.619 )
 scale = Vector2( 1.71894, 1.85326 )
 z_index = 500
 texture = ExtResource( 2 )
