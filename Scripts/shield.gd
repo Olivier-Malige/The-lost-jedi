@@ -47,6 +47,6 @@ func _set_Power(up):
 	
 	
 
-func _on_AnimationPlayer_animation_finished( name ):
-	if name == get_parent().id_player+animPower+"_Hit" :
+func _on_AnimationPlayer_animation_finished(n):
+	if n== get_parent().id_player+animPower+"_Hit" :
 		self.power = -1

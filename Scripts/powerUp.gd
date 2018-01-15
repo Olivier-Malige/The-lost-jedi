@@ -6,8 +6,8 @@ const BONUS_SIDE_SHOT_POWER = 0.20 #damage
 const BONUS_SHOOTING_SPEED = 0.006 #Seconde
 
 func _ready():
-#	var rndPowers = randi()%100 +1
-	var rndPowers =6
+	var rndPowers = randi()%100 +1
+#	var rndPowers =6   #debug
 	set_process(true)
 	add_to_group("powersUp")
 	if (rndPowers <= 100):
@@ -18,7 +18,7 @@ func _ready():
 		get_node("anim").play("lateralShot")
 	if (rndPowers <= 10):
 		get_node("anim").play("shieldUp")
-	if (rndPowers <= 3):
+	if (rndPowers <= 2):
 		get_node("anim").play("energieUp")
 
 func _process(delta):

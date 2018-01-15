@@ -223,7 +223,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0.299926, 0.357449 ) ]
 }
 
-[node name="player2_Side_Shot" type="Area2D" index="0"]
+[node name="player2_Side_Shot" type="Area2D"]
 
 position = Vector2( 0, -10 )
 input_pickable = true

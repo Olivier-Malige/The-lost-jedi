@@ -219,7 +219,7 @@ anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
 
-[node name="player" type="Area2D"]
+[node name="player" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -263,15 +263,15 @@ shape = SubResource( 1 )
 
 [node name="anim" type="AnimationPlayer" parent="." index="5"]
 
+root_node = NodePath("..")
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
+playback_speed = 1.0
 anims/explode = SubResource( 2 )
 anims/idle = SubResource( 3 )
 anims/left = SubResource( 4 )
 anims/right = SubResource( 5 )
-playback/active = true
-playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 

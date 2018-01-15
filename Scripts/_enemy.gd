@@ -88,11 +88,11 @@ func _on_VisibilityNotifier2D_screen_exited():
 	set_process(false)
 	queue_free()
 
-func _on_anim_animation_finished( name ):
-	if name == "explode":         
+func _on_anim_animation_finished(n):
+	if n == "explode":         
 		set_process(false)
 		queue_free()
-	elif name == "hit":
+	elif n == "hit":
 		if (useMultiSprites):
 			get_node("anim").play("start"+str(rndMultiSprites+1))
 		else :

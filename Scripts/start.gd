@@ -8,5 +8,3 @@ func _ready():
 	m.set_mode(m.MENU_START)
 
 
-func _on_AnimationPlayer_animation_finished(name):
-	pass

@@ -206,8 +206,8 @@ func update_energy():
 
 
 
-func _on_anim_animation_finished(name):
-	if name == "explode":
+func _on_anim_animation_finished(n):
+	if n == "explode":
 		get_node("/root/main/world").nbr_Player -= 1
 		queue_free()
 		
