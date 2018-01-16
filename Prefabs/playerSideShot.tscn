@@ -259,16 +259,16 @@ _sections_unfolded = [ "Transform" ]
 
 [node name="anim" type="AnimationPlayer" parent="." index="3"]
 
+root_node = NodePath("..")
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
+playback_speed = 1.0
 anims/big = SubResource( 2 )
 anims/full = SubResource( 3 )
 anims/large = SubResource( 4 )
 anims/normal = SubResource( 5 )
 anims/small = SubResource( 6 )
-playback/active = true
-playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 

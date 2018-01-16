@@ -6,6 +6,8 @@ var speedX = 0
 export var setRotation = false
 export var playerShot = false
 var speedRotation = 20
+var trowbackByShield = false
+
 
 func _process(delta):
 	if (setRotation):

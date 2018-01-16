@@ -40,7 +40,7 @@ func _on_powerUp_area_enter( area ):
 			area.increase_SideShot()
 			$lateral_Shot.playing = true
 		elif (get_node("anim").get_current_animation() == "laserUp"):
-			area.increase_shot()
+			area.increase_Shot()
 			$shot_Up.playing = true
 		elif (get_node("anim").get_current_animation() == "shieldUp"):
 			area.increase_Shield()

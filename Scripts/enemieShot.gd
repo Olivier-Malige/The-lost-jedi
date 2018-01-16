@@ -10,6 +10,8 @@ func is_enemy():
 
 func _on_shot_area_enter( area ):
 	if (area.is_in_group("player") or area.is_in_group("asteroid")or area.is_in_group("enemy")):
+		if trowbackByShield :
+			area.hitByPlayerShot = true
 		area._hit_something(10)
 		queue_free()
 
