@@ -1,6 +1,7 @@
 extends Area2D
 export(int) var nbrSprites = 1
-export(bool) var useMultiSprites = false
+export(float) var rnd_Roation_Range_Max = 1
+export(float) var rnd_Roation_Range_Min = -1
 export(int) var life = 0
 export(int) var hitSomething = 1
 export(int) var points =0
@@ -16,7 +17,7 @@ onready var hitByPlayer1Shot = false
 onready var hitByPlayer2Shot = false 
 onready var destroyed = false
 onready var hitByPlayerShot = false 
-onready var rndMultiSprites
+onready var indexSprites
 var bonusCoop = 1.5
 func _process(delta):
 	hitByPlayerShot = false
@@ -31,18 +32,17 @@ func _ready():
 		life *= bonusCoop
 	randomize();
 	if rndRotation :
-		speedRotation = rand_range(-2,2)
+		speedRotation = rand_range(rnd_Roation_Range_Min,rnd_Roation_Range_Max)
 		
 	speedX = rand_range(-randomX-speedX, randomY+speedX)
 	#speedy = rand_range(-randomY-speedY, randomY+speedY)
 	add_to_group("enemy")
 	
-	rndMultiSprites = randi()%nbrSprites
-	if (useMultiSprites):
-		get_node("anim").play("start"+str(rndMultiSprites+1))
+	if nbrSprites > 1 :
+		indexSprites = randi()%nbrSprites +1
 	else :
-		get_node("anim").play("start")
-
+		indexSprites = ""
+	$anim.play("start"+str(indexSprites))
 
 func _hit_something(dmg = 0):
 	if (destroyed):
@@ -55,6 +55,7 @@ func _hit_something(dmg = 0):
 	position = pos
 
 	if life <= 0 :
+
 		get_node("anim").play("explode")
 		if (has_node("shootTimer")):
 			get_node("shootTimer").stop()
@@ -74,12 +75,9 @@ func _hit_something(dmg = 0):
 				powerUp.position =global_position
 				get_node("../").add_child(powerUp)
 	else :	
-		if (useMultiSprites):
-			get_node("anim").play("hit"+str(rndMultiSprites+1))
-		else :
-			get_node("anim").play("hit")
+		get_node("anim").play("hit"+str(indexSprites))
 
-	
+
 func _on_area_enter( area ):
 	if (area.has_method("_hit_something")):
 		area._hit_something(hitSomething)
@@ -92,8 +90,5 @@ func _on_anim_animation_finished(n):
 	if n == "explode":         
 		set_process(false)
 		queue_free()
-	elif n == "hit":
-		if (useMultiSprites):
-			get_node("anim").play("start"+str(rndMultiSprites+1))
-		else :
-			get_node("anim").play("start")
+	elif n == "hit"+str(indexSprites):
+		get_node("anim").play("start"+str(indexSprites))

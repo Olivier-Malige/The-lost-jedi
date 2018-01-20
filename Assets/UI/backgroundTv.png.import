@@ -6,7 +6,11 @@ path="res://.import/backgroundTv.png-8741a2fe53f51e46ed9db6158c42fa35.stex"
 
 [deps]
 
-source_md5="437f1c53973a786a3bc71a09006ffb7f"
+source_file="res://Assets/UI/backgroundTv.png"
+source_md5="429f4f3e54f4bbf576c0b8c2253f0b2a"
+
+dest_files=[ "res://.import/backgroundTv.png-8741a2fe53f51e46ed9db6158c42fa35.stex" ]
+dest_md5="5f16ba056b1a65613cd04edd5c384823"
 
 [params]
 

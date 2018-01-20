@@ -6,7 +6,11 @@ path="res://.import/bigAsteroidSheet.png-d1466ac9820cbae434e518d35f132049.stex"
 
 [deps]
 
-source_md5="c907fee048943f861db89b249bef1534"
+source_file="res://Assets/bigAsteroidSheet.png"
+source_md5="fd4e02ebc35c8367297c4c800d428613"
+
+dest_files=[ "res://.import/bigAsteroidSheet.png-d1466ac9820cbae434e518d35f132049.stex" ]
+dest_md5="cab11fd86592255688d9f10761fa667a"
 
 [params]
 
