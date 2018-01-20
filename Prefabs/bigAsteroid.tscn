@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/_enemy.gd" type="Script" id=1]
-[ext_resource path="res://Assets/bigAsteroidSheet.png" type="Texture" id=2]
-[ext_resource path="res://Sounds/asteroid_Hit.wav" type="AudioStream" id=3]
-[ext_resource path="res://Sounds/bigAsteroid_Explode.wav" type="AudioStream" id=4]
+[ext_resource path="res://Prefabs/Asteroid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/bigAsteroidSheet.png" type="Texture" id=3]
+[ext_resource path="res://Sounds/asteroid_Hit.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/bigAsteroid_Explode.wav" type="AudioStream" id=5]
 
 [sub_resource type="CircleShape2D" id=13]
 
@@ -181,7 +182,7 @@ tracks/0/keys = {
 "values": [ 13 ]
 }
 
-[node name="bigAsteroid" type="Area2D" groups=[
+[node name="bigAsteroid" type="Area2D" index="0" groups=[
 "asteroid",
 ]]
 
@@ -193,6 +194,10 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+dropOnDestroy = true
+dropRange = 64
+objectOnDestroy = ExtResource( 2 )
+nbrObjectOnDestroy = 5
 nbrSprites = 4
 rnd_Roation_Range_Max = 1
 rnd_Roation_Range_Min = -1
@@ -211,7 +216,7 @@ rndRotation = true
 [node name="SpriteAsteroid" type="Sprite" parent="." index="0"]
 
 scale = Vector2( 4, 4 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 vframes = 2
 hframes = 9
 frame = 14
@@ -219,7 +224,7 @@ _sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 0.909724, -1.35961 )
+position = Vector2( -0.090275, -1.35961 )
 scale = Vector2( 2.72887, 2.53009 )
 shape = SubResource( 13 )
 _sections_unfolded = [ "Transform" ]
@@ -249,7 +254,7 @@ rect = Rect2( -10, -10, 20, 20 )
 
 [node name="sound_Hit" type="AudioStreamPlayer2D" parent="." index="4"]
 
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
 volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
@@ -259,9 +264,9 @@ area_mask = 1
 
 [node name="sound_Explode" type="AudioStreamPlayer2D" parent="." index="5"]
 
-position = Vector2( 0.237839, 3.9239 )
+position = Vector2( -0.409225, 3.9239 )
 scale = Vector2( 1, 1.08546 )
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = 0.0
 autoplay = false
 max_distance = 2000.0

@@ -1,5 +1,9 @@
 extends Area2D
-export(int) var nbrSprites = 1
+export(bool) var dropOnDestroy = false
+export(int) var dropRange = 64
+export(PackedScene) var objectOnDestroy 
+export(int) var nbrObjectOnDestroy = 1
+export(int, 4) var nbrSprites = 1
 export(float) var rnd_Roation_Range_Max = 1
 export(float) var rnd_Roation_Range_Min = -1
 export(int) var life = 0
@@ -55,12 +59,43 @@ func _hit_something(dmg = 0):
 	position = pos
 
 	if life <= 0 :
+		_destroy()
 
-		get_node("anim").play("explode")
-		if (has_node("shootTimer")):
-			get_node("shootTimer").stop()
+	else :	
+		get_node("anim").play("hit"+str(indexSprites))
+
+
+func _on_area_enter( area ):
+	if not destroyed :
+		if (area.has_method("_hit_something")):
+			area._hit_something(hitSomething)
+
+func _on_VisibilityNotifier2D_screen_exited():
+	set_process(false)
+	queue_free()
+
+func _on_anim_animation_finished(n):
+	if n == "explode":     
+
+		set_process(false)
+		queue_free()
+	elif n == "hit"+str(indexSprites):
+		get_node("anim").play("start"+str(indexSprites))
+		
+func _drop():
+		for i in range (nbrObjectOnDestroy) :
+			var objDroped = objectOnDestroy.instance()
+			objDroped.position = Vector2(position.x + rand_range(-dropRange,dropRange),position.y+rand_range(-dropRange,dropRange))
+			get_node("../").add_child(objDroped)    
+		
+func _destroy():
+	destroyed = true
+
+	get_node("anim").play("explode")
+	$CollisionShape2D.queue_free()
+	if (has_node("shootTimer")):
+		get_node("shootTimer").stop()
 		$sound_Explode.playing = true
-		destroyed = true
 		get_node("CollisionShape2D").queue_free()
 		if (hitByPlayerShot):
 			var score = preload("res://Prefabs/score.tscn").instance()
@@ -74,21 +109,5 @@ func _hit_something(dmg = 0):
 				var powerUp = preload("res://Prefabs/powersUp.tscn").instance()
 				powerUp.position =global_position
 				get_node("../").add_child(powerUp)
-	else :	
-		get_node("anim").play("hit"+str(indexSprites))
-
-
-func _on_area_enter( area ):
-	if (area.has_method("_hit_something")):
-		area._hit_something(hitSomething)
-
-func _on_VisibilityNotifier2D_screen_exited():
-	set_process(false)
-	queue_free()
-
-func _on_anim_animation_finished(n):
-	if n == "explode":         
-		set_process(false)
-		queue_free()
-	elif n == "hit"+str(indexSprites):
-		get_node("anim").play("start"+str(indexSprites))
+	if dropOnDestroy :
+		_drop()
