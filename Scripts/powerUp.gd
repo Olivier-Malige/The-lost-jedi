@@ -1,9 +1,5 @@
 extends Area2D
 const SPEED = 100  
-#const BONUS_SPEED_PLAYER = global.POWERUP_SPEED      #speedUp 5 
-#const BONUS_SHOT_POWER = global.POWERUP_     #damage 0.25
-#const BONUS_SIDE_SHOT_POWER = 0.20 #damage 0.20
-#const BONUS_SHOOTING_SPEED = 0.006 #Seconde 0.006
 
 func _ready():
 	var rndPowers = randi()%100 +1
@@ -31,17 +27,17 @@ func _on_powerUp_area_enter( area ):
 	if (area.is_in_group("player")):
 		if (get_node("anim").get_current_animation() == "speedUp"):
 			area.increase_Speed()
-			$speed_Up.playing = true
+			$sound_Speed_Up.playing = true
 		elif (get_node("anim").get_current_animation() == "energieUp"):
 			area.energy += 1
 			area.update_energy()
-			$energy_Up.playing = true
+			$sound_Energy_Up.playing = true
 		elif (get_node("anim").get_current_animation() == "lateralShot"):
 			area.increase_SideShot()
-			$lateral_Shot.playing = true
+			$sound_Lateral_Shot.playing = true
 		elif (get_node("anim").get_current_animation() == "laserUp"):
 			area.increase_Shot()
-			$shot_Up.playing = true
+			$sound_Shot_Up.playing = true
 		elif (get_node("anim").get_current_animation() == "shieldUp"):
 			area.increase_Shield()
 

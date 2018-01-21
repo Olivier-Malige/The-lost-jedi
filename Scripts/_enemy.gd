@@ -90,24 +90,21 @@ func _drop():
 		
 func _destroy():
 	destroyed = true
-
+	$sound_Explode.playing = true
 	get_node("anim").play("explode")
 	$CollisionShape2D.queue_free()
 	if (has_node("shootTimer")):
 		get_node("shootTimer").stop()
-		$sound_Explode.playing = true
-		get_node("CollisionShape2D").queue_free()
-		if (hitByPlayerShot):
-			var score = preload("res://Prefabs/score.tscn").instance()
-			score.player = 1
-			score.position =global_position
-			score.setScore = points
-			get_node("../").add_child(score)
-			get_node("/root/global").score += points
-			#Rand PowersUp
-			if (randi()%101 <= randPowerUp):
-				var powerUp = preload("res://Prefabs/powersUp.tscn").instance()
-				powerUp.position =global_position
-				get_node("../").add_child(powerUp)
+	if (hitByPlayerShot):
+		var score = preload("res://Prefabs/score.tscn").instance()
+		score.position =global_position
+		score.setScore = points
+		get_node("../").add_child(score)
+		get_node("/root/global").score += points
+		#Rand PowersUp
+		if (randi()%101 <= randPowerUp):
+			var powerUp = preload("res://Prefabs/powersUp.tscn").instance()
+			powerUp.position =global_position
+			get_node("../").add_child(powerUp)
 	if dropOnDestroy :
 		_drop()

@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	set_process(true)
-	get_node("anim").play("start")
+	$AnimationPlayer.play("start")
 
 func _process(delta):
 	if Input.is_action_pressed("start") :

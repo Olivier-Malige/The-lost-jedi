@@ -5,7 +5,7 @@
 [ext_resource path="res://Sounds/asteroid_Hit.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/asteroid_Explode.wav" type="AudioStream" id=4]
 
-[sub_resource type="CircleShape2D" id=9]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 10.0
@@ -186,14 +186,14 @@ rndRotation = true
 scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 hframes = 11
-frame = 1
+frame = 6
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 position = Vector2( 0.474906, -0.1459 )
 scale = Vector2( 1.47715, 1.37161 )
-shape = SubResource( 9 )
+shape = SubResource( 1 )
 
 [node name="anim" type="AnimationPlayer" parent="." index="2"]
 

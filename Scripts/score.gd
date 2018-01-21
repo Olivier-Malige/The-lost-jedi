@@ -2,7 +2,7 @@ extends Node2D
 
 const DESTROY_DELAY = 1
 var setScore = 0
-var player 
+var player  = 1
 func _ready():
 	if (setScore >=50):
 		get_node("Label").set_scale(Vector2(1.2,1.2))

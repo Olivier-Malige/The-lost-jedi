@@ -6,7 +6,7 @@
 [ext_resource path="res://Sounds/game.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/background.tscn" type="PackedScene" id=5]
 
-[node name="world" type="Node2D" index="0"]
+[node name="world" type="Node2D"]
 
 pause_mode = 1
 script = ExtResource( 1 )
@@ -72,7 +72,6 @@ _sections_unfolded = [ "Transform", "Visibility" ]
 [node name="waveGenerator" type="Node2D" parent="." index="1"]
 
 pause_mode = 1
-editor/display_folded = true
 position = Vector2( 0, 5 )
 script = ExtResource( 3 )
 
@@ -141,51 +140,51 @@ autostart = false
 
 [node name="spawnPos0" type="Position2D" parent="waveGenerator" index="9"]
 
-position = Vector2( 54, -61 )
+position = Vector2( 51, -61 )
 
 [node name="spawnPos1" type="Position2D" parent="waveGenerator" index="10"]
 
-position = Vector2( 116, -61 )
+position = Vector2( 114, -61 )
 
 [node name="spawnPos2" type="Position2D" parent="waveGenerator" index="11"]
 
-position = Vector2( 241, -61 )
+position = Vector2( 239, -61 )
 
 [node name="spawnPos3" type="Position2D" parent="waveGenerator" index="12"]
 
-position = Vector2( 180, -61 )
+position = Vector2( 178, -61 )
 
 [node name="spawnPos4" type="Position2D" parent="waveGenerator" index="13"]
 
-position = Vector2( 304, -61 )
+position = Vector2( 302, -61 )
 
 [node name="spawnPos5" type="Position2D" parent="waveGenerator" index="14"]
 
-position = Vector2( 369, -61 )
+position = Vector2( 367, -61 )
 
 [node name="spawnPos6" type="Position2D" parent="waveGenerator" index="15"]
 
-position = Vector2( 432.36, -61 )
+position = Vector2( 430.36, -61 )
 
 [node name="spawnPos7" type="Position2D" parent="waveGenerator" index="16"]
 
-position = Vector2( 499, -61.3604 )
+position = Vector2( 497, -61.3604 )
 
 [node name="spawnPos8" type="Position2D" parent="waveGenerator" index="17"]
 
-position = Vector2( 567, -61 )
+position = Vector2( 565, -61 )
 
 [node name="spawnPos9" type="Position2D" parent="waveGenerator" index="18"]
 
-position = Vector2( 640.36, -61 )
+position = Vector2( 642, -65 )
 
 [node name="spawnPos10" type="Position2D" parent="waveGenerator" index="19"]
 
-position = Vector2( 715, -60 )
+position = Vector2( 721, -61 )
 
 [node name="spawnPos11" type="Position2D" parent="waveGenerator" index="20"]
 
-position = Vector2( 789, -61 )
+position = Vector2( 800, -58 )
 
 [node name="music" type="AudioStreamPlayer" parent="." index="2"]
 

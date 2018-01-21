@@ -16,7 +16,7 @@ extents = Vector2( 10, 10 )
 
 resource_name = "energieUp"
 length = 1.0
-loop = false
+loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -34,7 +34,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=3]
 
 length = 1.0
-loop = false
+loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -53,7 +53,7 @@ tracks/0/keys = {
 
 resource_name = "lateralShot"
 length = 1.0
-loop = false
+loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -72,7 +72,7 @@ tracks/0/keys = {
 
 resource_name = "shieldUp"
 length = 1.0
-loop = false
+loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -90,7 +90,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=6]
 
 length = 1.0
-loop = false
+loop = true
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -136,20 +136,20 @@ rect = Rect2( -10, -10, 20, 20 )
 
 [node name="anim" type="AnimationPlayer" parent="." index="3"]
 
+root_node = NodePath("..")
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
-root_node = NodePath("..")
+playback_speed = 1.0
 anims/energieUp = SubResource( 2 )
 anims/laserUp = SubResource( 3 )
 anims/lateralShot = SubResource( 4 )
 anims/shieldUp = SubResource( 5 )
 anims/speedUp = SubResource( 6 )
-playback/active = true
-playback/speed = 1.0
 blend_times = [  ]
 autoplay = ""
 
-[node name="speed_Up" type="AudioStreamPlayer2D" parent="." index="4"]
+[node name="sound_Speed_Up" type="AudioStreamPlayer2D" parent="." index="4"]
 
 stream = ExtResource( 3 )
 volume_db = 0.0
@@ -159,7 +159,7 @@ attenuation = 1.0
 bus = "Sounds"
 area_mask = 1
 
-[node name="energy_Up" type="AudioStreamPlayer2D" parent="." index="5"]
+[node name="sound_Energy_Up" type="AudioStreamPlayer2D" parent="." index="5"]
 
 stream = ExtResource( 4 )
 volume_db = 0.0
@@ -169,7 +169,7 @@ attenuation = 1.0
 bus = "Sounds"
 area_mask = 1
 
-[node name="lateral_Shot" type="AudioStreamPlayer2D" parent="." index="6"]
+[node name="sound_Lateral_Shot" type="AudioStreamPlayer2D" parent="." index="6"]
 
 stream = ExtResource( 5 )
 volume_db = 0.0
@@ -179,7 +179,7 @@ attenuation = 1.0
 bus = "Sounds"
 area_mask = 1
 
-[node name="shot_Up" type="AudioStreamPlayer2D" parent="." index="7"]
+[node name="sound_Shot_Up" type="AudioStreamPlayer2D" parent="." index="7"]
 
 stream = ExtResource( 6 )
 volume_db = 0.0
@@ -191,12 +191,12 @@ area_mask = 1
 
 [connection signal="area_entered" from="." to="." method="_on_powerUp_area_enter"]
 
-[connection signal="finished" from="speed_Up" to="." method="_on_audio_finished"]
+[connection signal="finished" from="sound_Speed_Up" to="." method="_on_audio_finished"]
 
-[connection signal="finished" from="energy_Up" to="." method="_on_audio_finished"]
+[connection signal="finished" from="sound_Energy_Up" to="." method="_on_audio_finished"]
 
-[connection signal="finished" from="lateral_Shot" to="." method="_on_audio_finished"]
+[connection signal="finished" from="sound_Lateral_Shot" to="." method="_on_audio_finished"]
 
-[connection signal="finished" from="shot_Up" to="." method="_on_audio_finished"]
+[connection signal="finished" from="sound_Shot_Up" to="." method="_on_audio_finished"]
 
 

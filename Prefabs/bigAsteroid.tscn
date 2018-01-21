@@ -6,7 +6,7 @@
 [ext_resource path="res://Sounds/asteroid_Hit.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/bigAsteroid_Explode.wav" type="AudioStream" id=5]
 
-[sub_resource type="CircleShape2D" id=13]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 10.0
@@ -24,10 +24,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 3, 4, 5, 6, 7 ]
+"values": [ 3, 4, 5, 6, 7, 8 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -49,7 +49,7 @@ tracks/0/keys = {
 "values": [ 1, 0, 1, 0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=4]
 
 resource_name = "hit2"
 length = 0.5
@@ -68,7 +68,7 @@ tracks/0/keys = {
 "values": [ 10, 9, 10, 9 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=5]
 
 resource_name = "hit3"
 length = 0.5
@@ -87,7 +87,7 @@ tracks/0/keys = {
 "values": [ 12, 11, 12, 11 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=6]
 
 resource_name = "hit4"
 length = 0.5
@@ -106,9 +106,8 @@ tracks/0/keys = {
 "values": [ 14, 13, 14, 13 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 
-resource_name = "start1"
 length = 1.0
 loop = false
 step = 0.1
@@ -125,9 +124,8 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=8]
 
-resource_name = "start2"
 length = 1.0
 loop = false
 step = 0.1
@@ -144,9 +142,8 @@ tracks/0/keys = {
 "values": [ 9 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=9]
 
-resource_name = "start3"
 length = 1.0
 loop = false
 step = 0.1
@@ -163,7 +160,7 @@ tracks/0/keys = {
 "values": [ 11 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=10]
 
 resource_name = "start4"
 length = 1.0
@@ -182,7 +179,7 @@ tracks/0/keys = {
 "values": [ 13 ]
 }
 
-[node name="bigAsteroid" type="Area2D" index="0" groups=[
+[node name="bigAsteroid" type="Area2D" groups=[
 "asteroid",
 ]]
 
@@ -219,14 +216,14 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
 vframes = 2
 hframes = 9
-frame = 14
-_sections_unfolded = [ "Animation", "Transform" ]
+frame = 3
+_sections_unfolded = [ "Animation", "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
 position = Vector2( -0.090275, -1.35961 )
 scale = Vector2( 2.72887, 2.53009 )
-shape = SubResource( 13 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="anim" type="AnimationPlayer" parent="." index="2"]
@@ -238,13 +235,13 @@ playback_default_blend_time = 0.0
 playback_speed = 1.0
 anims/explode = SubResource( 2 )
 anims/hit1 = SubResource( 3 )
-anims/hit2 = SubResource( 9 )
-anims/hit3 = SubResource( 10 )
-anims/hit4 = SubResource( 11 )
-anims/start1 = SubResource( 4 )
-anims/start2 = SubResource( 5 )
-anims/start3 = SubResource( 6 )
-anims/start4 = SubResource( 12 )
+anims/hit2 = SubResource( 4 )
+anims/hit3 = SubResource( 5 )
+anims/hit4 = SubResource( 6 )
+anims/start1 = SubResource( 7 )
+anims/start2 = SubResource( 8 )
+anims/start3 = SubResource( 9 )
+anims/start4 = SubResource( 10 )
 blend_times = [  ]
 autoplay = ""
 
