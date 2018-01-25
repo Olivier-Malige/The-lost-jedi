@@ -506,6 +506,7 @@ group = null
 text = "Solo"
 flat = false
 align = 1
+_sections_unfolded = [ "custom_colors" ]
 
 [node name="coop" type="Button" parent="buttonGroup" index="9"]
 
