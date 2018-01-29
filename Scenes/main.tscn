@@ -9,7 +9,7 @@
 [ext_resource path="res://Prefabs/LightTie.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Prefabs/LightStar.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/preloader.gd" type="Script" id=9]
-[ext_resource path="res://Sounds/demo.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/loader.ogg" type="AudioStream" id=10]
 [ext_resource path="res://Scenes/background.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Assets/Fonts/vermin_vibes_1989.ttf" type="DynamicFontData" id=12]
 
