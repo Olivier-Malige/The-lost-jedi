@@ -41,7 +41,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0.5, 1, 6, 7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 844, 0 ), Vector2( 4, 0 ), Vector2( 4, 0 ), Vector2( -866, 0 ) ]
+"values": [ Vector2( 844, 0 ), Vector2( 4, 0 ), Vector2( 4, 0 ), Vector2( -1163, 0 ) ]
 }
 
 [sub_resource type="DynamicFont" id=2]
@@ -867,7 +867,8 @@ speed_X = -200
 [node name="ColorRect" type="Node2D" parent="loader" index="4"]
 
 editor/display_folded = true
-position = Vector2( 844, 0 )
+position = Vector2( -1163, 0 )
+scale = Vector2( 1.33266, 1 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="ColorRect1" type="ColorRect" parent="loader/ColorRect" index="0"]
