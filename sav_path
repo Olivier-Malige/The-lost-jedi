@@ -1,1 +1,1 @@
-{"config":{"fullscreen":true,"music":true,"sound":true},"coop":{"bestWave":0,"hiscore":0},"solo":{"bestWave":0,"hiscore":0}}
+{"config":{"fullscreen":true,"graphic":"high","music":true,"player1":"gamepad1","player2":"keyboard","sound":true},"coop":{"bestWave":0,"hiscore":0},"solo":{"bestWave":0,"hiscore":0}}

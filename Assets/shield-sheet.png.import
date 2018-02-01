@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shield-sheet.png-efaf98371d29aa6e34894762c90c9fdb.stex"
+path="res://.import/shield-Sheet.png-2b52a90709b9dc0f488c804f9f6134e1.stex"
 
 [deps]
 
-source_md5="ed2defea3fac52cf1b02cf79735158e4"
+source_file="res://Assets/shield-Sheet.png"
+source_md5="e01e1e568d7bd2b51e2940ed6bb57d08"
+
+dest_files=[ "res://.import/shield-Sheet.png-2b52a90709b9dc0f488c804f9f6134e1.stex" ]
+dest_md5="591d9083c075ad39bf0aa66d2b074943"
 
 [params]
 
