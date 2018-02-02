@@ -859,6 +859,7 @@ playback_default_blend_time = 0.0
 playback_speed = 1.0
 anims/start = SubResource( 1 )
 blend_times = [  ]
+autoplay = ""
 
 [node name="background" parent="loader" index="3" instance=ExtResource( 11 )]
 
