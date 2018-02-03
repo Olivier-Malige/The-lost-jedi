@@ -40,6 +40,7 @@ func _on_powerUp_area_enter( area ):
 			$sound_Shot_Up.playing = true
 		elif (get_node("anim").get_current_animation() == "shieldUp"):
 			area.increase_Shield()
+			$sound_Shield.playing = true
 
 		$anim.queue_free()
 		$Sprite.queue_free()

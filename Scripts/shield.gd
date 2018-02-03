@@ -8,6 +8,7 @@ func _ready():
 func _on_shield_area_entered( shot ):
 
 	if shot.is_in_group("enemy_Shot") and power > 0 :
+		$sound_trowback.playing = true
 		shot.trowbackByShield = true
 		shot.speedY =  -shot.speedY
 		shot.speedX =  -shot.speedX

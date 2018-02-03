@@ -115,12 +115,13 @@ func _on_Exit_button_down():
 func _on_Resume_button_down():
 	$sound_start.playing = true
 	yield( get_node("sound_start"), "finished" )
+	get_node("/root/main").setResume()
 	queue_free()
 
 func _on_Restart_button_down():
 	$sound_start.playing = true
 	yield( get_node("sound_start"), "finished" )
-	get_node("/root/main").setResume()
+
 	get_node("/root/main").setRestart()
 	queue_free()
 

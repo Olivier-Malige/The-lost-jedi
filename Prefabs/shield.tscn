@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scripts/shield.gd" type="Script" id=1]
 [ext_resource path="res://Assets/shield.png" type="Texture" id=2]
+[ext_resource path="res://Sounds/shield_Trowback.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 
@@ -1032,9 +1033,8 @@ custom_solver_bias = 0.0
 radius = 7.47834
 height = 32.1372
 
-[node name="shield" type="Area2D"]
+[node name="shield" type="Area2D" index="0"]
 
-editor/display_folded = true
 position = Vector2( 0.291992, -22.9254 )
 scale = Vector2( 4, 4 )
 input_pickable = true
@@ -1086,7 +1086,6 @@ anims/player2_Smallest_Hit = SubResource( 22 )
 anims/player2_Very_Big = SubResource( 23 )
 anims/player2_Very_Big_Hit = SubResource( 24 )
 blend_times = [  ]
-autoplay = ""
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
@@ -1094,6 +1093,14 @@ position = Vector2( 0.00753026, 1.15042 )
 scale = Vector2( 1.09536, 0.241606 )
 shape = SubResource( 25 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="sound_trowback" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 3 )
+volume_db = -10.0
+autoplay = false
+mix_target = 0
+bus = "Master"
 
 [connection signal="area_entered" from="." to="." method="_on_shield_area_entered"]
 

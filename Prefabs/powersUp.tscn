@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/powerUp.gd" type="Script" id=1]
 [ext_resource path="res://Assets/powerUp.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Sounds/powerUp_energy.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/powerUp_lateralShoot.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/powerUp_Shot.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/Powerup_Shield.wav" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -147,7 +148,6 @@ anims/lateralShot = SubResource( 4 )
 anims/shieldUp = SubResource( 5 )
 anims/speedUp = SubResource( 6 )
 blend_times = [  ]
-autoplay = ""
 
 [node name="sound_Speed_Up" type="AudioStreamPlayer2D" parent="." index="4"]
 
@@ -189,6 +189,16 @@ attenuation = 1.0
 bus = "Sounds"
 area_mask = 1
 
+[node name="sound_Shield" type="AudioStreamPlayer2D" parent="." index="8"]
+
+stream = ExtResource( 7 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "Sounds"
+area_mask = 1
+
 [connection signal="area_entered" from="." to="." method="_on_powerUp_area_enter"]
 
 [connection signal="finished" from="sound_Speed_Up" to="." method="_on_audio_finished"]
@@ -198,5 +208,7 @@ area_mask = 1
 [connection signal="finished" from="sound_Lateral_Shot" to="." method="_on_audio_finished"]
 
 [connection signal="finished" from="sound_Shot_Up" to="." method="_on_audio_finished"]
+
+[connection signal="finished" from="sound_Shield" to="." method="_on_audio_finished"]
 
 
