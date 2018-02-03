@@ -18,8 +18,7 @@ func _ready():
 
 
 func _input(event):
-	
-		
+
 	if (worldScreen ):
 		if event.is_action_pressed("start") and not event.is_echo():
 			setPause()

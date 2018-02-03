@@ -11,6 +11,12 @@ enum {MODE_SOLO,MODE_COOP}
 enum {MENU_START,MENU_OPTIONS,MENU_PAUSE,MENU_CONTROLLER}
 var controller = ["gamepad1","gamepad2","keyboard"]
 
+func _input(event):
+	if event.is_action_pressed("ui_up") or  event.is_action_pressed("ui_down")   and not event.is_echo():
+		$sound_switch.playing = true
+#	if event.is_action_pressed("ui_accept"):
+#		$sound_select.playing = true
+
 func _ready():
 	hide()
 
@@ -82,8 +88,6 @@ func mode (enable= []) :
 
 	#set ororffenu visible
 	show()
-	for ch in $buttonGroup.get_children() :
-		ch.rect_size.x = 800
 	#set focus of first node in buttonGroup
 	get_node("buttonGroup").get_child(0).grab_focus()
 	
@@ -96,28 +100,39 @@ func start_game(mode):
 	queue_free()
 
 func _on_Solo_button_down():
+	$sound_start.playing = true
+	yield( get_node("sound_start"), "finished" )
 	start_game(MODE_SOLO)
 	
 func _on_Coop_button_down():
+	$sound_start.playing = true
+	yield( get_node("sound_start"), "finished" )
 	start_game(MODE_COOP)
 
 func _on_Exit_button_down():
 	get_tree().quit()
 
 func _on_Resume_button_down():
-	get_node("/root/main").setResume()
+	$sound_start.playing = true
+	yield( get_node("sound_start"), "finished" )
 	queue_free()
 
 func _on_Restart_button_down():
+	$sound_start.playing = true
+	yield( get_node("sound_start"), "finished" )
 	get_node("/root/main").setResume()
 	get_node("/root/main").setRestart()
 	queue_free()
 
 func _on_Hiscore_button_down():
+	$sound_select.playing = true
+	yield( get_node("sound_select"), "finished" )
 	get_node("/root/main").goHiscoreScreen()
 	queue_free()
 
 func _on_options_button_down():
+	$sound_select.playing = true
+	yield( get_node("sound_select"), "finished" )
 	new_menu(MENU_OPTIONS)
 
 func new_menu(mode):
@@ -127,7 +142,8 @@ func new_menu(mode):
 	queue_free()
 	
 func _on_return_button_down():
-
+	$sound_select.playing = true
+	yield( get_node("sound_select"), "finished" )
 	if get_node("/root/main").worldScreen:
 		new_menu(MENU_PAUSE)
 	elif get_node("/root/main").startScreen:
@@ -154,6 +170,7 @@ func _on_music_button_down():
 	global.save_Data()
 
 func _on_Controller_button_down():
+	yield( get_node("sound_select"), "finished" )
 	new_menu(MENU_CONTROLLER)
 
 
@@ -176,6 +193,7 @@ func _on_player1_button_down():
 		global.saveData.config.player1 = switch_controller(1)
 	$buttonGroup/player1.set_text("player 1 : "+global.saveData.config.player1)
 	global.save_Data()
+	
 
 
 func _on_player2_button_down():
@@ -213,3 +231,5 @@ func _on_graphic_button_down():
 		$buttonGroup/graphic.set_text("graphic : hight")
 		get_node("/root/main").set_Graphic("hight")
 	global.save_Data()
+
+

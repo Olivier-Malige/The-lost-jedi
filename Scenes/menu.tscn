@@ -1,7 +1,10 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scripts/menu.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Sounds/menu.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/menu_select.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/menu_start.wav" type="AudioStream" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -212,9 +215,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 381.0
-margin_right = 800.0
-margin_bottom = 892.0
+margin_left = 2.0
+margin_top = 380.0
+margin_right = 802.0
+margin_bottom = 891.0
 grow_horizontal = 0
 rect_min_size = Vector2( 800, 0 )
 rect_pivot_offset = Vector2( 0, 0 )
@@ -259,7 +263,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Anchor", "Focus", "Grow Direction", "Hint", "Margin", "Mouse", "Rect", "Size Flags", "custom_fonts" ]
 
-[node name="player" type="Button" parent="buttonGroup" index="1"]
+[node name="player1" type="Button" parent="buttonGroup" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -728,9 +732,33 @@ wait_time = 0.05
 one_shot = true
 autostart = true
 
+[node name="sound_switch" type="AudioStreamPlayer" parent="." index="2"]
+
+stream = ExtResource( 3 )
+volume_db = -10.0
+autoplay = false
+mix_target = 0
+bus = "Sounds"
+
+[node name="sound_select" type="AudioStreamPlayer" parent="." index="3"]
+
+stream = ExtResource( 4 )
+volume_db = -10.0
+autoplay = false
+mix_target = 0
+bus = "Sounds"
+
+[node name="sound_start" type="AudioStreamPlayer" parent="." index="4"]
+
+stream = ExtResource( 5 )
+volume_db = -5.0
+autoplay = false
+mix_target = 0
+bus = "Sounds"
+
 [connection signal="button_down" from="buttonGroup/return" to="." method="_on_return_button_down"]
 
-[connection signal="button_down" from="buttonGroup/player" to="." method="_on_player1_button_down"]
+[connection signal="button_down" from="buttonGroup/player1" to="." method="_on_player1_button_down"]
 
 [connection signal="button_down" from="buttonGroup/player2" to="." method="_on_player2_button_down"]
 

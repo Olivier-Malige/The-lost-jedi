@@ -210,7 +210,6 @@ anims/start1 = SubResource( 6 )
 anims/start2 = SubResource( 7 )
 anims/start3 = SubResource( 8 )
 blend_times = [  ]
-autoplay = ""
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="3"]
 
