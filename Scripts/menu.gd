@@ -73,12 +73,17 @@ func mode (enable= []) :
 	for node in get_node("buttonGroup").get_children() :
 		if not node.is_in_group("enable") :
 			node.queue_free()
+		else :
+			node.rect_size.x = 800
 	
 	yield(get_node("optionTimer"),"timeout")
 	#initialize size for adapative vboxContenaire
-	$buttonGroup.rect_size = Vector2(0,0)
-	#set menu visible
+	$buttonGroup.rect_size = Vector2(800,0)
+
+	#set ororffenu visible
 	show()
+	for ch in $buttonGroup.get_children() :
+		ch.rect_size.x = 800
 	#set focus of first node in buttonGroup
 	get_node("buttonGroup").get_child(0).grab_focus()
 	
