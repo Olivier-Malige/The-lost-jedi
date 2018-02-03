@@ -26,10 +26,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0 ]
+"values": [ 0.0, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 0.0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ColorRect:position")
@@ -38,10 +38,22 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.5, 1, 6, 7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 6, 7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 844, 0 ), Vector2( 4, 0 ), Vector2( 4, 0 ), Vector2( -1163, 0 ) ]
+"values": [ Vector2( 844, 0 ), Vector2( 844, 0 ), Vector2( 1.00001, 0 ), Vector2( 9.35793e-06, 0 ), Vector2( -1163, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("GameOff:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3.5, 6.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 857, 272 ), Vector2( 857, 272 ), Vector2( -1414, 272 ) ]
 }
 
 [sub_resource type="DynamicFont" id=2]
@@ -859,7 +871,6 @@ playback_default_blend_time = 0.0
 playback_speed = 1.0
 anims/start = SubResource( 1 )
 blend_times = [  ]
-autoplay = ""
 
 [node name="background" parent="loader" index="3" instance=ExtResource( 11 )]
 
@@ -868,7 +879,7 @@ speed_X = -200
 [node name="ColorRect" type="Node2D" parent="loader" index="4"]
 
 editor/display_folded = true
-position = Vector2( -1163, 0 )
+position = Vector2( 844, 0 )
 scale = Vector2( 1.33266, 1 )
 _sections_unfolded = [ "Transform" ]
 
@@ -951,6 +962,32 @@ percent_visible = 0.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Visibility", "custom_colors", "custom_fonts" ]
+
+[node name="GameOff" type="Label" parent="loader" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 857.0
+margin_top = 272.0
+margin_right = 2197.0
+margin_bottom = 867.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0.611765, 0.12549, 0.12549, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 2
+text = "a post jam version of GameOff 2017 "
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "Visibility", "custom_colors", "custom_fonts" ]
 
 [connection signal="timeout" from="loader/Timer" to="." method="_on_Timer_timeout"]
 
