@@ -64,7 +64,7 @@ use_filter = false
 font_data = ExtResource( 12 )
 _sections_unfolded = [ "Settings" ]
 
-[node name="main" type="Node"]
+[node name="main" type="Node" index="0"]
 
 pause_mode = 1
 script = ExtResource( 1 )
@@ -72,7 +72,6 @@ _sections_unfolded = [ "Material", "Transform", "Z" ]
 
 [node name="background" type="Sprite" parent="." index="0"]
 
-editor/display_folded = true
 position = Vector2( 597.14, 466.619 )
 scale = Vector2( 1.71894, 1.85326 )
 z_index = 500
