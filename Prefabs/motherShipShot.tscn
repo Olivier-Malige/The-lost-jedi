@@ -18,8 +18,10 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-setRotation = true
+rotate = false
 playerShot = false
+damage = 10
+noDamageToGroup = ""
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="0"]
 

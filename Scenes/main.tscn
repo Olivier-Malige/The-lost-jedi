@@ -64,7 +64,7 @@ use_filter = false
 font_data = ExtResource( 12 )
 _sections_unfolded = [ "Settings" ]
 
-[node name="main" type="Node" index="0"]
+[node name="main" type="Node"]
 
 pause_mode = 1
 script = ExtResource( 1 )

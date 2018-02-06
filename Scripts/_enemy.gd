@@ -1,5 +1,6 @@
 extends Area2D
 export(bool) var dropOnDestroy = false
+
 export(int) var dropRange = 64
 export(PackedScene) var objectOnDestroy 
 export(int) var nbrObjectOnDestroy = 1

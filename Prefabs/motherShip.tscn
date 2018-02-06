@@ -116,7 +116,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="motherShip" type="Area2D"]
+[node name="motherShip" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -163,7 +163,6 @@ anims/explode = SubResource( 1 )
 anims/hit = SubResource( 2 )
 anims/start = SubResource( 3 )
 blend_times = [  ]
-autoplay = ""
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
 
@@ -171,25 +170,25 @@ rect = Rect2( -10, -10, 20, 20 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( -0.279907, -1.6493 )
-scale = Vector2( 2.9121, 6.09084 )
+position = Vector2( 0.491587, -10.1347 )
+scale = Vector2( 2.50991, 4.13043 )
 shape = SubResource( 4 )
 
 [node name="ShootPos" type="Position2D" parent="." index="4"]
 
-position = Vector2( -35.2943, -32.6769 )
+position = Vector2( -34.2943, -32.6769 )
 
 [node name="ShootPos1" type="Position2D" parent="." index="5"]
 
-position = Vector2( 35.2943, -32.3534 )
+position = Vector2( 36.2943, -32.3534 )
 
 [node name="ShootPos2" type="Position2D" parent="." index="6"]
 
-position = Vector2( -36.7354, -0.647072 )
+position = Vector2( -11.7354, 48.3529 )
 
 [node name="ShootPos3" type="Position2D" parent="." index="7"]
 
-position = Vector2( 36.0883, -0.647072 )
+position = Vector2( 17.0883, 47.3529 )
 
 [node name="shootTimer" type="Timer" parent="." index="8"]
 
@@ -200,22 +199,18 @@ autostart = true
 
 [node name="droneReactorParticles" parent="." index="9" instance=ExtResource( 3 )]
 
-visible = false
 position = Vector2( -17.9999, -65.8506 )
 
 [node name="droneReactorParticles2" parent="." index="10" instance=ExtResource( 3 )]
 
-visible = false
 position = Vector2( -13.9999, -65.8506 )
 
 [node name="droneReactorParticles3" parent="." index="11" instance=ExtResource( 3 )]
 
-visible = false
 position = Vector2( 14.0001, -65.8506 )
 
 [node name="droneReactorParticles4" parent="." index="12" instance=ExtResource( 3 )]
 
-visible = false
 position = Vector2( 18.0001, -65.8506 )
 
 [node name="sound_Hit" type="AudioStreamPlayer2D" parent="." index="13"]

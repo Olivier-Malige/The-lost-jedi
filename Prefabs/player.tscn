@@ -219,7 +219,7 @@ anim_offset = 0.0
 anim_offset_random = 0.0
 anim_loop = false
 
-[node name="player" type="Area2D"]
+[node name="player" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -273,7 +273,6 @@ anims/idle = SubResource( 3 )
 anims/left = SubResource( 4 )
 anims/right = SubResource( 5 )
 blend_times = [  ]
-autoplay = ""
 
 [node name="touchedReset" type="Timer" parent="." index="6"]
 

@@ -3,14 +3,14 @@ extends Area2D
 # Member variables
 var speedY = 0
 var speedX = 0
-export var setRotation = false
-export var playerShot = false
+export(bool) var rotate = false
+export(bool) var playerShot = false
 var speedRotation = 20
 var trowbackByShield = false
 
 
 func _process(delta):
-	if (setRotation):
+	if (rotate):
 		rotation += speedRotation
 	translate(Vector2(speedX*delta, delta*speedY))
 	
