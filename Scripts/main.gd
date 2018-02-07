@@ -134,7 +134,7 @@ func goGameOverScreen():
 	add_child(gameOver)
 
 func set_Graphic(level):
-		for ch in $background.get_children() :
+		for ch in $background.get_node("Lights").get_children() :
 			if level == "hight":
 				ch.visible = true
 			elif level == "low":
