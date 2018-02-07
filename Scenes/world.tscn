@@ -6,7 +6,7 @@
 [ext_resource path="res://Sounds/game.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/background.tscn" type="PackedScene" id=5]
 
-[node name="world" type="Node2D"]
+[node name="world" type="Node2D" index="0"]
 
 pause_mode = 1
 script = ExtResource( 1 )
@@ -23,9 +23,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 1.0
+margin_left = 25.0
 margin_top = 5.0
-margin_right = 138.0
+margin_right = 162.0
 margin_bottom = 36.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
@@ -44,9 +44,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 630.0
+margin_left = 595.0
 margin_top = 5.0
-margin_right = 761.0
+margin_right = 726.0
 margin_bottom = 36.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
@@ -61,12 +61,12 @@ max_lines_visible = -1
 
 [node name="energy_player1" type="Node2D" parent="hud" index="2"]
 
-position = Vector2( 5, 170 )
+position = Vector2( 20, 170 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="energy_player2" type="Node2D" parent="hud" index="3"]
 
-position = Vector2( 795, 170 )
+position = Vector2( 765, 170 )
 _sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="waveGenerator" type="Node2D" parent="." index="1"]
@@ -176,15 +176,15 @@ position = Vector2( 565, -61 )
 
 [node name="spawnPos9" type="Position2D" parent="waveGenerator" index="18"]
 
-position = Vector2( 642, -65 )
+position = Vector2( 627, -62 )
 
 [node name="spawnPos10" type="Position2D" parent="waveGenerator" index="19"]
 
-position = Vector2( 721, -61 )
+position = Vector2( 697, -61 )
 
 [node name="spawnPos11" type="Position2D" parent="waveGenerator" index="20"]
 
-position = Vector2( 800, -58 )
+position = Vector2( 776, -58 )
 
 [node name="music" type="AudioStreamPlayer" parent="." index="2"]
 

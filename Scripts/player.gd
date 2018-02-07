@@ -86,14 +86,14 @@ func _process(delta):
 	
 	var pos = position
 	pos += motion*delta*(SPEED+bonusSpeed-malusSpeed)
-	if (pos.x < 30):
-		pos.x = 30
-	if (pos.x > 800 - 30):
-		pos.x = 800 -30
-	if (pos.y < 16):
-		pos.y = 16
-	if (pos.y > 616):
-		pos.y = 616
+	if (pos.x < 38):
+		pos.x = 38
+	if (pos.x > 800 -38):
+		pos.x = 800 -38
+	if (pos.y < 24):
+		pos.y = 24
+	if (pos.y > 600- 16):
+		pos.y = 600 -16
 	position = pos
 	var shooting = Input.is_action_pressed(controller +"_fire")
 
