@@ -121,9 +121,9 @@ func _on_Resume_button_down():
 func _on_Restart_button_down():
 	$sound_start.playing = true
 	yield( get_node("sound_start"), "finished" )
-
 	get_node("/root/main").setRestart()
 	queue_free()
+	
 
 func _on_Hiscore_button_down():
 	$sound_select.playing = true
@@ -149,6 +149,7 @@ func _on_return_button_down():
 		new_menu(MENU_PAUSE)
 	elif get_node("/root/main").startScreen:
 		new_menu(MENU_START)
+	queue_free()
 
 func _on_sound_button_down():
 	var onOff 
@@ -171,6 +172,7 @@ func _on_music_button_down():
 	global.save_Data()
 
 func _on_Controller_button_down():
+	$sound_select.playing = true
 	yield( get_node("sound_select"), "finished" )
 	new_menu(MENU_CONTROLLER)
 

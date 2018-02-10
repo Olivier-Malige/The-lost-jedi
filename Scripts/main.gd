@@ -78,8 +78,8 @@ func setPause():
 				i.hide()
 
 func setRestart():
+	setResume()
 	get_tree().reload_current_scene()
-	goWorldScreen()
 	
 func setResume():
 	if (worldScreen):
@@ -101,6 +101,7 @@ func setResume():
 		#get_node("world/musicStream").set_paused(false)
 
 func goStartScreen():
+	worldScreen = false
 	startScreen = true
 	var start = preload("res://Scenes/start.tscn").instance()
 	add_child(start)
