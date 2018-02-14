@@ -10,6 +10,6 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("start") and not event.is_echo():
-		get_node("/root/main").goStartScreen()
+		get_node("/root/main").go_Start_Screen()
 		queue_free()
 

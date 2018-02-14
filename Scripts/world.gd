@@ -18,5 +18,5 @@ func _ready():
 
 func _process(delta):
 	if nbr_Player <=0 :
-		get_node("/root/main").goGameOverScreen()
+		get_node("/root/main").go_GameOver_Screen()
 		queue_free()

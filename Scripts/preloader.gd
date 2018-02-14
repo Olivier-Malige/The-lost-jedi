@@ -6,6 +6,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_pressed("start") :
-		get_parent().goStartScreen()
+		get_parent().go_Start_Screen()
 		queue_free()
+
 

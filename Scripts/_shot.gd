@@ -1,8 +1,8 @@
 extends Area2D
 
 # Member variables
-var speedY = 0
-var speedX = 0
+export(int) var speedY = 0
+export(int) var speedX = 0
 export(bool) var rotate = false
 export(bool) var playerShot = false
 var speedRotation = 20

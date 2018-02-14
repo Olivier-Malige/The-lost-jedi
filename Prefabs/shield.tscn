@@ -1033,7 +1033,7 @@ custom_solver_bias = 0.0
 radius = 7.47834
 height = 32.1372
 
-[node name="shield" type="Area2D" index="0"]
+[node name="shield" type="Area2D"]
 
 position = Vector2( 0.291992, -22.9254 )
 scale = Vector2( 4, 4 )
@@ -1051,7 +1051,6 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 6
-frame = 22
 _sections_unfolded = [ "Animation", "Transform" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
@@ -1089,8 +1088,8 @@ blend_times = [  ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( 0.00753026, 1.15042 )
-scale = Vector2( 1.09536, 0.241606 )
+position = Vector2( -0.0798162, -0.573822 )
+scale = Vector2( 0.375856, 0.085485 )
 shape = SubResource( 25 )
 _sections_unfolded = [ "Transform" ]
 

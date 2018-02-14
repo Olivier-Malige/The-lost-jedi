@@ -21,7 +21,7 @@ func _input(event):
 
 	if (worldScreen ):
 		if event.is_action_pressed("start") and not event.is_echo():
-			setPause()
+			set_Pause()
 			
 		#CHEATCODE DEBUG
 		if global.Debug :  
@@ -61,9 +61,9 @@ func _input(event):
 
 func _on_Timer_timeout():
 	get_node("loader").queue_free()
-	goStartScreen()
+	go_Start_Screen()
 
-func setPause():
+func set_Pause():
 	if (not menuShow ):
 			get_tree().set_pause(true)
 			var p = paused.instance()
@@ -77,11 +77,11 @@ func setPause():
 			for i in $world.get_node("background").get_children() :
 				i.hide()
 
-func setRestart():
-	setResume()
+func set_Restart():
+	set_Resume()
 	get_tree().reload_current_scene()
 	
-func setResume():
+func set_Resume():
 	if (worldScreen):
 		menuShow = false
 		$paused.queue_free()
@@ -98,25 +98,22 @@ func setResume():
 			get_node("world/player2").update_controller()
 		else :
 			get_node("world/player").update_controller()
-		#get_node("world/musicStream").set_paused(false)
 
-func goStartScreen():
+func go_Start_Screen():
 	worldScreen = false
 	startScreen = true
 	var start = preload("res://Scenes/start.tscn").instance()
 	add_child(start)
-#	if not zoomReady :
-#		get_node("animCamera").play("Start")
-#		zoomReady = true
 
-func goHiscoreScreen():
+
+func go_Hiscore_Screen():
 	startScreen = false
 	var hiscore = preload("res://Scenes/hiscore.tscn").instance()
 	add_child(hiscore)
 	get_node("/root/main/start").queue_free()
 
 
-func goWorldScreen():
+func go_World_Screen():
 	$Camera2D.position = $camera_Pos_In.position
 	$Camera2D.set_zoom(Vector2(1,1))
 	var world = preload("res://Scenes/world.tscn").instance()
@@ -125,12 +122,10 @@ func goWorldScreen():
 	startScreen = false
 	gameOverScreen = false
 	
-#	get_node("animCamera").play("startToWorld")
 
-func goGameOverScreen():
+func go_GameOver_Screen():
 	gameOverScreen = true
 	worldScreen = false
-#	get_node("animCamera").play("worldToGameOver")
 	var gameOver = preload("res://Scenes/gameOver.tscn").instance()
 	add_child(gameOver)
 

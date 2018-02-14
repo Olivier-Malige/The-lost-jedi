@@ -1,10 +1,15 @@
+
 extends Area2D
-const SHOOT_DELAY_BASE = 0.35
-const SHOOT_DELAY_MIN = 0.15
+const SHOOT_DELAY_BASE = 0.30
+const SHOOT_DELAY_MIN = 0.10
 const SPEED = 300
 const MALUS_SPEED = 150
 const ENERGY_MAX = 12
 const SPEED_MAX  = 500
+const TIMER_FOCUSING_BEAM_MINI = 0.5 #seconde
+const TIMER_FOCUSING_BEAM_NORMAL = 1.5 #seconde
+const TIMER_FOCUSING_BEAM_FULL = 3 #seconde
+
 export(bool) var set_Player_2 = false
 onready var shoot_Delay = SHOOT_DELAY_BASE
 onready var shotPowerBonus = 0
@@ -16,7 +21,14 @@ onready var touched = false
 onready var canShooting = true
 onready var malusSpeed = 0
 onready var controller 
-var id_player 
+onready var id_player 
+onready var shooting
+onready var beam_Focusing
+onready var pos
+onready var accumBeam = 0
+enum beam_State {EMPTY,SMALL,NORMAL,FULL}
+onready var beam_Power = EMPTY
+
 
 
 func _ready():
@@ -84,8 +96,8 @@ func _process(delta):
 		get_node("anim").play("right")
 	
 	
-	var pos = position
-	pos += motion*delta*(SPEED+bonusSpeed-malusSpeed)
+	
+	pos = position + motion*delta*(SPEED+bonusSpeed-malusSpeed)
 	if (pos.x < 38):
 		pos.x = 38
 	if (pos.x > 800 -38):
@@ -95,53 +107,130 @@ func _process(delta):
 	if (pos.y > 600- 16):
 		pos.y = 600 -16
 	position = pos
-	var shooting = Input.is_action_pressed(controller +"_fire")
 
-	if(shooting): #speed malus on fire
+	#Shooting
+	shooting = Input.is_action_just_pressed(controller +"_fire")
+	beam_Focusing = Input.is_action_pressed(controller +"_fire")
+
+	
+	if accumBeam < TIMER_FOCUSING_BEAM_MINI and beam_Power != EMPTY :
+		_set_Power_Beam(EMPTY)
+	
+	elif accumBeam  >= TIMER_FOCUSING_BEAM_MINI  and accumBeam < TIMER_FOCUSING_BEAM_NORMAL and beam_Power != SMALL :
+		_set_Power_Beam(SMALL)
+
+	elif accumBeam >= TIMER_FOCUSING_BEAM_NORMAL and  accumBeam < TIMER_FOCUSING_BEAM_FULL and beam_Power != NORMAL :
+		_set_Power_Beam(NORMAL)
+
+	elif accumBeam >= TIMER_FOCUSING_BEAM_FULL and beam_Power != FULL :
+		_set_Power_Beam(FULL)
+
+
+	if Input.is_action_just_released(controller +"_fire") :
+		if beam_Power != EMPTY :
+			_shooting_Beam()
+	
+	if beam_Focusing :
+		accumBeam += delta
+	else : accumBeam = 0
+
+	if beam_Focusing or shooting:
 		$reactorParticles.set_lifetime(0.1) 
 		$reactorParticles2.set_lifetime(0.1) 
-		malusSpeed = MALUS_SPEED
-	var shot
+		malusSpeed = MALUS_SPEED 
+	else : malusSpeed = 0
+		
+
 	if (shooting and canShooting):
-		if (set_Player_2 == false) :
-			shot = preload("res://Prefabs/playerShot.tscn").instance()
-			shot.player = 1
-		else :
-			shot = preload("res://Prefabs/player2_Shot.tscn").instance()
-			shot.player = 2
-		shot.shotPower += shotPowerBonus
+		_shooting()
+		
+func _set_Power_Beam(power):
+	match power :
+		EMPTY :
+			beam_Power = EMPTY
+			$BeamParticlesLeft.emitting = false
+			$BeamParticlesRight.emitting = false
+			$BeamParticlesLeft.hide()
+			$BeamParticlesRight.hide()
+
+		SMALL :
+			$BeamParticlesLeft.show()
+			$BeamParticlesRight.show()
+			beam_Power = SMALL
+			$BeamParticlesLeft.emitting = true
+			$BeamParticlesRight.emitting = true
+			$BeamParticlesLeft.amount = 1
+			$BeamParticlesRight.amount = 1
+		NORMAL :
+			beam_Power = NORMAL
+			$BeamParticlesLeft.amount = 5
+			$BeamParticlesRight.amount = 5
+		FULL :
+			beam_Power = FULL
+			$BeamParticlesLeft.amount = 20
+			$BeamParticlesRight.amount = 20
+func _shooting():
+	var shot
+	if (set_Player_2 == false) :
+		shot = preload("res://Prefabs/playerShot.tscn").instance()
+		shot.player = 1
+	else :
+		shot = preload("res://Prefabs/player2_Shot.tscn").instance()
+		shot.player = 2
+	shot.shot_Power += shotPowerBonus
 		# Use the Position2D as reference
-		shot.position = get_node("shootFrom").global_position
+	shot.position = get_node("shootFrom").global_position
 		# Put it one  parent above, so it is not moved by us
-		get_node("../").add_child(shot)
+	get_node("../").add_child(shot)
 		
 		# Play sound
-		$sound_Shooting.playing = true
+	$sound_Shooting.playing = true
 		
-		canShooting = false
-		get_node("ShootingDelay").start()
-		if shotSide:
-			var lShot
-			var rShot
+	canShooting = false
+	get_node("ShootingDelay").start()
+	if shotSide:
+		var lShot
+		var rShot
 			
 			#load player colored shot 
-			if set_Player_2:
-				lShot = preload("res://Prefabs/player2_Side_Shot.tscn").instance()
-				rShot = preload("res://Prefabs/player2_Side_Shot.tscn").instance()
-			else :
-				lShot = preload("res://Prefabs/playerSideShot.tscn").instance()
-				rShot = preload("res://Prefabs/playerSideShot.tscn").instance()
+		if set_Player_2:
+			lShot = preload("res://Prefabs/player2_Side_Shot.tscn").instance()
+			rShot = preload("res://Prefabs/player2_Side_Shot.tscn").instance()
+		else :
+			lShot = preload("res://Prefabs/playerSideShot.tscn").instance()
+			rShot = preload("res://Prefabs/playerSideShot.tscn").instance()
 				
-			lShot.position = get_node("shootFromLeft").global_position
-			rShot.position = get_node("shootFromRight").global_position
-			rShot.speedX = -100
-			lShot.speedX = 100
-			rShot.shotPower += bonusPowerSideShot
-			lShot.shotPower += bonusPowerSideShot
-			get_node("../").add_child(lShot)
-			get_node("../").add_child(rShot)
+		lShot.position = get_node("shootFromLeft").global_position
+		rShot.position = get_node("shootFromRight").global_position
+		rShot.speedX = -100
+		lShot.speedX = 100
+		rShot.shotPower += bonusPowerSideShot
+		lShot.shotPower += bonusPowerSideShot
+		get_node("../").add_child(lShot)
+		get_node("../").add_child(rShot)
 	# Update points counter
 	get_node("../hud/score").set_text("SCORE : " +str(get_node("/root/global").score))
+	
+func _shooting_Beam():
+	var beam_shot_left
+	var beam_shot_right
+	match beam_Power :
+		SMALL :
+			beam_shot_left = preload("res://Prefabs/beam/beam_mini.tscn").instance()
+			beam_shot_right= preload("res://Prefabs/beam/beam_mini.tscn").instance()
+		NORMAL:
+			beam_shot_left = preload("res://Prefabs/beam/beam_normal.tscn").instance()
+			beam_shot_right= preload("res://Prefabs/beam/beam_normal.tscn").instance()
+		FULL :
+			beam_shot_left = preload("res://Prefabs/beam/beam_Full.tscn").instance()
+			beam_shot_right= preload("res://Prefabs/beam/beam_Full.tscn").instance()
+
+	beam_shot_left.position = $shootFromLeft.global_position
+	beam_shot_right.position = $shootFromRight.global_position
+	get_node("../").add_child(beam_shot_left)
+	get_node("../").add_child(beam_shot_right)
+	
+
 func _hit_something(dmg):
 	if (touched):
 		return

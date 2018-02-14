@@ -95,7 +95,7 @@ func start_game(mode):
 	if mode == MODE_SOLO :
 		get_node("/root/main").coop = false
 	else : get_node("/root/main").coop = true
-	get_node("/root/main").goWorldScreen()
+	get_node("/root/main").go_World_Screen()
 	get_node("/root/main/start").queue_free()
 	queue_free()
 
@@ -115,20 +115,20 @@ func _on_Exit_button_down():
 func _on_Resume_button_down():
 	$sound_start.playing = true
 	yield( get_node("sound_start"), "finished" )
-	get_node("/root/main").setResume()
+	get_node("/root/main").set_Resume()
 	queue_free()
 
 func _on_Restart_button_down():
 	$sound_start.playing = true
 	yield( get_node("sound_start"), "finished" )
-	get_node("/root/main").setRestart()
+	get_node("/root/main").set_Restart()
 	queue_free()
 	
 
 func _on_Hiscore_button_down():
 	$sound_select.playing = true
 	yield( get_node("sound_select"), "finished" )
-	get_node("/root/main").goHiscoreScreen()
+	get_node("/root/main").go_Hiscore_Screen()
 	queue_free()
 
 func _on_options_button_down():
