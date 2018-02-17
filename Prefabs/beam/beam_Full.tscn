@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Prefabs/beam/beam_Top.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Prefabs/beam/beam_Bottom.tscn" type="PackedScene" id=2]
+
+[node name="beam" type="Node2D"]
+
+scale = Vector2( 4, 4 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="top" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 0, -46.25 )
+
+[node name="middle" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 0, -38.25 )
+
+[node name="middle2" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 0, -30 )
+
+[node name="middle3" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 0, -21.75 )
+
+[node name="middle4" parent="." index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 0, -13.5 )
+
+[node name="botom" parent="." index="5" instance=ExtResource( 2 )]
+
+position = Vector2( 0, -5.5 )
+
+
