@@ -68,7 +68,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 14.1565, 10 )
 
-[node name="Tie" type="Area2D" index="0"]
+[node name="Tie" type="Area2D"]
 
 position = Vector2( 0.157784, 0 )
 input_pickable = true
@@ -79,16 +79,21 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+dropOnDestroy = false
+dropRange = 64
+objectOnDestroy = null
+nbrObjectOnDestroy = 1
 nbrSprites = 1
-useMultiSprites = false
-life = 3
-hitSomething = 5
+rnd_Roation_Range_Max = 1
+rnd_Roation_Range_Min = -1
+life = 4
+hitSomething = 3
 points = 70
-speedX = 10.0
+speedX = 0
 speedY = 250.0
-randomX = 50.0
+randomX = 40.0
 randomY = 0
-randPowerUp = 50
+randPowerUp = 0
 setRotation = false
 speedRotation = 0
 rndRotation = false
@@ -112,7 +117,6 @@ anims/explode = SubResource( 1 )
 anims/hit = SubResource( 2 )
 anims/start = SubResource( 3 )
 blend_times = [  ]
-autoplay = ""
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
 

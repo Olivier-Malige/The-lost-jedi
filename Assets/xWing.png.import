@@ -6,7 +6,11 @@ path="res://.import/xWing.png-13568b50432906f7354aab0875195450.stex"
 
 [deps]
 
-source_md5="09fc91b41c95758aefeadbb82ac802cb"
+source_file="res://Assets/xWing.png"
+source_md5="28789eb82e64ca71a3e2e0f7c36e23ec"
+
+dest_files=[ "res://.import/xWing.png-13568b50432906f7354aab0875195450.stex" ]
+dest_md5="f32ff93fcf1bf7e00adb9951b434810a"
 
 [params]
 

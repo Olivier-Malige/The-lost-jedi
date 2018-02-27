@@ -15,8 +15,8 @@ func _on_shield_area_entered( shot ):
 		shot.trowbackByShield = true
 		shot.speedY =  -shot.speedY
 		shot.speedX =  -shot.speedX
-		if not $AnimationPlayer.get_current_animation() == get_parent().id_player+animPower+"_Hit" :
-			$AnimationPlayer.play(get_parent().id_player+animPower+"_Hit")
+		if not $AnimationPlayer.get_current_animation() == get_parent().id_Player+animPower+"_Hit" :
+			$AnimationPlayer.play(get_parent().id_Player+animPower+"_Hit")
 
 func _set_AnimPower():
 	if power == 0 :
@@ -48,10 +48,10 @@ func _set_Power(up):
 		power = 6
 	_set_AnimPower()
 	if power > 0 :
-		$AnimationPlayer.play(get_parent().id_player +animPower)
+		$AnimationPlayer.play(get_parent().id_Player +animPower)
 	
 	
 
 func _on_AnimationPlayer_animation_finished(n):
-	if n== get_parent().id_player+animPower+"_Hit" :
+	if n== get_parent().id_Player+animPower+"_Hit" :
 		self.power = -1

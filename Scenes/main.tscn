@@ -72,15 +72,18 @@ _sections_unfolded = [ "Material", "Transform", "Z" ]
 
 [node name="background" type="Sprite" parent="." index="0"]
 
+editor/display_folded = true
 position = Vector2( 597.14, 466.619 )
 scale = Vector2( 1.71894, 1.85326 )
 z_index = 500
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Z", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Lights" type="Control" parent="background" index="0"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -88,6 +91,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -105,6 +109,7 @@ margin_top = -252.0
 margin_right = -308.0
 margin_bottom = -212.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -167,7 +172,6 @@ delay = 0.002
 
 [node name="Background" type="Control" parent="background/Lights" index="1"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -177,6 +181,7 @@ margin_top = 62.3616
 margin_right = -43.1415
 margin_bottom = 102.362
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -285,6 +290,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -330,6 +336,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -810,6 +817,7 @@ anchor_bottom = 0.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -922,7 +930,6 @@ range_Min = 0.5
 
 [node name="Border" type="Control" parent="background" index="1"]
 
-editor/display_folded = true
 show_behind_parent = true
 anchor_left = 0.0
 anchor_top = 0.0
@@ -933,6 +940,7 @@ margin_top = -1.41318
 margin_right = 38.7551
 margin_bottom = 38.5868
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -952,6 +960,7 @@ margin_top = -1247.0
 margin_right = 2207.0
 margin_bottom = 1109.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -975,6 +984,7 @@ margin_top = -1210.0
 margin_right = 128.0
 margin_bottom = -246.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -998,6 +1008,7 @@ margin_top = 82.0
 margin_right = 139.0
 margin_bottom = 1177.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -1021,6 +1032,7 @@ margin_top = -1250.0
 margin_right = -342.0
 margin_bottom = 862.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -1032,11 +1044,17 @@ _sections_unfolded = [ "Rect" ]
 
 position = Vector2( 511, 241 )
 scale = Vector2( 1.5, 1.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="camera_Pos_Out" type="Position2D" parent="." index="2"]
 
 position = Vector2( 513, 440 )
 scale = Vector2( 1.5, 1.5 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 
@@ -1065,10 +1083,17 @@ editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
 _sections_unfolded = [ "Drag Margin", "Editor", "Limit", "Smoothing" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="loader" type="Node2D" parent="." index="4"]
 
+editor/display_folded = true
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Timer" type="Timer" parent="loader" index="0"]
 
@@ -1105,6 +1130,9 @@ editor/display_folded = true
 position = Vector2( 844, 0 )
 scale = Vector2( 1.33266, 1 )
 _sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ColorRect1" type="ColorRect" parent="loader/ColorRect" index="0"]
 
@@ -1117,6 +1145,7 @@ margin_top = 240.0
 margin_right = 832.0
 margin_bottom = 374.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -1134,6 +1163,7 @@ margin_top = 237.0
 margin_right = 833.0
 margin_bottom = 240.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -1152,6 +1182,7 @@ margin_top = 374.0
 margin_right = 825.0
 margin_bottom = 377.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
@@ -1170,6 +1201,7 @@ margin_top = 272.0
 margin_right = 900.0
 margin_bottom = 867.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
@@ -1197,6 +1229,7 @@ margin_top = 272.0
 margin_right = 2877.0
 margin_bottom = 867.0
 rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2

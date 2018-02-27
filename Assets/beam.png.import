@@ -7,10 +7,10 @@ path="res://.import/beam.png-32e3211a5693a9b0ca10dfbb7e4930b1.stex"
 [deps]
 
 source_file="res://Assets/beam.png"
-source_md5="dd4b874456ac9120db821455653b9de3"
+source_md5="58f2085b7105c40b6c0c23c2281721a2"
 
 dest_files=[ "res://.import/beam.png-32e3211a5693a9b0ca10dfbb7e4930b1.stex" ]
-dest_md5="78ab49ee7d39d447add6f277655fd39f"
+dest_md5="ac2ad92d427fce452d083b2a641decc1"
 
 [params]
 

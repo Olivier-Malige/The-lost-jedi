@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/blue_particle.png-c134944a99567f79edc9ee61e9694cbf.stex"
+path="res://.import/player2_particle.png-55d666a93119abb5f916e473e911e0b9.stex"
 
 [deps]
 
+source_file="res://Assets/player2_particle.png"
 source_md5="8c2576da42525e20d6dd221b4f463ac5"
+
+dest_files=[ "res://.import/player2_particle.png-55d666a93119abb5f916e473e911e0b9.stex" ]
+dest_md5="a7ab50d93cf1908222be64a3b55401d7"
 
 [params]
 

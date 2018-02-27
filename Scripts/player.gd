@@ -10,7 +10,7 @@ const TIMER_FOCUSING_BEAM_MINI = 0.5 #seconde
 const TIMER_FOCUSING_BEAM_NORMAL = 1.5 #seconde
 const TIMER_FOCUSING_BEAM_FULL = 3 #seconde
 
-export(bool) var set_Player_2 = false
+var set_Player_2 = false # Call it on instancing for player 2 stats and colors
 onready var shoot_Delay = SHOOT_DELAY_BASE
 onready var shotPowerBonus = 0
 onready var bonusSpeed = 0
@@ -21,7 +21,7 @@ onready var touched = false
 onready var canShooting = true
 onready var malusSpeed = 0
 onready var controller 
-onready var id_player 
+onready var id_Player 
 onready var shooting
 onready var beam_Focusing
 onready var pos
@@ -30,19 +30,15 @@ enum beam_State {EMPTY,SMALL,NORMAL,FULL}
 onready var beam_Power = EMPTY
 
 
-
 func _ready():
-	#set a string id player for get_node in hud 
-	if set_Player_2 :
-		id_player = "player2"
-	else : id_player = "player1"
-	
+
+	_setup_Player()
 	update_controller()
 	update_energy()
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
 	get_node("/root/global").score = 0
 	add_to_group("player")
-
+	
 func update_controller():
 	if get_node("/root/main").coop :
 
@@ -67,7 +63,7 @@ func _process(delta):
 		bonusSpeed = SPEED_MAX
 
 	var motion = Vector2()
-	get_node("anim").play("idle")
+	get_node("anim").play(id_Player +"_idle")
 	
 	#particle effets
 	$reactorParticles.set_emitting(true)
@@ -89,12 +85,11 @@ func _process(delta):
 	#left
 	if Input.is_action_pressed(controller + "_left"):
 		motion += Vector2(-1, 0)
-		get_node("anim").play("left")
+		get_node("anim").play(id_Player+"_left")
 	#right
 	if Input.is_action_pressed(controller + "_right"):
 		motion += Vector2(1, 0)
-		get_node("anim").play("right")
-	
+		get_node("anim").play(id_Player+"_right")
 	
 	
 	pos = position + motion*delta*(SPEED+bonusSpeed-malusSpeed)
@@ -137,12 +132,26 @@ func _process(delta):
 	if beam_Focusing or shooting:
 		$reactorParticles.set_lifetime(0.1) 
 		$reactorParticles2.set_lifetime(0.1) 
-		malusSpeed = MALUS_SPEED 
-	else : malusSpeed = 0
-		
+
 
 	if (shooting and canShooting):
 		_shooting()
+		
+func _setup_Player():
+		#set id_Player for appropriate setup (colors , stats,... )
+	if set_Player_2 :
+		id_Player = "player2"
+
+	else : 
+		id_Player = "player1"
+	
+	#setup particle colors : Red for player1 and blue for player2
+	$BeamParticlesLeft.set_texture(load("res://Assets/"+id_Player+"_particle.png"))
+	$BeamParticlesRight.set_texture(load("res://Assets/"+id_Player+"_particle.png"))
+	$reactorParticles.set_texture(load("res://Assets/"+id_Player+"_particle.png"))
+	$reactorParticles2.set_texture(load("res://Assets/"+id_Player+"_particle.png"))
+	
+	$anim.play(id_Player+"_idle")
 		
 func _set_Power_Beam(power):
 	match power :
@@ -154,6 +163,7 @@ func _set_Power_Beam(power):
 			$BeamParticlesRight.hide()
 
 		SMALL :
+			malusSpeed = MALUS_SPEED 
 			$BeamParticlesLeft.show()
 			$BeamParticlesRight.show()
 			beam_Power = SMALL
@@ -171,13 +181,11 @@ func _set_Power_Beam(power):
 			$BeamParticlesRight.amount = 20
 func _shooting():
 	var shot
-	if (set_Player_2 == false) :
-		shot = preload("res://Prefabs/playerShot.tscn").instance()
-		shot.player = 1
-	else :
-		shot = preload("res://Prefabs/player2_Shot.tscn").instance()
-		shot.player = 2
-	shot.shot_Power += shotPowerBonus
+	shot = preload("res://Prefabs/player_Shot.tscn").instance()
+
+	shot.player_Id = id_Player #set id player to shot for player color
+	shot.damage += shotPowerBonus
+	shot.setPowerAnim()
 		# Use the Position2D as reference
 	shot.position = get_node("shootFrom").global_position
 		# Put it one  parent above, so it is not moved by us
@@ -189,23 +197,25 @@ func _shooting():
 	canShooting = false
 	get_node("ShootingDelay").start()
 	if shotSide:
-		var lShot
-		var rShot
-			
-			#load player colored shot 
-		if set_Player_2:
-			lShot = preload("res://Prefabs/player2_Side_Shot.tscn").instance()
-			rShot = preload("res://Prefabs/player2_Side_Shot.tscn").instance()
-		else :
-			lShot = preload("res://Prefabs/playerSideShot.tscn").instance()
-			rShot = preload("res://Prefabs/playerSideShot.tscn").instance()
-				
+
+		#load player colored shot 
+
+		var lShot = preload("res://Prefabs/player_SideShot.tscn").instance()
+		var rShot = preload("res://Prefabs/player_SideShot.tscn").instance()
+		
+		#set id player to side shots for statistic
+		lShot.player_Id = id_Player 
+		rShot.player_Id = id_Player 
+		rShot.damage += bonusPowerSideShot
+		lShot.damage += bonusPowerSideShot
+		lShot.setPowerAnim()
+		rShot.setPowerAnim()
+		
 		lShot.position = get_node("shootFromLeft").global_position
 		rShot.position = get_node("shootFromRight").global_position
 		rShot.speedX = -100
 		lShot.speedX = 100
-		rShot.shotPower += bonusPowerSideShot
-		lShot.shotPower += bonusPowerSideShot
+
 		get_node("../").add_child(lShot)
 		get_node("../").add_child(rShot)
 	# Update points counter
@@ -215,23 +225,42 @@ func _shooting_Beam():
 	var beam_shot_left
 	var beam_shot_right
 	match beam_Power :
+		
 		SMALL :
 			beam_shot_left = preload("res://Prefabs/beam/beam_mini.tscn").instance()
 			beam_shot_right= preload("res://Prefabs/beam/beam_mini.tscn").instance()
+			$sound_Beam_mini.playing = true
+			
 		NORMAL:
 			beam_shot_left = preload("res://Prefabs/beam/beam_normal.tscn").instance()
 			beam_shot_right= preload("res://Prefabs/beam/beam_normal.tscn").instance()
+			$sound_Beam_normal.playing = true
 		FULL :
 			beam_shot_left = preload("res://Prefabs/beam/beam_Full.tscn").instance()
 			beam_shot_right= preload("res://Prefabs/beam/beam_Full.tscn").instance()
+			$sound_Beam_full.playing = true
+	
+	#setup beam power and color to appropriate player 
 
+	for ch in beam_shot_left.get_children() :
+		ch.damage += shotPowerBonus
+		ch.player_Id = id_Player
+		ch.setPowerAnim()
+	
+	for ch in beam_shot_right.get_children() :
+		ch.damage += shotPowerBonus 
+		ch.player_Id = id_Player
+		ch.setPowerAnim()
+	
 	beam_shot_left.position = $shootFromLeft.global_position
 	beam_shot_right.position = $shootFromRight.global_position
 	get_node("../").add_child(beam_shot_left)
 	get_node("../").add_child(beam_shot_right)
 	
+	#reset speed malus
+	malusSpeed = 0
 
-func _hit_something(dmg):
+func _hit_something(dmg = 1):
 	if (touched):
 		return
 	if (energy > 1):
@@ -253,7 +282,7 @@ func _hit_something(dmg):
 		energy = 0
 		$sound_Explode.playing = true
 		update_energy()
-		get_node("anim").play("explode")
+		get_node("anim").play(id_Player+"_explode")
 		set_process(false)
 		$reactorParticles.set_emitting(false)
 		$reactorParticles2.set_emitting(false)
@@ -265,11 +294,6 @@ func _on_touchedReset_timeout():
 	bonusSpeed = 0
 	get_node("xWing").set_modulate(Color(1,1,1,1)) #set player normal color
 
-func _on_player_area_enter( area ):
-	if (area.is_in_group("enemy")):
-		if (area.has_method("_hit_something")):
-			area._hit_something(10)
-
 
 func setShootingDelay():
 	if (shoot_Delay < SHOOT_DELAY_MIN):
@@ -277,21 +301,18 @@ func setShootingDelay():
 	get_node("ShootingDelay").set_wait_time(shoot_Delay)
 
 func _on_ShootingDelay_timeout():
-	#reset speed malus
-	malusSpeed = 0
+
 	canShooting = true
 	
 func update_energy():
-	for ch in get_node("/root/main/world/hud/energy_"+id_player).get_children():
+	for ch in get_node("/root/main/world/hud/energy_"+id_Player).get_children():
 		ch.queue_free()
+		
 	for i in range(energy):
 		var energy 
-		if set_Player_2 :
-			 energy = preload("res://Prefabs/player2Energy.tscn").instance()
-		else :
-			 energy = preload("res://Prefabs/player1Energy.tscn").instance()
+		energy = load("res://Prefabs/"+id_Player+"_Energy.tscn").instance()
 		energy.position = Vector2(0,-i*12)
-		get_node("/root/main/world/hud/energy_"+id_player).add_child(energy)
+		get_node("/root/main/world/hud/energy_"+id_Player).add_child(energy)
 
 func increase_Speed():
 		bonusSpeed += global.POWERUP.player_Speed
@@ -309,8 +330,12 @@ func increase_Shield():
 	get_node("shield").power = 1    #+1 to  getset function
 	
 func _on_anim_animation_finished(n):
-	if n == "explode":
+	if n == id_Player+"_explode":
 		get_node("/root/main/world").nbr_Player -= 1
 		queue_free()
 		
-	
+
+func _on_player_area_entered(area):
+	if (area.is_in_group("enemy") and area.has_method("_hit_something")):
+			self._hit_something()
+			area._hit_something(10)

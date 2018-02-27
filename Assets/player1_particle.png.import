@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/godot-Sheet.png-7ed16f5c60291262056ea3c65c38ae9e.stex"
+path="res://.import/player1_particle.png-bc3b1c1823379d144c1379b6e5dd7e0c.stex"
 
 [deps]
 
-source_md5="01e61f85fa87645858ae4187103e0c58"
+source_file="res://Assets/player1_particle.png"
+source_md5="5e4dd3cb42bd47d5499fe6cc8d4713a5"
+
+dest_files=[ "res://.import/player1_particle.png-bc3b1c1823379d144c1379b6e5dd7e0c.stex" ]
+dest_md5="76c1ba144be8af83d41e14c34e807df5"
 
 [params]
 

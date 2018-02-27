@@ -100,29 +100,33 @@ func start_game(mode):
 	queue_free()
 
 func _on_Solo_button_down():
-	$sound_start.playing = true
-	yield( get_node("sound_start"), "finished" )
-	start_game(MODE_SOLO)
+	if not $sound_start.is_playing():
+		$sound_start.playing = true
+		yield( get_node("sound_start"), "finished" )
+		start_game(MODE_SOLO)
 	
 func _on_Coop_button_down():
-	$sound_start.playing = true
-	yield( get_node("sound_start"), "finished" )
-	start_game(MODE_COOP)
+	if not $sound_start.is_playing():
+		$sound_start.playing = true
+		yield( get_node("sound_start"), "finished" )
+		start_game(MODE_COOP)
 
 func _on_Exit_button_down():
 	get_tree().quit()
 
 func _on_Resume_button_down():
-	$sound_start.playing = true
-	yield( get_node("sound_start"), "finished" )
-	get_node("/root/main").set_Resume()
-	queue_free()
+	if not $sound_start.is_playing():
+		$sound_start.playing = true
+		yield( get_node("sound_start"), "finished" )
+		get_node("/root/main").set_Resume()
+		queue_free()
 
 func _on_Restart_button_down():
-	$sound_start.playing = true
-	yield( get_node("sound_start"), "finished" )
-	get_node("/root/main").set_Restart()
-	queue_free()
+	if not $sound_start.is_playing():
+		$sound_start.playing = true
+		yield( get_node("sound_start"), "finished" )
+		get_node("/root/main").set_Restart()
+		queue_free()
 	
 
 func _on_Hiscore_button_down():

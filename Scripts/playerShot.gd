@@ -1,24 +1,39 @@
 extends "_shot.gd"
 
-const  PLAYER_SHOT_POWER = 1.5
-const  PlAYER_SHOT_SPEED_Y = -1000
-const  PLAYER_SHOT_POWER_MAX = 6
-const  SHOT_PLAYER_ANIME =  {POWER1 = 1 , POWER2 = 2, POWER3 = 3 ,POWER4 = 4,POWER5 = 6}
-var shot_Power =  PLAYER_SHOT_POWER
-var player 
+export(float) var damage
+export(float) var damage_Max
+export(float) var power_Small
+export(float) var power_Normal
+export(float) var power_Big
+export(float) var power_Large
+export(float) var power_Full
+var player_Id 
 
 
 func _ready():
-	if (shot_Power > PLAYER_SHOT_POWER_MAX):
-		shot_Power = PLAYER_SHOT_POWER_MAX
-	speedY = PlAYER_SHOT_SPEED_Y
-	setPowerAnim(SHOT_PLAYER_ANIME.POWER1,SHOT_PLAYER_ANIME.POWER2,
-				SHOT_PLAYER_ANIME.POWER3,SHOT_PLAYER_ANIME.POWER4,SHOT_PLAYER_ANIME.POWER5,shot_Power) #set sprite scale  = to power
+	._ready()
+	if (damage > damage_Max):
+		damage = damage_Max
+
+
+#must be calling before shot instantiate
+func setPowerAnim():
+	if (damage >= power_Small):
+		get_node("anim").set_autoplay(player_Id  + "_small")
+	if (damage >= power_Normal):
+		get_node("anim").set_autoplay(player_Id   + "_normal")
+	if (damage >= power_Big):
+		get_node("anim").set_autoplay(player_Id   + "_big")
+	if (damage >= power_Large):
+		get_node("anim").set_autoplay(player_Id  + "_large")
+	if (damage >= power_Full):
+		get_node("anim").set_autoplay(player_Id  + "_full")
 	
-func _on_playerShot_area_enter( area ):
+	
+func _on_area_entered( area ):
 	#Hit an enemy or asteroid
 	if (area.is_in_group("enemy") or area.is_in_group("asteroid") or area.is_in_group("turret")):
 		area.hitByPlayerShot = true
-		area._hit_something(shot_Power)
+		area._hit_something(damage)
 		queue_free()
 

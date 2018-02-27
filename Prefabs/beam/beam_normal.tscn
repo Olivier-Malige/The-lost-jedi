@@ -18,10 +18,10 @@ position = Vector2( 0, -21.25 )
 
 [node name="middle2" parent="." index="2" instance=ExtResource( 2 )]
 
-position = Vector2( 0, -13 )
+position = Vector2( 0, -13.25 )
 
 [node name="bottom" parent="." index="3" instance=ExtResource( 2 )]
 
-position = Vector2( 0, -4.75 )
+position = Vector2( 0, -5.25 )
 
 

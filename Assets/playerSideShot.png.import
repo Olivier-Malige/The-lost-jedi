@@ -6,7 +6,11 @@ path="res://.import/playerSideShot.png-345ae7d0a737a8db4e21f32d4319a5a0.stex"
 
 [deps]
 
-source_md5="8e8a48fc5013b58ce491cfa84ca3bf08"
+source_file="res://Assets/playerSideShot.png"
+source_md5="3c14801973963dc711b828c40f8ed28d"
+
+dest_files=[ "res://.import/playerSideShot.png-345ae7d0a737a8db4e21f32d4319a5a0.stex" ]
+dest_md5="20b4414741739bf3887e525665339347"
 
 [params]
 

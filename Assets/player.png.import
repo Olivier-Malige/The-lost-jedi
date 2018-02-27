@@ -2,11 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/github_logo.png-8987ca808417eda8a46291fbff634c1d.stex"
+path="res://.import/player.png-5fe826d179e8297c657fd07c30124f2f.stex"
 
 [deps]
 
-source_md5="023c63d0dc502d4f17de3bbd126c8d55"
+source_file="res://Assets/player.png"
+source_md5="28789eb82e64ca71a3e2e0f7c36e23ec"
+
+dest_files=[ "res://.import/player.png-5fe826d179e8297c657fd07c30124f2f.stex" ]
+dest_md5="f32ff93fcf1bf7e00adb9951b434810a"
 
 [params]
 

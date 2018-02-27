@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/_enemy.gd" type="Script" id=1]
 [ext_resource path="res://Assets/drone.png" type="Texture" id=2]
 [ext_resource path="res://Prefabs/droneReactorParticles.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sounds/ennemy_Hit.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/drone_Explode.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assets/player1_particle.png" type="Texture" id=4]
+[ext_resource path="res://Sounds/ennemy_Hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/drone_Explode.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 
@@ -68,7 +69,7 @@ tracks/0/keys = {
 custom_solver_bias = 0.0
 extents = Vector2( 16.7428, 12.7418 )
 
-[node name="drone" type="Area2D"]
+[node name="drone" type="Area2D" index="0"]
 
 position = Vector2( 0.157784, 0 )
 input_pickable = true
@@ -116,7 +117,6 @@ anims/explode = SubResource( 1 )
 anims/hit = SubResource( 2 )
 anims/start = SubResource( 3 )
 blend_times = [  ]
-autoplay = ""
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
 
@@ -131,14 +131,16 @@ shape = SubResource( 4 )
 [node name="droneReactorParticles" parent="." index="4" instance=ExtResource( 3 )]
 
 position = Vector2( -5.99999, -14.8506 )
+texture = ExtResource( 4 )
 
 [node name="droneReactorParticles2" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 6, -14.8506 )
+texture = ExtResource( 4 )
 
 [node name="sound_Hit" type="AudioStreamPlayer2D" parent="." index="6"]
 
-stream = ExtResource( 4 )
+stream = ExtResource( 5 )
 volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
@@ -148,7 +150,7 @@ area_mask = 1
 
 [node name="sound_Explode" type="AudioStreamPlayer2D" parent="." index="7"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = 0.0
 autoplay = false
 max_distance = 2000.0

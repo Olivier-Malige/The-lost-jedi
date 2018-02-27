@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/interceptorShot.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/enemieShot.gd" type="Script" id=1]
 [ext_resource path="res://Assets/interceptorSideLaser.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 11.09, 10 )
 
-[node name="interceptorSideShot" type="Area2D" index="0"]
+[node name="interceptorSideShot" type="Area2D"]
 
 position = Vector2( 2.1485, 14 )
 scale = Vector2( 1.00608, 1 )
@@ -20,7 +20,12 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-setRotation = false
+speedY = 0
+speedX = 0
+rotate = false
+playerShot = false
+damage = 10
+noDamageToGroup = ""
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
