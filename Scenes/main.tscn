@@ -72,7 +72,6 @@ _sections_unfolded = [ "Material", "Transform", "Z" ]
 
 [node name="background" type="Sprite" parent="." index="0"]
 
-editor/display_folded = true
 position = Vector2( 597.14, 466.619 )
 scale = Vector2( 1.71894, 1.85326 )
 z_index = 500
@@ -172,6 +171,7 @@ delay = 0.002
 
 [node name="Background" type="Control" parent="background/Lights" index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
