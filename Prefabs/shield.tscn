@@ -1033,7 +1033,7 @@ custom_solver_bias = 0.0
 radius = 7.47834
 height = 32.1372
 
-[node name="shield" type="Area2D"]
+[node name="shield" type="Area2D" index="0"]
 
 position = Vector2( 0.291992, -22.9254 )
 scale = Vector2( 4, 4 )

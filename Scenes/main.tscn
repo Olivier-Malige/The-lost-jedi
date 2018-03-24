@@ -64,7 +64,7 @@ use_filter = false
 font_data = ExtResource( 12 )
 _sections_unfolded = [ "Settings" ]
 
-[node name="main" type="Node" index="0"]
+[node name="main" type="Node"]
 
 pause_mode = 1
 script = ExtResource( 1 )
@@ -1027,9 +1027,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -1944.0
+margin_left = -1943.0
 margin_top = -1250.0
-margin_right = -342.0
+margin_right = -341.0
 margin_bottom = 862.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false

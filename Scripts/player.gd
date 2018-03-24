@@ -1,9 +1,9 @@
 
 extends Area2D
-const SHOOT_DELAY_BASE = 0.30
+const SHOOT_DELAY_BASE = 0.26
 const SHOOT_DELAY_MIN = 0.10
 const SPEED = 300
-const MALUS_SPEED = 150
+const MALUS_SPEED = 100
 const ENERGY_MAX = 12
 const SPEED_MAX  = 500
 const TIMER_FOCUSING_BEAM_MINI = 0.5 #seconde

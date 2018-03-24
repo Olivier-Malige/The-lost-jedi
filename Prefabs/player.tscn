@@ -556,7 +556,7 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Emission Shape", "Trail" ]
 
-[node name="player" type="Area2D"]
+[node name="player" type="Area2D" index="0"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -785,6 +785,7 @@ area_mask = 1
 
 [node name="sound_Beam_full" type="AudioStreamPlayer2D" parent="." index="18"]
 
+position = Vector2( 0.12851, 0 )
 stream = ExtResource( 7 )
 volume_db = 0.0
 autoplay = false

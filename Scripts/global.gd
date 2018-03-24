@@ -3,7 +3,7 @@ extends Node
 
 # Member variables
 
-var Debug = true
+var Debug = false
 var score = 0
 var wave = 0
 var hiscoreSolo  =0
@@ -25,11 +25,11 @@ var saveData = { solo = {
 						graphic = "high",
 						}}
 var sav_path = "user://data.json"
-const VERSION_NUMBER = "Alpha dev"
+const VERSION_NUMBER = "Alpha 6"
 var POWERUP = { player_Speed = 5,       #pixel
 				shot_Power = 0.25,      #damage 
 				side_Shot_Power = 0.20, #damage
-				shooting_Speed = 0.006  #seconde
+				shooting_Speed = 0.002  #seconde
 				}
 func _ready():
 #	save_Data()
