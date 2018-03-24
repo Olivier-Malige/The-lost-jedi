@@ -6,7 +6,7 @@
 extends "_enemy.gd"
 
 
-func _on_ShootTimer_timeout():extends Node2D
+func _on_ShootTimer_timeout():
 
 	$sound_Shooting.playing = true
 	var shot = preload("res://Prefabs/motherShipShot.tscn").instance()

@@ -8,10 +8,8 @@
 #Section unfinished and in the process of development
 ################################################
 
-exteextends Node2D
-nds Node2D
-var nubWave = extends Node2D
-0
+extends Node2D
+var nubWave = 0
 var Wave0 = {
 	asteroid = [true,2],
 	bigAsteroid = [false,1],

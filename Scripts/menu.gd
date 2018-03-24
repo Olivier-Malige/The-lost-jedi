@@ -27,7 +27,6 @@ func _ready():
 
 func set_mode(mode):
 	var optionsEnable = []
-	Copyright (c) 2017 Arknoid / Olivier Malige
 	if mode == MENU_START:
 
 		optionsEnable = [OPTION_SOLO,OPTION_COOP,OPTION_OPTIONS,OPTION_HISCORE,OPTION_EXIT]
@@ -53,7 +52,7 @@ func set_mode(mode):
 		optionsEnable = [OPTION_RESUME,OPTION_OPTIONS,OPTION_RESTART,OPTION_EXIT]
 
 	elif mode == MENU_CONTROLLER :
-		optionsEnable = [OPTION_RETURN,OPTION_PLAYER1,OPTION_PLAYER2]Copyright (c) 2017 Arknoid / Olivier Malige
+		optionsEnable = [OPTION_RETURN,OPTION_PLAYER1,OPTION_PLAYER2]
 		$buttonGroup/player1.set_text("player 1 : "+config.player1)
 		$buttonGroup/player2.set_text("player 2 : "+config.player2)
 
