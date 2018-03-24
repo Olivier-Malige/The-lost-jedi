@@ -1,4 +1,8 @@
-
+#
+#  This file is subject to the terms and conditions defined in
+#  file 'LICENSE.txt', which is part of this source code package.
+#  Copyright (c) 2017 Arknoid / Olivier Malige
+#
 extends Node
 
 # Member variables
@@ -12,8 +16,8 @@ var saveData = { solo = {
 						hiscore = 0 ,
 						bestWave = 0,
 						},
-				 coop = { 
-						hiscore = 0 , 
+				 coop = {
+						hiscore = 0 ,
 						bestWave = 0,
 						},
 				 config = {
@@ -27,7 +31,7 @@ var saveData = { solo = {
 var sav_path = "user://data.json"
 const VERSION_NUMBER = "Alpha 6"
 var POWERUP = { player_Speed = 5,       #pixel
-				shot_Power = 0.25,      #damage 
+				shot_Power = 0.25,      #damage
 				side_Shot_Power = 0.20, #damage
 				shooting_Speed = 0.002  #seconde
 				}
@@ -62,7 +66,7 @@ func save_Data():
 		f.close()
 
 func update_Data():
-	if (get_node("/root/main").coop): 
+	if (get_node("/root/main").coop):
 		if (wave > saveData.coop.bestWave) :
 			saveData.coop.bestWave = wave
 		if (score > saveData.coop.hiscore):
@@ -74,4 +78,3 @@ func update_Data():
 		if (score > saveData.solo.hiscore):
 			saveData.solo.hiscore = score
 			save_Data()
-

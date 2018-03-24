@@ -1,7 +1,12 @@
+#
+#  This file is subject to the terms and conditions defined in
+#  file 'LICENSE.txt', which is part of this source code package.
+#  Copyright (c) 2017 Arknoid / Olivier Malige
+#
 extends Node
 var coop  = false
 var startScreen = false
-var zoomReady = false 
+var zoomReady = false
 var worldScreen = false
 var gameOverScreen = false
 var input = load("res://Scripts/input.gd")
@@ -21,10 +26,10 @@ func _input(event):
 	if (worldScreen ):
 		if event.is_action_pressed("start") and not event.is_echo():
 			set_Pause()
-			
+
 		#CHEATCODE DEBUG
-		if global.Debug :  
-			#Previous Wave   
+		if global.Debug :
+			#Previous Wave
 			if  event.is_action_pressed("debug_Key1") and not event.is_echo():
 				get_node("world/waveGenerator").goto_Previous_Wave()
 			#Next Wave
@@ -75,7 +80,7 @@ func set_Pause():
 			add_child(m)
 			m.set_mode(m.MENU_PAUSE)
 			menuShow = true
-			
+
 			#hide background when paused(to prevent show bug)
 			for i in $world.get_node("background").get_children() :
 				i.hide()
@@ -83,18 +88,18 @@ func set_Pause():
 func set_Restart():
 	set_Resume()
 	get_tree().reload_current_scene()
-	
+
 func set_Resume():
 	if (worldScreen):
 		menuShow = false
 		$paused.queue_free()
 		get_tree().set_pause(false)
-		
+
 		#show background when resume paused(to prevent show bug)
 		for i in $world.get_node("background").get_children() :
 			i.show()
 
-		
+
 		#update controller config
 		if coop :
 			get_node("world/player").update_controller()
@@ -124,7 +129,7 @@ func go_World_Screen():
 	worldScreen = true
 	startScreen = false
 	gameOverScreen = false
-	
+
 
 func go_GameOver_Screen():
 	gameOverScreen = true

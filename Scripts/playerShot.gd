@@ -1,3 +1,8 @@
+#
+#  This file is subject to the terms and conditions defined in
+#  file 'LICENSE.txt', which is part of this source code package.
+#  Copyright (c) 2017 Arknoid / Olivier Malige
+#
 extends "_shot.gd"
 
 export(float) var damage
@@ -7,7 +12,7 @@ export(float) var power_Normal
 export(float) var power_Big
 export(float) var power_Large
 export(float) var power_Full
-var player_Id 
+var player_Id
 
 
 func _ready():
@@ -28,12 +33,11 @@ func setPowerAnim():
 		get_node("anim").set_autoplay(player_Id  + "_large")
 	if (damage >= power_Full):
 		get_node("anim").set_autoplay(player_Id  + "_full")
-	
-	
+
+
 func _on_area_entered( area ):
 	#Hit an enemy or asteroid
 	if (area.is_in_group("enemy") or area.is_in_group("asteroid") or area.is_in_group("turret")):
 		area.hitByPlayerShot = true
 		area._hit_something(damage)
 		queue_free()
-

@@ -1,11 +1,16 @@
+#
+#  This file is subject to the terms and conditions defined in
+#  file 'LICENSE.txt', which is part of this source code package.
+#  Copyright (c) 2017 Arknoid / Olivier Malige
+#
 extends "_enemy.gd"
 
- 
+
 func _ready():
 	add_to_group("turret")
 	._ready()
 	shooting()
-	
+
 func shooting():
 	var dir = 0
 	var shot =[]
@@ -21,5 +26,3 @@ func shooting():
 		#get_node("../enemySfx").play("interceptorShot")
 		i += 1
 		yield(get_node("ShotDelay"),"timeout")
-		
-

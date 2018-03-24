@@ -1,4 +1,8 @@
-
+#
+#  This file is subject to the terms and conditions defined in
+#  file 'LICENSE.txt', which is part of this source code package.
+#  Copyright (c) 2017 Arknoid / Olivier Malige
+#
 extends Area2D
 
 # Member variables
@@ -8,7 +12,7 @@ var life = 10
 var points = 10
 var speed_x = 0.0
 var destroyed = false
-var rndRot 
+var rndRot
 var randPowerUp = 10  #of  100%
 var touchedByPlayerShot = false
 
@@ -16,9 +20,9 @@ var touchedByPlayerShot = false
 func _fixed_process(delta):
 	touchedByPlayerShot = false
 	translate(Vector2(speed_x, SPEED)*delta)
-	#rotate 
+	#rotate
 	set_rotd(get_rotd()+rndRot)
-	
+
 func _ready():
 	add_to_group("asteroid")
 	randomize();
@@ -45,7 +49,7 @@ func _hit_something(dmg):
 			var score = preload("res://Prefabs/score.tscn").instance()
 			score.set_pos(get_pos())
 			score.setScore = points
-			get_node("../").add_child(score)			
+			get_node("../").add_child(score)
 			get_node("/root/GameState").points += points
 		_fixed_process(false)
 		get_node("../enemySfx").play("bigAsteroidExplode")
@@ -67,4 +71,3 @@ func _on_anim_finished():
 func _on_bigAsteroid_area_enter( area ):
 	if (area.has_method("_hit_something")):
 		area._hit_something(10)
-	

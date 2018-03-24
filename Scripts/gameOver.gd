@@ -1,3 +1,8 @@
+#
+#  This file is subject to the terms and conditions defined in
+#  file 'LICENSE.txt', which is part of this source code package.
+#  Copyright (c) 2017 Arknoid / Olivier Malige
+#
 extends Node2D
 
 
@@ -7,10 +12,10 @@ func _ready():
 	if get_node("/root/main").coop :
 		get_node("BestScore").set_text("HISCORE : " +str(global.saveData.coop.hiscore))
 		get_node("BestScore/HigherWave").set_text("Higher Wave : " + str (global.saveData.coop.bestWave))
-	else : 
+	else :
 		get_node("BestScore").set_text("HISCORE : " +str(global.saveData.solo.hiscore))
 		get_node("BestScore/HigherWave").set_text("Higher Wave : " + str (global.saveData.solo.bestWave))
-	
+
 	get_node("Score/wave").set_text("Wave : "+str(global.wave))
 	get_node("Score").set_text("SCORE : " +str(global.score))
 	game_over()

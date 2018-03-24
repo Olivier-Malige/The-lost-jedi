@@ -1,3 +1,8 @@
+#
+#  This file is subject to the terms and conditions defined in
+#  file 'LICENSE.txt', which is part of this source code package.
+#  Copyright (c) 2017 Arknoid / Olivier Malige
+#
 extends Node
 
 var action = ""
@@ -6,7 +11,7 @@ var pressed = false
 
 func _init(action):
 	self.action = action
-	
+
 func pressed():
 	if Input.is_action_pressed(action):
 		pressed = true
@@ -21,4 +26,3 @@ func key_down():
 		return true
 	else:
 		return false
-	

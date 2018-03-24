@@ -1,9 +1,17 @@
+#
+#  This file is subject to the terms and conditions defined in
+#  file 'LICENSE.txt', which is part of this source code package.
+#  Copyright (c) 2017 Arknoid / Olivier Malige
+#
+
 ################################################
 #Section unfinished and in the process of development
 ################################################
 
-extends Node2D
-var nubWave = 0
+exteextends Node2D
+nds Node2D
+var nubWave = extends Node2D
+0
 var Wave0 = {
 	asteroid = [true,2],
 	bigAsteroid = [false,1],
@@ -21,7 +29,7 @@ var Wave1 = {
 	drone=[true,3],
 	motherShip=[false,1],
 	turret = [false,4]
-	}	
+	}
 var Wave2 = {
 	asteroid = [true,2],
 	bigAsteroid = [false,1],
@@ -129,11 +137,11 @@ func _ready():
 	spawn(metaWave[nubWave].asteroid,metaWave[nubWave].bigAsteroid,metaWave[nubWave].tie,
 	metaWave[nubWave].interceptor,metaWave[nubWave].drone,metaWave[nubWave].motherShip,metaWave[nubWave].turret)
 	set_process(true)
-	
+
 func _process(delta):
 
 	get_node("../hud/wave").set_text("Wave : "+str(nubWave+1))
-	
+
 func spawn(asteroid,bigAsteroid,tie,interceptor,drone,motherShip,turret):
 	$asteroidSpawnTimer.stop()
 	$bigAsteroidSpawnTimer.stop()
@@ -147,24 +155,24 @@ func spawn(asteroid,bigAsteroid,tie,interceptor,drone,motherShip,turret):
 		$asteroidSpawnTimer.set_wait_time(asteroid[1])
 	if bigAsteroid[0] :
 		$bigAsteroidSpawnTimer.start()
-		$bigAsteroidSpawnTimer.set_wait_time(bigAsteroid[1])	
+		$bigAsteroidSpawnTimer.set_wait_time(bigAsteroid[1])
 	if tie[0] :
 		$tieSpawnTimer.start()
-		$tieSpawnTimer.set_wait_time(tie[1])	
+		$tieSpawnTimer.set_wait_time(tie[1])
 	if interceptor[0] :
 		$interceptorSpwnTimer.start()
-		$interceptorSpwnTimer.set_wait_time(interceptor[1])		
+		$interceptorSpwnTimer.set_wait_time(interceptor[1])
 	if drone[0] :
 		$droneSpawnTimer.start()
-		$droneSpawnTimer.set_wait_time(drone[1])		
+		$droneSpawnTimer.set_wait_time(drone[1])
 	if motherShip[0] :
 		$motherShipSpawnTimer.start()
-		$motherShipSpawnTimer.set_wait_time(motherShip[1])	
+		$motherShipSpawnTimer.set_wait_time(motherShip[1])
 	if turret[0] :
 		$turretSpawnTimer.start()
-		$turretSpawnTimer.set_wait_time(turret[1])	
+		$turretSpawnTimer.set_wait_time(turret[1])
 
-	
+
 func _on_asteroidSpawnTimer_timeout():
 	var rndPos = randi()%11
 	var asteroid = preload("res://Prefabs/Asteroid.tscn").instance()
@@ -172,7 +180,7 @@ func _on_asteroidSpawnTimer_timeout():
 	add_child(asteroid)
 
 func _on_tieSpawnTimer_timeout():
-	var rndPos = (randi()%9)+1 
+	var rndPos = (randi()%9)+1
 	var tie = preload("res://Prefabs/Tie.tscn").instance()
 	tie.position =get_node("spawnPos"+str(rndPos)).global_position
 	add_child(tie)
@@ -190,27 +198,27 @@ func _on_interceptorSpwnTimer_timeout():
 	add_child(interceptor)
 
 func _on_droneSpawnTimer_timeout():
-	var rndPos = (randi()%9)+1 
+	var rndPos = (randi()%9)+1
 	var drone = preload("res://Prefabs/drone.tscn").instance()
 	var drone1 = preload("res://Prefabs/drone.tscn").instance()
 	var drone2 = preload("res://Prefabs/drone.tscn").instance()
-	
+
 	drone.position = get_node("spawnPos"+str(rndPos)).global_position
 	add_child(drone)
 	get_node("droneResume").start()
 	yield(get_node("droneResume"),"timeout")
-	
+
 	if (rndPos+1 <= 11):
 		drone1.position = get_node("spawnPos"+str(rndPos+1)).global_position
 		add_child(drone1)
 		get_node("droneResume").start()
 		yield(get_node("droneResume"),"timeout")
-	
+
 	if (rndPos-1 >= 0):
 		drone2.position =get_node("spawnPos"+str(rndPos-1)).global_position
 		drone2.position =get_node("spawnPos"+str(rndPos-1)).global_position
 		add_child(drone2)
-	
+
 func _on_motherShipSpawnTimer_timeout():
 	var rndPos = randi()%11
 	var motherShip = preload("res://Prefabs/motherShip.tscn").instance()
@@ -220,30 +228,30 @@ func _on_masterTimer_timeout():
 	goto_Next_Wave()
 	_update_State()
 	_update_Wave()
-	
-	
+
+
 func _on_turretSpawnTimer_timeout():
 	var rndPos = randi()%11
 	var turret = preload("res://Prefabs/turret.tscn").instance()
 	turret.position =get_node("spawnPos"+str(rndPos)).global_position
 	add_child(turret)
-	
+
 func goto_Previous_Wave():
 	if nubWave > 0 :
 		nubWave -= 1
 		$masterTimer.start()
 	_update_State()
 	_update_Wave()
-	
+
 func goto_Next_Wave():
 	if (nubWave < metaWave.size()-1):
 		nubWave +=1
 		_update_State()
 		_update_Wave()
-	
+
 func _update_State():
 	global.wave = nubWave +1
-	
+
 func _update_Wave():
 	spawn(metaWave[nubWave].asteroid,metaWave[nubWave].bigAsteroid,metaWave[nubWave].tie,metaWave[nubWave].interceptor,
 	metaWave[nubWave].drone,metaWave[nubWave].motherShip,metaWave[nubWave].turret)

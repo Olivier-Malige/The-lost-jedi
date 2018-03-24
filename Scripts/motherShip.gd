@@ -1,8 +1,13 @@
-
+#
+#  This file is subject to the terms and conditions defined in
+#  file 'LICENSE.txt', which is part of this source code package.
+#  Copyright (c) 2017 Arknoid / Olivier Malige
+#
 extends "_enemy.gd"
 
 
-func _on_ShootTimer_timeout():
+func _on_ShootTimer_timeout():extends Node2D
+
 	$sound_Shooting.playing = true
 	var shot = preload("res://Prefabs/motherShipShot.tscn").instance()
 	var shot1 = preload("res://Prefabs/motherShipShot.tscn").instance()
@@ -21,7 +26,7 @@ func _on_ShootTimer_timeout():
 	shot2.speedX  = -40
 	shot3.speedX  = 40
 	#get_node("../enemySfx").play("interceptorShot")
-	
+
 func _on_anim_finished():
 	if (get_node("anim").get_current_animation() == "explode"):
 		$droneReactorParticles4.queue_free()
@@ -30,9 +35,7 @@ func _on_anim_finished():
 		$droneReactorParticles3.queue_free()
 		set_process(false)
 		queue_free()
-		
-		
+
+
 	else :
 		get_node("anim").play("start")
-
-

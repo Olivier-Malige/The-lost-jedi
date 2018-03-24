@@ -1,3 +1,8 @@
+#
+#  This file is subject to the terms and conditions defined in
+#  file 'LICENSE.txt', which is part of this source code package.
+#  Copyright (c) 2017 Arknoid / Olivier Malige
+#
 extends Control
 var menu = load("res://Scenes/menu.tscn")
 var config = global.saveData.config
@@ -22,12 +27,12 @@ func _ready():
 
 func set_mode(mode):
 	var optionsEnable = []
-	
+	Copyright (c) 2017 Arknoid / Olivier Malige
 	if mode == MENU_START:
-	
+
 		optionsEnable = [OPTION_SOLO,OPTION_COOP,OPTION_OPTIONS,OPTION_HISCORE,OPTION_EXIT]
 		mode(optionsEnable)
-		
+
 	elif mode == MENU_OPTIONS :
 		optionsEnable = [OPTION_MUSIC,OPTION_SOUND,OPTION_RETURN,OPTION_CONTROLLER,OPTION_FULLSCREEN,OPTION_GRAPHIC]
 
@@ -46,12 +51,12 @@ func set_mode(mode):
 
 	elif mode == MENU_PAUSE:
 		optionsEnable = [OPTION_RESUME,OPTION_OPTIONS,OPTION_RESTART,OPTION_EXIT]
-		
+
 	elif mode == MENU_CONTROLLER :
-		optionsEnable = [OPTION_RETURN,OPTION_PLAYER1,OPTION_PLAYER2]
+		optionsEnable = [OPTION_RETURN,OPTION_PLAYER1,OPTION_PLAYER2]Copyright (c) 2017 Arknoid / Olivier Malige
 		$buttonGroup/player1.set_text("player 1 : "+config.player1)
 		$buttonGroup/player2.set_text("player 2 : "+config.player2)
-	
+
 	#set mode done and then instantiate tweak menu
 	mode(optionsEnable)
 
@@ -75,13 +80,13 @@ func mode (enable= []) :
 			OPTION_EXIT :get_node("buttonGroup/exit").add_to_group("enable")
 			OPTION_FULLSCREEN :get_node("buttonGroup/fullscreen").add_to_group("enable")
 			OPTION_GRAPHIC :get_node("buttonGroup/graphic").add_to_group("enable")
-			
+
 	for node in get_node("buttonGroup").get_children() :
 		if not node.is_in_group("enable") :
 			node.queue_free()
 		else :
 			node.rect_size.x = 800
-	
+
 	yield(get_node("optionTimer"),"timeout")
 	#initialize size for adapative vboxContenaire
 	$buttonGroup.rect_size = Vector2(800,0)
@@ -90,7 +95,7 @@ func mode (enable= []) :
 	show()
 	#set focus of first node in buttonGroup
 	get_node("buttonGroup").get_child(0).grab_focus()
-	
+
 func start_game(mode):
 	if mode == MODE_SOLO :
 		get_node("/root/main").coop = false
@@ -104,7 +109,7 @@ func _on_Solo_button_down():
 		$sound_start.playing = true
 		yield( get_node("sound_start"), "finished" )
 		start_game(MODE_SOLO)
-	
+
 func _on_Coop_button_down():
 	if not $sound_start.is_playing():
 		$sound_start.playing = true
@@ -127,7 +132,7 @@ func _on_Restart_button_down():
 		yield( get_node("sound_start"), "finished" )
 		get_node("/root/main").set_Restart()
 		queue_free()
-	
+
 
 func _on_Hiscore_button_down():
 	$sound_select.playing = true
@@ -145,7 +150,7 @@ func new_menu(mode):
 	get_parent().add_child(m)
 	m.set_mode(mode)
 	queue_free()
-	
+
 func _on_return_button_down():
 	$sound_select.playing = true
 	yield( get_node("sound_select"), "finished" )
@@ -156,17 +161,17 @@ func _on_return_button_down():
 	queue_free()
 
 func _on_sound_button_down():
-	var onOff 
+	var onOff
 	config.sound = not config.sound
 	if config.sound :
 		onOff = "on"
 	else : onOff = "off"
-	
+
 	get_node("buttonGroup/sound").set_text("Sound : "+onOff)
 	global.setSound(config.sound)
 	global.save_Data()
 func _on_music_button_down():
-	var onOff 
+	var onOff
 	config.music = not config.music
 	if config.music :
 		onOff = "on"
@@ -187,7 +192,7 @@ func _on_fullscreen_button_down():
 	if config.fullscreen :
 		onOff = "on"
 		OS.set_window_fullscreen(true)
-	else : 
+	else :
 		onOff = "off"
 		OS.set_window_fullscreen(false)
 	get_node("buttonGroup/fullscreen").set_text("fullscreen : "+onOff)
@@ -200,7 +205,7 @@ func _on_player1_button_down():
 		global.saveData.config.player1 = switch_controller(1)
 	$buttonGroup/player1.set_text("player 1 : "+global.saveData.config.player1)
 	global.save_Data()
-	
+
 
 
 func _on_player2_button_down():
@@ -209,7 +214,7 @@ func _on_player2_button_down():
 		global.saveData.config.player2 = switch_controller(2)
 	$buttonGroup/player2.set_text("player 2 : "+global.saveData.config.player2)
 	global.save_Data()
-	
+
 
 func switch_controller(player):
 	var configPlayer
@@ -217,7 +222,7 @@ func switch_controller(player):
 		configPlayer = global.saveData.config.player1
 	elif player == 2 :
 		configPlayer = global.saveData.config.player2
-	
+
 	for i in range (controller.size()) :
 		if controller[i] == configPlayer :
 			if configPlayer  == controller.back() :
@@ -238,5 +243,3 @@ func _on_graphic_button_down():
 		$buttonGroup/graphic.set_text("graphic : hight")
 		get_node("/root/main").set_Graphic("hight")
 	global.save_Data()
-
-

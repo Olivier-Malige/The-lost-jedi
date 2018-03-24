@@ -1,5 +1,10 @@
+#
+#  This file is subject to the terms and conditions defined in
+#  file 'LICENSE.txt', which is part of this source code package.
+#  Copyright (c) 2017 Arknoid / Olivier Malige
+#
 extends Area2D
-const SPEED = 100  
+const SPEED = 100
 
 func _ready():
 	var rndPowers = randi()%100 +1
@@ -49,5 +54,3 @@ func _on_powerUp_area_enter( area ):
 
 func _on_audio_finished():
 	queue_free()
-
-

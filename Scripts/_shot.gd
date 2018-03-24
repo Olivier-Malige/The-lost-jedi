@@ -1,3 +1,9 @@
+#
+#  This file is subject to the terms and conditions defined in
+#  file 'LICENSE.txt', which is part of this source code package.
+#  Copyright (c) 2017 Arknoid / Olivier Malige
+#
+
 extends Area2D
 
 # Member variables
@@ -13,15 +19,14 @@ func _process(delta):
 	if (rotate):
 		rotation += speedRotation
 	translate(Vector2(speedX*delta, delta*speedY))
-	
+
 func _ready():
 	if playerShot :
 		add_to_group("player_Shot")
 	else :
 		add_to_group("enemy_Shot")
-	
+
 
 func _on_VisibilityNotifier2D_screen_exited():
 	set_process(false)
 	queue_free()
-
