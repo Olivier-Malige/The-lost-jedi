@@ -7,10 +7,7 @@ path="res://.import/demo.wav-f3e03a9ad3fb020fa08f1c81f9031c96.sample"
 [deps]
 
 source_file="res://Sounds/demo.wav"
-source_md5="a043cc33177fcb0f80f56b1d4f712a6f"
-
 dest_files=[ "res://.import/demo.wav-f3e03a9ad3fb020fa08f1c81f9031c96.sample" ]
-dest_md5="ab51cd593d651573866277978ce347b7"
 
 [params]
 

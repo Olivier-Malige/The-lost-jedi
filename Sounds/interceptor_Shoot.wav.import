@@ -6,7 +6,8 @@ path="res://.import/interceptor_Shoot.wav-b7deee89d2b9166ddb34e8f16c4ec009.sampl
 
 [deps]
 
-source_md5="25c161c20a9f28dcc0d30579d8389784"
+source_file="res://Sounds/interceptor_Shoot.wav"
+dest_files=[ "res://.import/interceptor_Shoot.wav-b7deee89d2b9166ddb34e8f16c4ec009.sample" ]
 
 [params]
 

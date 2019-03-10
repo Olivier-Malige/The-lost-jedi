@@ -6,7 +6,8 @@ path="res://.import/interceptor_Explode.wav-d5977dc8e707cccc2e3819d6b8d0a4b3.sam
 
 [deps]
 
-source_md5="613483d4f4e490d6b8de00646ca34901"
+source_file="res://Sounds/interceptor_Explode.wav"
+dest_files=[ "res://.import/interceptor_Explode.wav-d5977dc8e707cccc2e3819d6b8d0a4b3.sample" ]
 
 [params]
 

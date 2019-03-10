@@ -6,7 +6,8 @@ path="res://.import/drone_Explode.wav-cf676eb2c6554a6ad539166195e73989.sample"
 
 [deps]
 
-source_md5="2761c473f876eff5bdb72ceb0aa8328d"
+source_file="res://Sounds/drone_Explode.wav"
+dest_files=[ "res://.import/drone_Explode.wav-cf676eb2c6554a6ad539166195e73989.sample" ]
 
 [params]
 

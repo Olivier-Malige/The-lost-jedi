@@ -6,7 +6,8 @@ path="res://.import/motherShip_explode.wav-b9b815b2a28feaea9062c2a93904181b.samp
 
 [deps]
 
-source_md5="0d62c091ac7a6639b5076b691975ae9a"
+source_file="res://Sounds/motherShip_explode.wav"
+dest_files=[ "res://.import/motherShip_explode.wav-b9b815b2a28feaea9062c2a93904181b.sample" ]
 
 [params]
 

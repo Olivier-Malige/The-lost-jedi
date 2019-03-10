@@ -7,10 +7,7 @@ path="res://.import/powerUp_energy.wav-b55f597f4b7fb76a5a2aac676a5a63b7.sample"
 [deps]
 
 source_file="res://Sounds/powerUp_energy.wav"
-source_md5="ebda691e11fa5184afaadd4eb2663844"
-
 dest_files=[ "res://.import/powerUp_energy.wav-b55f597f4b7fb76a5a2aac676a5a63b7.sample" ]
-dest_md5="80e5959fd33f69392c70eaf935789e4c"
 
 [params]
 

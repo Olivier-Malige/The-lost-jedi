@@ -6,7 +6,8 @@ path="res://.import/powerUp_Shot.wav-15436627eb3157abd81f2ee44a30bbfd.sample"
 
 [deps]
 
-source_md5="1a5e6c1c2c1709381c876a53ba341f4a"
+source_file="res://Sounds/powerUp_Shot.wav"
+dest_files=[ "res://.import/powerUp_Shot.wav-15436627eb3157abd81f2ee44a30bbfd.sample" ]
 
 [params]
 

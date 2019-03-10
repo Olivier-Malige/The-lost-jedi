@@ -6,7 +6,8 @@ path="res://.import/bigAsteroid_Explode.wav-adebbdff5d95f1dd577cca063a1bd33e.sam
 
 [deps]
 
-source_md5="b2e5ba93fd4b497fb39fd5d796a8968b"
+source_file="res://Sounds/bigAsteroid_Explode.wav"
+dest_files=[ "res://.import/bigAsteroid_Explode.wav-adebbdff5d95f1dd577cca063a1bd33e.sample" ]
 
 [params]
 

@@ -31,7 +31,7 @@ onready var beam_Focusing
 onready var pos
 onready var accumBeam = 0
 enum beam_State {EMPTY,SMALL,NORMAL,FULL}
-onready var beam_Power = EMPTY
+onready var beam_Power = beam_State.EMPTY
 
 
 func _ready():
@@ -112,21 +112,21 @@ func _process(delta):
 	beam_Focusing = Input.is_action_pressed(controller +"_fire")
 
 
-	if accumBeam < TIMER_FOCUSING_BEAM_MINI and beam_Power != EMPTY :
-		_set_Power_Beam(EMPTY)
+	if accumBeam < TIMER_FOCUSING_BEAM_MINI and beam_Power != beam_State.EMPTY :
+		_set_Power_Beam(beam_State.EMPTY)
 
-	elif accumBeam  >= TIMER_FOCUSING_BEAM_MINI  and accumBeam < TIMER_FOCUSING_BEAM_NORMAL and beam_Power != SMALL :
-		_set_Power_Beam(SMALL)
+	elif accumBeam  >= TIMER_FOCUSING_BEAM_MINI  and accumBeam < TIMER_FOCUSING_BEAM_NORMAL and beam_Power != beam_State.SMALL :
+		_set_Power_Beam(beam_State.SMALL)
 
-	elif accumBeam >= TIMER_FOCUSING_BEAM_NORMAL and  accumBeam < TIMER_FOCUSING_BEAM_FULL and beam_Power != NORMAL :
-		_set_Power_Beam(NORMAL)
+	elif accumBeam >= TIMER_FOCUSING_BEAM_NORMAL and  accumBeam < TIMER_FOCUSING_BEAM_FULL and beam_Power != beam_State.NORMAL :
+		_set_Power_Beam(beam_State.NORMAL)
 
-	elif accumBeam >= TIMER_FOCUSING_BEAM_FULL and beam_Power != FULL :
-		_set_Power_Beam(FULL)
+	elif accumBeam >= TIMER_FOCUSING_BEAM_FULL and beam_Power != beam_State.FULL :
+		_set_Power_Beam(beam_State.FULL)
 
 
 	if Input.is_action_just_released(controller +"_fire") :
-		if beam_Power != EMPTY :
+		if beam_Power != beam_State.EMPTY :
 			_shooting_Beam()
 
 	if beam_Focusing :
@@ -159,28 +159,28 @@ func _setup_Player():
 
 func _set_Power_Beam(power):
 	match power :
-		EMPTY :
-			beam_Power = EMPTY
+		beam_State.EMPTY :
+			beam_Power = beam_State.EMPTY
 			$BeamParticlesLeft.emitting = false
 			$BeamParticlesRight.emitting = false
 			$BeamParticlesLeft.hide()
 			$BeamParticlesRight.hide()
 
-		SMALL :
+		beam_State.SMALL :
 			malusSpeed = MALUS_SPEED
 			$BeamParticlesLeft.show()
 			$BeamParticlesRight.show()
-			beam_Power = SMALL
+			beam_Power = beam_State.SMALL
 			$BeamParticlesLeft.emitting = true
 			$BeamParticlesRight.emitting = true
 			$BeamParticlesLeft.amount = 1
 			$BeamParticlesRight.amount = 1
-		NORMAL :
-			beam_Power = NORMAL
+		beam_State.NORMAL :
+			beam_Power = beam_State.NORMAL
 			$BeamParticlesLeft.amount = 5
 			$BeamParticlesRight.amount = 5
-		FULL :
-			beam_Power = FULL
+		beam_State.FULL :
+			beam_Power = beam_State.FULL
 			$BeamParticlesLeft.amount = 20
 			$BeamParticlesRight.amount = 20
 func _shooting():
@@ -230,16 +230,16 @@ func _shooting_Beam():
 	var beam_shot_right
 	match beam_Power :
 
-		SMALL :
+		beam_State.SMALL :
 			beam_shot_left = preload("res://Prefabs/beam/beam_mini.tscn").instance()
 			beam_shot_right= preload("res://Prefabs/beam/beam_mini.tscn").instance()
 			$sound_Beam_mini.playing = true
 
-		NORMAL:
+		beam_State.NORMAL:
 			beam_shot_left = preload("res://Prefabs/beam/beam_normal.tscn").instance()
 			beam_shot_right= preload("res://Prefabs/beam/beam_normal.tscn").instance()
 			$sound_Beam_normal.playing = true
-		FULL :
+		beam_State.FULL :
 			beam_shot_left = preload("res://Prefabs/beam/beam_Full.tscn").instance()
 			beam_shot_right= preload("res://Prefabs/beam/beam_Full.tscn").instance()
 			$sound_Beam_full.playing = true

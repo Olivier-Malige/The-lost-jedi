@@ -6,7 +6,8 @@ path="res://.import/tie_explode.wav-3816e1bde48536e41a1d587e244c93b5.sample"
 
 [deps]
 
-source_md5="59ef7a51a3179f4153eaa2c1fa62c0a4"
+source_file="res://Sounds/tie_explode.wav"
+dest_files=[ "res://.import/tie_explode.wav-3816e1bde48536e41a1d587e244c93b5.sample" ]
 
 [params]
 

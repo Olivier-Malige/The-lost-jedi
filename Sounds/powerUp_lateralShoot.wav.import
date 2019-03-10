@@ -6,7 +6,8 @@ path="res://.import/powerUp_lateralShoot.wav-24abe9c27f06e1927354fd4ebd48310f.sa
 
 [deps]
 
-source_md5="79b13cf39c9c2e14e8f539549ba831d0"
+source_file="res://Sounds/powerUp_lateralShoot.wav"
+dest_files=[ "res://.import/powerUp_lateralShoot.wav-24abe9c27f06e1927354fd4ebd48310f.sample" ]
 
 [params]
 
