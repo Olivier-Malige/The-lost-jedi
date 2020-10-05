@@ -3,16 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/gameoff.png-b99ccdbd2e1d0eaace3933e5dc46a1db.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_md5="7fb14f34f5f047b0d17ab671152e3cbe"
+source_file="res://Assets/art/gameoff.png"
+dest_files=[ "res://.import/gameoff.png-b99ccdbd2e1d0eaace3933e5dc46a1db.stex" ]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -22,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

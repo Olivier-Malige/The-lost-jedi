@@ -7,10 +7,7 @@ path="res://.import/imperial.ogg-4365abdf082d49536e3499ecf42d5c39.oggstr"
 [deps]
 
 source_file="res://Sounds/imperial.ogg"
-source_md5="6872f1856684796ffc9d1bb14dcac407"
-
 dest_files=[ "res://.import/imperial.ogg-4365abdf082d49536e3499ecf42d5c39.oggstr" ]
-dest_md5="f8015b4b9a31f4fe8eed3987874343bf"
 
 [params]
 

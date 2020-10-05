@@ -6,7 +6,8 @@ path="res://.import/tie_Shoot.wav-8cc2a9b9e6ff999607826dd1e055d36d.sample"
 
 [deps]
 
-source_md5="dcfed2b2dbcb83e767b6eaf8e608c3d0"
+source_file="res://Sounds/tie_Shoot.wav"
+dest_files=[ "res://.import/tie_Shoot.wav-8cc2a9b9e6ff999607826dd1e055d36d.sample" ]
 
 [params]
 

@@ -6,7 +6,8 @@ path="res://.import/player_Shot.wav-13bbd4cd196f743036a94037cf699b42.sample"
 
 [deps]
 
-source_md5="2bc8d52c3e41625d6bae8df1f4a3a3e6"
+source_file="res://Sounds/player_Shot.wav"
+dest_files=[ "res://.import/player_Shot.wav-13bbd4cd196f743036a94037cf699b42.sample" ]
 
 [params]
 

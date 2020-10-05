@@ -6,7 +6,8 @@ path="res://.import/game.ogg-5d5ce99e34ebd87694ddef754adaad40.oggstr"
 
 [deps]
 
-source_md5="7860e5a905a09c854acb0c567a7f7d3e"
+source_file="res://Sounds/game.ogg"
+dest_files=[ "res://.import/game.ogg-5d5ce99e34ebd87694ddef754adaad40.oggstr" ]
 
 [params]
 

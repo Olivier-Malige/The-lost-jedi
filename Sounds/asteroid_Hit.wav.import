@@ -6,7 +6,8 @@ path="res://.import/asteroid_Hit.wav-91670c08541e9d337cbe7e21ad2d3f7b.sample"
 
 [deps]
 
-source_md5="7760fcaee6bce7bb910497edb1f63c73"
+source_file="res://Sounds/asteroid_Hit.wav"
+dest_files=[ "res://.import/asteroid_Hit.wav-91670c08541e9d337cbe7e21ad2d3f7b.sample" ]
 
 [params]
 

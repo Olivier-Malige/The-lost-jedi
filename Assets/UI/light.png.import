@@ -3,16 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/light.png-4f90f07c21cb66c7156a95d3bf8a14d1.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_md5="9d75e5b8163b15bf94ff3d77dbb3d147"
+source_file="res://Assets/UI/light.png"
+dest_files=[ "res://.import/light.png-4f90f07c21cb66c7156a95d3bf8a14d1.stex" ]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -22,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

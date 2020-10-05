@@ -7,10 +7,7 @@ path="res://.import/Powerup_Shield.wav-df98e760d9d4c08f6a95e111555be60d.sample"
 [deps]
 
 source_file="res://Sounds/Powerup_Shield.wav"
-source_md5="654ad366ddaccdaa2fb05ee0a419759e"
-
 dest_files=[ "res://.import/Powerup_Shield.wav-df98e760d9d4c08f6a95e111555be60d.sample" ]
-dest_md5="379e2eb830ff3959688d1d30208d9cee"
 
 [params]
 

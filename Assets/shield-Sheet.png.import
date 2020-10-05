@@ -3,16 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/shield-Sheet.png-2b52a90709b9dc0f488c804f9f6134e1.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_md5="e01e1e568d7bd2b51e2940ed6bb57d08"
+source_file="res://Assets/shield-Sheet.png"
+dest_files=[ "res://.import/shield-Sheet.png-2b52a90709b9dc0f488c804f9f6134e1.stex" ]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -22,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

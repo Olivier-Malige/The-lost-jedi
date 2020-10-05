@@ -6,7 +6,8 @@ path="res://.import/turret_Explode.wav-3c0ed0559bf748c0cb508c628ab726fe.sample"
 
 [deps]
 
-source_md5="d36524aa450f9b6c293748e50226639d"
+source_file="res://Sounds/turret_Explode.wav"
+dest_files=[ "res://.import/turret_Explode.wav-3c0ed0559bf748c0cb508c628ab726fe.sample" ]
 
 [params]
 

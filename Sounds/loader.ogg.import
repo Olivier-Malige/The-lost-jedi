@@ -7,10 +7,7 @@ path="res://.import/loader.ogg-e9ac8f5b3a5ccb5215028b681061401e.oggstr"
 [deps]
 
 source_file="res://Sounds/loader.ogg"
-source_md5="33fc633befaad29a1fdea8e2b824ecb7"
-
 dest_files=[ "res://.import/loader.ogg-e9ac8f5b3a5ccb5215028b681061401e.oggstr" ]
-dest_md5="6b88782960801673f58232a6f09153ba"
 
 [params]
 

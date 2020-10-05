@@ -6,7 +6,8 @@ path="res://.import/ennemy_Hit2.wav-5af29fb354a11b7e71b869e0c21c5dee.sample"
 
 [deps]
 
-source_md5="60772db72280445e956d02a6f38cdc66"
+source_file="res://Sounds/ennemy_Hit2.wav"
+dest_files=[ "res://.import/ennemy_Hit2.wav-5af29fb354a11b7e71b869e0c21c5dee.sample" ]
 
 [params]
 

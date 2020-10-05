@@ -6,7 +6,8 @@ path="res://.import/EnergyUp.wav-bf52ee3d6af0f6095a4450f329cbcb21.sample"
 
 [deps]
 
-source_md5="cb5ac8d2cec39b8687904d1c6d18fb82"
+source_file="res://Sounds/EnergyUp.wav"
+dest_files=[ "res://.import/EnergyUp.wav-bf52ee3d6af0f6095a4450f329cbcb21.sample" ]
 
 [params]
 

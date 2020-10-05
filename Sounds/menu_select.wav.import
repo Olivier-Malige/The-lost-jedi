@@ -7,10 +7,7 @@ path="res://.import/menu_select.wav-0f056e239df0a0cabf716dfaa305c15b.sample"
 [deps]
 
 source_file="res://Sounds/menu_select.wav"
-source_md5="ec25cc9c1fcf5fd87487361210abb52b"
-
 dest_files=[ "res://.import/menu_select.wav-0f056e239df0a0cabf716dfaa305c15b.sample" ]
-dest_md5="28c7bdbb8caab3687a2a271ca7a7916a"
 
 [params]
 

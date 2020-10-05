@@ -6,7 +6,8 @@ path="res://.import/player_Explode.wav-163a228e10eeb913f717cc722d06fcb1.sample"
 
 [deps]
 
-source_md5="fe3f466c3e2fb06db20a87a3e1e43af7"
+source_file="res://Sounds/player_Explode.wav"
+dest_files=[ "res://.import/player_Explode.wav-163a228e10eeb913f717cc722d06fcb1.sample" ]
 
 [params]
 

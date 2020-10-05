@@ -3,16 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/turrett.png-dc786b66a61913ad0913db0b68052fbc.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_md5="4f8e395120d8bb0744a6f13ff84448e0"
+source_file="res://Assets/turrett.png"
+dest_files=[ "res://.import/turrett.png-dc786b66a61913ad0913db0b68052fbc.stex" ]
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -22,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false

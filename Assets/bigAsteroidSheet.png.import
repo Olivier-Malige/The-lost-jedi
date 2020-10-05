@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/bigAsteroidSheet.png-d1466ac9820cbae434e518d35f132049.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Assets/bigAsteroidSheet.png"
-source_md5="fd4e02ebc35c8367297c4c800d428613"
-
 dest_files=[ "res://.import/bigAsteroidSheet.png-d1466ac9820cbae434e518d35f132049.stex" ]
-dest_md5="cab11fd86592255688d9f10761fa667a"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=false
