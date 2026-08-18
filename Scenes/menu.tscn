@@ -743,13 +743,14 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="optionTimer" type="Timer" parent="." index="1"]
 
-process_mode = 1
+process_mode = 3
 wait_time = 0.05
 one_shot = true
 autostart = true
 
 [node name="sound_switch" type="AudioStreamPlayer" parent="." index="2"]
 
+process_mode = 3
 stream = ExtResource( 3 )
 volume_db = -10.0
 autoplay = false
@@ -758,6 +759,7 @@ bus = "Sounds"
 
 [node name="sound_select" type="AudioStreamPlayer" parent="." index="3"]
 
+process_mode = 3
 stream = ExtResource( 4 )
 volume_db = -10.0
 autoplay = false
@@ -766,6 +768,7 @@ bus = "Sounds"
 
 [node name="sound_start" type="AudioStreamPlayer" parent="." index="4"]
 
+process_mode = 3
 stream = ExtResource( 5 )
 volume_db = -5.0
 autoplay = false

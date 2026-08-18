@@ -24,6 +24,7 @@ func _input(event):
 
 func _ready():
 	hide()
+	$optionTimer.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func set_mode(mode):
 	var optionsEnable = []
