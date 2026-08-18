@@ -5,30 +5,30 @@
 #
 
 extends Area2D
-export(bool) var dropOnDestroy = false
+@export var dropOnDestroy: bool = false
 
-export(int) var dropRange = 64
-export(PackedScene) var objectOnDestroy
-export(int) var nbrObjectOnDestroy = 1
-export(int, 4) var nbrSprites = 1
-export(float) var rnd_Roation_Range_Max = 1
-export(float) var rnd_Roation_Range_Min = -1
-export(int) var life = 0
-export(int) var hitSomething = 1
-export(int) var points =0
-export(float) var speedX =0
-export(float) var speedY = 0
-export(float) var randomX = 0
-export(float) var randomY = 0
-export(int) var randPowerUp   = 0#of  100%
-export(bool) var setRotation = false
-export(int) var speedRotation = 0
-export(bool) var rndRotation = false
-onready var hitByPlayer1Shot = false
-onready var hitByPlayer2Shot = false
-onready var destroyed = false
-onready var hitByPlayerShot = false
-onready var indexSprites
+@export var dropRange: int = 64
+@export var objectOnDestroy: PackedScene
+@export var nbrObjectOnDestroy: int = 1
+@export var nbrSprites = 1 # (int, 4)
+@export var rnd_Roation_Range_Max: float = 1
+@export var rnd_Roation_Range_Min: float = -1
+@export var life: int = 0
+@export var hitSomething: int = 1
+@export var points: int =0
+@export var speedX: float =0
+@export var speedY: float = 0
+@export var randomX: float = 0
+@export var randomY: float = 0
+@export var randPowerUp: int   = 0#of  100%
+@export var setRotation: bool = false
+@export var speedRotation: int = 0
+@export var rndRotation: bool = false
+@onready var hitByPlayer1Shot = false
+@onready var hitByPlayer2Shot = false
+@onready var destroyed = false
+@onready var hitByPlayerShot = false
+@onready var indexSprites
 var bonusCoop = 1.5
 func _process(delta):
 	hitByPlayerShot = false
@@ -43,9 +43,9 @@ func _ready():
 		life *= bonusCoop
 	randomize();
 	if rndRotation :
-		speedRotation = rand_range(rnd_Roation_Range_Min,rnd_Roation_Range_Max)
+		speedRotation = randf_range(rnd_Roation_Range_Min,rnd_Roation_Range_Max)
 
-	speedX = rand_range(-randomX-speedX, randomY+speedX)
+	speedX = randf_range(-randomX-speedX, randomY+speedX)
 	#speedy = rand_range(-randomY-speedY, randomY+speedY)
 	add_to_group("enemy")
 
@@ -91,8 +91,8 @@ func _on_anim_animation_finished(n):
 
 func _drop():
 		for i in range (nbrObjectOnDestroy) :
-			var objDroped = objectOnDestroy.instance()
-			objDroped.position = Vector2(position.x + rand_range(-dropRange,dropRange),position.y+rand_range(-dropRange,dropRange))
+			var objDroped = objectOnDestroy.instantiate()
+			objDroped.position = Vector2(position.x + randf_range(-dropRange,dropRange),position.y+randf_range(-dropRange,dropRange))
 			get_node("../").add_child(objDroped)
 
 func _destroy():
@@ -103,14 +103,14 @@ func _destroy():
 	if (has_node("shootTimer")):
 		get_node("shootTimer").stop()
 	if (hitByPlayerShot):
-		var score = preload("res://Prefabs/score.tscn").instance()
+		var score = preload("res://Prefabs/score.tscn").instantiate()
 		score.position =global_position
 		score.setScore = points
 		get_node("../").add_child(score)
 		get_node("/root/global").score += points
 		#Rand PowersUp
 		if (randi()%101 <= randPowerUp):
-			var powerUp = preload("res://Prefabs/powersUp.tscn").instance()
+			var powerUp = preload("res://Prefabs/powersUp.tscn").instantiate()
 			powerUp.position =global_position
 			get_node("../").add_child(powerUp)
 	if dropOnDestroy :

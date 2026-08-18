@@ -4,7 +4,7 @@
 #  Copyright (c) 2017 Arknoid / Olivier Malige
 #
 extends Area2D
-var power = 0 setget _set_Power
+var power = 0: set = _set_Power
 var animPower
 
 func _ready():
@@ -20,7 +20,7 @@ func _on_shield_area_entered( shot ):
 		shot.trowbackByShield = true
 		shot.speedY =  -shot.speedY
 		shot.speedX =  -shot.speedX
-		if not $AnimationPlayer.get_current_animation() == get_parent().id_Player+animPower+"_Hit" :
+		if not $AnimationPlayer.current_animation == get_parent().id_Player+animPower+"_Hit" :
 			$AnimationPlayer.play(get_parent().id_Player+animPower+"_Hit")
 
 func _set_AnimPower():

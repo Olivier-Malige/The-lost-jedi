@@ -17,18 +17,17 @@ var randPowerUp = 10  #of  100%
 var touchedByPlayerShot = false
 
 
-func _fixed_process(delta):
+func _physics_process(delta):
 	touchedByPlayerShot = false
 	translate(Vector2(speed_x, SPEED)*delta)
-	#rotate
-	set_rotd(get_rotd()+rndRot)
+	rotation_degrees += rndRot
 
 func _ready():
 	add_to_group("asteroid")
 	randomize();
-	rndRot = rand_range(-1,1)
-	speed_x = rand_range(-X_RANDOM, X_RANDOM)
-	set_fixed_process(true)
+	rndRot = randf_range(-1,1)
+	speed_x = randf_range(-X_RANDOM, X_RANDOM)
+	set_physics_process(true)
 	get_node("anim").play("bigAsteroid")
 
 func _hit_something(dmg):
@@ -36,9 +35,9 @@ func _hit_something(dmg):
 		return
 	life -= dmg
 	#Retreat effect
-	var pos = get_pos()
+	var pos = position
 	pos.y -=5
-	set_pos(pos)
+	position = pos
 	get_node("anim").play("bigAsteroidHit")
 	get_node("../enemySfx").play("bigAsteroidHit")
 	if (life <= 0) :
@@ -46,25 +45,25 @@ func _hit_something(dmg):
 		get_node("anim").play("explode")
 		get_node("CollisionShape2D").queue_free()
 		if (touchedByPlayerShot) :
-			var score = preload("res://Prefabs/score.tscn").instance()
-			score.set_pos(get_pos())
+			var score = preload("res://Prefabs/score.tscn").instantiate()
+			score.position = position
 			score.setScore = points
 			get_node("../").add_child(score)
-			get_node("/root/GameState").points += points
-		_fixed_process(false)
+			global.score += points
+		set_physics_process(false)
 		get_node("../enemySfx").play("bigAsteroidExplode")
 		#Rand PowersUp
 		if (randi()%101 <= randPowerUp):
-			var powerUp = preload("res://Prefabs/powersUp.tscn").instance()
-			powerUp.set_pos(get_pos())
+			var powerUp = preload("res://Prefabs/powersUp.tscn").instantiate()
+			powerUp.position = position
 			get_node("../").add_child(powerUp)
 
-func _on_VisibilityNotifier2D_exit_screen():
+func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
-	_fixed_process(false)
+	set_physics_process(false)
 
 func _on_anim_finished():
-	if (get_node("anim").get_current_animation() == "explode"):
+	if (get_node("anim").current_animation == "explode"):
 		queue_free()
 	else :get_node("anim").play("bigAsteroid")
 

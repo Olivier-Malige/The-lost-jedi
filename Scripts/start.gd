@@ -7,9 +7,11 @@ extends Node2D
 
 
 func _ready():
+	if $music.stream:
+		$music.stream.loop = true
 
 	get_node("AnimationPlayer").play("start")
 	get_node("Version").set_text(global.VERSION_NUMBER)
-	var m = load("res://Scenes/menu.tscn").instance()
+	var m = load("res://Scenes/menu.tscn").instantiate()
 	add_child(m)
 	m.set_mode(m.MENU_START)

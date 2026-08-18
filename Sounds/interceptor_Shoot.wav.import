@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/interceptor_Shoot.wav-b7deee89d2b9166ddb34e8f16c4ec009.sample"
+type="AudioStreamWAV"
+uid="uid://b6ukb30oo068p"
+path="res://.godot/imported/interceptor_Shoot.wav-b7deee89d2b9166ddb34e8f16c4ec009.sample"
 
 [deps]
 
 source_file="res://Sounds/interceptor_Shoot.wav"
-dest_files=[ "res://.import/interceptor_Shoot.wav-b7deee89d2b9166ddb34e8f16c4ec009.sample" ]
+dest_files=["res://.godot/imported/interceptor_Shoot.wav-b7deee89d2b9166ddb34e8f16c4ec009.sample"]
 
 [params]
 
@@ -15,7 +16,9 @@ force/8_bit=false
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
-edit/trim=true
-edit/normalize=true
-edit/loop=false
-compress/mode=0
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

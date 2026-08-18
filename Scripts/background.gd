@@ -4,10 +4,10 @@
 #  Copyright (c) 2017 Arknoid / Olivier Malige
 #
 extends ParallaxBackground
-onready var offsetLoc_Y = 0
-onready var offsetLoc_X = 0
-export(int) var speed_Y = 0
-export(int) var speed_X = 0
+@onready var offsetLoc_Y = 0
+@onready var offsetLoc_X = 0
+@export var speed_Y: int = 0
+@export var speed_X: int = 0
 
 
 func _process(delta):

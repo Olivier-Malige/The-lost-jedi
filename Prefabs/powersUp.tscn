@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource path="res://Scripts/powerUp.gd" type="Script" id=1]
-[ext_resource path="res://Assets/powerUp.png" type="Texture" id=2]
+[ext_resource path="res://Assets/powerUp.png" type="Texture2D" id=2]
 [ext_resource path="res://Sounds/powerUp_Speed.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/powerUp_energy.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/powerUp_lateralShoot.wav" type="AudioStream" id=5]
@@ -10,24 +10,23 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+size = Vector2( 20, 20 )
 
 [sub_resource type="Animation" id=2]
 
 resource_name = "energieUp"
 length = 1.0
-loop = true
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 2 ]
 }
@@ -35,17 +34,17 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=3]
 
 length = 1.0
-loop = true
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
@@ -54,17 +53,17 @@ tracks/0/keys = {
 
 resource_name = "lateralShot"
 length = 1.0
-loop = true
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 3 ]
 }
@@ -73,17 +72,17 @@ tracks/0/keys = {
 
 resource_name = "shieldUp"
 length = 1.0
-loop = true
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 4 ]
 }
@@ -91,25 +90,34 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=6]
 
 length = 1.0
-loop = true
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 1 ]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
+_data = {
+"energieUp": SubResource( 2 ),
+"laserUp": SubResource( 3 ),
+"lateralShot": SubResource( 4 ),
+"shieldUp": SubResource( 5 ),
+"speedUp": SubResource( 6 )
 }
 
 [node name="powersUp" type="Area2D"]
 
 input_pickable = true
-gravity_vec = Vector2( 0, 1 )
+gravity_direction = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
@@ -117,13 +125,13 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 
 scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 hframes = 5
 frame = 4
-_sections_unfolded = [ "Animation", "Region", "Transform" ]
+_sections_unfolded = [ "Animation", "Region", "Transform3D" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
@@ -131,22 +139,20 @@ position = Vector2( 0.115309, 0.710733 )
 scale = Vector2( 1.5174, 1.3949 )
 shape = SubResource( 1 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="2"]
 
 rect = Rect2( -10, -10, 20, 20 )
 
 [node name="anim" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_1")
+}
 
 root_node = NodePath("..")
 autoplay = ""
-playback_process_mode = 1
+callback_mode_process = 1
 playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/energieUp = SubResource( 2 )
-anims/laserUp = SubResource( 3 )
-anims/lateralShot = SubResource( 4 )
-anims/shieldUp = SubResource( 5 )
-anims/speedUp = SubResource( 6 )
+speed_scale = 1.0
 blend_times = [  ]
 
 [node name="sound_Speed_Up" type="AudioStreamPlayer2D" parent="." index="4"]
@@ -200,6 +206,8 @@ bus = "Sounds"
 area_mask = 1
 
 [connection signal="area_entered" from="." to="." method="_on_powerUp_area_enter"]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 [connection signal="finished" from="sound_Speed_Up" to="." method="_on_audio_finished"]
 

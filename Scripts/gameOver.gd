@@ -7,6 +7,8 @@ extends Node2D
 
 
 func _ready():
+	if $music.stream:
+		$music.stream.loop = true
 
 	get_node("AnimationPlayer").play("start")
 	if get_node("/root/main").coop :

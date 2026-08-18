@@ -25,30 +25,31 @@ func _ready():
 func _process(delta):
 	translate(Vector2(0,SPEED)*delta)
 
-func _on_VisibilityNotifier2D_exit_screen():
+func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 func _on_powerUp_area_enter( area ):
 	if (area.is_in_group("player")):
-		if (get_node("anim").get_current_animation() == "speedUp"):
+		var current = get_node("anim").current_animation
+		if (current == "speedUp"):
 			area.increase_Speed()
 			$sound_Speed_Up.playing = true
-		elif (get_node("anim").get_current_animation() == "energieUp"):
+		elif (current == "energieUp"):
 			area.energy += 1
 			area.update_energy()
 			$sound_Energy_Up.playing = true
-		elif (get_node("anim").get_current_animation() == "lateralShot"):
+		elif (current == "lateralShot"):
 			area.increase_SideShot()
 			$sound_Lateral_Shot.playing = true
-		elif (get_node("anim").get_current_animation() == "laserUp"):
+		elif (current == "laserUp"):
 			area.increase_Shot()
 			$sound_Shot_Up.playing = true
-		elif (get_node("anim").get_current_animation() == "shieldUp"):
+		elif (current == "shieldUp"):
 			area.increase_Shield()
 			$sound_Shield.playing = true
 
 		$anim.queue_free()
-		$Sprite.queue_free()
+		$Sprite2D.queue_free()
 		$CollisionShape2D.queue_free()
 
 

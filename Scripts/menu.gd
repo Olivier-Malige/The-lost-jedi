@@ -44,8 +44,8 @@ func set_mode(mode):
 		if config.fullscreen :
 			get_node("buttonGroup/fullscreen").set_text("fullscreen : on")
 		else : get_node("buttonGroup/fullscreen").set_text("fullscreen : off")
-		if config.graphic == "hight" :
-			get_node("buttonGroup/graphic").set_text("graphic : hight")
+		if config.graphic == "high" or config.graphic == "hight" :
+			get_node("buttonGroup/graphic").set_text("graphic : high")
 		else : get_node("buttonGroup/graphic").set_text("graphic : low")
 
 	elif mode == MENU_PAUSE:
@@ -84,11 +84,11 @@ func mode (enable= []) :
 		if not node.is_in_group("enable") :
 			node.queue_free()
 		else :
-			node.rect_size.x = 800
+			node.size.x = 800
 
-	yield(get_node("optionTimer"),"timeout")
+	await get_node("optionTimer").timeout
 	#initialize size for adapative vboxContenaire
-	$buttonGroup.rect_size = Vector2(800,0)
+	$buttonGroup.size = Vector2(800,0)
 
 	#set ororffenu visible
 	show()
@@ -106,13 +106,13 @@ func start_game(mode):
 func _on_Solo_button_down():
 	if not $sound_start.is_playing():
 		$sound_start.playing = true
-		yield( get_node("sound_start"), "finished" )
+		await get_node("sound_start").finished
 		start_game(MODE_SOLO)
 
 func _on_Coop_button_down():
 	if not $sound_start.is_playing():
 		$sound_start.playing = true
-		yield( get_node("sound_start"), "finished" )
+		await get_node("sound_start").finished
 		start_game(MODE_COOP)
 
 func _on_Exit_button_down():
@@ -121,38 +121,38 @@ func _on_Exit_button_down():
 func _on_Resume_button_down():
 	if not $sound_start.is_playing():
 		$sound_start.playing = true
-		yield( get_node("sound_start"), "finished" )
+		await get_node("sound_start").finished
 		get_node("/root/main").set_Resume()
 		queue_free()
 
 func _on_Restart_button_down():
 	if not $sound_start.is_playing():
 		$sound_start.playing = true
-		yield( get_node("sound_start"), "finished" )
+		await get_node("sound_start").finished
 		get_node("/root/main").set_Restart()
 		queue_free()
 
 
 func _on_Hiscore_button_down():
 	$sound_select.playing = true
-	yield( get_node("sound_select"), "finished" )
+	await get_node("sound_select").finished
 	get_node("/root/main").go_Hiscore_Screen()
 	queue_free()
 
 func _on_options_button_down():
 	$sound_select.playing = true
-	yield( get_node("sound_select"), "finished" )
+	await get_node("sound_select").finished
 	new_menu(MENU_OPTIONS)
 
 func new_menu(mode):
-	var m = menu.instance()
+	var m = menu.instantiate()
 	get_parent().add_child(m)
 	m.set_mode(mode)
 	queue_free()
 
 func _on_return_button_down():
 	$sound_select.playing = true
-	yield( get_node("sound_select"), "finished" )
+	await get_node("sound_select").finished
 	if get_node("/root/main").worldScreen:
 		new_menu(MENU_PAUSE)
 	elif get_node("/root/main").startScreen:
@@ -181,7 +181,7 @@ func _on_music_button_down():
 
 func _on_Controller_button_down():
 	$sound_select.playing = true
-	yield( get_node("sound_select"), "finished" )
+	await get_node("sound_select").finished
 	new_menu(MENU_CONTROLLER)
 
 
@@ -190,10 +190,10 @@ func _on_fullscreen_button_down():
 	config.fullscreen = not config.fullscreen
 	if config.fullscreen :
 		onOff = "on"
-		OS.set_window_fullscreen(true)
+		get_window().mode = Window.MODE_FULLSCREEN
 	else :
 		onOff = "off"
-		OS.set_window_fullscreen(false)
+		get_window().mode = Window.MODE_WINDOWED
 	get_node("buttonGroup/fullscreen").set_text("fullscreen : "+onOff)
 	global.save_Data()
 
@@ -233,12 +233,12 @@ func switch_controller(player):
 
 
 func _on_graphic_button_down():
-	if global.saveData.config.graphic == "hight" :
+	if global.saveData.config.graphic == "high" or global.saveData.config.graphic == "hight" :
 		global.saveData.config.graphic = "low"
 		$buttonGroup/graphic.set_text("graphic : low")
 		get_node("/root/main").set_Graphic("low")
 	else :
-		global.saveData.config.graphic = "hight"
-		$buttonGroup/graphic.set_text("graphic : hight")
-		get_node("/root/main").set_Graphic("hight")
+		global.saveData.config.graphic = "high"
+		$buttonGroup/graphic.set_text("graphic : high")
+		get_node("/root/main").set_Graphic("high")
 	global.save_Data()

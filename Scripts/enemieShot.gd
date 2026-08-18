@@ -5,8 +5,8 @@
 #
 extends "_shot.gd"
 const SPEED_Y = 500
-export var damage = 10
-export var noDamageToGroup = ""
+@export var damage = 10
+@export var noDamageToGroup = ""
 # Member variables
 
 func _ready():

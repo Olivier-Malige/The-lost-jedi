@@ -1,23 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3]
 
 [ext_resource path="res://Scripts/start.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Fonts/vermin_vibes_1989.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Fonts/vermin_vibes_1989.ttf" type="FontFile" id=2]
+[ext_resource path="res://Fonts/slkscr.ttf" type="FontFile" id=3]
 [ext_resource path="res://Sounds/imperial.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/background.tscn" type="PackedScene" id=5]
 
-[sub_resource type="DynamicFont" id=1]
-
-resource_name = "title"
-size = 80
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=2]
 
 length = 8.0
-loop = true
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("background:speed_Y")
@@ -26,8 +19,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 4, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2, 4, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 200, -200, 0, 0 ]
 }
@@ -38,34 +31,39 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 4, 6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 4, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 200, -200 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("title/The-Lost-Jedi:rect_position")
+tracks/2/path = NodePath("title/The-Lost-Jedi:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.8, 7, 7.2, 7.4, 7.6, 7.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 4, 4.2, 4.4, 4.6, 4.8, 5, 5.2, 5.4, 5.6, 5.8, 6, 6.2, 6.4, 6.6, 6.8, 7, 7.2, 7.4, 7.6, 7.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( -61, 356 ), Vector2( -61, 358 ), Vector2( -61, 356 ), Vector2( -65, 359 ), Vector2( -61, 356 ), Vector2( -61, 358 ), Vector2( -61, 356 ), Vector2( -65, 359 ), Vector2( -61, 356 ), Vector2( -61, 358 ), Vector2( -61, 356 ), Vector2( -65, 359 ), Vector2( -61, 356 ), Vector2( -61, 358 ), Vector2( -61, 356 ), Vector2( -65, 359 ), Vector2( -61, 356 ), Vector2( -61, 358 ), Vector2( -61, 356 ), Vector2( -65, 359 ), Vector2( -60, 360 ), Vector2( -66, 359 ), Vector2( -65, 358 ), Vector2( -76, 354 ), Vector2( -60, 360 ), Vector2( -66, 359 ), Vector2( -65, 358 ), Vector2( -76, 354 ), Vector2( -60, 360 ), Vector2( -66, 359 ), Vector2( -65, 358 ), Vector2( -76, 354 ), Vector2( -60, 360 ), Vector2( -66, 359 ), Vector2( -65, 358 ), Vector2( -76, 354 ), Vector2( -69, 353 ), Vector2( -66, 361 ), Vector2( -59, 357 ), Vector2( -68, 363 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("title/The-Lost-Jedi:rect_rotation")
+tracks/3/path = NodePath("title/The-Lost-Jedi:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2, 4, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 2, 4, 6 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0.0, 1.52, -1.0, 1.0 ]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
+_data = {
+"start": SubResource( 2 )
 }
 
 [node name="start" type="Node2D"]
@@ -82,27 +80,28 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -68.0
-margin_top = 363.0
-margin_right = 467.0
-margin_bottom = 433.0
-rect_rotation = -1.0
-rect_pivot_offset = Vector2( 0, 0 )
+offset_left = -68.0
+offset_top = 363.0
+offset_right = 467.0
+offset_bottom = 433.0
+rotation_degrees = -1.0
+pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.721569, 0.721569, 0.247059, 1 )
-custom_colors/font_color_shadow = Color( 0.611765, 0.121569, 0.121569, 1 )
-custom_constants/shadow_offset_x = 6
-custom_constants/line_spacing = 5
-custom_constants/shadow_offset_y = 4
-custom_constants/shadow_as_outline = 0
+theme_override_fonts/font = ExtResource( 2 )
+theme_override_font_sizes/font_size = 80
+theme_override_colors/font_color = Color( 0.721569, 0.721569, 0.247059, 1 )
+theme_override_colors/font_shadow_color = Color( 0.611765, 0.121569, 0.121569, 1 )
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/line_spacing = 5
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_outline_size = 0
 text = "THE-LOST-JEDI"
-align = 1
-valign = 1
-percent_visible = 1.0
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_ratio = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Pause", "Rect", "custom_colors", "custom_constants" ]
@@ -113,32 +112,35 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 310.0
-margin_top = 582.0
-margin_right = 1110.0
-margin_bottom = 613.0
-rect_pivot_offset = Vector2( 0, 0 )
+offset_left = 310.0
+offset_top = 582.0
+offset_right = 1110.0
+offset_bottom = 613.0
+pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
+theme_override_fonts/font = ExtResource( 3 )
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color( 0.862745, 0.862745, 0.862745, 1 )
 text = "Nub Version"
-align = 1
-percent_visible = 1.0
+horizontal_alignment = 1
+visible_ratio = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "custom_colors" ]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_1")
+}
 
 root_node = NodePath("..")
 autoplay = ""
-playback_process_mode = 1
+callback_mode_process = 1
 playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/start = SubResource( 2 )
+speed_scale = 1.0
 blend_times = [  ]
 
 [node name="music" type="AudioStreamPlayer" parent="." index="3"]

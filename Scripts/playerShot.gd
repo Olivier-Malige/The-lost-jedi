@@ -5,18 +5,18 @@
 #
 extends "_shot.gd"
 
-export(float) var damage
-export(float) var damage_Max
-export(float) var power_Small
-export(float) var power_Normal
-export(float) var power_Big
-export(float) var power_Large
-export(float) var power_Full
+@export var damage: float
+@export var damage_Max: float
+@export var power_Small: float
+@export var power_Normal: float
+@export var power_Big: float
+@export var power_Large: float
+@export var power_Full: float
 var player_Id
 
 
 func _ready():
-	._ready()
+	super._ready()
 	if (damage > damage_Max):
 		damage = damage_Max
 

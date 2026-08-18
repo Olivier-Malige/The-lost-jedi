@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource path="res://Assets/UI/light.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/light.png" type="Texture2D" id=1]
 [ext_resource path="res://Scripts/Light2D.gd" type="Script" id=2]
 
-[node name="LightStar" type="Light2D"]
+[node name="LightStar" type="PointLight2D"]
 
 enabled = true
 editor_only = false
@@ -27,17 +27,17 @@ shadow_filter = 0
 shadow_filter_smooth = 0.0
 shadow_item_cull_mask = 1
 script = ExtResource( 2 )
-_sections_unfolded = [ "Range", "Transform" ]
+_sections_unfolded = [ "Range", "Transform3D" ]
 range_Min = 0.0
 range_Max = 2.0
 delay = 0.002
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="0"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="0"]
 
 rect = Rect2( -10, -10, 20, 20 )
 
-[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 

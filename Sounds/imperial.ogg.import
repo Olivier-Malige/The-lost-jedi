@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/imperial.ogg-4365abdf082d49536e3499ecf42d5c39.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bmmsh4yhmjugb"
+path="res://.godot/imported/imperial.ogg-4365abdf082d49536e3499ecf42d5c39.oggvorbisstr"
 
 [deps]
 
 source_file="res://Sounds/imperial.ogg"
-dest_files=[ "res://.import/imperial.ogg-4365abdf082d49536e3499ecf42d5c39.oggstr" ]
+dest_files=["res://.godot/imported/imperial.ogg-4365abdf082d49536e3499ecf42d5c39.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -29,7 +29,7 @@ var saveData = { solo = {
 						graphic = "high",
 						}}
 var sav_path = "user://data.json"
-const VERSION_NUMBER = "Alpha 6"
+const VERSION_NUMBER = "Alpha 7"
 var POWERUP = { player_Speed = 5,       #pixel
 				shot_Power = 0.25,      #damage
 				side_Shot_Power = 0.20, #damage
@@ -48,22 +48,19 @@ func setMusic(state):
 	AudioServer.set_bus_mute(1,not state)
 
 func load_Data():
-	var f = File.new()
 	# Load all game save
-	if (f.file_exists(sav_path)):
-		f.open(sav_path, File.READ)
-		saveData = parse_json(f.get_as_text())
-		f.close()
-	else :
-		f.open("sav_path", File.WRITE)
-		f.store_line(to_json(saveData))
-		f.close()
+	if FileAccess.file_exists(sav_path):
+		var f = FileAccess.open(sav_path, FileAccess.READ)
+		var parsed = JSON.parse_string(f.get_as_text())
+		if parsed != null:
+			saveData = parsed
+	else:
+		save_Data()
+
 func save_Data():
 		# Save all play data
-		var f = File.new()
-		f.open(sav_path, File.WRITE)
-		f.store_line(to_json(saveData))
-		f.close()
+		var f = FileAccess.open(sav_path, FileAccess.WRITE)
+		f.store_line(JSON.stringify(saveData))
 
 func update_Data():
 	if (get_node("/root/main").coop):

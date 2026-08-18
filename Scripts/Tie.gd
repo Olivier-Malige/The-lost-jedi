@@ -7,7 +7,7 @@ extends "_enemy.gd"
 
 
 func shoot():
-	var shot = preload("res://Prefabs/tieShot.tscn").instance()
+	var shot = preload("res://Prefabs/tieShot.tscn").instantiate()
 	shot.position = get_node("shootFrom").global_position
 	get_node("../").add_child(shot)
 	$sound_Shooting.playing = true

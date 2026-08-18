@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource path="res://Scripts/Tie.gd" type="Script" id=1]
-[ext_resource path="res://Assets/tieSheet.png" type="Texture" id=2]
+[ext_resource path="res://Assets/tieSheet.png" type="Texture2D" id=2]
 [ext_resource path="res://Sounds/ennemy_Hit2.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/tie_explode.wav" type="AudioStream" id=4]
 [ext_resource path="res://Sounds/tie_Shoot.wav" type="AudioStream" id=5]
@@ -10,17 +10,17 @@
 
 resource_name = "explode"
 length = 1.0
-loop = false
+loop_mode = 0
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 6, 7, 8, 9, 10, 11, 12 ]
 }
@@ -29,17 +29,17 @@ tracks/0/keys = {
 
 resource_name = "hit"
 length = 0.5
-loop = false
+loop_mode = 0
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 4, 2, 4, 3, 4 ]
 }
@@ -48,31 +48,37 @@ tracks/0/keys = {
 
 resource_name = "start"
 length = 1.0
-loop = true
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 3, 2, 1 ]
 }
 
 [sub_resource type="RectangleShape2D" id=4]
 
-custom_solver_bias = 0.0
-extents = Vector2( 14.1565, 10 )
+size = Vector2( 28.313, 20 )
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
+_data = {
+"explode": SubResource( 1 ),
+"hit": SubResource( 2 ),
+"start": SubResource( 3 )
+}
 
 [node name="Tie" type="Area2D"]
 
 position = Vector2( 0.157784, 0 )
 input_pickable = true
-gravity_vec = Vector2( 0, 1 )
+gravity_direction = Vector2( 0, 1 )
 gravity = 98.0
 linear_damp = 0.1
 angular_damp = 1.0
@@ -98,27 +104,27 @@ setRotation = false
 speedRotation = 0
 rndRotation = false
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 
 scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 hframes = 13
 frame = 1
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform3D" ]
 
 [node name="anim" type="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_1")
+}
 
 root_node = NodePath("..")
 autoplay = ""
-playback_process_mode = 1
+callback_mode_process = 1
 playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/explode = SubResource( 1 )
-anims/hit = SubResource( 2 )
-anims/start = SubResource( 3 )
+speed_scale = 1.0
 blend_times = [  ]
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="2"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="2"]
 
 rect = Rect2( -10, -10, 20, 20 )
 
@@ -135,7 +141,7 @@ wait_time = 0.5
 one_shot = true
 autostart = true
 
-[node name="shootFrom" type="Position2D" parent="." index="5"]
+[node name="shootFrom" type="Marker2D" parent="." index="5"]
 
 position = Vector2( -0.237831, 14.5618 )
 
@@ -180,7 +186,7 @@ area_mask = 1
 
 [connection signal="animation_finished" from="anim" to="." method="_on_anim_animation_finished"]
 
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 
 [connection signal="timeout" from="shootTimer" to="." method="_on_shootTimer_timeout"]
 

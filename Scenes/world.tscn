@@ -1,19 +1,19 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource path="res://Scripts/world.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/pixel.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Fonts/slkscr.ttf" type="FontFile" id=2]
 [ext_resource path="res://Scripts/wavesManager.gd" type="Script" id=3]
 [ext_resource path="res://Sounds/game.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/background.tscn" type="PackedScene" id=5]
 
 [node name="world" type="Node2D"]
 
-pause_mode = 1
+process_mode = 1
 script = ExtResource( 1 )
 
 [node name="hud" type="Node2D" parent="." index="0"]
 
-pause_mode = 1
+process_mode = 1
 editor/display_folded = true
 z_index = 200
 _sections_unfolded = [ "Z Index" ]
@@ -24,18 +24,19 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 25.0
-margin_top = 5.0
-margin_right = 162.0
-margin_bottom = 36.0
-rect_pivot_offset = Vector2( 0, 0 )
+offset_left = 25.0
+offset_top = 5.0
+offset_right = 162.0
+offset_bottom = 36.0
+pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
+theme_override_font_sizes/font_size = 30
 text = "Score : "
-percent_visible = 1.0
+visible_ratio = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
@@ -45,34 +46,35 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 595.0
-margin_top = 5.0
-margin_right = 726.0
-margin_bottom = 36.0
-rect_pivot_offset = Vector2( 0, 0 )
+offset_left = 595.0
+offset_top = 5.0
+offset_right = 726.0
+offset_bottom = 36.0
+pivot_offset = Vector2( 0, 0 )
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-custom_fonts/font = ExtResource( 2 )
+theme_override_fonts/font = ExtResource( 2 )
+theme_override_font_sizes/font_size = 30
 text = "waves :"
-percent_visible = 1.0
+visible_ratio = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="energy_player1" type="Node2D" parent="hud" index="2"]
 
 position = Vector2( 20, 170 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform3D" ]
 
 [node name="energy_player2" type="Node2D" parent="hud" index="3"]
 
 position = Vector2( 765, 170 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+_sections_unfolded = [ "Transform3D", "Visibility" ]
 
 [node name="waveGenerator" type="Node2D" parent="." index="1"]
 
-pause_mode = 1
+process_mode = 1
 editor/display_folded = true
 position = Vector2( 0, 5 )
 script = ExtResource( 3 )
@@ -140,51 +142,51 @@ wait_time = 5.0
 one_shot = false
 autostart = false
 
-[node name="spawnPos0" type="Position2D" parent="waveGenerator" index="9"]
+[node name="spawnPos0" type="Marker2D" parent="waveGenerator" index="9"]
 
 position = Vector2( 50, -65 )
 
-[node name="spawnPos1" type="Position2D" parent="waveGenerator" index="10"]
+[node name="spawnPos1" type="Marker2D" parent="waveGenerator" index="10"]
 
 position = Vector2( 114, -61 )
 
-[node name="spawnPos2" type="Position2D" parent="waveGenerator" index="11"]
+[node name="spawnPos2" type="Marker2D" parent="waveGenerator" index="11"]
 
 position = Vector2( 239, -61 )
 
-[node name="spawnPos3" type="Position2D" parent="waveGenerator" index="12"]
+[node name="spawnPos3" type="Marker2D" parent="waveGenerator" index="12"]
 
 position = Vector2( 178, -61 )
 
-[node name="spawnPos4" type="Position2D" parent="waveGenerator" index="13"]
+[node name="spawnPos4" type="Marker2D" parent="waveGenerator" index="13"]
 
 position = Vector2( 302, -61 )
 
-[node name="spawnPos5" type="Position2D" parent="waveGenerator" index="14"]
+[node name="spawnPos5" type="Marker2D" parent="waveGenerator" index="14"]
 
 position = Vector2( 367, -61 )
 
-[node name="spawnPos6" type="Position2D" parent="waveGenerator" index="15"]
+[node name="spawnPos6" type="Marker2D" parent="waveGenerator" index="15"]
 
 position = Vector2( 430.36, -61 )
 
-[node name="spawnPos7" type="Position2D" parent="waveGenerator" index="16"]
+[node name="spawnPos7" type="Marker2D" parent="waveGenerator" index="16"]
 
 position = Vector2( 497, -61.3604 )
 
-[node name="spawnPos8" type="Position2D" parent="waveGenerator" index="17"]
+[node name="spawnPos8" type="Marker2D" parent="waveGenerator" index="17"]
 
 position = Vector2( 565, -61 )
 
-[node name="spawnPos9" type="Position2D" parent="waveGenerator" index="18"]
+[node name="spawnPos9" type="Marker2D" parent="waveGenerator" index="18"]
 
 position = Vector2( 627, -62 )
 
-[node name="spawnPos10" type="Position2D" parent="waveGenerator" index="19"]
+[node name="spawnPos10" type="Marker2D" parent="waveGenerator" index="19"]
 
 position = Vector2( 697, -61 )
 
-[node name="spawnPos11" type="Position2D" parent="waveGenerator" index="20"]
+[node name="spawnPos11" type="Marker2D" parent="waveGenerator" index="20"]
 
 position = Vector2( 776, -58 )
 
@@ -196,7 +198,7 @@ autoplay = true
 mix_target = 0
 bus = "Music"
 
-[node name="playerSpawn" type="Position2D" parent="." index="3"]
+[node name="playerSpawn" type="Marker2D" parent="." index="3"]
 
 position = Vector2( 400, 560 )
 

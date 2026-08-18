@@ -7,10 +7,10 @@
 extends Area2D
 
 # Member variables
-export(int) var speedY = 0
-export(int) var speedX = 0
-export(bool) var rotate = false
-export(bool) var playerShot = false
+@export var speedY: int = 0
+@export var speedX: int = 0
+@export var rotate: bool = false
+@export var playerShot: bool = false
 var speedRotation = 20
 var trowbackByShield = false
 

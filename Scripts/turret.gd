@@ -8,7 +8,7 @@ extends "_enemy.gd"
 
 func _ready():
 	add_to_group("turret")
-	._ready()
+	super._ready()
 	shooting()
 
 func shooting():
@@ -17,12 +17,12 @@ func shooting():
 	var i = 0
 	while (true):
 		$sound_Shooting.playing = true
-		shot.append(preload("res://Prefabs/turretShot.tscn").instance())
+		shot.append(preload("res://Prefabs/turretShot.tscn").instantiate())
 		shot[i].position = get_node("shootPos").global_position
 		get_node("../").add_child(shot[i])
-		dir = rand_range(-150,150)
+		dir = randf_range(-150,150)
 		shot[i].speedX = dir
 		get_node("ShotDelay").start()
 		#get_node("../enemySfx").play("interceptorShot")
 		i += 1
-		yield(get_node("ShotDelay"),"timeout")
+		await get_node("ShotDelay").timeout

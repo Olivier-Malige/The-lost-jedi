@@ -15,23 +15,23 @@ const TIMER_FOCUSING_BEAM_NORMAL = 1.5 #seconde
 const TIMER_FOCUSING_BEAM_FULL = 3 #seconde
 
 var set_Player_2 = false # Call it on instancing for player 2 stats and colors
-onready var shoot_Delay = SHOOT_DELAY_BASE
-onready var shotPowerBonus = 0
-onready var bonusSpeed = 0
-onready var shotSide = false
-onready var bonusPowerSideShot = 0
-onready var energy = ENERGY_MAX/2
-onready var touched = false
-onready var canShooting = true
-onready var malusSpeed = 0
-onready var controller
-onready var id_Player
-onready var shooting
-onready var beam_Focusing
-onready var pos
-onready var accumBeam = 0
+@onready var shoot_Delay = SHOOT_DELAY_BASE
+@onready var shotPowerBonus = 0
+@onready var bonusSpeed = 0
+@onready var shotSide = false
+@onready var bonusPowerSideShot = 0
+@onready var energy = ENERGY_MAX/2
+@onready var touched = false
+@onready var canShooting = true
+@onready var malusSpeed = 0
+@onready var controller
+@onready var id_Player
+@onready var shooting
+@onready var beam_Focusing
+@onready var pos
+@onready var accumBeam = 0
 enum beam_State {EMPTY,SMALL,NORMAL,FULL}
-onready var beam_Power = beam_State.EMPTY
+@onready var beam_Power = beam_State.EMPTY
 
 
 func _ready():
@@ -185,7 +185,7 @@ func _set_Power_Beam(power):
 			$BeamParticlesRight.amount = 20
 func _shooting():
 	var shot
-	shot = preload("res://Prefabs/player_Shot.tscn").instance()
+	shot = preload("res://Prefabs/player_Shot.tscn").instantiate()
 
 	shot.player_Id = id_Player #set id player to shot for player color
 	shot.damage += shotPowerBonus
@@ -204,8 +204,8 @@ func _shooting():
 
 		#load player colored shot
 
-		var lShot = preload("res://Prefabs/player_SideShot.tscn").instance()
-		var rShot = preload("res://Prefabs/player_SideShot.tscn").instance()
+		var lShot = preload("res://Prefabs/player_SideShot.tscn").instantiate()
+		var rShot = preload("res://Prefabs/player_SideShot.tscn").instantiate()
 
 		#set id player to side shots for statistic
 		lShot.player_Id = id_Player
@@ -231,17 +231,17 @@ func _shooting_Beam():
 	match beam_Power :
 
 		beam_State.SMALL :
-			beam_shot_left = preload("res://Prefabs/beam/beam_mini.tscn").instance()
-			beam_shot_right= preload("res://Prefabs/beam/beam_mini.tscn").instance()
+			beam_shot_left = preload("res://Prefabs/beam/beam_mini.tscn").instantiate()
+			beam_shot_right= preload("res://Prefabs/beam/beam_mini.tscn").instantiate()
 			$sound_Beam_mini.playing = true
 
 		beam_State.NORMAL:
-			beam_shot_left = preload("res://Prefabs/beam/beam_normal.tscn").instance()
-			beam_shot_right= preload("res://Prefabs/beam/beam_normal.tscn").instance()
+			beam_shot_left = preload("res://Prefabs/beam/beam_normal.tscn").instantiate()
+			beam_shot_right= preload("res://Prefabs/beam/beam_normal.tscn").instantiate()
 			$sound_Beam_normal.playing = true
 		beam_State.FULL :
-			beam_shot_left = preload("res://Prefabs/beam/beam_Full.tscn").instance()
-			beam_shot_right= preload("res://Prefabs/beam/beam_Full.tscn").instance()
+			beam_shot_left = preload("res://Prefabs/beam/beam_Full.tscn").instantiate()
+			beam_shot_right= preload("res://Prefabs/beam/beam_Full.tscn").instantiate()
 			$sound_Beam_full.playing = true
 
 	#setup beam power and color to appropriate player
@@ -314,7 +314,7 @@ func update_energy():
 
 	for i in range(energy):
 		var energy
-		energy = load("res://Prefabs/"+id_Player+"_Energy.tscn").instance()
+		energy = load("res://Prefabs/"+id_Player+"_Energy.tscn").instantiate()
 		energy.position = Vector2(0,-i*12)
 		get_node("/root/main/world/hud/energy_"+id_Player).add_child(energy)
 

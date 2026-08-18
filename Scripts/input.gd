@@ -6,23 +6,23 @@
 extends Node
 
 var action = ""
-var key_down = false
-var pressed = false
+var was_key_down = false
+var is_held = false
 
-func _init(action):
-	self.action = action
+func _init(p_action):
+	action = p_action
 
 func pressed():
 	if Input.is_action_pressed(action):
-		pressed = true
+		is_held = true
 	else:
-		pressed = false
-		key_down = false
-	return pressed
+		is_held = false
+		was_key_down = false
+	return is_held
 
 func key_down():
-	if pressed() and not key_down:
-		key_down = true
+	if pressed() and not was_key_down:
+		was_key_down = true
 		return true
 	else:
 		return false

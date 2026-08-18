@@ -6,6 +6,6 @@
 extends Node2D
 
 func _ready():
-	if (GameState.debug):
+	if (global.Debug):
 		for child in get_children():
-			child.set_hidden(false)
+			child.visible = true

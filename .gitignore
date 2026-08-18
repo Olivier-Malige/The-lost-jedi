@@ -1,1 +1,5 @@
+# Godot 4 editor cache
+.godot/
 
+# Godot 3 import cache (no longer used)
+.import/

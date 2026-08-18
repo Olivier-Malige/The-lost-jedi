@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/interceptor_Hit.wav-39bd7f8d12bab9dd43cc5b3d1d8f0a9e.sample"
+type="AudioStreamWAV"
+uid="uid://bdb4jl06ibm4w"
+path="res://.godot/imported/interceptor_Hit.wav-39bd7f8d12bab9dd43cc5b3d1d8f0a9e.sample"
 
 [deps]
 
 source_file="res://Sounds/interceptor_Hit.wav"
-dest_files=[ "res://.import/interceptor_Hit.wav-39bd7f8d12bab9dd43cc5b3d1d8f0a9e.sample" ]
+dest_files=["res://.godot/imported/interceptor_Hit.wav-39bd7f8d12bab9dd43cc5b3d1d8f0a9e.sample"]
 
 [params]
 
@@ -15,7 +16,9 @@ force/8_bit=false
 force/mono=false
 force/max_rate=false
 force/max_rate_hz=44100
-edit/trim=true
-edit/normalize=true
-edit/loop=false
-compress/mode=0
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
