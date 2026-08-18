@@ -10,13 +10,15 @@ const SPEED_Y = 500
 # Member variables
 
 func _ready():
+	super._ready()
 	speedY = SPEED_Y
 
 func is_enemy():
 	return true
 
 func _on_shot_area_enter( area ):
-
+	if area.is_in_group("player") and (trowbackByShield or (area.has_node("shield") and area.get_node("shield").power > 0)):
+		return
 	if (area.is_in_group("player") or area.is_in_group("asteroid")or area.is_in_group("enemy") and not  area.is_in_group(noDamageToGroup)) :
 		if trowbackByShield :
 			area.hitByPlayerShot = true
