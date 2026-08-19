@@ -9,7 +9,7 @@ var startScreen := false
 var zoomReady := false
 var worldScreen := false
 var gameOverScreen := false
-var menu = load("res://scenes/menu.tscn")
+var menu = load("res://scenes/menu/menu.tscn")
 var paused = load("res://scenes/ui/paused.tscn")
 
 var menuShow := false
@@ -114,20 +114,20 @@ func go_Start_Screen() -> void:
 	worldScreen = false
 	startScreen = true
 	_tween_camera($camera_Pos_Out.position, ZOOM_OUT, 1.1)
-	var start = preload("res://scenes/start.tscn").instantiate()
+	var start = preload("res://scenes/menu/start.tscn").instantiate()
 	add_child(start)
 
 
 func go_Hiscore_Screen() -> void:
 	startScreen = false
-	var hiscore = preload("res://scenes/hiscore.tscn").instantiate()
+	var hiscore = preload("res://scenes/menu/hi_score.tscn").instantiate()
 	add_child(hiscore)
 	$start.queue_free()
 
 
 func go_World_Screen() -> void:
 	_tween_camera($camera_Pos_In.position, ZOOM_IN, 1.15)
-	var world = preload("res://scenes/world.tscn").instantiate()
+	var world = preload("res://scenes/world/world.tscn").instantiate()
 	add_child(world)
 	worldScreen = true
 	startScreen = false
@@ -147,7 +147,7 @@ func _tween_camera(target_pos: Vector2, target_zoom: Vector2, duration: float) -
 func go_GameOver_Screen() -> void:
 	gameOverScreen = true
 	worldScreen = false
-	var gameOver = preload("res://scenes/game_over.tscn").instantiate()
+	var gameOver = preload("res://scenes/menu/game_over.tscn").instantiate()
 	add_child(gameOver)
 
 func set_Graphic(level: String) -> void:

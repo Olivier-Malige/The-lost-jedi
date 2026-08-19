@@ -6,7 +6,7 @@
 class_name Player
 extends Area2D
 
-const STATS: PlayerStats = preload("res://data/player_stats.tres")
+const STATS: PlayerStats = preload("res://data/player/player_stats.tres")
 const WEAPON_PRIMARY: WeaponDefinition = preload("res://data/weapons/primary.tres")
 const WEAPON_SIDE: WeaponDefinition = preload("res://data/weapons/side.tres")
 const WEAPON_BEAM_MINI: WeaponDefinition = preload("res://data/weapons/beam_mini.tres")

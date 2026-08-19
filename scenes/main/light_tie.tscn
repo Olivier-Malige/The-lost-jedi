@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3]
 
 [ext_resource path="res://assets/sprites/world/light.png" type="Texture2D" id=1]
-[ext_resource path="res://scenes/light_2d.gd" type="Script" id=2]
+[ext_resource path="res://scenes/main/light_2d.gd" type="Script" id=2]
 
 [node name="LightTie" type="PointLight2D"]
 

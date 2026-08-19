@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3]
 
-[ext_resource path="res://scenes/background.gd" type="Script" id=1]
+[ext_resource path="res://scenes/world/background.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/world/background.png" type="Texture2D" id=2]
 [ext_resource path="res://assets/sprites/world/background_2.png" type="Texture2D" id=3]
 

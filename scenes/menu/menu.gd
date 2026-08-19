@@ -4,7 +4,7 @@
 #  Copyright (c) 2017 Arknoid / Olivier Malige
 #
 extends Control
-var menu = load("res://scenes/menu.tscn")
+var menu = load("res://scenes/menu/menu.tscn")
 var config = global.saveData.config
 
 #Define menu options
