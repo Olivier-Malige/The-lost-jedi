@@ -1,8 +1,3 @@
-#
-#  This file is subject to the terms and conditions defined in
-#  file 'LICENSE.txt', which is part of this source code package.
-#  Copyright (c) 2017 Arknoid / Olivier Malige
-#
 extends PointLight2D
 @export var range_Min: float = 0.7
 @export var range_Max: float = 1

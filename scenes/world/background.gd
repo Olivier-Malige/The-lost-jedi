@@ -1,8 +1,3 @@
-#
-#  This file is subject to the terms and conditions defined in
-#  file 'LICENSE.txt', which is part of this source code package.
-#  Copyright (c) 2017 Arknoid / Olivier Malige
-#
 extends ParallaxBackground
 @onready var offsetLoc_Y = 0
 @onready var offsetLoc_X = 0

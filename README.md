@@ -1,50 +1,52 @@
 # The-lost-jedi
 
-Shmup 8-bit (sprites 8×8, palette Pico-8) né à la jam OFFGame 2017. Prototype Phaser abandonné, repris sous Godot. Survivre des vagues d’ennemis, empiler les power-ups, maximiser le score.
+8-bit shmup (8×8 sprites, Pico-8 palette) started at the OFFGame 2017 jam. Phaser prototype was dropped; the game was finished in Godot. Survive enemy waves, stack power-ups, chase high scores.
 
-**Moteur :** Godot **4.7** (GL Compatibility)  
-**Scène principale :** `res://scenes/main/main.tscn`  
-**Source :** https://github.com/Arknoid/The-lost-jedi
+**Engine:** Godot **4.7** (GL Compatibility)  
+**Main scene:** `res://scenes/main/main.tscn`  
+**Source:** https://github.com/Arknoid/The-lost-jedi
 
-## Lancer le projet
+## Run
 
-1. Installer [Godot 4.7](https://godotengine.org/download).
-2. Importer le dossier du dépôt (ou ouvrir `project.godot`).
-3. F5 — la scène principale se lance toute seule.
+1. Install [Godot 4.7](https://godotengine.org/download).
+2. Import this repo (or open `project.godot`).
+3. Press F5 — the main scene runs.
+
+See [AGENTS.md](AGENTS.md) for layout, naming, and coding conventions.
 
 ## Structure
 
 ```
-scenes/main/      entrée, loader, star field, lumières
-scenes/world/     monde de jeu, fond
+scenes/main/      entry, loader, star field, lights
+scenes/world/     playfield, background
 scenes/menu/      menu, start, game over, hi-score
-scenes/player/    vaisseau, bouclier, beam
-scenes/enemies/   TIE, interceptor, turret, mother ship, astéroïdes
-scenes/combat/    tirs ennemis, pool de projectiles
+scenes/player/    ship, shield, beam
+scenes/enemies/   TIE, interceptor, turret, mother ship, asteroids
+scenes/combat/    enemy shots, projectile pool
 scenes/ui/        HUD, pause, power-ups
-scenes/waves/     spawner de vagues
-data/player/      stats joueur
-data/weapons/     définitions d’armes (.tres)
-data/upgrades/    définitions de power-ups
-data/waves/       catalogue + définitions de vagues
-core/             autoloads et sauvegarde
+scenes/waves/     wave spawner
+data/player/      player stats
+data/weapons/     weapon definitions (.tres)
+data/upgrades/    power-up definitions
+data/waves/       catalog + wave definitions
+core/             autoloads and save
 assets/           sprites, audio, fonts, ui, art, sources
 ```
 
-Scripts colocalisés avec les scènes. Resources (`class_name` + `.tres`) à côté de leurs scripts dans `data/`.
+Scripts sit next to their scenes. Resource scripts (`class_name` + `.tres`) live in `data/`.
 
 ## Architecture
 
-**Autoloads** (dans `project.godot`) :
+**Autoloads** (in `project.godot`):
 
-| Nom | Script |
-|-----|--------|
-| `global` | `core/global.gd` — score, vague, config, sauvegarde |
-| `Events` | `core/events.gd` — bus d’événements |
+| Name | Script |
+|------|--------|
+| `global` | `core/global.gd` — score, wave, config, save |
+| `Events` | `core/events.gd` — event bus |
 
-Sauvegarde JSON via `core/save_service.gd` (`user://data.json`).
+JSON save via `core/save_service.gd` (`user://data.json`).
 
-**EventBus** (`Events`) :
+**EventBus** (`Events`):
 
 - `score_changed(score)`
 - `wave_changed(wave)`
@@ -53,35 +55,29 @@ Sauvegarde JSON via `core/save_service.gd` (`user://data.json`).
 - `game_over_requested`
 - `powerup_collected(upgrade)`
 
-**Vagues data-driven :** `data/waves/wave_catalog.tres` (liste de `WaveDefinition` + `SpawnRule`). Runtime : `scenes/waves/wave_spawner.gd`.
+**Data-driven waves:** `data/waves/wave_catalog.tres` (`WaveDefinition` + `SpawnRule`). Runtime: `scenes/waves/wave_spawner.gd`.
 
-**Armes / upgrades :** `WeaponDefinition`, `UpgradeDefinition`, `UpgradeTable` dans `data/`. Loadout runtime : `PlayerLoadout`.
+**Weapons / upgrades:** `WeaponDefinition`, `UpgradeDefinition`, `UpgradeTable` in `data/`. Runtime loadout: `PlayerLoadout`.
 
-**Joueur :** `player.gd` + `player_weapons.gd` + `player_vitals.gd` + `player_loadout.gd`.
+**Player:** `player.gd` + `player_weapons.gd` + `player_vitals.gd` + `player_loadout.gd`.
 
-**Projectiles :** pool dans `scenes/combat/projectile_pool.gd`.
+**Projectiles:** pool in `scenes/combat/projectile_pool.gd`.
 
-**Collisions** (`project.godot`) : `player`, `enemy`, `player_shot`, `enemy_shot`, `pickup`, `asteroid`.
+**Collision layers** (`project.godot`): `player`, `enemy`, `player_shot`, `enemy_shot`, `pickup`, `asteroid`.
 
-**Debug :** `global.Debug` (défaut `false`). Si `true`, F1–F6 en jeu : vague précédente / suivante, speed, dégâts, tir latéral, bouclier.
+**Debug:** `global.Debug` (default `false`). When `true`, F1–F6 in-game: previous / next wave, speed, damage, side shot, shield.
 
-## Conventions
+## Controls
 
-- Fichiers et dossiers : `snake_case`
-- Nœuds de scène et `class_name` : `PascalCase`
-- Scripts à côté de la scène ; resources à côté du `.tres`
+Keyboard (AZERTY / QWERTY / arrows) + Space (or keypad `+` / Insert).  
+Gamepad: stick / D-pad + face buttons. Pause: Enter, R, or Start / L1.
 
-## Contrôles
+In co-op, P1 is gamepad 0, P2 is keyboard (change in `global.saveData.config`).
 
-Clavier (AZERTY / QWERTY / flèches) + Espace (ou pavé `+` / Insert).  
-Manette : stick / D-pad + boutons face. Pause : Entrée, R, ou Start / L1.
+## License
 
-En coop, P1 = manette 0, P2 = clavier (modifiable dans `global.saveData.config`).
+MIT. Copyright (c) 2017-2026 Arknoid / Olivier Malige. See [LICENSE.txt](LICENSE.txt).
 
-## Licence
+## Credits
 
-MIT — voir [LICENSE.txt](LICENSE.txt).
-
-## Crédits
-
-Jam OFFGame 2017 — Max, Dicard, Mike (O’clock). Suite Godot : Arknoid / Olivier Malige.
+OFFGame jam 2017 — Max, Dicard, Mike (O’clock). Godot continuation: Arknoid / Olivier Malige.
