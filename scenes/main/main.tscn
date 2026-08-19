@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://n1qaeapratsf" path="res://assets/audio/music/loader.ogg" id="10"]
 [ext_resource type="PackedScene" path="res://scenes/world/background.tscn" id="11"]
 [ext_resource type="Script" path="res://scenes/main/star_field.gd" id="13"]
-[ext_resource type="FontFile" uid="uid://cfkcy1kesplow" path="res://assets/fonts/vermin_vibes_1989.ttf" id="12"]
+[ext_resource type="FontFile" uid="uid://b2lht0aff7caj" path="res://assets/fonts/vermin_vibes_1989.ttf" id="12"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "start"

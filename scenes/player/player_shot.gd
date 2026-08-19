@@ -31,16 +31,19 @@ func prepare() -> void:
 
 #must be calling before shot instantiate
 func setPowerAnim() -> void:
+	var anim := ""
 	if damage >= power_Small:
-		$anim.set_autoplay(player_Id + "_small")
+		anim = player_Id + "_small"
 	if damage >= power_Normal:
-		$anim.set_autoplay(player_Id + "_normal")
+		anim = player_Id + "_normal"
 	if damage >= power_Big:
-		$anim.set_autoplay(player_Id + "_big")
+		anim = player_Id + "_big"
 	if damage >= power_Large:
-		$anim.set_autoplay(player_Id + "_large")
+		anim = player_Id + "_large"
 	if damage >= power_Full:
-		$anim.set_autoplay(player_Id + "_full")
+		anim = player_Id + "_full"
+	if anim != "":
+		$anim.play(anim)
 
 
 func _on_area_entered(area: Area2D) -> void:

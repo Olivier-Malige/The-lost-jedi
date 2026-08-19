@@ -100,7 +100,10 @@ func _destroy() -> void:
 	destroyed = true
 	$sound_Explode.playing = true
 	$anim.play("explode")
-	$CollisionShape2D.queue_free()
+	if has_node("CollisionShape2D"):
+		$CollisionShape2D.set_deferred("disabled", true)
+	set_deferred("monitoring", false)
+	set_deferred("monitorable", false)
 	if has_node("shootTimer"):
 		$shootTimer.stop()
 	if hitByPlayerShot:

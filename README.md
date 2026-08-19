@@ -1,132 +1,87 @@
-The-lost-jedi is an open-source project for Godot 4 
+# The-lost-jedi
 
+Shmup 8-bit (sprites 8×8, palette Pico-8) né à la jam OFFGame 2017. Prototype Phaser abandonné, repris sous Godot. Survivre des vagues d’ennemis, empiler les power-ups, maximiser le score.
 
+**Moteur :** Godot **4.7** (GL Compatibility)  
+**Scène principale :** `res://scenes/main/main.tscn`  
+**Source :** https://github.com/Arknoid/The-lost-jedi
 
+## Lancer le projet
 
-The project:
+1. Installer [Godot 4.7](https://godotengine.org/download).
+2. Importer le dossier du dépôt (ou ouvrir `project.godot`).
+3. F5 — la scène principale se lance toute seule.
 
-The-lost-jedi is basically an idea of four future student of o'clock school (web
-development) for the  OFFGame jam 2017 , which had to be developed in Phaser.
-For the theme of throwback, we started on an 8-bit shoot them up with
-a sprite base  8 x8 pixel  and a limited color palette (pico 8), of course
-sound effects and 8-bit music, all with a generating system of enemy wave.
+## Structure
 
-But for lack of time for some and the unforeseen difficulty of phaser  forced us to abandon the project.
+```
+scenes/main/      entrée, loader, star field, lumières
+scenes/world/     monde de jeu, fond
+scenes/menu/      menu, start, game over, hi-score
+scenes/player/    vaisseau, bouclier, beam
+scenes/enemies/   TIE, interceptor, turret, mother ship, astéroïdes
+scenes/combat/    tirs ennemis, pool de projectiles
+scenes/ui/        HUD, pause, power-ups
+scenes/waves/     spawner de vagues
+data/player/      stats joueur
+data/weapons/     définitions d’armes (.tres)
+data/upgrades/    définitions de power-ups
+data/waves/       catalogue + définitions de vagues
+core/             autoloads et sauvegarde
+assets/           sprites, audio, fonts, ui, art, sources
+```
 
-So I continued the project alone under Godot engine (which I love) ten days before the end of the jam.
+Scripts colocalisés avec les scènes. Resources (`class_name` + `.tres`) à côté de leurs scripts dans `data/`.
 
-Here is The-lost-jedi a retro shoot them up in order to destroy and survive
-ever more dangerous waves of enemies using accumulation of  powers up.
-Your goal as in the past is to make the biggest score.
-Powers up
+## Architecture
 
-The powers up
-are cumulative and offers a rise in power able to devastate everything,
-in return if you get hit by enemy they come back to the starting point
+**Autoloads** (dans `project.godot`) :
 
+| Nom | Script |
+|-----|--------|
+| `global` | `core/global.gd` — score, vague, config, sauvegarde |
+| `Events` | `core/events.gd` — bus d’événements |
 
-Add more shot damage
+Sauvegarde JSON via `core/save_service.gd` (`user://data.json`).
 
-Add more move  speed to player ship and less delay to shooting
+**EventBus** (`Events`) :
 
-Add lateral shot and more damage
+- `score_changed(score)`
+- `wave_changed(wave)`
+- `energy_changed(player_id, energy)`
+- `player_died`
+- `game_over_requested`
+- `powerup_collected(upgrade)`
 
+**Vagues data-driven :** `data/waves/wave_catalog.tres` (liste de `WaveDefinition` + `SpawnRule`). Runtime : `scenes/waves/wave_spawner.gd`.
 
-Add energy (life)
-Control:
+**Armes / upgrades :** `WeaponDefinition`, `UpgradeDefinition`, `UpgradeTable` dans `data/`. Loadout runtime : `PlayerLoadout`.
 
-The use of a gamepad is strongly recommended, but you can use the keyboard :
+**Joueur :** `player.gd` + `player_weapons.gd` + `player_vitals.gd` + `player_loadout.gd`.
 
-Arrows + Space
+**Projectiles :** pool dans `scenes/combat/projectile_pool.gd`.
 
-ZQDS + Space
+**Collisions** (`project.godot`) : `player`, `enemy`, `player_shot`, `enemy_shot`, `pickup`, `asteroid`.
 
-WASD + Space
+**Debug :** `global.Debug` (défaut `false`). Si `true`, F1–F6 en jeu : vague précédente / suivante, speed, dégâts, tir latéral, bouclier.
 
-When shooting speed ship are slowly
-Future:
+## Conventions
 
-The project is still alpha because I would like to improve  :
+- Fichiers et dossiers : `snake_case`
+- Nœuds de scène et `class_name` : `PascalCase`
+- Scripts à côté de la scène ; resources à côté du `.tres`
 
-    Better wave system (increasing difficulty and better generating)
-    Add more enemy,
-    Add more powers-up (Shield and Beam laser)
-    Final boss.
-    Menu with option
-    2 player mode
+## Contrôles
 
-But first of all I have to optimize the code and fix some bug.
+Clavier (AZERTY / QWERTY / flèches) + Espace (ou pavé `+` / Insert).  
+Manette : stick / D-pad + boutons face. Pause : Entrée, R, ou Start / L1.
 
-Code source :
+En coop, P1 = manette 0, P2 = clavier (modifiable dans `global.saveData.config`).
 
-https://github.com/Arknoid/The-lost-jedi
+## Licence
 
-All feedback are welcome :
-Mail : Omalige@gmail.com
+MIT — voir [LICENSE.txt](LICENSE.txt).
 
-Good game
+## Crédits
 
-Thank to Max, Dicard and Mike of O'clock for their participationThe project:
-
-The-lost-jedi is basically an idea of four future student of o'clock school (web
-development) for the  OFFGame jam 2017 , which had to be developed in Phaser.
-For the theme of throwback, we started on an 8-bit shoot them up with
-a sprite base  8 x8 pixel  and a limited color palette (pico 8), of course
-sound effects and 8-bit music, all with a generating system of enemy wave.
-
-But for lack of time for some and the unforeseen difficulty of phaser  forced us to abandon the project.
-
-So I continued the project alone under Godot engine (which I love) ten days before the end of the jam.
-
-Here is The-lost-jedi a retro shoot them up in order to destroy and survive
-ever more dangerous waves of enemies using accumulation of  powers up.
-Your goal as in the past is to make the biggest score.
-Powers up
-
-The powers up
-are cumulative and offers a rise in power able to devastate everything,
-in return if you get hit by enemy they come back to the starting point
-
-
-Add more shot damage
-
-Add more move  speed to player ship and less delay to shooting
-
-Add lateral shot and more damage
-
-
-Add energy (life)
-Control:
-
-The use of a gamepad is strongly recommended, but you can use the keyboard :
-
-Arrows + Space
-
-ZQDS + Space
-
-WASD + Space
-
-When shooting speed ship are slowly
-Future:
-
-The project is still alpha because I would like to improve  :
-
-    Better wave system (increasing difficulty and better generating)
-    Add more enemy,
-    Add more powers-up (Shield and Beam laser)
-    Final boss.
-    Menu with option
-    2 player mode
-
-But first of all I have to optimize the code and fix some bug.
-
-Code source :
-
-https://github.com/Arknoid/The-lost-jedi
-
-All feedback are welcome :
-Mail : Omalige@gmail.com
-
-Good game
-
-Thank to Max, Dicard and Mike of O'clock for their participation# The-lost-jedi
+Jam OFFGame 2017 — Max, Dicard, Mike (O’clock). Suite Godot : Arknoid / Olivier Malige.

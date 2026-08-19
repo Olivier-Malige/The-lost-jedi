@@ -27,4 +27,6 @@ func hit(_dmg := 1) -> void:
 		player.set_process(false)
 		player.get_node("reactorParticles").set_emitting(false)
 		player.get_node("reactorParticles2").set_emitting(false)
-		player.get_node("CollisionShape2D").queue_free()
+		player.get_node("CollisionShape2D").set_deferred("disabled", true)
+		player.set_deferred("monitoring", false)
+		player.set_deferred("monitorable", false)

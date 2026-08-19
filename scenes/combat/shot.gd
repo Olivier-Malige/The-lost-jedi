@@ -33,5 +33,7 @@ func _ready() -> void:
 
 
 func _on_screen_exited() -> void:
+	if get_meta("pooled", false):
+		return
 	set_process(false)
 	ProjectilePool.despawn(self)
