@@ -30,3 +30,8 @@ func hit(_dmg := 1) -> void:
 		player.get_node("CollisionShape2D").set_deferred("disabled", true)
 		player.set_deferred("monitoring", false)
 		player.set_deferred("monitorable", false)
+		var shield := player.get_node_or_null("shield")
+		if shield:
+			shield.power = -shield.power
+			shield.set_deferred("monitoring", false)
+			shield.set_deferred("monitorable", false)
