@@ -5,6 +5,8 @@
 #
 extends Node
 
+const _Save := preload("res://src/core/save_service.gd")
+
 # Member variables
 
 var Debug := false
@@ -34,7 +36,7 @@ var sav_path := "user://data.json"
 const VERSION_NUMBER = "Alpha 7"
 func _ready() -> void:
 #	save_Data()
-	saveData = SaveService.load_data(saveData)
+	saveData = _Save.load_data(saveData)
 	setSound(saveData.config.sound)
 	setMusic(saveData.config.music)
 
@@ -45,7 +47,7 @@ func setMusic(state: bool) -> void:
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), not state)
 
 func save_Data() -> void:
-	SaveService.save_data(saveData)
+	_Save.save_data(saveData)
 
 func update_Data() -> void:
 	var mode: Dictionary = saveData.coop if get_tree().current_scene.coop else saveData.solo
