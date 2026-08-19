@@ -32,12 +32,6 @@ var saveData := {
 }
 var sav_path := "user://data.json"
 const VERSION_NUMBER = "Alpha 7"
-var POWERUP := {
-	player_Speed = 5, #pixel
-	shot_Power = 0.25, #damage
-	side_Shot_Power = 0.20, #damage
-	shooting_Speed = 0.002 #seconde
-}
 func _ready() -> void:
 #	save_Data()
 	load_Data()

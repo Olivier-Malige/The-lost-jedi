@@ -5,23 +5,20 @@
 #
 class_name Player
 extends Area2D
-const SHOOT_DELAY_BASE = 0.26
-const SHOOT_DELAY_MIN = 0.10
-const SPEED = 300
-const MALUS_SPEED = 100
-const ENERGY_MAX = 12
-const SPEED_MAX = 500
-const TIMER_FOCUSING_BEAM_MINI = 0.5 #seconde
-const TIMER_FOCUSING_BEAM_NORMAL = 1.5 #seconde
-const TIMER_FOCUSING_BEAM_FULL = 3 #seconde
+
+const STATS: PlayerStats = preload("res://data/player_stats.tres")
+const WEAPON_PRIMARY: WeaponDefinition = preload("res://data/weapons/primary.tres")
+const WEAPON_SIDE: WeaponDefinition = preload("res://data/weapons/side.tres")
+const WEAPON_BEAM_MINI: WeaponDefinition = preload("res://data/weapons/beam_mini.tres")
+const WEAPON_BEAM_NORMAL: WeaponDefinition = preload("res://data/weapons/beam_normal.tres")
+const WEAPON_BEAM_FULL: WeaponDefinition = preload("res://data/weapons/beam_full.tres")
+const UPGRADE_SPEED: UpgradeDefinition = preload("res://data/upgrades/speed.tres")
+const UPGRADE_DAMAGE: UpgradeDefinition = preload("res://data/upgrades/damage.tres")
+const UPGRADE_SIDE: UpgradeDefinition = preload("res://data/upgrades/side_shot.tres")
 
 var set_Player_2 := false # Call it on instancing for player 2 stats and colors
-@onready var shoot_Delay = SHOOT_DELAY_BASE
-@onready var shotPowerBonus = 0
-@onready var bonusSpeed = 0
-@onready var shotSide = false
-@onready var bonusPowerSideShot = 0
-@onready var energy = ENERGY_MAX / 2
+var loadout: PlayerLoadout
+@onready var energy = STATS.energy_max / 2
 @onready var touched = false
 @onready var canShooting = true
 @onready var malusSpeed = 0
@@ -36,10 +33,11 @@ enum beam_State {EMPTY, SMALL, NORMAL, FULL}
 
 
 func _ready() -> void:
+	loadout = PlayerLoadout.new(STATS)
 	_setup_Player()
 	update_controller()
 	update_energy()
-	$ShootingDelay.set_wait_time(shoot_Delay)
+	$ShootingDelay.set_wait_time(loadout.fire_delay)
 	global.score = 0
 	add_to_group("player")
 
@@ -56,12 +54,8 @@ func update_controller() -> void:
 		controller = "all"
 
 func _process(delta: float) -> void:
-	if energy > ENERGY_MAX:
-		energy = ENERGY_MAX
-	if shoot_Delay < SHOOT_DELAY_MIN:
-		shoot_Delay = SHOOT_DELAY_MIN
-	if bonusSpeed > SPEED_MAX:
-		bonusSpeed = SPEED_MAX
+	if energy > STATS.energy_max:
+		energy = STATS.energy_max
 
 	var motion = Vector2()
 	$anim.play(id_Player + "_idle")
@@ -93,15 +87,15 @@ func _process(delta: float) -> void:
 		$anim.play(id_Player + "_right")
 
 
-	pos = position + motion * delta * (SPEED + bonusSpeed - malusSpeed)
-	if pos.x < 38:
-		pos.x = 38
-	if pos.x > 800 - 38:
-		pos.x = 800 - 38
-	if pos.y < 24:
-		pos.y = 24
-	if pos.y > 600 - 16:
-		pos.y = 600 - 16
+	pos = position + motion * delta * (loadout.move_speed() - malusSpeed)
+	if pos.x < STATS.bound_min.x:
+		pos.x = STATS.bound_min.x
+	if pos.x > STATS.bound_max.x:
+		pos.x = STATS.bound_max.x
+	if pos.y < STATS.bound_min.y:
+		pos.y = STATS.bound_min.y
+	if pos.y > STATS.bound_max.y:
+		pos.y = STATS.bound_max.y
 	position = pos
 
 	#Shooting
@@ -109,16 +103,16 @@ func _process(delta: float) -> void:
 	beam_Focusing = Input.is_action_pressed(controller + "_fire")
 
 
-	if accumBeam < TIMER_FOCUSING_BEAM_MINI and beam_Power != beam_State.EMPTY:
+	if accumBeam < STATS.beam_mini and beam_Power != beam_State.EMPTY:
 		_set_Power_Beam(beam_State.EMPTY)
 
-	elif accumBeam >= TIMER_FOCUSING_BEAM_MINI and accumBeam < TIMER_FOCUSING_BEAM_NORMAL and beam_Power != beam_State.SMALL:
+	elif accumBeam >= STATS.beam_mini and accumBeam < STATS.beam_normal and beam_Power != beam_State.SMALL:
 		_set_Power_Beam(beam_State.SMALL)
 
-	elif accumBeam >= TIMER_FOCUSING_BEAM_NORMAL and accumBeam < TIMER_FOCUSING_BEAM_FULL and beam_Power != beam_State.NORMAL:
+	elif accumBeam >= STATS.beam_normal and accumBeam < STATS.beam_full and beam_Power != beam_State.NORMAL:
 		_set_Power_Beam(beam_State.NORMAL)
 
-	elif accumBeam >= TIMER_FOCUSING_BEAM_FULL and beam_Power != beam_State.FULL:
+	elif accumBeam >= STATS.beam_full and beam_Power != beam_State.FULL:
 		_set_Power_Beam(beam_State.FULL)
 
 
@@ -164,7 +158,7 @@ func _set_Power_Beam(power) -> void:
 			$BeamParticlesRight.hide()
 
 		beam_State.SMALL:
-			malusSpeed = MALUS_SPEED
+			malusSpeed = STATS.malus_speed
 			$BeamParticlesLeft.show()
 			$BeamParticlesRight.show()
 			beam_Power = beam_State.SMALL
@@ -181,21 +175,21 @@ func _set_Power_Beam(power) -> void:
 			$BeamParticlesLeft.amount = 20
 			$BeamParticlesRight.amount = 20
 func _shooting() -> void:
-	var shot = ProjectilePool.spawn(preload("res://Prefabs/player_Shot.tscn"), $shootFrom.global_position, get_parent())
+	var shot = ProjectilePool.spawn(WEAPON_PRIMARY.projectile, $shootFrom.global_position, get_parent())
 	shot.player_Id = id_Player
-	shot.damage += shotPowerBonus
+	shot.damage += loadout.damage_bonus
 	shot.setPowerAnim()
 	$sound_Shooting.playing = true
 
 	canShooting = false
 	$ShootingDelay.start()
-	if shotSide:
-		var lShot = ProjectilePool.spawn(preload("res://Prefabs/player_SideShot.tscn"), $shootFromLeft.global_position, get_parent())
-		var rShot = ProjectilePool.spawn(preload("res://Prefabs/player_SideShot.tscn"), $shootFromRight.global_position, get_parent())
+	if loadout.side_shot:
+		var lShot = ProjectilePool.spawn(WEAPON_SIDE.projectile, $shootFromLeft.global_position, get_parent())
+		var rShot = ProjectilePool.spawn(WEAPON_SIDE.projectile, $shootFromRight.global_position, get_parent())
 		lShot.player_Id = id_Player
 		rShot.player_Id = id_Player
-		rShot.damage += bonusPowerSideShot
-		lShot.damage += bonusPowerSideShot
+		rShot.damage += loadout.side_damage_bonus
+		lShot.damage += loadout.side_damage_bonus
 		lShot.setPowerAnim()
 		rShot.setPowerAnim()
 		rShot.speedX = -100
@@ -206,28 +200,28 @@ func _shooting_Beam() -> void:
 	var beam_shot_right
 	match beam_Power:
 		beam_State.SMALL:
-			beam_shot_left = preload("res://Prefabs/beam/beam_mini.tscn").instantiate()
-			beam_shot_right = preload("res://Prefabs/beam/beam_mini.tscn").instantiate()
+			beam_shot_left = WEAPON_BEAM_MINI.projectile.instantiate()
+			beam_shot_right = WEAPON_BEAM_MINI.projectile.instantiate()
 			$sound_Beam_mini.playing = true
 
 		beam_State.NORMAL:
-			beam_shot_left = preload("res://Prefabs/beam/beam_normal.tscn").instantiate()
-			beam_shot_right = preload("res://Prefabs/beam/beam_normal.tscn").instantiate()
+			beam_shot_left = WEAPON_BEAM_NORMAL.projectile.instantiate()
+			beam_shot_right = WEAPON_BEAM_NORMAL.projectile.instantiate()
 			$sound_Beam_normal.playing = true
 		beam_State.FULL:
-			beam_shot_left = preload("res://Prefabs/beam/beam_Full.tscn").instantiate()
-			beam_shot_right = preload("res://Prefabs/beam/beam_Full.tscn").instantiate()
+			beam_shot_left = WEAPON_BEAM_FULL.projectile.instantiate()
+			beam_shot_right = WEAPON_BEAM_FULL.projectile.instantiate()
 			$sound_Beam_full.playing = true
 
 	#setup beam power and color to appropriate player
 
 	for ch in beam_shot_left.get_children():
-		ch.damage += shotPowerBonus
+		ch.damage += loadout.damage_bonus
 		ch.player_Id = id_Player
 		ch.setPowerAnim()
 
 	for ch in beam_shot_right.get_children():
-		ch.damage += shotPowerBonus
+		ch.damage += loadout.damage_bonus
 		ch.player_Id = id_Player
 		ch.setPowerAnim()
 
@@ -249,13 +243,10 @@ func _hit_something(dmg := 1) -> void:
 		$touchedReset.start()
 		$xWing.set_modulate(Color(2, 0.4, 0.4, 1)) #Set player Red color
 		#low speed
-		bonusSpeed = -120
+		malusSpeed = 120
 		#Reset all powersUp
-		shoot_Delay = SHOOT_DELAY_BASE
+		loadout.reset()
 		setShootingDelay()
-		shotPowerBonus = 0
-		shotSide = false
-		bonusPowerSideShot = 0
 		touched = true
 	else:
 		energy = 0
@@ -270,14 +261,13 @@ func _hit_something(dmg := 1) -> void:
 
 func _on_touchedReset_timeout() -> void:
 	touched = false
-	bonusSpeed = 0
+	if beam_Power == beam_State.EMPTY:
+		malusSpeed = 0
 	$xWing.set_modulate(Color(1, 1, 1, 1)) #set player normal color
 
 
 func setShootingDelay() -> void:
-	if shoot_Delay < SHOOT_DELAY_MIN:
-		shoot_Delay = SHOOT_DELAY_MIN
-	$ShootingDelay.set_wait_time(shoot_Delay)
+	$ShootingDelay.set_wait_time(loadout.fire_delay)
 
 func _on_ShootingDelay_timeout() -> void:
 	canShooting = true
@@ -292,17 +282,27 @@ func update_energy() -> void:
 		pip.position = Vector2(0, -i * 12)
 		energy_hud.add_child(pip)
 
+func apply_upgrade(upgrade: UpgradeDefinition) -> void:
+	if upgrade == null:
+		return
+	match upgrade.effect:
+		UpgradeDefinition.Effect.ENERGY:
+			energy += int(upgrade.value)
+			update_energy()
+		UpgradeDefinition.Effect.SHIELD:
+			$shield.power = int(upgrade.value)
+		_:
+			loadout.apply(upgrade)
+			setShootingDelay()
+
 func increase_Speed() -> void:
-		bonusSpeed += global.POWERUP.player_Speed
-		shoot_Delay -= global.POWERUP.shooting_Speed
-		setShootingDelay()
+	apply_upgrade(UPGRADE_SPEED)
 
 func increase_SideShot() -> void:
-		shotSide = true
-		bonusPowerSideShot += global.POWERUP.side_Shot_Power
+	apply_upgrade(UPGRADE_SIDE)
 
 func increase_Shot() -> void:
-		shotPowerBonus += global.POWERUP.shot_Power
+	apply_upgrade(UPGRADE_DAMAGE)
 
 func increase_Shield() -> void:
 	$shield.power = 1 #+1 to getset function

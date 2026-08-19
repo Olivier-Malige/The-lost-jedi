@@ -5,21 +5,17 @@
 #
 extends Area2D
 const SPEED = 100
+const TABLE: UpgradeTable = preload("res://data/upgrades/upgrade_table.tres")
+
+var _upgrade: UpgradeDefinition
 
 func _ready() -> void:
-	var rndPowers = randi() % 100 + 1
-#	var rndPowers =6   #debug
 	add_to_group("powersUp")
-	if rndPowers <= 100:
+	_upgrade = TABLE.pick()
+	if _upgrade:
+		$anim.play(String(_upgrade.anim))
+	else:
 		$anim.play("speedUp")
-	if rndPowers <= 50:
-		$anim.play("laserUp")
-	if rndPowers <= 25:
-		$anim.play("lateralShot")
-	if rndPowers <= 10:
-		$anim.play("shieldUp")
-	if rndPowers <= 2:
-		$anim.play("energieUp")
 
 func _process(delta: float) -> void:
 	translate(Vector2(0, SPEED) * delta)
@@ -29,28 +25,27 @@ func _on_screen_exited() -> void:
 
 func _on_powerUp_area_entered(area: Area2D) -> void:
 	if area.is_in_group("player"):
-		var current = $anim.current_animation
-		if current == "speedUp":
-			area.increase_Speed()
-			$sound_Speed_Up.playing = true
-		elif current == "energieUp":
-			area.energy += 1
-			area.update_energy()
-			$sound_Energy_Up.playing = true
-		elif current == "lateralShot":
-			area.increase_SideShot()
-			$sound_Lateral_Shot.playing = true
-		elif current == "laserUp":
-			area.increase_Shot()
-			$sound_Shot_Up.playing = true
-		elif current == "shieldUp":
-			area.increase_Shield()
-			$sound_Shield.playing = true
-
+		if area.has_method("apply_upgrade"):
+			area.apply_upgrade(_upgrade)
+		_play_pickup_sound()
 		$anim.queue_free()
 		$Sprite2D.queue_free()
 		$CollisionShape2D.queue_free()
 
+func _play_pickup_sound() -> void:
+	if _upgrade == null:
+		return
+	match _upgrade.effect:
+		UpgradeDefinition.Effect.SPEED:
+			$sound_Speed_Up.playing = true
+		UpgradeDefinition.Effect.ENERGY:
+			$sound_Energy_Up.playing = true
+		UpgradeDefinition.Effect.SIDE_SHOT:
+			$sound_Lateral_Shot.playing = true
+		UpgradeDefinition.Effect.DAMAGE:
+			$sound_Shot_Up.playing = true
+		UpgradeDefinition.Effect.SHIELD:
+			$sound_Shield.playing = true
 
 func _on_audio_finished() -> void:
 	queue_free()
