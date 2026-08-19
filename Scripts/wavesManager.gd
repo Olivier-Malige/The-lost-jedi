@@ -8,6 +8,7 @@
 #Section unfinished and in the process of development
 ################################################
 
+class_name WaveSpawner
 extends Node2D
 var nubWave = 0
 var Wave0 = {
@@ -131,10 +132,8 @@ var metaWave = [Wave0,Wave1,Wave2,Wave3,Wave4,Wave5,Wave6,Wave7,Wave8,Wave9,Wave
 
 func _ready():
 	global.wave = nubWave +1
-	randomize()
 	spawn(metaWave[nubWave].asteroid,metaWave[nubWave].bigAsteroid,metaWave[nubWave].tie,
 	metaWave[nubWave].interceptor,metaWave[nubWave].drone,metaWave[nubWave].motherShip,metaWave[nubWave].turret)
-	set_process(true)
 
 func _process(delta):
 

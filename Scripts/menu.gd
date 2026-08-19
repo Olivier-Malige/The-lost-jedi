@@ -98,10 +98,10 @@ func mode (enable= []) :
 
 func start_game(mode):
 	if mode == MODE_SOLO :
-		get_node("/root/main").coop = false
-	else : get_node("/root/main").coop = true
-	get_node("/root/main").go_World_Screen()
-	get_node("/root/main/start").queue_free()
+		get_tree().current_scene.coop = false
+	else : get_tree().current_scene.coop = true
+	get_tree().current_scene.go_World_Screen()
+	get_tree().current_scene.get_node("start").queue_free()
 	queue_free()
 
 func _on_Solo_button_down():
@@ -123,21 +123,21 @@ func _on_Resume_button_down():
 	if not $sound_start.is_playing():
 		$sound_start.playing = true
 		await get_node("sound_start").finished
-		get_node("/root/main").set_Resume()
+		get_tree().current_scene.set_Resume()
 		queue_free()
 
 func _on_Restart_button_down():
 	if not $sound_start.is_playing():
 		$sound_start.playing = true
 		await get_node("sound_start").finished
-		get_node("/root/main").set_Restart()
+		get_tree().current_scene.set_Restart()
 		queue_free()
 
 
 func _on_Hiscore_button_down():
 	$sound_select.playing = true
 	await get_node("sound_select").finished
-	get_node("/root/main").go_Hiscore_Screen()
+	get_tree().current_scene.go_Hiscore_Screen()
 	queue_free()
 
 func _on_options_button_down():
@@ -154,9 +154,9 @@ func new_menu(mode):
 func _on_return_button_down():
 	$sound_select.playing = true
 	await get_node("sound_select").finished
-	if get_node("/root/main").worldScreen:
+	if get_tree().current_scene.worldScreen:
 		new_menu(MENU_PAUSE)
-	elif get_node("/root/main").startScreen:
+	elif get_tree().current_scene.startScreen:
 		new_menu(MENU_START)
 	queue_free()
 
@@ -237,9 +237,9 @@ func _on_graphic_button_down():
 	if global.saveData.config.graphic == "high" or global.saveData.config.graphic == "hight" :
 		global.saveData.config.graphic = "low"
 		$buttonGroup/graphic.set_text("graphic : low")
-		get_node("/root/main").set_Graphic("low")
+		get_tree().current_scene.set_Graphic("low")
 	else :
 		global.saveData.config.graphic = "high"
 		$buttonGroup/graphic.set_text("graphic : high")
-		get_node("/root/main").set_Graphic("high")
+		get_tree().current_scene.set_Graphic("high")
 	global.save_Data()

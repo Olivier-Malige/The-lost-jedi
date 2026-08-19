@@ -6,20 +6,20 @@
 extends Node2D
 
 
-func _ready():
+func _ready() -> void:
 	if $music.stream:
 		$music.stream.loop = true
 
-	get_node("AnimationPlayer").play("start")
-	if get_node("/root/main").coop :
-		get_node("BestScore").set_text("HISCORE : " +str(global.saveData.coop.hiscore))
-		get_node("BestScore/HigherWave").set_text("Higher Wave : " + str (global.saveData.coop.bestWave))
-	else :
-		get_node("BestScore").set_text("HISCORE : " +str(global.saveData.solo.hiscore))
-		get_node("BestScore/HigherWave").set_text("Higher Wave : " + str (global.saveData.solo.bestWave))
+	$AnimationPlayer.play("start")
+	if get_tree().current_scene.coop:
+		$BestScore.set_text("HISCORE : " + str(global.saveData.coop.hiscore))
+		$BestScore/HigherWave.set_text("Higher Wave : " + str(global.saveData.coop.bestWave))
+	else:
+		$BestScore.set_text("HISCORE : " + str(global.saveData.solo.hiscore))
+		$BestScore/HigherWave.set_text("Higher Wave : " + str(global.saveData.solo.bestWave))
 
-	get_node("Score/wave").set_text("Wave : "+str(global.wave))
-	get_node("Score").set_text("SCORE : " +str(global.score))
+	$Score/wave.set_text("Wave : " + str(global.wave))
+	$Score.set_text("SCORE : " + str(global.score))
 	game_over()
-func game_over():
+func game_over() -> void:
 	global.update_Data()

@@ -6,23 +6,23 @@
 extends Node2D
 
 const DESTROY_DELAY = 1
-var setScore = 0
-var player  = 1
-func _ready():
-	if (setScore >=50):
-		get_node("Label").set_scale(Vector2(1.2,1.2))
-	elif (setScore >=100):
-		get_node("Label").set_scale(Vector2(1.4,1.4))
-	elif (setScore >= 200):
-		get_node("Label").set_scale(Vector2(1.6,1.6))
-	elif (setScore >=500):
-		get_node("Label").set_scale(Vector2(1.8,1.8))
-	elif (setScore >=1000):
-		get_node("Label").set_scale(Vector2(2,2))
+var setScore := 0
+var player := 1
+func _ready() -> void:
+	if setScore >= 1000:
+		$Label.set_scale(Vector2(2, 2))
+	elif setScore >= 500:
+		$Label.set_scale(Vector2(1.8, 1.8))
+	elif setScore >= 200:
+		$Label.set_scale(Vector2(1.6, 1.6))
+	elif setScore >= 100:
+		$Label.set_scale(Vector2(1.4, 1.4))
+	elif setScore >= 50:
+		$Label.set_scale(Vector2(1.2, 1.2))
 
-	get_node("Label").set_text(str(setScore))
-	get_node("anim").play("player"+str(player))
-	get_node("destroyDelay").set_wait_time(DESTROY_DELAY)
+	$Label.set_text(str(setScore))
+	$anim.play("player" + str(player))
+	$destroyDelay.set_wait_time(DESTROY_DELAY)
 
-func _on_destroyDelay_timeout():
+func _on_destroyDelay_timeout() -> void:
 	queue_free()

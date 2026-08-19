@@ -7,47 +7,50 @@ extends Node
 
 # Member variables
 
-var Debug = false
-var score = 0
-var wave = 0
-var hiscoreSolo  =0
-var hiscoreCoop =0
-var saveData = { solo = {
-						hiscore = 0 ,
-						bestWave = 0,
-						},
-				 coop = {
-						hiscore = 0 ,
-						bestWave = 0,
-						},
-				 config = {
-						music = true,
-						sound = true,
-						fullscreen = true,
-						player1 = "gamepad1",
-						player2 = "keyboard",
-						graphic = "high",
-						}}
-var sav_path = "user://data.json"
+var Debug := false
+var score := 0
+var wave := 0
+var hiscoreSolo := 0
+var hiscoreCoop := 0
+var saveData := {
+	solo = {
+		hiscore = 0,
+		bestWave = 0,
+	},
+	coop = {
+		hiscore = 0,
+		bestWave = 0,
+	},
+	config = {
+		music = true,
+		sound = true,
+		fullscreen = true,
+		player1 = "gamepad1",
+		player2 = "keyboard",
+		graphic = "high",
+	}
+}
+var sav_path := "user://data.json"
 const VERSION_NUMBER = "Alpha 7"
-var POWERUP = { player_Speed = 5,       #pixel
-				shot_Power = 0.25,      #damage
-				side_Shot_Power = 0.20, #damage
-				shooting_Speed = 0.002  #seconde
-				}
-func _ready():
+var POWERUP := {
+	player_Speed = 5, #pixel
+	shot_Power = 0.25, #damage
+	side_Shot_Power = 0.20, #damage
+	shooting_Speed = 0.002 #seconde
+}
+func _ready() -> void:
 #	save_Data()
 	load_Data()
 	setSound(saveData.config.sound)
 	setMusic(saveData.config.music)
 
-func setSound(state):
-	AudioServer.set_bus_mute(2,not state)
+func setSound(state: bool) -> void:
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Sounds"), not state)
 
-func setMusic(state):
-	AudioServer.set_bus_mute(1,not state)
+func setMusic(state: bool) -> void:
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), not state)
 
-func load_Data():
+func load_Data() -> void:
 	# Load all game save
 	if FileAccess.file_exists(sav_path):
 		var f = FileAccess.open(sav_path, FileAccess.READ)
@@ -57,21 +60,19 @@ func load_Data():
 	else:
 		save_Data()
 
-func save_Data():
+func save_Data() -> void:
 		# Save all play data
 		var f = FileAccess.open(sav_path, FileAccess.WRITE)
 		f.store_line(JSON.stringify(saveData))
 
-func update_Data():
-	if (get_node("/root/main").coop):
-		if (wave > saveData.coop.bestWave) :
-			saveData.coop.bestWave = wave
-		if (score > saveData.coop.hiscore):
-			saveData.coop.hiscore = score
-			save_Data()
-	else :
-		if (wave > saveData.solo.bestWave) :
-			saveData.solo.bestWave = wave
-		if (score > saveData.solo.hiscore):
-			saveData.solo.hiscore = score
-			save_Data()
+func update_Data() -> void:
+	var mode: Dictionary = saveData.coop if get_tree().current_scene.coop else saveData.solo
+	var changed := false
+	if wave > mode.bestWave:
+		mode.bestWave = wave
+		changed = true
+	if score > mode.hiscore:
+		mode.hiscore = score
+		changed = true
+	if changed:
+		save_Data()

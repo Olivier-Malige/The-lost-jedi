@@ -3,24 +3,25 @@
 #  file 'LICENSE.txt', which is part of this source code package.
 #  Copyright (c) 2017 Arknoid / Olivier Malige
 #
+class_name Player
 extends Area2D
 const SHOOT_DELAY_BASE = 0.26
 const SHOOT_DELAY_MIN = 0.10
 const SPEED = 300
 const MALUS_SPEED = 100
 const ENERGY_MAX = 12
-const SPEED_MAX  = 500
+const SPEED_MAX = 500
 const TIMER_FOCUSING_BEAM_MINI = 0.5 #seconde
 const TIMER_FOCUSING_BEAM_NORMAL = 1.5 #seconde
 const TIMER_FOCUSING_BEAM_FULL = 3 #seconde
 
-var set_Player_2 = false # Call it on instancing for player 2 stats and colors
+var set_Player_2 := false # Call it on instancing for player 2 stats and colors
 @onready var shoot_Delay = SHOOT_DELAY_BASE
 @onready var shotPowerBonus = 0
 @onready var bonusSpeed = 0
 @onready var shotSide = false
 @onready var bonusPowerSideShot = 0
-@onready var energy = ENERGY_MAX/2
+@onready var energy = ENERGY_MAX / 2
 @onready var touched = false
 @onready var canShooting = true
 @onready var malusSpeed = 0
@@ -30,44 +31,40 @@ var set_Player_2 = false # Call it on instancing for player 2 stats and colors
 @onready var beam_Focusing
 @onready var pos
 @onready var accumBeam = 0
-enum beam_State {EMPTY,SMALL,NORMAL,FULL}
+enum beam_State {EMPTY, SMALL, NORMAL, FULL}
 @onready var beam_Power = beam_State.EMPTY
 
 
-func _ready():
-
+func _ready() -> void:
 	_setup_Player()
 	update_controller()
 	update_energy()
-	get_node("ShootingDelay").set_wait_time(shoot_Delay)
-	get_node("/root/global").score = 0
+	$ShootingDelay.set_wait_time(shoot_Delay)
+	global.score = 0
 	add_to_group("player")
 
-func update_controller():
-	if get_node("/root/main").coop :
-
+func update_controller() -> void:
+	if get_tree().current_scene.coop:
 		#enable player 2 controller
-		if set_Player_2 :
+		if set_Player_2:
 			controller = global.saveData.config.player2
-
 		#enable player 1 controller
 		else:
 			controller = global.saveData.config.player1
-
 	#on solo mode all controls are enbales
-	else :
+	else:
 		controller = "all"
 
-func _process(delta):
-	if (energy > ENERGY_MAX):
+func _process(delta: float) -> void:
+	if energy > ENERGY_MAX:
 		energy = ENERGY_MAX
-	if (shoot_Delay < SHOOT_DELAY_MIN):
+	if shoot_Delay < SHOOT_DELAY_MIN:
 		shoot_Delay = SHOOT_DELAY_MIN
-	if (bonusSpeed > SPEED_MAX):
+	if bonusSpeed > SPEED_MAX:
 		bonusSpeed = SPEED_MAX
 
 	var motion = Vector2()
-	get_node("anim").play(id_Player +"_idle")
+	$anim.play(id_Player + "_idle")
 
 	#particle effets
 	$reactorParticles.set_emitting(true)
@@ -89,84 +86,84 @@ func _process(delta):
 	#left
 	if Input.is_action_pressed(controller + "_left"):
 		motion += Vector2(-1, 0)
-		get_node("anim").play(id_Player+"_left")
+		$anim.play(id_Player + "_left")
 	#right
 	if Input.is_action_pressed(controller + "_right"):
 		motion += Vector2(1, 0)
-		get_node("anim").play(id_Player+"_right")
+		$anim.play(id_Player + "_right")
 
 
-	pos = position + motion*delta*(SPEED+bonusSpeed-malusSpeed)
-	if (pos.x < 38):
+	pos = position + motion * delta * (SPEED + bonusSpeed - malusSpeed)
+	if pos.x < 38:
 		pos.x = 38
-	if (pos.x > 800 -38):
-		pos.x = 800 -38
-	if (pos.y < 24):
+	if pos.x > 800 - 38:
+		pos.x = 800 - 38
+	if pos.y < 24:
 		pos.y = 24
-	if (pos.y > 600- 16):
-		pos.y = 600 -16
+	if pos.y > 600 - 16:
+		pos.y = 600 - 16
 	position = pos
 
 	#Shooting
-	shooting = Input.is_action_just_pressed(controller +"_fire")
-	beam_Focusing = Input.is_action_pressed(controller +"_fire")
+	shooting = Input.is_action_just_pressed(controller + "_fire")
+	beam_Focusing = Input.is_action_pressed(controller + "_fire")
 
 
-	if accumBeam < TIMER_FOCUSING_BEAM_MINI and beam_Power != beam_State.EMPTY :
+	if accumBeam < TIMER_FOCUSING_BEAM_MINI and beam_Power != beam_State.EMPTY:
 		_set_Power_Beam(beam_State.EMPTY)
 
-	elif accumBeam  >= TIMER_FOCUSING_BEAM_MINI  and accumBeam < TIMER_FOCUSING_BEAM_NORMAL and beam_Power != beam_State.SMALL :
+	elif accumBeam >= TIMER_FOCUSING_BEAM_MINI and accumBeam < TIMER_FOCUSING_BEAM_NORMAL and beam_Power != beam_State.SMALL:
 		_set_Power_Beam(beam_State.SMALL)
 
-	elif accumBeam >= TIMER_FOCUSING_BEAM_NORMAL and  accumBeam < TIMER_FOCUSING_BEAM_FULL and beam_Power != beam_State.NORMAL :
+	elif accumBeam >= TIMER_FOCUSING_BEAM_NORMAL and accumBeam < TIMER_FOCUSING_BEAM_FULL and beam_Power != beam_State.NORMAL:
 		_set_Power_Beam(beam_State.NORMAL)
 
-	elif accumBeam >= TIMER_FOCUSING_BEAM_FULL and beam_Power != beam_State.FULL :
+	elif accumBeam >= TIMER_FOCUSING_BEAM_FULL and beam_Power != beam_State.FULL:
 		_set_Power_Beam(beam_State.FULL)
 
 
-	if Input.is_action_just_released(controller +"_fire") :
-		if beam_Power != beam_State.EMPTY :
+	if Input.is_action_just_released(controller + "_fire"):
+		if beam_Power != beam_State.EMPTY:
 			_shooting_Beam()
 
-	if beam_Focusing :
+	if beam_Focusing:
 		accumBeam += delta
-	else : accumBeam = 0
+	else:
+		accumBeam = 0
 
 	if beam_Focusing or shooting:
 		$reactorParticles.set_lifetime(0.1)
 		$reactorParticles2.set_lifetime(0.1)
 
 
-	if (shooting and canShooting):
+	if shooting and canShooting:
 		_shooting()
 
-func _setup_Player():
+func _setup_Player() -> void:
 		#set id_Player for appropriate setup (colors , stats,... )
-	if set_Player_2 :
+	if set_Player_2:
 		id_Player = "player2"
-
-	else :
+	else:
 		id_Player = "player1"
 
 	#setup particle colors : Red for player1 and blue for player2
-	$BeamParticlesLeft.set_texture(load("res://Assets/"+id_Player+"_particle.png"))
-	$BeamParticlesRight.set_texture(load("res://Assets/"+id_Player+"_particle.png"))
-	$reactorParticles.set_texture(load("res://Assets/"+id_Player+"_particle.png"))
-	$reactorParticles2.set_texture(load("res://Assets/"+id_Player+"_particle.png"))
+	$BeamParticlesLeft.set_texture(load("res://Assets/" + id_Player + "_particle.png"))
+	$BeamParticlesRight.set_texture(load("res://Assets/" + id_Player + "_particle.png"))
+	$reactorParticles.set_texture(load("res://Assets/" + id_Player + "_particle.png"))
+	$reactorParticles2.set_texture(load("res://Assets/" + id_Player + "_particle.png"))
 
-	$anim.play(id_Player+"_idle")
+	$anim.play(id_Player + "_idle")
 
-func _set_Power_Beam(power):
-	match power :
-		beam_State.EMPTY :
+func _set_Power_Beam(power) -> void:
+	match power:
+		beam_State.EMPTY:
 			beam_Power = beam_State.EMPTY
 			$BeamParticlesLeft.emitting = false
 			$BeamParticlesRight.emitting = false
 			$BeamParticlesLeft.hide()
 			$BeamParticlesRight.hide()
 
-		beam_State.SMALL :
+		beam_State.SMALL:
 			malusSpeed = MALUS_SPEED
 			$BeamParticlesLeft.show()
 			$BeamParticlesRight.show()
@@ -175,15 +172,15 @@ func _set_Power_Beam(power):
 			$BeamParticlesRight.emitting = true
 			$BeamParticlesLeft.amount = 1
 			$BeamParticlesRight.amount = 1
-		beam_State.NORMAL :
+		beam_State.NORMAL:
 			beam_Power = beam_State.NORMAL
 			$BeamParticlesLeft.amount = 5
 			$BeamParticlesRight.amount = 5
-		beam_State.FULL :
+		beam_State.FULL:
 			beam_Power = beam_State.FULL
 			$BeamParticlesLeft.amount = 20
 			$BeamParticlesRight.amount = 20
-func _shooting():
+func _shooting() -> void:
 	var shot
 	shot = preload("res://Prefabs/player_Shot.tscn").instantiate()
 
@@ -191,17 +188,16 @@ func _shooting():
 	shot.damage += shotPowerBonus
 	shot.setPowerAnim()
 		# Use the Position2D as reference
-	shot.position = get_node("shootFrom").global_position
+	shot.position = $shootFrom.global_position
 		# Put it one  parent above, so it is not moved by us
-	get_node("../").add_child(shot)
+	get_parent().add_child(shot)
 
 		# Play sound
 	$sound_Shooting.playing = true
 
 	canShooting = false
-	get_node("ShootingDelay").start()
+	$ShootingDelay.start()
 	if shotSide:
-
 		#load player colored shot
 
 		var lShot = preload("res://Prefabs/player_SideShot.tscn").instantiate()
@@ -215,64 +211,61 @@ func _shooting():
 		lShot.setPowerAnim()
 		rShot.setPowerAnim()
 
-		lShot.position = get_node("shootFromLeft").global_position
-		rShot.position = get_node("shootFromRight").global_position
+		lShot.position = $shootFromLeft.global_position
+		rShot.position = $shootFromRight.global_position
 		rShot.speedX = -100
 		lShot.speedX = 100
 
-		get_node("../").add_child(lShot)
-		get_node("../").add_child(rShot)
-	# Update points counter
-	get_node("../hud/score").set_text("SCORE : " +str(get_node("/root/global").score))
+		get_parent().add_child(lShot)
+		get_parent().add_child(rShot)
 
-func _shooting_Beam():
+func _shooting_Beam() -> void:
 	var beam_shot_left
 	var beam_shot_right
-	match beam_Power :
-
-		beam_State.SMALL :
+	match beam_Power:
+		beam_State.SMALL:
 			beam_shot_left = preload("res://Prefabs/beam/beam_mini.tscn").instantiate()
-			beam_shot_right= preload("res://Prefabs/beam/beam_mini.tscn").instantiate()
+			beam_shot_right = preload("res://Prefabs/beam/beam_mini.tscn").instantiate()
 			$sound_Beam_mini.playing = true
 
 		beam_State.NORMAL:
 			beam_shot_left = preload("res://Prefabs/beam/beam_normal.tscn").instantiate()
-			beam_shot_right= preload("res://Prefabs/beam/beam_normal.tscn").instantiate()
+			beam_shot_right = preload("res://Prefabs/beam/beam_normal.tscn").instantiate()
 			$sound_Beam_normal.playing = true
-		beam_State.FULL :
+		beam_State.FULL:
 			beam_shot_left = preload("res://Prefabs/beam/beam_Full.tscn").instantiate()
-			beam_shot_right= preload("res://Prefabs/beam/beam_Full.tscn").instantiate()
+			beam_shot_right = preload("res://Prefabs/beam/beam_Full.tscn").instantiate()
 			$sound_Beam_full.playing = true
 
 	#setup beam power and color to appropriate player
 
-	for ch in beam_shot_left.get_children() :
+	for ch in beam_shot_left.get_children():
 		ch.damage += shotPowerBonus
 		ch.player_Id = id_Player
 		ch.setPowerAnim()
 
-	for ch in beam_shot_right.get_children() :
+	for ch in beam_shot_right.get_children():
 		ch.damage += shotPowerBonus
 		ch.player_Id = id_Player
 		ch.setPowerAnim()
 
 	beam_shot_left.position = $shootFromLeft.global_position
 	beam_shot_right.position = $shootFromRight.global_position
-	get_node("../").add_child(beam_shot_left)
-	get_node("../").add_child(beam_shot_right)
+	get_parent().add_child(beam_shot_left)
+	get_parent().add_child(beam_shot_right)
 
 	#reset speed malus
 	malusSpeed = 0
 
-func _hit_something(dmg = 1):
-	if (touched):
+func _hit_something(dmg := 1) -> void:
+	if touched:
 		return
-	if (energy > 1):
+	if energy > 1:
 		$sound_Hit.playing = true
 		energy -= 1
 		update_energy()
-		get_node("touchedReset").start()
-		get_node("xWing").set_modulate(Color(2,0.4,0.4,1)) #Set player Red color
+		$touchedReset.start()
+		$xWing.set_modulate(Color(2, 0.4, 0.4, 1)) #Set player Red color
 		#low speed
 		bonusSpeed = -120
 		#Reset all powersUp
@@ -282,64 +275,63 @@ func _hit_something(dmg = 1):
 		shotSide = false
 		bonusPowerSideShot = 0
 		touched = true
-	else :
+	else:
 		energy = 0
 		$sound_Explode.playing = true
 		update_energy()
-		get_node("anim").play(id_Player+"_explode")
+		$anim.play(id_Player + "_explode")
 		set_process(false)
 		$reactorParticles.set_emitting(false)
 		$reactorParticles2.set_emitting(false)
-		get_node("CollisionShape2D").queue_free()
+		$CollisionShape2D.queue_free()
 		#get_node("sfx").play("explode")
 
-func _on_touchedReset_timeout():
+func _on_touchedReset_timeout() -> void:
 	touched = false
 	bonusSpeed = 0
-	get_node("xWing").set_modulate(Color(1,1,1,1)) #set player normal color
+	$xWing.set_modulate(Color(1, 1, 1, 1)) #set player normal color
 
 
-func setShootingDelay():
-	if (shoot_Delay < SHOOT_DELAY_MIN):
+func setShootingDelay() -> void:
+	if shoot_Delay < SHOOT_DELAY_MIN:
 		shoot_Delay = SHOOT_DELAY_MIN
-	get_node("ShootingDelay").set_wait_time(shoot_Delay)
+	$ShootingDelay.set_wait_time(shoot_Delay)
 
-func _on_ShootingDelay_timeout():
-
+func _on_ShootingDelay_timeout() -> void:
 	canShooting = true
 
-func update_energy():
-	for ch in get_node("/root/main/world/hud/energy_"+id_Player).get_children():
+func update_energy() -> void:
+	var energy_hud := get_tree().current_scene.get_node("world/hud/energy_" + id_Player)
+	for ch in energy_hud.get_children():
 		ch.queue_free()
 
 	for i in range(energy):
-		var energy
-		energy = load("res://Prefabs/"+id_Player+"_Energy.tscn").instantiate()
-		energy.position = Vector2(0,-i*12)
-		get_node("/root/main/world/hud/energy_"+id_Player).add_child(energy)
+		var pip = load("res://Prefabs/" + id_Player + "_Energy.tscn").instantiate()
+		pip.position = Vector2(0, -i * 12)
+		energy_hud.add_child(pip)
 
-func increase_Speed():
+func increase_Speed() -> void:
 		bonusSpeed += global.POWERUP.player_Speed
 		shoot_Delay -= global.POWERUP.shooting_Speed
 		setShootingDelay()
 
-func increase_SideShot():
+func increase_SideShot() -> void:
 		shotSide = true
 		bonusPowerSideShot += global.POWERUP.side_Shot_Power
 
-func increase_Shot():
+func increase_Shot() -> void:
 		shotPowerBonus += global.POWERUP.shot_Power
 
-func increase_Shield():
-	get_node("shield").power = 1    #+1 to  getset function
+func increase_Shield() -> void:
+	$shield.power = 1 #+1 to getset function
 
-func _on_anim_animation_finished(n):
-	if n == id_Player+"_explode":
-		get_node("/root/main/world").nbr_Player -= 1
+func _on_anim_animation_finished(n: StringName) -> void:
+	if n == id_Player + "_explode":
+		get_tree().current_scene.get_node("world").nbr_Player -= 1
 		queue_free()
 
 
-func _on_player_area_entered(area):
-	if (area.is_in_group("enemy") and area.has_method("_hit_something")):
+func _on_player_area_entered(area: Area2D) -> void:
+	if area.is_in_group("enemy") and area.has_method("_hit_something"):
 			self._hit_something()
 			area._hit_something(10)

@@ -42,8 +42,8 @@ position = Vector2( -0.0216088, 14.9543 )
 scale = Vector2( 0.80921, 1.6142 )
 shape = SubResource( 1 )
 
-[connection signal="area_entered" from="." to="." method="_on_shot_area_enter"]
+[connection signal="area_entered" from="." to="." method="_on_shot_area_entered"]
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
 
 

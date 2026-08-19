@@ -10,7 +10,7 @@ extends ParallaxBackground
 @export var speed_X: int = 0
 
 
-func _process(delta):
-	set_scroll_offset(Vector2(get_scroll_offset().x+offsetLoc_X,get_scroll_offset().y+offsetLoc_Y))
+func _process(delta: float) -> void:
+	scroll_offset = Vector2(scroll_offset.x + offsetLoc_X, scroll_offset.y + offsetLoc_Y)
 	offsetLoc_X = offsetLoc_X + speed_X * delta
 	offsetLoc_Y = offsetLoc_Y + speed_Y * delta

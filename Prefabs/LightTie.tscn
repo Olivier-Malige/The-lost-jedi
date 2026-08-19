@@ -38,8 +38,8 @@ delay = 0.1
 
 rect = Rect2( -10, -10, 20, 20 )
 
-[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_entered"]
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
 
 

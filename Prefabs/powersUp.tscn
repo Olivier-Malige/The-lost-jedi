@@ -205,9 +205,9 @@ attenuation = 1.0
 bus = "Sounds"
 area_mask = 1
 
-[connection signal="area_entered" from="." to="." method="_on_powerUp_area_enter"]
+[connection signal="area_entered" from="." to="." method="_on_powerUp_area_entered"]
 
-[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
 
 [connection signal="finished" from="sound_Speed_Up" to="." method="_on_audio_finished"]
 

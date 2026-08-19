@@ -4,6 +4,7 @@
 #  Copyright (c) 2017 Arknoid / Olivier Malige
 #
 
+class_name Enemy
 extends Area2D
 @export var dropOnDestroy: bool = false
 
@@ -15,103 +16,110 @@ extends Area2D
 @export var rnd_Roation_Range_Min: float = -1
 @export var life: int = 0
 @export var hitSomething: int = 1
-@export var points: int =0
-@export var speedX: float =0
+@export var points: int = 0
+@export var speedX: float = 0
 @export var speedY: float = 0
 @export var randomX: float = 0
 @export var randomY: float = 0
-@export var randPowerUp: int   = 0#of  100%
+@export var randPowerUp: int = 0 # of 100%
 @export var setRotation: bool = false
 @export var speedRotation: int = 0
 @export var rndRotation: bool = false
-@onready var hitByPlayer1Shot = false
-@onready var hitByPlayer2Shot = false
-@onready var destroyed = false
-@onready var hitByPlayerShot = false
-@onready var indexSprites
-var bonusCoop = 1.5
-func _process(delta):
+var hitByPlayer1Shot := false
+var hitByPlayer2Shot := false
+var destroyed := false
+var hitByPlayerShot := false
+var indexSprites
+var bonusCoop := 1.5
+
+func _process(delta: float) -> void:
 	hitByPlayerShot = false
-	translate(Vector2(speedX,speedY) * delta)
+	translate(Vector2(speedX, speedY) * delta)
 	#rotate
 	if setRotation:
 		rotation += speedRotation * delta
 
 
-func _ready():
-	if (get_node("/root/main").coop) :
+func _ready() -> void:
+	if _is_coop():
 		life *= bonusCoop
-	randomize();
-	if rndRotation :
-		speedRotation = randf_range(rnd_Roation_Range_Min,rnd_Roation_Range_Max)
+	if rndRotation:
+		speedRotation = randf_range(rnd_Roation_Range_Min, rnd_Roation_Range_Max)
 
-	speedX = randf_range(-randomX-speedX, randomY+speedX)
+	speedX = randf_range(-randomX - speedX, randomY + speedX)
 	#speedy = rand_range(-randomY-speedY, randomY+speedY)
 	add_to_group("enemy")
 
-	if nbrSprites > 1 :
-		indexSprites = randi()%nbrSprites +1
-	else :
+	if nbrSprites > 1:
+		indexSprites = randi() % nbrSprites + 1
+	else:
 		indexSprites = ""
-	$anim.play("start"+str(indexSprites))
+	$anim.play("start" + str(indexSprites))
 
-func _hit_something(dmg = 0):
-	if (destroyed):
+func _hit_something(dmg := 0) -> void:
+	if destroyed:
 		return
 	life -= dmg
 	$sound_Hit.playing = true
 	#Retreat effect
 	var pos = global_position
-	pos.y -=5
+	pos.y -= 5
 	position = pos
 
-	if life <= 0 :
+	if life <= 0:
 		_destroy()
+	else:
+		$anim.play("hit" + str(indexSprites))
 
-	else :
-		get_node("anim").play("hit"+str(indexSprites))
 
-
-func _on_area_enter( area ):
-	if not destroyed :
-		if (area.has_method("_hit_something")):
+func _on_area_entered(area: Area2D) -> void:
+	if not destroyed:
+		if area.has_method("_hit_something"):
 			area._hit_something(hitSomething)
 
-func _on_VisibilityNotifier2D_screen_exited():
+func _on_screen_exited() -> void:
 	set_process(false)
 	queue_free()
 
-func _on_anim_animation_finished(n):
+func _on_anim_animation_finished(n: StringName) -> void:
 	if n == "explode":
-
 		set_process(false)
 		queue_free()
-	elif n == "hit"+str(indexSprites):
-		get_node("anim").play("start"+str(indexSprites))
+	elif n == "hit" + str(indexSprites):
+		$anim.play("start" + str(indexSprites))
 
-func _drop():
-		for i in range (nbrObjectOnDestroy) :
-			var objDroped = objectOnDestroy.instantiate()
-			objDroped.position = Vector2(position.x + randf_range(-dropRange,dropRange),position.y+randf_range(-dropRange,dropRange))
-			get_node("../").add_child(objDroped)
+func _drop() -> void:
+	for i in range(nbrObjectOnDestroy):
+		var objDroped = objectOnDestroy.instantiate()
+		objDroped.position = Vector2(position.x + randf_range(-dropRange, dropRange), position.y + randf_range(-dropRange, dropRange))
+		get_parent().add_child(objDroped)
 
-func _destroy():
+func _destroy() -> void:
 	destroyed = true
 	$sound_Explode.playing = true
-	get_node("anim").play("explode")
+	$anim.play("explode")
 	$CollisionShape2D.queue_free()
-	if (has_node("shootTimer")):
-		get_node("shootTimer").stop()
-	if (hitByPlayerShot):
-		var score = preload("res://Prefabs/score.tscn").instantiate()
-		score.position =global_position
-		score.setScore = points
-		get_node("../").add_child(score)
-		get_node("/root/global").score += points
+	if has_node("shootTimer"):
+		$shootTimer.stop()
+	if hitByPlayerShot:
+		var score_popup = preload("res://Prefabs/score.tscn").instantiate()
+		score_popup.position = global_position
+		score_popup.setScore = points
+		get_parent().add_child(score_popup)
+		global.score += points
+		_refresh_score_hud()
 		#Rand PowersUp
-		if (randi()%101 <= randPowerUp):
+		if randi() % 101 <= randPowerUp:
 			var powerUp = preload("res://Prefabs/powersUp.tscn").instantiate()
-			powerUp.position =global_position
-			get_node("../").add_child(powerUp)
-	if dropOnDestroy :
+			powerUp.position = global_position
+			get_parent().add_child(powerUp)
+	if dropOnDestroy:
 		_drop()
+
+func _refresh_score_hud() -> void:
+	var hud_score := get_tree().current_scene.get_node_or_null("world/hud/score")
+	if hud_score:
+		hud_score.set_text("SCORE : " + str(global.score))
+
+func _is_coop() -> bool:
+	return get_tree().current_scene.coop
