@@ -1,10 +1,10 @@
 [gd_scene load_steps=31 format=3]
 
 [ext_resource path="res://src/ui/menu.gd" type="Script" id=1]
-[ext_resource path="res://Fonts/slkscr.ttf" type="FontFile" id=2]
-[ext_resource path="res://Sounds/menu.wav" type="AudioStream" id=3]
-[ext_resource path="res://Sounds/menu_select.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/menu_start.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/fonts/slkscr.ttf" type="FontFile" id=2]
+[ext_resource path="res://assets/audio/sfx/menu.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/sfx/menu_select.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sfx/menu_start.wav" type="AudioStream" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 

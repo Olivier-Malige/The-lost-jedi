@@ -1,14 +1,9 @@
-#
-#  This file is subject to the terms and conditions defined in
-#  file 'LICENSE.txt', which is part of this source code package.
-#  Copyright (c) 2017 Arknoid / Olivier Malige
-#
 extends GPUParticles2D
 
 @export var star_count: int = 72
 
 func _ready() -> void:
-	texture = preload("res://Assets/UI/light.png")
+	texture = preload("res://assets/sprites/world/light.png")
 	amount = star_count
 	lifetime = 4.0
 	preprocess = 4.0

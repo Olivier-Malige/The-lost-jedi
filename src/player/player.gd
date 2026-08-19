@@ -147,10 +147,10 @@ func _setup_Player() -> void:
 		id_Player = "player1"
 
 	#setup particle colors : Red for player1 and blue for player2
-	$BeamParticlesLeft.set_texture(load("res://Assets/" + id_Player + "_particle.png"))
-	$BeamParticlesRight.set_texture(load("res://Assets/" + id_Player + "_particle.png"))
-	$reactorParticles.set_texture(load("res://Assets/" + id_Player + "_particle.png"))
-	$reactorParticles2.set_texture(load("res://Assets/" + id_Player + "_particle.png"))
+	$BeamParticlesLeft.set_texture(load("res://assets/sprites/player/" + id_Player + "_particle.png"))
+	$BeamParticlesRight.set_texture(load("res://assets/sprites/player/" + id_Player + "_particle.png"))
+	$reactorParticles.set_texture(load("res://assets/sprites/player/" + id_Player + "_particle.png"))
+	$reactorParticles2.set_texture(load("res://assets/sprites/player/" + id_Player + "_particle.png"))
 
 	$anim.play(id_Player + "_idle")
 

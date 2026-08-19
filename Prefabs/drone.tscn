@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3]
 
 [ext_resource path="res://src/enemies/_enemy.gd" type="Script" id=1]
-[ext_resource path="res://Assets/drone.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/sprites/enemies/drone.png" type="Texture2D" id=2]
 [ext_resource path="res://Prefabs/droneReactorParticles.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Assets/player1_particle.png" type="Texture2D" id=4]
-[ext_resource path="res://Sounds/ennemy_Hit.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sounds/drone_Explode.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sprites/player/player1_particle.png" type="Texture2D" id=4]
+[ext_resource path="res://assets/audio/sfx/ennemy_Hit.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sfx/drone_Explode.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 

@@ -1,12 +1,12 @@
 [gd_scene load_steps=19 format=3]
 
 [ext_resource path="res://src/player/player.gd" type="Script" id=1]
-[ext_resource path="res://Assets/xWing.png" type="Texture2D" id=2]
-[ext_resource path="res://Assets/player1_particle.png" type="Texture2D" id=3]
+[ext_resource path="res://assets/sprites/player/xWing.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/sprites/player/player1_particle.png" type="Texture2D" id=3]
 [ext_resource path="res://Prefabs/shield.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Sounds/player_Explode.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sounds/player_Hit.wav" type="AudioStream" id=6]
-[ext_resource path="res://Sounds/player_Shot.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sfx/player_Explode.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sfx/player_Hit.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx/player_Shot.wav" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 

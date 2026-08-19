@@ -1,13 +1,7 @@
-#
-#  This file is subject to the terms and conditions defined in
-#  file 'LICENSE.txt', which is part of this source code package.
-#  Copyright (c) 2017 Arknoid / Olivier Malige
-#
 class_name ProjectilePool
 extends Node
 
 var _free: Dictionary = {}
-
 
 func _ready() -> void:
 	add_to_group("projectile_pool")

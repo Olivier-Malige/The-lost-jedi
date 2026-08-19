@@ -133,7 +133,6 @@ func go_World_Screen() -> void:
 	startScreen = false
 	gameOverScreen = false
 
-# Smoothly moves and zooms the camera between title and playfield views.
 func _tween_camera(target_pos: Vector2, target_zoom: Vector2, duration: float) -> void:
 	if _camera_tween:
 		_camera_tween.kill()

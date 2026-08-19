@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3]
 
 [ext_resource path="res://src/enemies/motherShip.gd" type="Script" id=1]
-[ext_resource path="res://Assets/motherShip.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/sprites/enemies/motherShip.png" type="Texture2D" id=2]
 [ext_resource path="res://Prefabs/droneReactorParticles.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Sounds/motherShip_hit.wav" type="AudioStream" id=4]
-[ext_resource path="res://Sounds/motherShip_explode.wav" type="AudioStream" id=5]
-[ext_resource path="res://Sounds/interceptor_Shoot.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx/motherShip_hit.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sfx/motherShip_explode.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sfx/interceptor_Shoot.wav" type="AudioStream" id=6]
 
 [sub_resource type="Animation" id=1]
 
