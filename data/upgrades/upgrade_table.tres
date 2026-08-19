@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="UpgradeTable" load_steps=7 format=3]
 
-[ext_resource type="Script" path="res://src/ui/upgrade_table.gd" id="1"]
+[ext_resource type="Script" path="res://data/upgrades/upgrade_table.gd" id="1"]
 [ext_resource type="Resource" path="res://data/upgrades/speed.tres" id="2"]
 [ext_resource type="Resource" path="res://data/upgrades/damage.tres" id="3"]
 [ext_resource type="Resource" path="res://data/upgrades/side_shot.tres" id="4"]

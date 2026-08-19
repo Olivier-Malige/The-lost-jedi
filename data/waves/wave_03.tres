@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="WaveDefinition" load_steps=9 format=3]
 
-[ext_resource type="Script" path="res://src/waves/wave_definition.gd" id="1"]
-[ext_resource type="Script" path="res://src/waves/spawn_rule.gd" id="2"]
-[ext_resource type="PackedScene" path="res://Prefabs/Asteroid.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://Prefabs/bigAsteroid.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Prefabs/Tie.tscn" id="5"]
+[ext_resource type="Script" path="res://data/waves/wave_definition.gd" id="1"]
+[ext_resource type="Script" path="res://data/waves/spawn_rule.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/asteroid.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/big_asteroid.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/tie.tscn" id="5"]
 
 [sub_resource type="Resource" id="rule_1"]
 script = ExtResource("2")

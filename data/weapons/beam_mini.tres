@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WeaponDefinition" load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://src/combat/weapon_definition.gd" id="1"]
-[ext_resource type="PackedScene" path="res://Prefabs/beam/beam_mini.tscn" id="2"]
+[ext_resource type="Script" path="res://data/weapons/weapon_definition.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player/beam/beam_mini.tscn" id="2"]
 
 [resource]
 script = ExtResource("1")
