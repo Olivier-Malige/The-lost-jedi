@@ -69,6 +69,13 @@ position = Vector2(597.14, 466.619)
 scale = Vector2(1.71894, 1.85326)
 texture = ExtResource("2")
 
+[node name="Stars" type="CPUParticles2D" parent="background"]
+show_behind_parent = true
+z_index = -1
+position = Vector2(-80, -80)
+script = ExtResource("13")
+star_count = 72
+
 [node name="Lights" type="Control" parent="background" unique_id=128785989]
 layout_mode = 3
 anchors_preset = 0
@@ -195,11 +202,6 @@ scale = Vector2(0.130362, 0.101974)
 [node name="LightTie9" parent="background/Lights/Ties" unique_id=924567518 instance=ExtResource("7")]
 position = Vector2(-501.664, -235.079)
 scale = Vector2(0.130362, 0.101974)
-
-[node name="Stars" type="GPUParticles2D" parent="background/Lights"]
-position = Vector2(-80, -80)
-script = ExtResource("13")
-star_count = 72
 
 [node name="DeathStar" type="Control" parent="background/Lights" unique_id=1450428099]
 anchors_preset = 0

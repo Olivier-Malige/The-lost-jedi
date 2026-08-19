@@ -108,6 +108,7 @@ func set_Resume() -> void:
 func go_Start_Screen() -> void:
 	worldScreen = false
 	startScreen = true
+	_set_title_stars(true)
 	_tween_camera($camera_Pos_Out.position, ZOOM_OUT, 1.1)
 	var start = preload("res://scenes/menu/start.tscn").instantiate()
 	add_child(start)
@@ -121,12 +122,21 @@ func go_Hiscore_Screen() -> void:
 
 
 func go_World_Screen() -> void:
+	_set_title_stars(false)
 	_tween_camera($camera_Pos_In.position, ZOOM_IN, 1.15)
 	var world = preload("res://scenes/world/world.tscn").instantiate()
 	add_child(world)
 	worldScreen = true
 	startScreen = false
 	gameOverScreen = false
+
+
+# Title starfield sits behind the TV sprite so it cannot cover the frame or console.
+func _set_title_stars(on: bool) -> void:
+	var stars := get_node_or_null("background/Stars")
+	if stars:
+		stars.visible = on
+		stars.emitting = on
 
 func _tween_camera(target_pos: Vector2, target_zoom: Vector2, duration: float) -> void:
 	if _camera_tween:
@@ -151,3 +161,4 @@ func set_Graphic(level: String) -> void:
 				ch.visible = true
 			elif level == "low":
 				ch.visible = false
+		_set_title_stars(level != "low")
