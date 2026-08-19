@@ -4,251 +4,93 @@
 #  Copyright (c) 2017 Arknoid / Olivier Malige
 #
 
-################################################
-#Section unfinished and in the process of development
-################################################
-
 class_name WaveSpawner
 extends Node2D
-var nubWave = 0
-var Wave0 = {
-	asteroid = [true,2],
-	bigAsteroid = [false,1],
-	tie = [false,1],
-	interceptor=[false,1],
-	drone=[true,3],
-	motherShip=[false,1],
-	turret = [false,4]
-	}
-var Wave1 = {
-	asteroid = [true,2],
-	bigAsteroid = [false,1],
-	tie = [true,4],
-	interceptor=[false,1],
-	drone=[true,3],
-	motherShip=[false,1],
-	turret = [false,4]
-	}
-var Wave2 = {
-	asteroid = [true,2],
-	bigAsteroid = [false,1],
-	tie = [true,4],
-	interceptor=[false,1],
-	drone=[true,2.5],
-	motherShip=[false,1],
-	turret = [false,4]
-	}
-var Wave3 = {
-	asteroid = [true,2],
-	bigAsteroid = [true,1],
-	tie = [true,4],
-	interceptor=[false,1],
-	drone=[false,1],
-	motherShip=[false,1],
-	turret = [false,4]
-	}
-var Wave4 = {
-	asteroid = [true,0.3],
-	bigAsteroid = [true,0.2],
-	tie = [false,1],
-	interceptor=[false,2],
-	drone=[false,1],
-	motherShip=[false,1],
-	turret = [false,4]
-	}
-var Wave5 = {
-	asteroid = [true,1],
-	bigAsteroid = [true,1],
-	tie = [false,1],
-	interceptor=[true,3],
-	drone=[true,2],
-	motherShip=[false,1],
-	turret = [false,4]
-	}
-var Wave6 = {
-	asteroid = [false,1],
-	bigAsteroid = [true,3],
-	tie = [false,1],
-	interceptor=[true,3],
-	drone=[true,2],
-	motherShip=[false,1],
-	turret = [false,4]
-	}
-var Wave7 = {
-	asteroid = [false,1],
-	bigAsteroid = [false,1],
-	tie = [true,1],
-	interceptor=[true,2],
-	drone=[true,5],
-	motherShip=[false,1],
-	turret = [false,4]
-	}
-var Wave8 = {
-	asteroid = [false,1],
-	bigAsteroid = [false,1],
-	tie = [false,2],
-	interceptor=[false,1],
-	drone=[true,5],
-	motherShip=[true,10],
-	turret = [false,4]
-	}
-var Wave9 = {
-	asteroid = [false,2],
-	bigAsteroid = [false,1],
-	tie = [false,2],
-	interceptor=[true,4],
-	drone=[true,5],
-	motherShip=[true,8],
-	turret = [false,4]
-	}
-var Wave10 = {
-	asteroid = [false,0.3],
-	bigAsteroid = [false,0.4],
-	tie = [false,1],
-	interceptor=[true,2],
-	drone=[true,2],
-	motherShip=[false,5],
-	turret = [false,4]
-	}
-var Wave11 = {
-	asteroid = [false,2],
-	bigAsteroid = [false,2],
-	tie = [false,2],
-	interceptor=[true,2],
-	drone=[true,2],
-	motherShip=[false,5],
-	turret = [true,5]
-	}
-var Wave12 = {
-	asteroid = [false,1],
-	bigAsteroid = [false,2],
-	tie = [false,1],
-	interceptor=[true,2],
-	drone=[true,1],
-	motherShip=[true,6],
-	turret = [true,5]
-	}
-var metaWave = [Wave0,Wave1,Wave2,Wave3,Wave4,Wave5,Wave6,Wave7,Wave8,Wave9,Wave10,Wave11,Wave12]
 
-func _ready():
-	global.wave = nubWave +1
-	spawn(metaWave[nubWave].asteroid,metaWave[nubWave].bigAsteroid,metaWave[nubWave].tie,
-	metaWave[nubWave].interceptor,metaWave[nubWave].drone,metaWave[nubWave].motherShip,metaWave[nubWave].turret)
+@export var catalog: WaveCatalog
+@export var formation_gap: float = 0.2
 
-func _process(delta):
+var wave_index := 0
+var _rule_timers: Array[Timer] = []
+var _master: Timer
+var _formation_timer: Timer
 
-	get_node("../hud/wave").set_text("Wave : "+str(nubWave+1))
+func _ready() -> void:
+	if catalog == null:
+		catalog = load("res://data/waves/wave_catalog.tres")
+	_master = Timer.new()
+	_master.one_shot = true
+	_master.timeout.connect(_on_master_timeout)
+	add_child(_master)
+	_formation_timer = Timer.new()
+	_formation_timer.one_shot = true
+	_formation_timer.wait_time = formation_gap
+	add_child(_formation_timer)
+	_apply_wave(0)
 
-func spawn(asteroid,bigAsteroid,tie,interceptor,drone,motherShip,turret):
-	$asteroidSpawnTimer.stop()
-	$bigAsteroidSpawnTimer.stop()
-	$tieSpawnTimer.stop()
-	$interceptorSpwnTimer.stop()
-	$droneSpawnTimer.stop()
-	$motherShipSpawnTimer.stop()
-	$turretSpawnTimer.stop()
-	if asteroid[0] :
-		$asteroidSpawnTimer.start()
-		$asteroidSpawnTimer.set_wait_time(asteroid[1])
-	if bigAsteroid[0] :
-		$bigAsteroidSpawnTimer.start()
-		$bigAsteroidSpawnTimer.set_wait_time(bigAsteroid[1])
-	if tie[0] :
-		$tieSpawnTimer.start()
-		$tieSpawnTimer.set_wait_time(tie[1])
-	if interceptor[0] :
-		$interceptorSpwnTimer.start()
-		$interceptorSpwnTimer.set_wait_time(interceptor[1])
-	if drone[0] :
-		$droneSpawnTimer.start()
-		$droneSpawnTimer.set_wait_time(drone[1])
-	if motherShip[0] :
-		$motherShipSpawnTimer.start()
-		$motherShipSpawnTimer.set_wait_time(motherShip[1])
-	if turret[0] :
-		$turretSpawnTimer.start()
-		$turretSpawnTimer.set_wait_time(turret[1])
+func _process(_delta: float) -> void:
+	var hud_wave := get_node_or_null("../hud/wave")
+	if hud_wave:
+		hud_wave.set_text("Wave : " + str(wave_index + 1))
 
+func _apply_wave(index: int) -> void:
+	if catalog == null or catalog.waves.is_empty():
+		return
+	wave_index = clampi(index, 0, catalog.waves.size() - 1)
+	global.wave = wave_index + 1
+	var wave: WaveDefinition = catalog.waves[wave_index]
+	_clear_rule_timers()
+	for rule in wave.rules:
+		if rule == null or rule.scene == null:
+			continue
+		var timer := Timer.new()
+		timer.wait_time = maxf(rule.interval, 0.05)
+		timer.timeout.connect(_on_rule_timeout.bind(rule))
+		add_child(timer)
+		timer.start()
+		_rule_timers.append(timer)
+	_master.wait_time = wave.duration
+	_master.start()
 
-func _on_asteroidSpawnTimer_timeout():
-	var rndPos = randi()%11
-	var asteroid = preload("res://Prefabs/Asteroid.tscn").instantiate()
-	asteroid.position =get_node("spawnPos"+str(rndPos)).global_position
-	add_child(asteroid)
+func _clear_rule_timers() -> void:
+	for t in _rule_timers:
+		t.stop()
+		t.queue_free()
+	_rule_timers.clear()
 
-func _on_tieSpawnTimer_timeout():
-	var rndPos = (randi()%9)+1
-	var tie = preload("res://Prefabs/Tie.tscn").instantiate()
-	tie.position =get_node("spawnPos"+str(rndPos)).global_position
-	add_child(tie)
+func _on_rule_timeout(rule: SpawnRule) -> void:
+	var count := maxi(rule.formation, 1)
+	var center := _random_lane(rule.spawn_min, rule.spawn_max)
+	for i in count:
+		var lane := center + i - int(count / 2)
+		_spawn_at(rule.scene, lane)
+		if i < count - 1:
+			_formation_timer.start()
+			await _formation_timer.timeout
 
-func _on_bigAsteroidSpawnTimer_timeout():
-	var rndPos = randi()%11
-	var bigAsteroid = preload("res://Prefabs/bigAsteroid.tscn").instantiate()
-	bigAsteroid.position =get_node("spawnPos"+str(rndPos)).global_position
-	add_child(bigAsteroid)
+func _random_lane(spawn_min: int, spawn_max: int) -> int:
+	if spawn_max < spawn_min:
+		spawn_max = spawn_min
+	return randi_range(spawn_min, spawn_max)
 
-func _on_interceptorSpwnTimer_timeout():
-	var rndPos = randi()%11
-	var interceptor = preload("res://Prefabs/interceptor.tscn").instantiate()
-	interceptor.position =get_node("spawnPos"+str(rndPos)).global_position
-	add_child(interceptor)
+func _spawn_at(packed: PackedScene, lane: int) -> void:
+	lane = clampi(lane, 0, 11)
+	var marker := get_node_or_null("spawnPos" + str(lane))
+	if marker == null:
+		return
+	var enemy = packed.instantiate()
+	enemy.position = marker.global_position
+	add_child(enemy)
 
-func _on_droneSpawnTimer_timeout():
-	var rndPos = (randi()%9)+1
-	var drone = preload("res://Prefabs/drone.tscn").instantiate()
-	var drone1 = preload("res://Prefabs/drone.tscn").instantiate()
-	var drone2 = preload("res://Prefabs/drone.tscn").instantiate()
-
-	drone.position = get_node("spawnPos"+str(rndPos)).global_position
-	add_child(drone)
-	get_node("droneResume").start()
-	await get_node("droneResume").timeout
-
-	if (rndPos+1 <= 11):
-		drone1.position = get_node("spawnPos"+str(rndPos+1)).global_position
-		add_child(drone1)
-		get_node("droneResume").start()
-		await get_node("droneResume").timeout
-
-	if (rndPos-1 >= 0):
-		drone2.position =get_node("spawnPos"+str(rndPos-1)).global_position
-		drone2.position =get_node("spawnPos"+str(rndPos-1)).global_position
-		add_child(drone2)
-
-func _on_motherShipSpawnTimer_timeout():
-	var rndPos = randi()%11
-	var motherShip = preload("res://Prefabs/motherShip.tscn").instantiate()
-	motherShip.position =get_node("spawnPos"+str(rndPos)).global_position
-	add_child(motherShip)
-func _on_masterTimer_timeout():
+func _on_master_timeout() -> void:
 	goto_Next_Wave()
-	_update_State()
-	_update_Wave()
 
+func goto_Previous_Wave() -> void:
+	if wave_index > 0:
+		_apply_wave(wave_index - 1)
 
-func _on_turretSpawnTimer_timeout():
-	var rndPos = randi()%11
-	var turret = preload("res://Prefabs/turret.tscn").instantiate()
-	turret.position =get_node("spawnPos"+str(rndPos)).global_position
-	add_child(turret)
-
-func goto_Previous_Wave():
-	if nubWave > 0 :
-		nubWave -= 1
-		$masterTimer.start()
-	_update_State()
-	_update_Wave()
-
-func goto_Next_Wave():
-	if (nubWave < metaWave.size()-1):
-		nubWave +=1
-		_update_State()
-		_update_Wave()
-
-func _update_State():
-	global.wave = nubWave +1
-
-func _update_Wave():
-	spawn(metaWave[nubWave].asteroid,metaWave[nubWave].bigAsteroid,metaWave[nubWave].tie,metaWave[nubWave].interceptor,
-	metaWave[nubWave].drone,metaWave[nubWave].motherShip,metaWave[nubWave].turret)
+func goto_Next_Wave() -> void:
+	if wave_index < catalog.waves.size() - 1:
+		_apply_wave(wave_index + 1)
+	else:
+		_apply_wave(wave_index)
