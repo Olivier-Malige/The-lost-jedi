@@ -49,6 +49,8 @@ func _ready() -> void:
 	speedX = randf_range(-randomX - speedX, randomY + speedX)
 	#speedy = rand_range(-randomY-speedY, randomY+speedY)
 	add_to_group("enemy")
+	collision_layer = 2
+	collision_mask = 1 | 4
 
 	if nbrSprites > 1:
 		indexSprites = randi() % nbrSprites + 1
@@ -117,9 +119,7 @@ func _destroy() -> void:
 		_drop()
 
 func _refresh_score_hud() -> void:
-	var hud_score := get_tree().current_scene.get_node_or_null("world/hud/score")
-	if hud_score:
-		hud_score.set_text("SCORE : " + str(global.score))
+	Events.score_changed.emit(global.score)
 
 func _is_coop() -> bool:
 	return get_tree().current_scene.coop

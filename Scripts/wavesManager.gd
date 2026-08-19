@@ -28,16 +28,12 @@ func _ready() -> void:
 	add_child(_formation_timer)
 	_apply_wave(0)
 
-func _process(_delta: float) -> void:
-	var hud_wave := get_node_or_null("../hud/wave")
-	if hud_wave:
-		hud_wave.set_text("Wave : " + str(wave_index + 1))
-
 func _apply_wave(index: int) -> void:
 	if catalog == null or catalog.waves.is_empty():
 		return
 	wave_index = clampi(index, 0, catalog.waves.size() - 1)
 	global.wave = wave_index + 1
+	Events.wave_changed.emit(global.wave)
 	var wave: WaveDefinition = catalog.waves[wave_index]
 	_clear_rule_timers()
 	for rule in wave.rules:

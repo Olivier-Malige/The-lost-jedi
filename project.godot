@@ -19,6 +19,7 @@ config/icon="res://Assets/UI/icon.png"
 [autoload]
 
 global="*res://Scripts/global.gd"
+Events="*res://Scripts/events.gd"
 
 [display]
 
@@ -262,6 +263,15 @@ debug_Key6={
  ]
 }
 
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="player_shot"
+2d_physics/layer_4="enemy_shot"
+2d_physics/layer_5="pickup"
+2d_physics/layer_6="asteroid"
 
 [rendering]
 

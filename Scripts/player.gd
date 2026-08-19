@@ -18,6 +18,8 @@ const UPGRADE_SIDE: UpgradeDefinition = preload("res://data/upgrades/side_shot.t
 
 var set_Player_2 := false # Call it on instancing for player 2 stats and colors
 var loadout: PlayerLoadout
+var weapons: PlayerWeapons
+var vitals: PlayerVitals
 @onready var energy = STATS.energy_max / 2
 @onready var touched = false
 @onready var canShooting = true
@@ -34,12 +36,16 @@ enum beam_State {EMPTY, SMALL, NORMAL, FULL}
 
 func _ready() -> void:
 	loadout = PlayerLoadout.new(STATS)
+	weapons = PlayerWeapons.new(self)
+	vitals = PlayerVitals.new(self)
 	_setup_Player()
 	update_controller()
 	update_energy()
 	$ShootingDelay.set_wait_time(loadout.fire_delay)
 	global.score = 0
 	add_to_group("player")
+	collision_layer = 1
+	collision_mask = 2 | 8 | 16 | 32
 
 func update_controller() -> void:
 	if get_tree().current_scene.coop:
@@ -118,7 +124,7 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_released(controller + "_fire"):
 		if beam_Power != beam_State.EMPTY:
-			_shooting_Beam()
+			weapons.fire_beam(beam_Power)
 
 	if beam_Focusing:
 		accumBeam += delta
@@ -131,7 +137,7 @@ func _process(delta: float) -> void:
 
 
 	if shooting and canShooting:
-		_shooting()
+		weapons.fire_primary()
 
 func _setup_Player() -> void:
 		#set id_Player for appropriate setup (colors , stats,... )
@@ -174,90 +180,9 @@ func _set_Power_Beam(power) -> void:
 			beam_Power = beam_State.FULL
 			$BeamParticlesLeft.amount = 20
 			$BeamParticlesRight.amount = 20
-func _shooting() -> void:
-	var shot = ProjectilePool.spawn(WEAPON_PRIMARY.projectile, $shootFrom.global_position, get_parent())
-	shot.player_Id = id_Player
-	shot.damage += loadout.damage_bonus
-	shot.setPowerAnim()
-	$sound_Shooting.playing = true
-
-	canShooting = false
-	$ShootingDelay.start()
-	if loadout.side_shot:
-		var lShot = ProjectilePool.spawn(WEAPON_SIDE.projectile, $shootFromLeft.global_position, get_parent())
-		var rShot = ProjectilePool.spawn(WEAPON_SIDE.projectile, $shootFromRight.global_position, get_parent())
-		lShot.player_Id = id_Player
-		rShot.player_Id = id_Player
-		rShot.damage += loadout.side_damage_bonus
-		lShot.damage += loadout.side_damage_bonus
-		lShot.setPowerAnim()
-		rShot.setPowerAnim()
-		rShot.speedX = -100
-		lShot.speedX = 100
-
-func _shooting_Beam() -> void:
-	var beam_shot_left
-	var beam_shot_right
-	match beam_Power:
-		beam_State.SMALL:
-			beam_shot_left = WEAPON_BEAM_MINI.projectile.instantiate()
-			beam_shot_right = WEAPON_BEAM_MINI.projectile.instantiate()
-			$sound_Beam_mini.playing = true
-
-		beam_State.NORMAL:
-			beam_shot_left = WEAPON_BEAM_NORMAL.projectile.instantiate()
-			beam_shot_right = WEAPON_BEAM_NORMAL.projectile.instantiate()
-			$sound_Beam_normal.playing = true
-		beam_State.FULL:
-			beam_shot_left = WEAPON_BEAM_FULL.projectile.instantiate()
-			beam_shot_right = WEAPON_BEAM_FULL.projectile.instantiate()
-			$sound_Beam_full.playing = true
-
-	#setup beam power and color to appropriate player
-
-	for ch in beam_shot_left.get_children():
-		ch.damage += loadout.damage_bonus
-		ch.player_Id = id_Player
-		ch.setPowerAnim()
-
-	for ch in beam_shot_right.get_children():
-		ch.damage += loadout.damage_bonus
-		ch.player_Id = id_Player
-		ch.setPowerAnim()
-
-	beam_shot_left.position = $shootFromLeft.global_position
-	beam_shot_right.position = $shootFromRight.global_position
-	get_parent().add_child(beam_shot_left)
-	get_parent().add_child(beam_shot_right)
-
-	#reset speed malus
-	malusSpeed = 0
 
 func _hit_something(dmg := 1) -> void:
-	if touched:
-		return
-	if energy > 1:
-		$sound_Hit.playing = true
-		energy -= 1
-		update_energy()
-		$touchedReset.start()
-		$xWing.set_modulate(Color(2, 0.4, 0.4, 1)) #Set player Red color
-		#low speed
-		malusSpeed = 120
-		#Reset all powersUp
-		loadout.reset()
-		setShootingDelay()
-		touched = true
-	else:
-		energy = 0
-		$sound_Explode.playing = true
-		update_energy()
-		$anim.play(id_Player + "_explode")
-		set_process(false)
-		$reactorParticles.set_emitting(false)
-		$reactorParticles2.set_emitting(false)
-		$CollisionShape2D.queue_free()
-		#get_node("sfx").play("explode")
+	vitals.hit(dmg)
 
 func _on_touchedReset_timeout() -> void:
 	touched = false
@@ -273,14 +198,7 @@ func _on_ShootingDelay_timeout() -> void:
 	canShooting = true
 
 func update_energy() -> void:
-	var energy_hud := get_tree().current_scene.get_node("world/hud/energy_" + id_Player)
-	for ch in energy_hud.get_children():
-		ch.queue_free()
-
-	for i in range(energy):
-		var pip = load("res://Prefabs/" + id_Player + "_Energy.tscn").instantiate()
-		pip.position = Vector2(0, -i * 12)
-		energy_hud.add_child(pip)
+	Events.energy_changed.emit(id_Player, energy)
 
 func apply_upgrade(upgrade: UpgradeDefinition) -> void:
 	if upgrade == null:
@@ -309,7 +227,7 @@ func increase_Shield() -> void:
 
 func _on_anim_animation_finished(n: StringName) -> void:
 	if n == id_Player + "_explode":
-		get_tree().current_scene.get_node("world").nbr_Player -= 1
+		Events.player_died.emit()
 		queue_free()
 
 

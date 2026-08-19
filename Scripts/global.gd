@@ -34,7 +34,7 @@ var sav_path := "user://data.json"
 const VERSION_NUMBER = "Alpha 7"
 func _ready() -> void:
 #	save_Data()
-	load_Data()
+	saveData = SaveService.load_data(saveData)
 	setSound(saveData.config.sound)
 	setMusic(saveData.config.music)
 
@@ -44,20 +44,8 @@ func setSound(state: bool) -> void:
 func setMusic(state: bool) -> void:
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), not state)
 
-func load_Data() -> void:
-	# Load all game save
-	if FileAccess.file_exists(sav_path):
-		var f = FileAccess.open(sav_path, FileAccess.READ)
-		var parsed = JSON.parse_string(f.get_as_text())
-		if parsed != null:
-			saveData = parsed
-	else:
-		save_Data()
-
 func save_Data() -> void:
-		# Save all play data
-		var f = FileAccess.open(sav_path, FileAccess.WRITE)
-		f.store_line(JSON.stringify(saveData))
+	SaveService.save_data(saveData)
 
 func update_Data() -> void:
 	var mode: Dictionary = saveData.coop if get_tree().current_scene.coop else saveData.solo

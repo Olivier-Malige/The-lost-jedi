@@ -11,6 +11,8 @@ var _upgrade: UpgradeDefinition
 
 func _ready() -> void:
 	add_to_group("powersUp")
+	collision_layer = 16
+	collision_mask = 1
 	_upgrade = TABLE.pick()
 	if _upgrade:
 		$anim.play(String(_upgrade.anim))
@@ -28,6 +30,7 @@ func _on_powerUp_area_entered(area: Area2D) -> void:
 		if area.has_method("apply_upgrade"):
 			area.apply_upgrade(_upgrade)
 		_play_pickup_sound()
+		Events.powerup_collected.emit(_upgrade)
 		$anim.queue_free()
 		$Sprite2D.queue_free()
 		$CollisionShape2D.queue_free()

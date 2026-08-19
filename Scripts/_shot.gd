@@ -24,8 +24,12 @@ func _process(delta: float) -> void:
 func _ready() -> void:
 	if playerShot:
 		add_to_group("player_Shot")
+		collision_layer = 4
+		collision_mask = 2 | 32
 	else:
 		add_to_group("enemy_Shot")
+		collision_layer = 8
+		collision_mask = 1 | 2 | 32
 
 
 func _on_screen_exited() -> void:

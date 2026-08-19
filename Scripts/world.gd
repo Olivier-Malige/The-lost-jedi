@@ -6,6 +6,7 @@
 extends Node2D
 var nbr_Player := 0
 func _ready() -> void:
+	Events.player_died.connect(_on_player_died)
 	if $music.stream:
 		$music.stream.loop = true
 	if get_tree().current_scene.coop:
@@ -23,7 +24,9 @@ func _ready() -> void:
 		add_child(player1, true)
 		nbr_Player = 1
 
-func _process(_delta: float) -> void:
+func _on_player_died() -> void:
+	nbr_Player -= 1
 	if nbr_Player <= 0:
+		Events.game_over_requested.emit()
 		get_tree().current_scene.go_GameOver_Screen()
 		queue_free()
