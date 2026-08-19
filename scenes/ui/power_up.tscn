@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3]
 
 [ext_resource path="res://scenes/ui/power_up.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/pickups/powerUp.png" type="Texture2D" id=2]
-[ext_resource path="res://assets/audio/sfx/powerUp_Speed.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/audio/sfx/powerUp_energy.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/audio/sfx/powerUp_lateralShoot.wav" type="AudioStream" id=5]
-[ext_resource path="res://assets/audio/sfx/powerUp_Shot.wav" type="AudioStream" id=6]
-[ext_resource path="res://assets/audio/sfx/Powerup_Shield.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sprites/pickups/power_up.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/audio/sfx/pickups/speed.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/sfx/pickups/energy.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/audio/sfx/pickups/side_shot.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sfx/pickups/damage.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx/pickups/shield.wav" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 

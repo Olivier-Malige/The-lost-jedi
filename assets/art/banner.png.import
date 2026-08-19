@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c6tapgg1e1pxn"
-path="res://.godot/imported/banner.png-8f1fb5aae5691f835eb637bb6754347a.ctex"
+path="res://.godot/imported/banner.png-f6764b6a4182a6ee89c2ff64c61c3821.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/art/banner.png"
-dest_files=["res://.godot/imported/banner.png-8f1fb5aae5691f835eb637bb6754347a.ctex"]
+dest_files=["res://.godot/imported/banner.png-f6764b6a4182a6ee89c2ff64c61c3821.ctex"]
 
 [params]
 

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/player/shield.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/player/shield.png" type="Texture2D" id=2]
-[ext_resource path="res://assets/audio/sfx/shield_Trowback.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/audio/sfx/player/shield_throwback.wav" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 
