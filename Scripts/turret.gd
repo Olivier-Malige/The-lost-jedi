@@ -16,8 +16,6 @@ func _on_ShotDelay_timeout() -> void:
 	if destroyed:
 		return
 	$sound_Shooting.playing = true
-	var shot = preload("res://Prefabs/turretShot.tscn").instantiate()
-	shot.position = $shootPos.global_position
-	get_parent().add_child(shot)
+	var shot = ProjectilePool.spawn(preload("res://Prefabs/turretShot.tscn"), $shootPos.global_position, get_parent())
 	shot.speedX = randf_range(-150, 150)
 	$ShotDelay.start()

@@ -30,4 +30,4 @@ func _ready() -> void:
 
 func _on_screen_exited() -> void:
 	set_process(false)
-	queue_free()
+	ProjectilePool.despawn(self)

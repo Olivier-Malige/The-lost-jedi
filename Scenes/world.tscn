@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource path="res://Scripts/world.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/slkscr.ttf" type="FontFile" id=2]
 [ext_resource path="res://Scripts/wavesManager.gd" type="Script" id=3]
 [ext_resource path="res://Sounds/game.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/projectile_pool.gd" type="Script" id=6]
 
 [node name="world" type="Node2D"]
 
@@ -202,7 +203,10 @@ bus = "Music"
 
 position = Vector2( 400, 560 )
 
-[node name="background" parent="." index="4" instance=ExtResource( 5 )]
+[node name="projectilePool" type="Node" parent="." index="4"]
+script = ExtResource( 6 )
+
+[node name="background" parent="." index="5" instance=ExtResource( 5 )]
 
 scroll_ignore_camera_zoom = true
 speed_Y = 140

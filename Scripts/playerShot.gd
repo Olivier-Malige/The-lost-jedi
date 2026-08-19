@@ -13,12 +13,20 @@ extends Shot
 @export var power_Large: float
 @export var power_Full: float
 var player_Id
+var _base_damage: float = -1.0
 
 
 func _ready() -> void:
 	super._ready()
+	if _base_damage < 0.0:
+		_base_damage = damage
 	if damage > damage_Max:
 		damage = damage_Max
+
+
+func prepare() -> void:
+	damage = _base_damage
+	speedX = 0
 
 
 #must be calling before shot instantiate
@@ -40,4 +48,4 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy") or area.is_in_group("asteroid") or area.is_in_group("turret"):
 		area.hitByPlayerShot = true
 		area._hit_something(damage)
-		queue_free()
+		ProjectilePool.despawn(self)

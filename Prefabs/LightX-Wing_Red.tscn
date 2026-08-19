@@ -32,7 +32,7 @@ script = ExtResource( 2 )
 _sections_unfolded = [ "Range" ]
 range_Min = 1.0
 range_Max = 2.0
-delay = 0.001
+delay = 0.08
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="0"]
 

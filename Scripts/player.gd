@@ -181,43 +181,25 @@ func _set_Power_Beam(power) -> void:
 			$BeamParticlesLeft.amount = 20
 			$BeamParticlesRight.amount = 20
 func _shooting() -> void:
-	var shot
-	shot = preload("res://Prefabs/player_Shot.tscn").instantiate()
-
-	shot.player_Id = id_Player #set id player to shot for player color
+	var shot = ProjectilePool.spawn(preload("res://Prefabs/player_Shot.tscn"), $shootFrom.global_position, get_parent())
+	shot.player_Id = id_Player
 	shot.damage += shotPowerBonus
 	shot.setPowerAnim()
-		# Use the Position2D as reference
-	shot.position = $shootFrom.global_position
-		# Put it one  parent above, so it is not moved by us
-	get_parent().add_child(shot)
-
-		# Play sound
 	$sound_Shooting.playing = true
 
 	canShooting = false
 	$ShootingDelay.start()
 	if shotSide:
-		#load player colored shot
-
-		var lShot = preload("res://Prefabs/player_SideShot.tscn").instantiate()
-		var rShot = preload("res://Prefabs/player_SideShot.tscn").instantiate()
-
-		#set id player to side shots for statistic
+		var lShot = ProjectilePool.spawn(preload("res://Prefabs/player_SideShot.tscn"), $shootFromLeft.global_position, get_parent())
+		var rShot = ProjectilePool.spawn(preload("res://Prefabs/player_SideShot.tscn"), $shootFromRight.global_position, get_parent())
 		lShot.player_Id = id_Player
 		rShot.player_Id = id_Player
 		rShot.damage += bonusPowerSideShot
 		lShot.damage += bonusPowerSideShot
 		lShot.setPowerAnim()
 		rShot.setPowerAnim()
-
-		lShot.position = $shootFromLeft.global_position
-		rShot.position = $shootFromRight.global_position
 		rShot.speedX = -100
 		lShot.speedX = 100
-
-		get_parent().add_child(lShot)
-		get_parent().add_child(rShot)
 
 func _shooting_Beam() -> void:
 	var beam_shot_left

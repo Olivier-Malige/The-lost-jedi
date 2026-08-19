@@ -13,6 +13,12 @@ func _ready() -> void:
 	super._ready()
 	speedY = SPEED_Y
 
+func prepare() -> void:
+	speedY = SPEED_Y
+	speedX = 0
+	trowbackByShield = false
+	rotation = 0
+
 func is_enemy() -> bool:
 	return true
 
@@ -23,4 +29,4 @@ func _on_shot_area_entered(area: Area2D) -> void:
 		if trowbackByShield:
 			area.hitByPlayerShot = true
 		area._hit_something(damage)
-		queue_free()
+		ProjectilePool.despawn(self)

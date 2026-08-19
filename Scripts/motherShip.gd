@@ -8,18 +8,10 @@ extends Enemy
 
 func _on_ShootTimer_timeout() -> void:
 	$sound_Shooting.playing = true
-	var shot = preload("res://Prefabs/motherShipShot.tscn").instantiate()
-	var shot1 = preload("res://Prefabs/motherShipShot.tscn").instantiate()
-	var shot2 = preload("res://Prefabs/motherShipShot.tscn").instantiate()
-	var shot3 = preload("res://Prefabs/motherShipShot.tscn").instantiate()
-	shot.position = $ShootPos.global_position
-	shot1.position = $ShootPos1.global_position
-	shot2.position = $ShootPos2.global_position
-	shot3.position = $ShootPos3.global_position
-	get_parent().add_child(shot)
-	get_parent().add_child(shot1)
-	get_parent().add_child(shot2)
-	get_parent().add_child(shot3)
+	var shot = ProjectilePool.spawn(preload("res://Prefabs/motherShipShot.tscn"), $ShootPos.global_position, get_parent())
+	var shot1 = ProjectilePool.spawn(preload("res://Prefabs/motherShipShot.tscn"), $ShootPos1.global_position, get_parent())
+	var shot2 = ProjectilePool.spawn(preload("res://Prefabs/motherShipShot.tscn"), $ShootPos2.global_position, get_parent())
+	var shot3 = ProjectilePool.spawn(preload("res://Prefabs/motherShipShot.tscn"), $ShootPos3.global_position, get_parent())
 	shot.speedX = -400
 	shot1.speedX = 400
 	shot2.speedX = -40

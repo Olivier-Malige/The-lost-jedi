@@ -8,15 +8,10 @@ extends Enemy
 
 func _on_ShootTimer_timeout() -> void:
 	$sound_Shooting.playing = true
-	var shot1 = preload("res://Prefabs/interceptorSideShot.tscn").instantiate()
-	var shot2 = preload("res://Prefabs/tieShot.tscn").instantiate()
-	var shot3 = preload("res://Prefabs/interceptorSideShot.tscn").instantiate()
-	shot1.position = $shootFrom.global_position
-	shot2.position = $shootFrom.global_position
-	shot3.position = $shootFrom.global_position
-	get_parent().add_child(shot1)
-	get_parent().add_child(shot2)
-	get_parent().add_child(shot3)
+	var origin = $shootFrom.global_position
+	var shot1 = ProjectilePool.spawn(preload("res://Prefabs/interceptorSideShot.tscn"), origin, get_parent())
+	var shot2 = ProjectilePool.spawn(preload("res://Prefabs/tieShot.tscn"), origin, get_parent())
+	var shot3 = ProjectilePool.spawn(preload("res://Prefabs/interceptorSideShot.tscn"), origin, get_parent())
 	#get_node("../enemySfx").play("interceptorShot")
 	shot1.rotation_degrees = -15
 	shot1.speedX = -150

@@ -6,7 +6,7 @@
 extends PointLight2D
 @export var range_Min: float = 0.7
 @export var range_Max: float = 1
-@export var delay: float = 0.02
+@export var delay: float = 0.08
 var accum := 0.0
 
 

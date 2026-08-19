@@ -7,9 +7,7 @@ extends Enemy
 
 
 func shoot() -> void:
-	var shot = preload("res://Prefabs/tieShot.tscn").instantiate()
-	shot.position = $shootFrom.global_position
-	get_parent().add_child(shot)
+	var shot = ProjectilePool.spawn(preload("res://Prefabs/tieShot.tscn"), $shootFrom.global_position, get_parent())
 	$sound_Shooting.playing = true
 
 func _on_dirTimer_timeout() -> void:
