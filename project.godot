@@ -18,8 +18,8 @@ config/icon="res://Assets/UI/icon.png"
 
 [autoload]
 
-global="*res://Scripts/global.gd"
-Events="*res://Scripts/events.gd"
+global="*res://src/core/global.gd"
+Events="*res://src/core/events.gd"
 
 [display]
 

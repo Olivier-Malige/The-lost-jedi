@@ -1,4 +1,4 @@
-The-lost-jedi is a Open-source project for GODOT engine 3 
+The-lost-jedi is an open-source project for Godot 4 
 
 
 

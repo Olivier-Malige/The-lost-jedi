@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3]
 
-[ext_resource path="res://Scripts/enemieShot.gd" type="Script" id=1]
+[ext_resource path="res://src/combat/enemieShot.gd" type="Script" id=1]
 [ext_resource path="res://Assets/iLaser.png" type="Texture2D" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]

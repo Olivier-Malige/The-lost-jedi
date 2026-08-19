@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="WaveDefinition" load_steps=7 format=3]
 
-[ext_resource type="Script" path="res://Scripts/wave_definition.gd" id="1"]
-[ext_resource type="Script" path="res://Scripts/spawn_rule.gd" id="2"]
+[ext_resource type="Script" path="res://src/waves/wave_definition.gd" id="1"]
+[ext_resource type="Script" path="res://src/waves/spawn_rule.gd" id="2"]
 [ext_resource type="PackedScene" path="res://Prefabs/Asteroid.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://Prefabs/bigAsteroid.tscn" id="4"]
 

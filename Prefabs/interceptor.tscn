@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3]
 
-[ext_resource path="res://Scripts/interceptor.gd" type="Script" id=1]
+[ext_resource path="res://src/enemies/interceptor.gd" type="Script" id=1]
 [ext_resource path="res://Assets/interceptor.png" type="Texture2D" id=2]
 [ext_resource path="res://Sounds/interceptor_Hit.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/interceptor_Explode.wav" type="AudioStream" id=4]

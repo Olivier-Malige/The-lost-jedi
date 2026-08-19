@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3]
 
-[ext_resource path="res://Scripts/gameOver.gd" type="Script" id=1]
+[ext_resource path="res://src/ui/gameOver.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/vermin_vibes_1989.ttf" type="FontFile" id=2]
 [ext_resource path="res://Fonts/slkscr.ttf" type="FontFile" id=3]
 [ext_resource path="res://Sounds/imperial.ogg" type="AudioStream" id=4]

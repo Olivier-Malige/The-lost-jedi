@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="WaveCatalog" load_steps=15 format=3]
 
-[ext_resource type="Script" path="res://Scripts/wave_catalog.gd" id="1"]
+[ext_resource type="Script" path="res://src/waves/wave_catalog.gd" id="1"]
 [ext_resource type="Resource" path="res://data/waves/wave_00.tres" id="2"]
 [ext_resource type="Resource" path="res://data/waves/wave_01.tres" id="3"]
 [ext_resource type="Resource" path="res://data/waves/wave_02.tres" id="4"]

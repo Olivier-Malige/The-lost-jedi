@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3]
 
-[ext_resource path="res://Scripts/Tie.gd" type="Script" id=1]
+[ext_resource path="res://src/enemies/Tie.gd" type="Script" id=1]
 [ext_resource path="res://Assets/tieSheet.png" type="Texture2D" id=2]
 [ext_resource path="res://Sounds/ennemy_Hit2.wav" type="AudioStream" id=3]
 [ext_resource path="res://Sounds/tie_explode.wav" type="AudioStream" id=4]
