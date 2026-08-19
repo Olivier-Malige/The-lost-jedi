@@ -64,9 +64,20 @@ Leave `default_bus_layout.tres` at the repo root.
 - Prefer a few clear lines over clever abstractions.
 - Do not add features that were not requested.
 
-## Git and local files
+## Git
 
-- License is MIT ([LICENSE.txt](LICENSE.txt)). Do not relicense. Keep the copyright year range current when doing substantial work.
-- Do **not** commit `addons/godot_ai/`, `godot-ai-LICENSE.txt`, or the local `_mcp_game_helper` autoload / editor plugin in `project.godot`.
-- Do not squash or merge this work to `master` until the maintainer says so.
-- Do not commit unless asked. Never force-push `master`.
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/), in **English**:
+
+```
+<type>(optional-scope): <imperative summary>
+```
+
+Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`.
+
+- One concern per commit (do not mix a player fix with a docs rewrite)
+- Subject: English, imperative, lowercase after the colon, no trailing period
+- Body: explain why when it is not obvious, still English
+- License is MIT ([LICENSE.txt](LICENSE.txt)). Do not relicense. Keep the copyright year range current when doing substantial work
+- The Godot AI MCP addon is part of the repo (`addons/godot_ai/`, autoload `_mcp_game_helper`, editor plugin in `project.godot`)
+- Do not squash or merge this work to `master` until the maintainer says so
+- Do not commit unless asked. Never force-push `master`
