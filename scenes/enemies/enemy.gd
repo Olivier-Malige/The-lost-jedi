@@ -5,7 +5,7 @@ extends Area2D
 @export var dropRange: int = 64
 @export var objectOnDestroy: PackedScene
 @export var nbrObjectOnDestroy: int = 1
-@export var nbrSprites = 1 # (int, 4)
+@export var nbrSprites = 1
 @export var rnd_Roation_Range_Max: float = 1
 @export var rnd_Roation_Range_Min: float = -1
 @export var life: int = 0
@@ -15,12 +15,10 @@ extends Area2D
 @export var speedY: float = 0
 @export var randomX: float = 0
 @export var randomY: float = 0
-@export var randPowerUp: int = 0 # of 100%
+@export var randPowerUp: int = 0 # chance out of 100
 @export var setRotation: bool = false
 @export var speedRotation: int = 0
 @export var rndRotation: bool = false
-var hitByPlayer1Shot := false
-var hitByPlayer2Shot := false
 var destroyed := false
 var hitByPlayerShot := false
 var indexSprites
@@ -29,7 +27,6 @@ var bonusCoop := 1.5
 func _process(delta: float) -> void:
 	hitByPlayerShot = false
 	translate(Vector2(speedX, speedY) * delta)
-	#rotate
 	if setRotation:
 		rotation += speedRotation * delta
 
@@ -41,7 +38,6 @@ func _ready() -> void:
 		speedRotation = randf_range(rnd_Roation_Range_Min, rnd_Roation_Range_Max)
 
 	speedX = randf_range(-randomX - speedX, randomY + speedX)
-	#speedy = rand_range(-randomY-speedY, randomY+speedY)
 	add_to_group("enemy")
 	collision_layer = 2
 	collision_mask = 1 | 4
@@ -57,7 +53,6 @@ func _hit_something(dmg := 0) -> void:
 		return
 	life -= dmg
 	$sound_Hit.playing = true
-	#Retreat effect
 	var pos = global_position
 	pos.y -= 5
 	position = pos
@@ -69,9 +64,8 @@ func _hit_something(dmg := 0) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if not destroyed:
-		if area.has_method("_hit_something"):
-			area._hit_something(hitSomething)
+	if not destroyed and area.has_method("_hit_something"):
+		area._hit_something(hitSomething)
 
 func _on_screen_exited() -> void:
 	set_process(false)
@@ -107,7 +101,6 @@ func _destroy() -> void:
 		get_parent().add_child(score_popup)
 		global.score += points
 		_refresh_score_hud()
-		#Rand PowersUp
 		if randi() % 101 <= randPowerUp:
 			var powerUp = preload("res://scenes/ui/power_up.tscn").instantiate()
 			powerUp.position = global_position
@@ -120,3 +113,10 @@ func _refresh_score_hud() -> void:
 
 func _is_coop() -> bool:
 	return get_tree().current_scene.coop
+
+func _spawn_shot(packed: PackedScene, from: Vector2, speed_x: float = 0, rot_deg: float = 0) -> Node:
+	var shot = ProjectilePool.spawn(packed, from, get_parent())
+	shot.speedX = speed_x
+	if rot_deg != 0.0:
+		shot.rotation_degrees = rot_deg
+	return shot

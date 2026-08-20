@@ -17,7 +17,8 @@ func _on_energy_changed(player_id: String, energy: int) -> void:
 		return
 	for ch in holder.get_children():
 		ch.queue_free()
+	var pip_scene = load("res://scenes/player/" + player_id + "_energy.tscn")
 	for i in range(energy):
-		var pip = load("res://scenes/player/" + player_id + "_energy.tscn").instantiate()
+		var pip = pip_scene.instantiate()
 		pip.position = Vector2(0, -i * 12)
 		holder.add_child(pip)

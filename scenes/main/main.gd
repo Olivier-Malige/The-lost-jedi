@@ -1,7 +1,6 @@
 extends Node
 var coop := false
 var startScreen := false
-var zoomReady := false
 var worldScreen := false
 var gameOverScreen := false
 var menu = load("res://scenes/menu/menu.tscn")
@@ -10,6 +9,12 @@ var paused = load("res://scenes/ui/paused.tscn")
 var menuShow := false
 const ZOOM_OUT := Vector2(0.6, 0.6)
 const ZOOM_IN := Vector2(1.0, 1.0)
+const PLAYER_CHEATS := {
+	"debug_Key3": "increase_Speed",
+	"debug_Key4": "increase_Shot",
+	"debug_Key5": "increase_SideShot",
+	"debug_Key6": "increase_Shield",
+}
 var _camera_tween: Tween
 
 func _ready() -> void:
@@ -24,46 +29,31 @@ func _input(event: InputEvent) -> void:
 	if worldScreen:
 		if event.is_action_pressed("start") and not event.is_echo():
 			set_Pause()
-
-		#CHEATCODE DEBUG
 		if global.Debug:
-			#Previous Wave
-			if event.is_action_pressed("debug_Key1") and not event.is_echo():
-				$world/waveGenerator.goto_Previous_Wave()
-			#Next Wave
-			elif event.is_action_pressed("debug_Key2") and not event.is_echo():
-				$world/waveGenerator.goto_Next_Wave()
-			#Add Speed PowerUp
-			elif event.is_action_pressed("debug_Key3") and not event.is_echo():
-				if has_node("world/player"):
-					$world/player.increase_Speed()
-				if has_node("world/player2"):
-					$world/player2.increase_Speed()
-			#Add Power PowerUp
-			elif event.is_action_pressed("debug_Key4") and not event.is_echo():
-				if has_node("world/player"):
-					$world/player.increase_Shot()
-				if has_node("world/player2"):
-					$world/player2.increase_Shot()
-			#Add Lateral PowerUp
-			elif event.is_action_pressed("debug_Key5") and not event.is_echo():
-				if has_node("world/player"):
-					$world/player.increase_SideShot()
-				if has_node("world/player2"):
-					$world/player2.increase_SideShot()
-
-			#Add Shiel PowerUp
-			elif event.is_action_pressed("debug_Key6") and not event.is_echo():
-				if has_node("world/player"):
-					$world/player.increase_Shield()
-				if has_node("world/player2"):
-					$world/player2.increase_Shield()
-
+			_debug_cheats(event)
 	if gameOverScreen:
 		if event.is_action_pressed("start") and not event.is_echo():
 			go_Start_Screen()
 			gameOverScreen = false
 			$gameOver.queue_free()
+
+func _debug_cheats(event: InputEvent) -> void:
+	if event.is_echo():
+		return
+	if event.is_action_pressed("debug_Key1"):
+		$world/waveGenerator.goto_Previous_Wave()
+	elif event.is_action_pressed("debug_Key2"):
+		$world/waveGenerator.goto_Next_Wave()
+	else:
+		for action in PLAYER_CHEATS:
+			if event.is_action_pressed(action):
+				_call_players(PLAYER_CHEATS[action])
+				return
+
+func _call_players(method: StringName) -> void:
+	for path in ["world/player", "world/player2"]:
+		if has_node(path):
+			get_node(path).call(method)
 
 func _on_Timer_timeout() -> void:
 	$loader.queue_free()
@@ -71,17 +61,15 @@ func _on_Timer_timeout() -> void:
 
 func set_Pause() -> void:
 	if not menuShow:
-			get_tree().paused = true
-			var p = paused.instantiate()
-			add_child(p)
-			var m = menu.instantiate()
-			add_child(m)
-			m.set_mode(m.MENU_PAUSE)
-			menuShow = true
-
-			#hide background when paused(to prevent show bug)
-			for i in $world.get_node("background").get_children():
-				i.hide()
+		get_tree().paused = true
+		var p = paused.instantiate()
+		add_child(p)
+		var m = menu.instantiate()
+		add_child(m)
+		m.set_mode(m.MENU_PAUSE)
+		menuShow = true
+		# Parallax layers otherwise draw over the pause overlay.
+		_set_world_background(false)
 
 func set_Restart() -> void:
 	set_Resume()
@@ -92,18 +80,8 @@ func set_Resume() -> void:
 		menuShow = false
 		$paused.queue_free()
 		get_tree().paused = false
-
-		#show background when resume paused(to prevent show bug)
-		for i in $world.get_node("background").get_children():
-			i.show()
-
-
-		#update controller config
-		if coop:
-			$world/player.update_controller()
-			$world/player2.update_controller()
-		else:
-			$world/player.update_controller()
+		_set_world_background(true)
+		_call_players("update_controller")
 
 func go_Start_Screen() -> void:
 	worldScreen = false
@@ -138,6 +116,10 @@ func _set_title_stars(on: bool) -> void:
 		stars.visible = on
 		stars.emitting = on
 
+func _set_world_background(on: bool) -> void:
+	for layer in $world.get_node("background").get_children():
+		layer.visible = on
+
 func _tween_camera(target_pos: Vector2, target_zoom: Vector2, duration: float) -> void:
 	if _camera_tween:
 		_camera_tween.kill()
@@ -156,9 +138,7 @@ func go_GameOver_Screen() -> void:
 	add_child(gameOver)
 
 func set_Graphic(level: String) -> void:
-		for ch in $background/Lights.get_children():
-			if level == "high" or level == "hight":
-				ch.visible = true
-			elif level == "low":
-				ch.visible = false
-		_set_title_stars(level != "low")
+	var high := level == "high"
+	for ch in $background/Lights.get_children():
+		ch.visible = high
+	_set_title_stars(high)

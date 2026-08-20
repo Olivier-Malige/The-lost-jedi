@@ -11,7 +11,7 @@ const UPGRADE_SPEED: UpgradeDefinition = preload("res://data/upgrades/speed.tres
 const UPGRADE_DAMAGE: UpgradeDefinition = preload("res://data/upgrades/damage.tres")
 const UPGRADE_SIDE: UpgradeDefinition = preload("res://data/upgrades/side_shot.tres")
 
-var set_Player_2 := false # Call it on instancing for player 2 stats and colors
+var set_Player_2 := false # set before add_child for P2 colors and stats
 var loadout: PlayerLoadout
 var weapons: PlayerWeapons
 var vitals: PlayerVitals
@@ -23,7 +23,6 @@ var vitals: PlayerVitals
 @onready var id_Player
 @onready var shooting
 @onready var beam_Focusing
-@onready var pos
 @onready var accumBeam = 0
 enum beam_State {EMPTY, SMALL, NORMAL, FULL}
 @onready var beam_Power = beam_State.EMPTY
@@ -44,137 +43,84 @@ func _ready() -> void:
 
 func update_controller() -> void:
 	if get_tree().current_scene.coop:
-		#enable player 2 controller
-		if set_Player_2:
-			controller = global.saveData.config.player2
-		#enable player 1 controller
-		else:
-			controller = global.saveData.config.player1
-	#on solo mode all controls are enbales
+		controller = global.saveData.config.player2 if set_Player_2 else global.saveData.config.player1
 	else:
 		controller = "all"
 
 func _process(delta: float) -> void:
-	if energy > STATS.energy_max:
-		energy = STATS.energy_max
+	energy = min(energy, STATS.energy_max)
 
-	var motion = Vector2()
+	var motion := Vector2.ZERO
 	$anim.play(id_Player + "_idle")
-
-	#particle effets
-	$reactorParticles.set_emitting(true)
-	$reactorParticles2.set_emitting(true)
-	$reactorParticles.set_lifetime(0.4)
-	$reactorParticles2.set_lifetime(0.4)
-	#UP
+	_set_reactors(true, 0.4)
 	if Input.is_action_pressed(controller + "_up"):
-		motion += Vector2(0, -1)
-		#particle effets
-		$reactorParticles.set_lifetime(0.7)
-		$reactorParticles2.set_lifetime(0.7)
-	#Down
+		motion.y -= 1
+		_set_reactors(true, 0.7)
 	if Input.is_action_pressed(controller + "_down"):
-		motion += Vector2(0, 1)
-		#particle effets
-		$reactorParticles.set_emitting(false)
-		$reactorParticles2.set_emitting(false)
-	#left
+		motion.y += 1
+		_set_reactors(false)
 	if Input.is_action_pressed(controller + "_left"):
-		motion += Vector2(-1, 0)
+		motion.x -= 1
 		$anim.play(id_Player + "_left")
-	#right
 	if Input.is_action_pressed(controller + "_right"):
-		motion += Vector2(1, 0)
+		motion.x += 1
 		$anim.play(id_Player + "_right")
 
+	position = (position + motion * delta * (loadout.move_speed() - malusSpeed)).clamp(STATS.bound_min, STATS.bound_max)
 
-	pos = position + motion * delta * (loadout.move_speed() - malusSpeed)
-	if pos.x < STATS.bound_min.x:
-		pos.x = STATS.bound_min.x
-	if pos.x > STATS.bound_max.x:
-		pos.x = STATS.bound_max.x
-	if pos.y < STATS.bound_min.y:
-		pos.y = STATS.bound_min.y
-	if pos.y > STATS.bound_max.y:
-		pos.y = STATS.bound_max.y
-	position = pos
-
-	#Shooting
 	shooting = Input.is_action_just_pressed(controller + "_fire")
 	beam_Focusing = Input.is_action_pressed(controller + "_fire")
+	_update_beam_charge()
 
+	if Input.is_action_just_released(controller + "_fire") and beam_Power != beam_State.EMPTY:
+		weapons.fire_beam(beam_Power)
 
-	if accumBeam < STATS.beam_mini and beam_Power != beam_State.EMPTY:
-		_set_Power_Beam(beam_State.EMPTY)
-
-	elif accumBeam >= STATS.beam_mini and accumBeam < STATS.beam_normal and beam_Power != beam_State.SMALL:
-		_set_Power_Beam(beam_State.SMALL)
-
-	elif accumBeam >= STATS.beam_normal and accumBeam < STATS.beam_full and beam_Power != beam_State.NORMAL:
-		_set_Power_Beam(beam_State.NORMAL)
-
-	elif accumBeam >= STATS.beam_full and beam_Power != beam_State.FULL:
-		_set_Power_Beam(beam_State.FULL)
-
-
-	if Input.is_action_just_released(controller + "_fire"):
-		if beam_Power != beam_State.EMPTY:
-			weapons.fire_beam(beam_Power)
-
-	if beam_Focusing:
-		accumBeam += delta
-	else:
-		accumBeam = 0
-
+	accumBeam = accumBeam + delta if beam_Focusing else 0.0
 	if beam_Focusing or shooting:
-		$reactorParticles.set_lifetime(0.1)
-		$reactorParticles2.set_lifetime(0.1)
-
-
+		_set_reactors(true, 0.1)
 	if shooting and canShooting:
 		weapons.fire_primary()
 
 func _setup_Player() -> void:
-		#set id_Player for appropriate setup (colors , stats,... )
-	if set_Player_2:
-		id_Player = "player2"
-	else:
-		id_Player = "player1"
-
-	#setup particle colors : Red for player1 and blue for player2
-	$BeamParticlesLeft.set_texture(load("res://assets/sprites/player/" + id_Player + "_particle.png"))
-	$BeamParticlesRight.set_texture(load("res://assets/sprites/player/" + id_Player + "_particle.png"))
-	$reactorParticles.set_texture(load("res://assets/sprites/player/" + id_Player + "_particle.png"))
-	$reactorParticles2.set_texture(load("res://assets/sprites/player/" + id_Player + "_particle.png"))
-
+	id_Player = "player2" if set_Player_2 else "player1"
+	var tex = load("res://assets/sprites/player/" + id_Player + "_particle.png")
+	for p in [$BeamParticlesLeft, $BeamParticlesRight, $reactorParticles, $reactorParticles2]:
+		p.set_texture(tex)
 	$anim.play(id_Player + "_idle")
 
+func _update_beam_charge() -> void:
+	var next := beam_State.EMPTY
+	for tier in [[STATS.beam_full, beam_State.FULL], [STATS.beam_normal, beam_State.NORMAL], [STATS.beam_mini, beam_State.SMALL]]:
+		if accumBeam >= tier[0]:
+			next = tier[1]
+			break
+	if next != beam_Power:
+		_set_Power_Beam(next)
+
 func _set_Power_Beam(power) -> void:
+	beam_Power = power
 	match power:
 		beam_State.EMPTY:
-			beam_Power = beam_State.EMPTY
-			$BeamParticlesLeft.emitting = false
-			$BeamParticlesRight.emitting = false
-			$BeamParticlesLeft.hide()
-			$BeamParticlesRight.hide()
-
+			_set_beam_particles(false)
 		beam_State.SMALL:
 			malusSpeed = STATS.malus_speed
-			$BeamParticlesLeft.show()
-			$BeamParticlesRight.show()
-			beam_Power = beam_State.SMALL
-			$BeamParticlesLeft.emitting = true
-			$BeamParticlesRight.emitting = true
-			$BeamParticlesLeft.amount = 1
-			$BeamParticlesRight.amount = 1
+			_set_beam_particles(true, 1)
 		beam_State.NORMAL:
-			beam_Power = beam_State.NORMAL
-			$BeamParticlesLeft.amount = 5
-			$BeamParticlesRight.amount = 5
+			_set_beam_particles(true, 5)
 		beam_State.FULL:
-			beam_Power = beam_State.FULL
-			$BeamParticlesLeft.amount = 20
-			$BeamParticlesRight.amount = 20
+			_set_beam_particles(true, 20)
+
+func _set_reactors(emitting: bool, lifetime := 0.4) -> void:
+	for p in [$reactorParticles, $reactorParticles2]:
+		p.set_emitting(emitting)
+		p.set_lifetime(lifetime)
+
+func _set_beam_particles(emitting: bool, amount := -1) -> void:
+	for p in [$BeamParticlesLeft, $BeamParticlesRight]:
+		p.emitting = emitting
+		p.visible = emitting
+		if amount >= 0:
+			p.amount = amount
 
 func _hit_something(dmg := 1) -> void:
 	vitals.hit(dmg)
@@ -183,7 +129,7 @@ func _on_touchedReset_timeout() -> void:
 	touched = false
 	if beam_Power == beam_State.EMPTY:
 		malusSpeed = 0
-	$xWing.set_modulate(Color(1, 1, 1, 1)) #set player normal color
+	$xWing.set_modulate(Color(1, 1, 1, 1))
 
 
 func setShootingDelay() -> void:
@@ -217,8 +163,9 @@ func increase_SideShot() -> void:
 func increase_Shot() -> void:
 	apply_upgrade(UPGRADE_DAMAGE)
 
+# Setter adds to power rather than replacing it.
 func increase_Shield() -> void:
-	$shield.power = 1 #+1 to getset function
+	$shield.power = 1
 
 func _on_anim_animation_finished(n: StringName) -> void:
 	if n == id_Player + "_explode":
@@ -228,5 +175,5 @@ func _on_anim_animation_finished(n: StringName) -> void:
 
 func _on_player_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemy") and area.has_method("_hit_something"):
-			self._hit_something()
-			area._hit_something(10)
+		_hit_something()
+		area._hit_something(10)

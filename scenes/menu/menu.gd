@@ -1,240 +1,208 @@
 extends Control
+
+enum {
+	OPTION_RETURN, OPTION_CONTROLLER, OPTION_PLAYER1, OPTION_PLAYER2, OPTION_MUSIC, OPTION_SOUND,
+	OPTION_RESUME, OPTION_RESTART, OPTION_SOLO, OPTION_COOP, OPTION_OPTIONS, OPTION_HISCORE,
+	OPTION_EXIT, OPTION_FULLSCREEN, OPTION_GRAPHIC
+}
+enum {MODE_SOLO, MODE_COOP}
+enum {MENU_START, MENU_OPTIONS, MENU_PAUSE, MENU_CONTROLLER}
+
+const CONTROLLERS := ["gamepad1", "gamepad2", "keyboard"]
+const OPTION_NODES := {
+	OPTION_RETURN: "buttonGroup/return",
+	OPTION_CONTROLLER: "buttonGroup/Controller",
+	OPTION_PLAYER1: "buttonGroup/player1",
+	OPTION_PLAYER2: "buttonGroup/player2",
+	OPTION_MUSIC: "buttonGroup/music",
+	OPTION_SOUND: "buttonGroup/sound",
+	OPTION_RESUME: "buttonGroup/resume",
+	OPTION_RESTART: "buttonGroup/restart",
+	OPTION_SOLO: "buttonGroup/solo",
+	OPTION_COOP: "buttonGroup/coop",
+	OPTION_OPTIONS: "buttonGroup/options",
+	OPTION_HISCORE: "buttonGroup/hiscore",
+	OPTION_EXIT: "buttonGroup/exit",
+	OPTION_FULLSCREEN: "buttonGroup/fullscreen",
+	OPTION_GRAPHIC: "buttonGroup/graphic",
+}
+
 var menu = load("res://scenes/menu/menu.tscn")
 var config = global.saveData.config
 
-#Define menu options
-enum {OPTION_RETURN,OPTION_CONTROLLER,OPTION_PLAYER1,OPTION_PLAYER2,OPTION_MUSIC,OPTION_SOUND,
-	  OPTION_RESUME,OPTION_RESTART,OPTION_SOLO,OPTION_COOP,OPTION_OPTIONS,OPTION_HISCORE,OPTION_EXIT,OPTION_FULLSCREEN,OPTION_GRAPHIC}
-#Define game Mode
-enum {MODE_SOLO,MODE_COOP}
-#Define menu Mode
-enum {MENU_START,MENU_OPTIONS,MENU_PAUSE,MENU_CONTROLLER}
-var controller = ["gamepad1","gamepad2","keyboard"]
 
 func _input(event):
-	if event.is_action_pressed("ui_up") or  event.is_action_pressed("ui_down")   and not event.is_echo():
+	if (event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down")) and not event.is_echo():
 		$sound_switch.playing = true
-#	if event.is_action_pressed("ui_accept"):
-#		$sound_select.playing = true
+
 
 func _ready():
 	hide()
 	$optionTimer.process_mode = Node.PROCESS_MODE_ALWAYS
 
-func set_mode(mode):
-	var optionsEnable = []
-	if mode == MENU_START:
 
-		optionsEnable = [OPTION_SOLO,OPTION_COOP,OPTION_OPTIONS,OPTION_HISCORE,OPTION_EXIT]
-		mode(optionsEnable)
+func set_mode(menu_mode):
+	var enabled: Array = []
+	match menu_mode:
+		MENU_START:
+			enabled = [OPTION_SOLO, OPTION_COOP, OPTION_OPTIONS, OPTION_HISCORE, OPTION_EXIT]
+		MENU_OPTIONS:
+			enabled = [OPTION_MUSIC, OPTION_SOUND, OPTION_RETURN, OPTION_CONTROLLER, OPTION_FULLSCREEN, OPTION_GRAPHIC]
+			_set_toggle("buttonGroup/music", "music : ", config.music)
+			_set_toggle("buttonGroup/sound", "sound : ", config.sound)
+			_set_toggle("buttonGroup/fullscreen", "fullscreen : ", config.fullscreen)
+			get_node("buttonGroup/graphic").set_text("graphic : " + config.graphic)
+		MENU_PAUSE:
+			enabled = [OPTION_RESUME, OPTION_OPTIONS, OPTION_RESTART, OPTION_EXIT]
+		MENU_CONTROLLER:
+			enabled = [OPTION_RETURN, OPTION_PLAYER1, OPTION_PLAYER2]
+			$buttonGroup/player1.set_text("player 1 : " + config.player1)
+			$buttonGroup/player2.set_text("player 2 : " + config.player2)
+	_show_options(enabled)
 
-	elif mode == MENU_OPTIONS :
-		optionsEnable = [OPTION_MUSIC,OPTION_SOUND,OPTION_RETURN,OPTION_CONTROLLER,OPTION_FULLSCREEN,OPTION_GRAPHIC]
 
-		if config.music :
-			get_node("buttonGroup/music").set_text("music : on")
-		else : get_node("buttonGroup/music").set_text("music : off")
-		if config.sound :
-			get_node("buttonGroup/sound").set_text("sound : on")
-		else : get_node("buttonGroup/sound").set_text("sound : off")
-		if config.fullscreen :
-			get_node("buttonGroup/fullscreen").set_text("fullscreen : on")
-		else : get_node("buttonGroup/fullscreen").set_text("fullscreen : off")
-		if config.graphic == "high" or config.graphic == "hight" :
-			get_node("buttonGroup/graphic").set_text("graphic : high")
-		else : get_node("buttonGroup/graphic").set_text("graphic : low")
-
-	elif mode == MENU_PAUSE:
-		optionsEnable = [OPTION_RESUME,OPTION_OPTIONS,OPTION_RESTART,OPTION_EXIT]
-
-	elif mode == MENU_CONTROLLER :
-		optionsEnable = [OPTION_RETURN,OPTION_PLAYER1,OPTION_PLAYER2]
-		$buttonGroup/player1.set_text("player 1 : "+config.player1)
-		$buttonGroup/player2.set_text("player 2 : "+config.player2)
-
-	#set mode done and then instantiate tweak menu
-	mode(optionsEnable)
-
-func mode (enable= []) :
-	for i in enable :
-		match i :
-			OPTION_RETURN : get_node("buttonGroup/return").add_to_group("enable")
-			OPTION_CONTROLLER :get_node("buttonGroup/Controller").add_to_group("enable")
-			OPTION_PLAYER1 :get_node("buttonGroup/player1").add_to_group("enable")
-			OPTION_PLAYER2 :get_node("buttonGroup/player2").add_to_group("enable")
-			OPTION_MUSIC :get_node("buttonGroup/music").add_to_group("enable")
-			OPTION_SOUND :get_node("buttonGroup/sound").add_to_group("enable")
-			OPTION_MUSIC :get_node("buttonGroup/music").add_to_group("enable")
-			OPTION_SOUND :get_node("buttonGroup/sound").add_to_group("enable")
-			OPTION_RESUME :get_node("buttonGroup/resume").add_to_group("enable")
-			OPTION_RESTART :get_node("buttonGroup/restart").add_to_group("enable")
-			OPTION_SOLO :get_node("buttonGroup/solo").add_to_group("enable")
-			OPTION_COOP :get_node("buttonGroup/coop").add_to_group("enable")
-			OPTION_OPTIONS :get_node("buttonGroup/options").add_to_group("enable")
-			OPTION_HISCORE :get_node("buttonGroup/hiscore").add_to_group("enable")
-			OPTION_EXIT :get_node("buttonGroup/exit").add_to_group("enable")
-			OPTION_FULLSCREEN :get_node("buttonGroup/fullscreen").add_to_group("enable")
-			OPTION_GRAPHIC :get_node("buttonGroup/graphic").add_to_group("enable")
-
-	for node in get_node("buttonGroup").get_children() :
-		if not node.is_in_group("enable") :
-			node.queue_free()
-		else :
+func _show_options(enabled: Array = []) -> void:
+	for option in enabled:
+		get_node(OPTION_NODES[option]).add_to_group("enable")
+	for node in $buttonGroup.get_children():
+		if node.is_in_group("enable"):
 			node.size.x = 800
-
-	await get_node("optionTimer").timeout
-	#initialize size for adapative vboxContenaire
-	$buttonGroup.size = Vector2(800,0)
-
-	#set ororffenu visible
+		else:
+			node.queue_free()
+	await $optionTimer.timeout
+	$buttonGroup.size = Vector2(800, 0)
 	show()
-	#set focus of first node in buttonGroup
-	get_node("buttonGroup").get_child(0).grab_focus()
+	$buttonGroup.get_child(0).grab_focus()
 
-func start_game(mode):
-	if mode == MODE_SOLO :
-		get_tree().current_scene.coop = false
-	else : get_tree().current_scene.coop = true
+
+func start_game(game_mode):
+	get_tree().current_scene.coop = game_mode != MODE_SOLO
 	get_tree().current_scene.go_World_Screen()
 	get_tree().current_scene.get_node("start").queue_free()
 	queue_free()
 
+
 func _on_Solo_button_down():
-	if not $sound_start.is_playing():
-		$sound_start.playing = true
-		await get_node("sound_start").finished
+	if await _play_start():
 		start_game(MODE_SOLO)
 
+
 func _on_Coop_button_down():
-	if not $sound_start.is_playing():
-		$sound_start.playing = true
-		await get_node("sound_start").finished
+	if await _play_start():
 		start_game(MODE_COOP)
+
 
 func _on_Exit_button_down():
 	get_tree().quit()
 
+
 func _on_Resume_button_down():
-	if not $sound_start.is_playing():
-		$sound_start.playing = true
-		await get_node("sound_start").finished
+	if await _play_start():
 		get_tree().current_scene.set_Resume()
 		queue_free()
 
+
 func _on_Restart_button_down():
-	if not $sound_start.is_playing():
-		$sound_start.playing = true
-		await get_node("sound_start").finished
+	if await _play_start():
 		get_tree().current_scene.set_Restart()
 		queue_free()
 
 
 func _on_Hiscore_button_down():
-	$sound_select.playing = true
-	await get_node("sound_select").finished
+	await _play_select()
 	get_tree().current_scene.go_Hiscore_Screen()
 	queue_free()
 
+
 func _on_options_button_down():
-	$sound_select.playing = true
-	await get_node("sound_select").finished
+	await _play_select()
 	new_menu(MENU_OPTIONS)
 
-func new_menu(mode):
+
+func new_menu(menu_mode):
 	var m = menu.instantiate()
 	get_parent().add_child(m)
-	m.set_mode(mode)
+	m.set_mode(menu_mode)
 	queue_free()
 
+
 func _on_return_button_down():
-	$sound_select.playing = true
-	await get_node("sound_select").finished
-	if get_tree().current_scene.worldScreen:
+	await _play_select()
+	var scene = get_tree().current_scene
+	if scene.worldScreen:
 		new_menu(MENU_PAUSE)
-	elif get_tree().current_scene.startScreen:
+	elif scene.startScreen:
 		new_menu(MENU_START)
 	queue_free()
 
-func _on_sound_button_down():
-	var onOff
-	config.sound = not config.sound
-	if config.sound :
-		onOff = "on"
-	else : onOff = "off"
 
-	get_node("buttonGroup/sound").set_text("Sound : "+onOff)
+func _on_sound_button_down():
+	config.sound = not config.sound
+	_set_toggle("buttonGroup/sound", "Sound : ", config.sound)
 	global.setSound(config.sound)
 	global.save_Data()
+
+
 func _on_music_button_down():
-	var onOff
 	config.music = not config.music
-	if config.music :
-		onOff = "on"
-	else : onOff = "off"
-	get_node("buttonGroup/music").set_text("Music : "+onOff)
+	_set_toggle("buttonGroup/music", "Music : ", config.music)
 	global.setMusic(config.music)
 	global.save_Data()
 
+
 func _on_Controller_button_down():
-	$sound_select.playing = true
-	await get_node("sound_select").finished
+	await _play_select()
 	new_menu(MENU_CONTROLLER)
 
 
 func _on_fullscreen_button_down():
-	var onOff
 	config.fullscreen = not config.fullscreen
-	if config.fullscreen :
-		onOff = "on"
-		get_window().mode = Window.MODE_FULLSCREEN
-	else :
-		onOff = "off"
-		get_window().mode = Window.MODE_WINDOWED
-	get_node("buttonGroup/fullscreen").set_text("fullscreen : "+onOff)
+	get_window().mode = Window.MODE_FULLSCREEN if config.fullscreen else Window.MODE_WINDOWED
+	_set_toggle("buttonGroup/fullscreen", "fullscreen : ", config.fullscreen)
 	global.save_Data()
 
 
 func _on_player1_button_down():
-	global.saveData.config.player1 = switch_controller(1)
-	if global.saveData.config.player1 == global.saveData.config.player2 :
-		global.saveData.config.player1 = switch_controller(1)
-	$buttonGroup/player1.set_text("player 1 : "+global.saveData.config.player1)
-	global.save_Data()
-
+	_cycle_controller(1)
 
 
 func _on_player2_button_down():
-	global.saveData.config.player2 = switch_controller(2)
-	if global.saveData.config.player2 == global.saveData.config.player1 :
-		global.saveData.config.player2 = switch_controller(2)
-	$buttonGroup/player2.set_text("player 2 : "+global.saveData.config.player2)
-	global.save_Data()
-
-
-func switch_controller(player):
-	var configPlayer
-	if player == 1 :
-		configPlayer = global.saveData.config.player1
-	elif player == 2 :
-		configPlayer = global.saveData.config.player2
-
-	for i in range (controller.size()) :
-		if controller[i] == configPlayer :
-			if configPlayer  == controller.back() :
-				configPlayer = controller.front()
-				return configPlayer
-			else :
-				configPlayer = controller[i + 1]
-				return configPlayer
+	_cycle_controller(2)
 
 
 func _on_graphic_button_down():
-	if global.saveData.config.graphic == "high" or global.saveData.config.graphic == "hight" :
-		global.saveData.config.graphic = "low"
-		$buttonGroup/graphic.set_text("graphic : low")
-		get_tree().current_scene.set_Graphic("low")
-	else :
-		global.saveData.config.graphic = "high"
-		$buttonGroup/graphic.set_text("graphic : high")
-		get_tree().current_scene.set_Graphic("high")
+	config.graphic = "low" if config.graphic == "high" else "high"
+	$buttonGroup/graphic.set_text("graphic : " + config.graphic)
+	get_tree().current_scene.set_Graphic(config.graphic)
 	global.save_Data()
+
+
+func _cycle_controller(player: int) -> void:
+	var key := "player%d" % player
+	var other := "player%d" % (2 if player == 1 else 1)
+	config[key] = _next_controller(config[key])
+	if config[key] == config[other]:
+		config[key] = _next_controller(config[key])
+	$buttonGroup.get_node(key).set_text("player %d : %s" % [player, config[key]])
+	global.save_Data()
+
+
+func _next_controller(current: String) -> String:
+	return CONTROLLERS[(CONTROLLERS.find(current) + 1) % CONTROLLERS.size()]
+
+
+func _set_toggle(path: String, prefix: String, on: bool) -> void:
+	get_node(path).set_text(prefix + ("on" if on else "off"))
+
+
+func _play_start() -> bool:
+	if $sound_start.is_playing():
+		return false
+	$sound_start.playing = true
+	await $sound_start.finished
+	return true
+
+
+func _play_select() -> void:
+	$sound_select.playing = true
+	await $sound_select.finished

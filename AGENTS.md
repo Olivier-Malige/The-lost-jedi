@@ -59,8 +59,9 @@ Leave `default_bus_layout.tres` at the repo root.
 
 ## Code style
 
-- Comment in English, and only on **new** functions or classes. Do not delete existing comments unless asked.
-- Do not add per-file license headers. `LICENSE.txt` at the repo root is enough.
+- Comment in English, and only above a function (or `class_name`) or on genuinely ambiguous code. Explain **why**, never what the next line already says (`# UP`, `# Shooting`, `# Member variables`).
+- Do not leave commented-out code. Do not add per-file license headers; `LICENSE.txt` is enough.
+- Leave comments in `addons/godot_ai/` alone.
 - Prefer a few clear lines over clever abstractions.
 - Do not add features that were not requested.
 

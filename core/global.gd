@@ -2,8 +2,6 @@ extends Node
 
 const _Save := preload("res://core/save_service.gd")
 
-# Member variables
-
 var Debug := false
 var score := 0
 var wave := 0
@@ -30,8 +28,9 @@ var saveData := {
 var sav_path := "user://data.json"
 const VERSION_NUMBER = "Alpha 7"
 func _ready() -> void:
-#	save_Data()
 	saveData = _Save.load_data(saveData)
+	if saveData.config.graphic == "hight":
+		saveData.config.graphic = "high"
 	setSound(saveData.config.sound)
 	setMusic(saveData.config.music)
 

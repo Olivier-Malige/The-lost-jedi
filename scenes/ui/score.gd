@@ -1,20 +1,14 @@
 extends Node2D
 
 const DESTROY_DELAY = 1
+const SCALE_TIERS := [[1000, 2.0], [500, 1.8], [200, 1.6], [100, 1.4], [50, 1.2]]
 var setScore := 0
 var player := 1
 func _ready() -> void:
-	if setScore >= 1000:
-		$Label.set_scale(Vector2(2, 2))
-	elif setScore >= 500:
-		$Label.set_scale(Vector2(1.8, 1.8))
-	elif setScore >= 200:
-		$Label.set_scale(Vector2(1.6, 1.6))
-	elif setScore >= 100:
-		$Label.set_scale(Vector2(1.4, 1.4))
-	elif setScore >= 50:
-		$Label.set_scale(Vector2(1.2, 1.2))
-
+	for tier in SCALE_TIERS:
+		if setScore >= tier[0]:
+			$Label.set_scale(Vector2(tier[1], tier[1]))
+			break
 	$Label.set_text(str(setScore))
 	$anim.play("player" + str(player))
 	$destroyDelay.set_wait_time(DESTROY_DELAY)

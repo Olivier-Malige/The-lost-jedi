@@ -7,53 +7,46 @@ func _init(p_player: Player) -> void:
 	player = p_player
 
 func fire_primary() -> void:
-	var shot = ProjectilePool.spawn(Player.WEAPON_PRIMARY.projectile, player.get_node("shootFrom").global_position, player.get_parent())
-	shot.player_Id = player.id_Player
-	shot.damage += player.loadout.damage_bonus
-	shot.setPowerAnim()
+	_spawn_gun(Player.WEAPON_PRIMARY.projectile, "shootFrom", player.loadout.damage_bonus)
 	player.get_node("sound_Shooting").playing = true
 	player.canShooting = false
 	player.get_node("ShootingDelay").start()
 	if player.loadout.side_shot:
-		var lShot = ProjectilePool.spawn(Player.WEAPON_SIDE.projectile, player.get_node("shootFromLeft").global_position, player.get_parent())
-		var rShot = ProjectilePool.spawn(Player.WEAPON_SIDE.projectile, player.get_node("shootFromRight").global_position, player.get_parent())
-		lShot.player_Id = player.id_Player
-		rShot.player_Id = player.id_Player
-		rShot.damage += player.loadout.side_damage_bonus
-		lShot.damage += player.loadout.side_damage_bonus
-		lShot.setPowerAnim()
-		rShot.setPowerAnim()
-		rShot.speedX = -100
-		lShot.speedX = 100
+		_spawn_gun(Player.WEAPON_SIDE.projectile, "shootFromLeft", player.loadout.side_damage_bonus, 100)
+		_spawn_gun(Player.WEAPON_SIDE.projectile, "shootFromRight", player.loadout.side_damage_bonus, -100)
 
 func fire_beam(power: int) -> void:
-	var beam_shot_left
-	var beam_shot_right
+	var weapon: WeaponDefinition
+	var sound: String
 	match power:
 		Player.beam_State.SMALL:
-			beam_shot_left = Player.WEAPON_BEAM_MINI.projectile.instantiate()
-			beam_shot_right = Player.WEAPON_BEAM_MINI.projectile.instantiate()
-			player.get_node("sound_Beam_mini").playing = true
+			weapon = Player.WEAPON_BEAM_MINI
+			sound = "sound_Beam_mini"
 		Player.beam_State.NORMAL:
-			beam_shot_left = Player.WEAPON_BEAM_NORMAL.projectile.instantiate()
-			beam_shot_right = Player.WEAPON_BEAM_NORMAL.projectile.instantiate()
-			player.get_node("sound_Beam_normal").playing = true
+			weapon = Player.WEAPON_BEAM_NORMAL
+			sound = "sound_Beam_normal"
 		Player.beam_State.FULL:
-			beam_shot_left = Player.WEAPON_BEAM_FULL.projectile.instantiate()
-			beam_shot_right = Player.WEAPON_BEAM_FULL.projectile.instantiate()
-			player.get_node("sound_Beam_full").playing = true
+			weapon = Player.WEAPON_BEAM_FULL
+			sound = "sound_Beam_full"
 		_:
 			return
-	for ch in beam_shot_left.get_children():
-		ch.damage += player.loadout.damage_bonus
-		ch.player_Id = player.id_Player
-		ch.setPowerAnim()
-	for ch in beam_shot_right.get_children():
-		ch.damage += player.loadout.damage_bonus
-		ch.player_Id = player.id_Player
-		ch.setPowerAnim()
-	beam_shot_left.position = player.get_node("shootFromLeft").global_position
-	beam_shot_right.position = player.get_node("shootFromRight").global_position
-	player.get_parent().add_child(beam_shot_left)
-	player.get_parent().add_child(beam_shot_right)
+	player.get_node(sound).playing = true
+	for from in ["shootFromLeft", "shootFromRight"]:
+		_spawn_beam(weapon.projectile, from)
 	player.malusSpeed = 0
+
+func _spawn_gun(packed: PackedScene, from: String, extra_damage: float, speed_x: float = 0) -> void:
+	var shot = ProjectilePool.spawn(packed, player.get_node(from).global_position, player.get_parent())
+	shot.player_Id = player.id_Player
+	shot.damage += extra_damage
+	shot.setPowerAnim()
+	shot.speedX = speed_x
+
+func _spawn_beam(packed: PackedScene, from: String) -> void:
+	var beam = packed.instantiate()
+	for ch in beam.get_children():
+		ch.damage += player.loadout.damage_bonus
+		ch.player_Id = player.id_Player
+		ch.setPowerAnim()
+	beam.position = player.get_node(from).global_position
+	player.get_parent().add_child(beam)

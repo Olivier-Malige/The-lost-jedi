@@ -1,7 +1,6 @@
 class_name Shot
 extends Area2D
 
-# Member variables
 @export var speedY: int = 0
 @export var speedX: int = 0
 @export var rotate: bool = false

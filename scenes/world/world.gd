@@ -4,20 +4,16 @@ func _ready() -> void:
 	Events.player_died.connect(_on_player_died)
 	if $music.stream:
 		$music.stream.loop = true
-	if get_tree().current_scene.coop:
-		var player1 = preload("res://scenes/player/player.tscn").instantiate()
-		var player2 = preload("res://scenes/player/player.tscn").instantiate()
-		player2.set_Player_2 = true
-		player1.position = $playerSpawn.global_position + Vector2(-50, 0)
-		player2.position = $playerSpawn.global_position + Vector2(50, 0)
-		add_child(player1, true)
-		add_child(player2, true)
-		nbr_Player = 2
-	else:
-		var player1 = preload("res://scenes/player/player.tscn").instantiate()
-		player1.position = $playerSpawn.global_position
-		add_child(player1, true)
-		nbr_Player = 1
+	var offsets := [Vector2(-50, 0), Vector2(50, 0)] if get_tree().current_scene.coop else [Vector2.ZERO]
+	nbr_Player = offsets.size()
+	for i in nbr_Player:
+		_spawn_player(i == 1, offsets[i])
+
+func _spawn_player(is_p2: bool, offset: Vector2) -> void:
+	var p = preload("res://scenes/player/player.tscn").instantiate()
+	p.set_Player_2 = is_p2
+	p.position = $playerSpawn.global_position + offset
+	add_child(p, true)
 
 func _on_player_died() -> void:
 	nbr_Player -= 1
