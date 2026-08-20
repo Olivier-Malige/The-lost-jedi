@@ -15,7 +15,7 @@ func hit(_dmg := 1) -> void:
 		player.update_energy()
 		player.get_node("touchedReset").start()
 		player.get_node("xWing").set_modulate(Color(2, 0.4, 0.4, 1))
-		player.malusSpeed = 120
+		player.malusSpeed = player.STATS.malus_speed
 		player.loadout.reset()
 		player.setShootingDelay()
 		player.touched = true

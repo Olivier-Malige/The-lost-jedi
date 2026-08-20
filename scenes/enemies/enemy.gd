@@ -1,5 +1,6 @@
 class_name Enemy
 extends Area2D
+const Layers := preload("res://core/collision_layers.gd")
 @export var dropOnDestroy: bool = false
 
 @export var dropRange: int = 64
@@ -37,10 +38,11 @@ func _ready() -> void:
 	if rndRotation:
 		speedRotation = randf_range(rnd_Roation_Range_Min, rnd_Roation_Range_Max)
 
-	speedX = randf_range(-randomX - speedX, randomY + speedX)
+	speedX = randf_range(speedX - randomX, speedX + randomX)
+	speedY = randf_range(speedY - randomY, speedY + randomY)
 	add_to_group("enemy")
-	collision_layer = 2
-	collision_mask = 1 | 4
+	collision_layer = Layers.ENEMY
+	collision_mask = Layers.PLAYER | Layers.PLAYER_SHOT
 
 	if nbrSprites > 1:
 		indexSprites = randi() % nbrSprites + 1

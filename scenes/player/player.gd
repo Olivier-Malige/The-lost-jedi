@@ -10,6 +10,7 @@ const WEAPON_BEAM_FULL: WeaponDefinition = preload("res://data/weapons/beam_full
 const UPGRADE_SPEED: UpgradeDefinition = preload("res://data/upgrades/speed.tres")
 const UPGRADE_DAMAGE: UpgradeDefinition = preload("res://data/upgrades/damage.tres")
 const UPGRADE_SIDE: UpgradeDefinition = preload("res://data/upgrades/side_shot.tres")
+const Layers := preload("res://core/collision_layers.gd")
 
 var set_Player_2 := false # set before add_child for P2 colors and stats
 var loadout: PlayerLoadout
@@ -36,10 +37,9 @@ func _ready() -> void:
 	update_controller()
 	update_energy()
 	$ShootingDelay.set_wait_time(loadout.fire_delay)
-	global.score = 0
 	add_to_group("player")
-	collision_layer = 1
-	collision_mask = 2 | 8 | 16 | 32
+	collision_layer = Layers.PLAYER
+	collision_mask = Layers.ENEMY | Layers.ENEMY_SHOT | Layers.PICKUP | Layers.ASTEROID
 
 func update_controller() -> void:
 	if get_tree().current_scene.coop:
@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 	energy = min(energy, STATS.energy_max)
 
 	var motion := Vector2.ZERO
-	$anim.play(id_Player + "_idle")
+	var anim: String = id_Player + "_idle"
 	_set_reactors(true, 0.4)
 	if Input.is_action_pressed(controller + "_up"):
 		motion.y -= 1
@@ -61,10 +61,12 @@ func _process(delta: float) -> void:
 		_set_reactors(false)
 	if Input.is_action_pressed(controller + "_left"):
 		motion.x -= 1
-		$anim.play(id_Player + "_left")
+		anim = id_Player + "_left"
 	if Input.is_action_pressed(controller + "_right"):
 		motion.x += 1
-		$anim.play(id_Player + "_right")
+		anim = id_Player + "_right"
+	if $anim.current_animation != anim:
+		$anim.play(anim)
 
 	position = (position + motion * delta * (loadout.move_speed() - malusSpeed)).clamp(STATS.bound_min, STATS.bound_max)
 

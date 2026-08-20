@@ -1,13 +1,14 @@
 extends Area2D
 const SPEED = 100
 const TABLE: UpgradeTable = preload("res://data/upgrades/upgrade_table.tres")
+const Layers := preload("res://core/collision_layers.gd")
 
 var _upgrade: UpgradeDefinition
 
 func _ready() -> void:
 	add_to_group("powersUp")
-	collision_layer = 16
-	collision_mask = 1
+	collision_layer = Layers.PICKUP
+	collision_mask = Layers.PLAYER
 	_upgrade = TABLE.pick()
 	if _upgrade:
 		$anim.play(String(_upgrade.anim))

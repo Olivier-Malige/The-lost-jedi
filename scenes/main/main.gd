@@ -20,8 +20,7 @@ var _camera_tween: Tween
 func _ready() -> void:
 	add_to_group("game")
 	set_Graphic(global.saveData.config.graphic)
-	get_window().mode = Window.MODE_FULLSCREEN
-	global.saveData.config.fullscreen = true
+	get_window().mode = Window.MODE_FULLSCREEN if global.saveData.config.fullscreen else Window.MODE_WINDOWED
 	set_process_mode(PROCESS_MODE_ALWAYS)
 
 

@@ -2,6 +2,8 @@ extends Node2D
 var nbr_Player := 0
 func _ready() -> void:
 	Events.player_died.connect(_on_player_died)
+	global.score = 0
+	Events.score_changed.emit(0)
 	if $music.stream:
 		$music.stream.loop = true
 	var offsets := [Vector2(-50, 0), Vector2(50, 0)] if get_tree().current_scene.coop else [Vector2.ZERO]
