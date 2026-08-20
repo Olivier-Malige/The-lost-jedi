@@ -3,3 +3,7 @@
 
 # Godot 3 import cache (no longer used)
 .import/
+
+# Local save leftovers (runtime uses user://)
+/data.json
+/sav_path

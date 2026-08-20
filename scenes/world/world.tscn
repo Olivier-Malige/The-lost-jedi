@@ -1,0 +1,232 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource path="res://scenes/world/world.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/slkscr.ttf" type="FontFile" id=2]
+[ext_resource path="res://scenes/waves/wave_spawner.gd" type="Script" id=3]
+[ext_resource path="res://assets/audio/music/game.ogg" type="AudioStream" id=4]
+[ext_resource path="res://scenes/world/background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/combat/projectile_pool.gd" type="Script" id=6]
+[ext_resource path="res://scenes/ui/hud.gd" type="Script" id=7]
+
+[node name="world" type="Node2D"]
+
+process_mode = 1
+script = ExtResource( 1 )
+
+[node name="hud" type="Node2D" parent="." index="0"]
+script = ExtResource( 7 )
+
+process_mode = 1
+editor/display_folded = true
+z_index = 200
+_sections_unfolded = [ "Z Index" ]
+
+[node name="score" type="Label" parent="hud" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 25.0
+offset_top = 5.0
+offset_right = 162.0
+offset_bottom = 36.0
+pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource( 2 )
+theme_override_font_sizes/font_size = 30
+text = "Score : "
+visible_ratio = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="wave" type="Label" parent="hud" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 595.0
+offset_top = 5.0
+offset_right = 726.0
+offset_bottom = 36.0
+pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource( 2 )
+theme_override_font_sizes/font_size = 30
+text = "waves :"
+visible_ratio = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="energy_player1" type="Node2D" parent="hud" index="2"]
+
+position = Vector2( 20, 170 )
+_sections_unfolded = [ "Transform3D" ]
+
+[node name="energy_player2" type="Node2D" parent="hud" index="3"]
+
+position = Vector2( 765, 170 )
+_sections_unfolded = [ "Transform3D", "Visibility" ]
+
+[node name="waveGenerator" type="Node2D" parent="." index="1"]
+
+process_mode = 1
+editor/display_folded = true
+position = Vector2( 0, 5 )
+script = ExtResource( 3 )
+
+[node name="masterTimer" type="Timer" parent="waveGenerator" index="0"]
+
+process_mode = 1
+wait_time = 30.0
+one_shot = false
+autostart = true
+
+[node name="asteroidSpawnTimer" type="Timer" parent="waveGenerator" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="droneResume" type="Timer" parent="waveGenerator" index="2"]
+
+process_mode = 1
+wait_time = 0.2
+one_shot = false
+autostart = false
+
+[node name="tieSpawnTimer" type="Timer" parent="waveGenerator" index="3"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
+
+[node name="bigAsteroidSpawnTimer" type="Timer" parent="waveGenerator" index="4"]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = false
+autostart = false
+
+[node name="interceptorSpwnTimer" type="Timer" parent="waveGenerator" index="5"]
+
+process_mode = 1
+wait_time = 4.0
+one_shot = false
+autostart = false
+
+[node name="droneSpawnTimer" type="Timer" parent="waveGenerator" index="6"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = false
+autostart = false
+
+[node name="motherShipSpawnTimer" type="Timer" parent="waveGenerator" index="7"]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = false
+autostart = false
+
+[node name="turretSpawnTimer" type="Timer" parent="waveGenerator" index="8"]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = false
+autostart = false
+
+[node name="spawnPos0" type="Marker2D" parent="waveGenerator" index="9"]
+
+position = Vector2( 50, -65 )
+
+[node name="spawnPos1" type="Marker2D" parent="waveGenerator" index="10"]
+
+position = Vector2( 114, -61 )
+
+[node name="spawnPos2" type="Marker2D" parent="waveGenerator" index="11"]
+
+position = Vector2( 239, -61 )
+
+[node name="spawnPos3" type="Marker2D" parent="waveGenerator" index="12"]
+
+position = Vector2( 178, -61 )
+
+[node name="spawnPos4" type="Marker2D" parent="waveGenerator" index="13"]
+
+position = Vector2( 302, -61 )
+
+[node name="spawnPos5" type="Marker2D" parent="waveGenerator" index="14"]
+
+position = Vector2( 367, -61 )
+
+[node name="spawnPos6" type="Marker2D" parent="waveGenerator" index="15"]
+
+position = Vector2( 430.36, -61 )
+
+[node name="spawnPos7" type="Marker2D" parent="waveGenerator" index="16"]
+
+position = Vector2( 497, -61.3604 )
+
+[node name="spawnPos8" type="Marker2D" parent="waveGenerator" index="17"]
+
+position = Vector2( 565, -61 )
+
+[node name="spawnPos9" type="Marker2D" parent="waveGenerator" index="18"]
+
+position = Vector2( 627, -62 )
+
+[node name="spawnPos10" type="Marker2D" parent="waveGenerator" index="19"]
+
+position = Vector2( 697, -61 )
+
+[node name="spawnPos11" type="Marker2D" parent="waveGenerator" index="20"]
+
+position = Vector2( 776, -58 )
+
+[node name="music" type="AudioStreamPlayer" parent="." index="2"]
+
+stream = ExtResource( 4 )
+volume_db = 0.0
+autoplay = true
+mix_target = 0
+bus = "Music"
+
+[node name="playerSpawn" type="Marker2D" parent="." index="3"]
+
+position = Vector2( 400, 560 )
+
+[node name="projectilePool" type="Node" parent="." index="4"]
+script = ExtResource( 6 )
+
+[node name="background" parent="." index="5" instance=ExtResource( 5 )]
+
+scroll_ignore_camera_zoom = true
+speed_Y = 140
+
+[connection signal="timeout" from="waveGenerator/masterTimer" to="waveGenerator" method="_on_masterTimer_timeout"]
+
+[connection signal="timeout" from="waveGenerator/asteroidSpawnTimer" to="waveGenerator" method="_on_asteroidSpawnTimer_timeout"]
+
+[connection signal="timeout" from="waveGenerator/tieSpawnTimer" to="waveGenerator" method="_on_tieSpawnTimer_timeout"]
+
+[connection signal="timeout" from="waveGenerator/bigAsteroidSpawnTimer" to="waveGenerator" method="_on_bigAsteroidSpawnTimer_timeout"]
+
+[connection signal="timeout" from="waveGenerator/interceptorSpwnTimer" to="waveGenerator" method="_on_interceptorSpwnTimer_timeout"]
+
+[connection signal="timeout" from="waveGenerator/droneSpawnTimer" to="waveGenerator" method="_on_droneSpawnTimer_timeout"]
+
+[connection signal="timeout" from="waveGenerator/motherShipSpawnTimer" to="waveGenerator" method="_on_motherShipSpawnTimer_timeout"]
+
+[connection signal="timeout" from="waveGenerator/turretSpawnTimer" to="waveGenerator" method="_on_turretSpawnTimer_timeout"]
+
+

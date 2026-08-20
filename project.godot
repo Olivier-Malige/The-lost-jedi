@@ -12,13 +12,15 @@ config_version=5
 [application]
 
 config/name="The-lost-jedi"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="res://scenes/main/main.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://Assets/UI/icon.png"
+config/icon="res://assets/ui/icon.png"
 
 [autoload]
 
-global="*res://Scripts/global.gd"
+global="*res://core/global.gd"
+Events="*res://core/events.gd"
+_mcp_game_helper="*res://addons/godot_ai/runtime/game_helper.gd"
 
 [display]
 
@@ -31,7 +33,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray(  )
+enabled=PackedStringArray("res://addons/godot_ai/plugin.cfg")
 
 
 
@@ -262,6 +264,15 @@ debug_Key6={
  ]
 }
 
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemy"
+2d_physics/layer_3="player_shot"
+2d_physics/layer_4="enemy_shot"
+2d_physics/layer_5="pickup"
+2d_physics/layer_6="asteroid"
 
 [rendering]
 
