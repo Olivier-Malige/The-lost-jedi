@@ -14,7 +14,3 @@ max_x = 500.0
 random_rotation = true
 rotation_speed_min = -1.2
 rotation_speed_max = 1.2
-max_x = 527.5
-horizontal_speed_max = 16
-min_x = 112.5
-horizontal_speed_min = 6

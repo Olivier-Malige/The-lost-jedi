@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3]
 
 [ext_resource path="res://scenes/enemies/mother_ship.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/enemies/mother_ship.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/sprites/enemies/grave_carrier_runtime.png" type="Texture2D" id=2]
 [ext_resource path="res://scenes/enemies/drone_reactor_particles.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/audio/sfx/enemies/mother_ship_hit.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/audio/sfx/enemies/mother_ship_explode.wav" type="AudioStream" id=5]
@@ -20,10 +20,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.18, 0.36, 0.54, 0.72, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+"values": [5, 6, 7, 8, 9, 10]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("droneReactorParticles:visible")
@@ -113,7 +113,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=4]
-size = Vector2(12, 28)
+size = Vector2(24, 54)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
 _data = {
@@ -156,7 +156,7 @@ blend_times = [  ]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="2"]
 
-rect = Rect2(-2.5, -2.5, 5, 5)
+rect = Rect2(-16, -32, 32, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
@@ -166,15 +166,15 @@ shape = SubResource( 4 )
 
 [node name="HullShootPos" type="Marker2D" parent="." index="4"]
 
-position = Vector2(0, 12)
+position = Vector2(0, 24)
 
 [node name="LeftTurretMount" type="Marker2D" parent="." index="5"]
 
-position = Vector2(-8.5, 1)
+position = Vector2(-8, -9)
 
 [node name="RightTurretMount" type="Marker2D" parent="." index="6"]
 
-position = Vector2(8.5, 1)
+position = Vector2(7, -11)
 
 [node name="shootTimer" type="Timer" parent="." index="8"]
 
@@ -188,19 +188,19 @@ one_shot = true
 
 [node name="droneReactorParticles" parent="." index="9" instance=ExtResource( 3 )]
 
-position = Vector2(-4.499975, -16.46265)
+position = Vector2(-10, 27)
 
 [node name="droneReactorParticles2" parent="." index="10" instance=ExtResource( 3 )]
 
-position = Vector2(-3.499975, -16.46265)
+position = Vector2(-8, 27)
 
 [node name="droneReactorParticles3" parent="." index="11" instance=ExtResource( 3 )]
 
-position = Vector2(3.500025, -16.46265)
+position = Vector2(8, 27)
 
 [node name="droneReactorParticles4" parent="." index="12" instance=ExtResource( 3 )]
 
-position = Vector2(4.500025, -16.46265)
+position = Vector2(10, 27)
 
 [node name="sound_Hit" type="AudioStreamPlayer2D" parent="." index="13"]
 

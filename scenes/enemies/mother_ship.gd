@@ -1,6 +1,7 @@
 extends Enemy
 
 const MountedTurretScene := preload("res://scenes/enemies/mother_ship_turret.tscn")
+const STARBOARD_TURRET_TEXTURE := preload("res://assets/sprites/enemies/carrier_starboard_turret.png")
 const MotherShipShot := preload("res://scenes/combat/mother_ship_shot.tscn")
 const TELEGRAPH_TIME := 0.45
 const MATERIALIZE_TIME := 0.2
@@ -78,6 +79,8 @@ func _spawn_mounted_turrets() -> void:
 	var mounts: Array[Marker2D] = [_left_turret_mount, _right_turret_mount]
 	for index in range(mounts.size()):
 		var turret := MountedTurretScene.instantiate() as TurretEnemy
+		if index == 1:
+			turret.get_node("Sprite2D").texture = STARBOARD_TURRET_TEXTURE
 		var context := EnemySpawnContext.new()
 		context.health_multiplier = health_multiplier
 		context.movement_seed = _derived_seed(_spawn_context.movement_seed, index + 1)
