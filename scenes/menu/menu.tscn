@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" path="res://assets/audio/sfx/ui/menu_start.wav" id="5"]
 
 [sub_resource type="StyleBoxFlat" id="StylePanel"]
-bg_color = Color( 0.0627451, 0.0823529, 0.133333, 0.96 )
+bg_color = Color( 0.0627451, 0.0823529, 0.133333, 0.3 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -17,7 +17,7 @@ shadow_color = Color( 0.611765, 0.12549, 0.12549, 0.4 )
 shadow_size = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleButtonNormal"]
-bg_color = Color( 0.133333, 0.152941, 0.207843, 0.82 )
+bg_color = Color( 0.133333, 0.152941, 0.207843, 0.18 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1

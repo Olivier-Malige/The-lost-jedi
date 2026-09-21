@@ -72,7 +72,7 @@ script = ExtResource("7")
 offset_right = 104
 offset_bottom = 400
 mouse_filter = 2
-color = Color(0.133333, 0.152941, 0.207843, 0.96)
+color = Color(0.133333, 0.152941, 0.207843, 0.38)
 
 [node name="LeftRankPanel" type="Panel" parent="hud"]
 offset_left = 4
@@ -88,7 +88,7 @@ offset_left = 536
 offset_right = 640
 offset_bottom = 400
 mouse_filter = 2
-color = Color(0.133333, 0.152941, 0.207843, 0.96)
+color = Color(0.133333, 0.152941, 0.207843, 0.38)
 
 [node name="RightRankPanel" type="Panel" parent="hud"]
 offset_left = 540
@@ -365,5 +365,6 @@ script = ExtResource("6")
 [node name="background" parent="." unique_id=1458692991 instance=ExtResource("5")]
 scroll_ignore_camera_zoom = true
 speed_Y = 40
+wave_theme_enabled = true
 
 [node name="ForegroundSpeedParticles" parent="." instance=ExtResource("11")]

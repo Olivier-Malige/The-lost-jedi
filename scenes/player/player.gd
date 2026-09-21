@@ -109,7 +109,10 @@ func _physics_process(delta: float) -> void:
 func _update_movement(delta: float) -> Vector2:
 	var motion := _movement_input()
 	_update_movement_animation(motion.x)
-	position = (position + motion * delta * _current_move_speed()).clamp(STATS.bound_min, STATS.bound_max)
+	var side_width := maxf((get_viewport_rect().size.x - 640.0) * 0.5, 0.0)
+	var bounds_min := STATS.bound_min + Vector2(side_width, 0.0)
+	var bounds_max := STATS.bound_max + Vector2(side_width, 0.0)
+	position = (position + motion * delta * _current_move_speed()).clamp(bounds_min, bounds_max)
 	Events.player_motion_changed.emit(id_Player, -motion.y)
 	return motion
 

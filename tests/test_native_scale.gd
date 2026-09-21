@@ -20,7 +20,7 @@ func _run() -> void:
 	_check(ProjectSettings.get_setting("display/window/size/viewport_width") == 640, "native width")
 	_check(ProjectSettings.get_setting("display/window/size/viewport_height") == 400, "native height")
 	_check(ProjectSettings.get_setting("display/window/stretch/scale_mode") == "fractional", "display must fit the available screen space")
-	_check(ProjectSettings.get_setting("display/window/stretch/aspect") == "keep", "display must preserve sprite proportions")
+	_check(ProjectSettings.get_setting("display/window/stretch/aspect") == "expand", "display must reveal extra background without distorting sprites")
 	for directory in ["player", "enemies", "combat", "world", "ui", "menu", "main"]:
 		for file in DirAccess.get_files_at("res://scenes/" + directory):
 			if not file.ends_with(".tscn"):
@@ -68,6 +68,15 @@ func _run() -> void:
 	_check(world.get_node("CombatFeedback").zoom == Vector2.ONE, "camera must not zoom sprites")
 	_check(world.get_node("hud/LeftColumn").offset_right == 104, "left HUD must have room for readable labels")
 	_check(world.get_node("hud/RightColumn").offset_left == 536, "right HUD must leave the combat area clear")
+	_check(world.get_node("hud/leftRail").color.a < 0.5 and world.get_node("hud/rightRail").color.a < 0.5, "HUD rails must leave the gameplay background visible")
+	world._layout_for_width(960.0)
+	_check(world.get_node("CombatFeedback").position.x == 480.0, "wide screens must center the fixed combat camera")
+	_check(is_zero_approx(world.get_node("background").scroll_base_offset.x), "wide screens must not reveal a parallax repeat seam")
+	_check(world.get_node("hud").offset.x == 160.0, "wide screens must center the fixed HUD rails")
+	_check(world.get_node("hud/leftRail").offset_left == -160.0 and world.get_node("hud/leftRail").offset_right == 104.0, "wide screens must extend the left HUD background to the window edge")
+	_check(world.get_node("hud/rightRail").offset_left == 536.0 and world.get_node("hud/rightRail").offset_right == 800.0, "wide screens must extend the right HUD background to the window edge")
+	_check(world.get_node("playerSpawn").position.x == 480.0, "wide screens must center the fixed player spawn")
+	_check(world.get_node("waveGenerator").position.x == 160.0, "wide screens must shift wave lanes with the combat area")
 	for lane in range(12):
 		var marker = world.get_node("waveGenerator/spawnPos" + str(lane))
 		_check(marker.position.x > 104 and marker.position.x < 536, "spawn lanes must stay between HUD panels")

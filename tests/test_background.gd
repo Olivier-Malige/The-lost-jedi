@@ -37,6 +37,16 @@ func run() -> void:
 	var far_distance: float = (background.scroll_base_offset.y - offset_before_cycles) * far_layer.motion_scale.y
 	check(is_equal_approx(far_distance, 1350.0), "far layer must traverse three complete 450-pixel repeats at maximum speed")
 	background.queue_free()
+
+	var themed_background = load("res://scenes/world/background.tscn").instantiate()
+	themed_background.wave_theme_enabled = true
+	root.add_child(themed_background)
+	check(themed_background.get_node("b3/stars").texture.resource_path.ends_with("gameplay_background/far.png"), "waves 1 to 6 must retain the frozen graveyard")
+	themed_background._on_wave_changed(7)
+	check(themed_background.get_node("b3/stars").texture.resource_path.ends_with("gameplay_background/violet_orbit/far.png"), "waves 7 to 12 must use the violet orbit")
+	themed_background._on_wave_changed(13)
+	check(themed_background.get_node("b3/stars").texture.resource_path.ends_with("gameplay_background/red_rift/far.png"), "wave 13 onward must use the red rift")
+	themed_background.queue_free()
 	await process_frame
 	print("Background: ", "PASS" if failures == 0 else "FAIL")
 	quit(0 if failures == 0 else 1)

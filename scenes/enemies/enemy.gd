@@ -112,7 +112,7 @@ func _initialize_movement() -> void:
 	_movement_phase = phase_rng.randf_range(0.0, TAU)
 	_movement_direction = -1.0 if phase_rng.randi_range(0, 1) == 0 else 1.0
 	_target_horizontal_speed = _movement_direction * _movement_profile.horizontal_speed * _movement_speed_scale()
-	global_position.x = clampf(global_position.x, _movement_profile.min_x, _movement_profile.max_x)
+	global_position.x = clampf(global_position.x, _movement_min_x(), _movement_max_x())
 	if _movement_profile.mode == MovementProfile.Mode.SINE:
 		_sine_wave_offset = _current_sine_wave_offset()
 	if _movement_profile.mode == MovementProfile.Mode.DRIFT:
@@ -198,13 +198,13 @@ func _update_patrol_exit(delta: float) -> void:
 
 func _apply_horizontal_bounds() -> void:
 	var bounced := false
-	if global_position.x < _movement_profile.min_x:
-		global_position.x = _movement_profile.min_x
+	if global_position.x < _movement_min_x():
+		global_position.x = _movement_min_x()
 		_movement_direction = 1.0
 		speedX = absf(speedX)
 		bounced = true
-	elif global_position.x > _movement_profile.max_x:
-		global_position.x = _movement_profile.max_x
+	elif global_position.x > _movement_max_x():
+		global_position.x = _movement_max_x()
 		_movement_direction = -1.0
 		speedX = -absf(speedX)
 		bounced = true
@@ -213,6 +213,18 @@ func _apply_horizontal_bounds() -> void:
 	if _movement_profile.mode == MovementProfile.Mode.SMOOTH_ZIGZAG:
 		_movement_time = 0.0
 	_target_horizontal_speed = _movement_direction * _movement_profile.horizontal_speed * _movement_speed_scale()
+
+
+func _movement_min_x() -> float:
+	return _movement_profile.min_x + _playfield_side_width()
+
+
+func _movement_max_x() -> float:
+	return _movement_profile.max_x + _playfield_side_width()
+
+
+func _playfield_side_width() -> float:
+	return maxf((get_viewport_rect().size.x - 640.0) * 0.5, 0.0)
 
 func _movement_speed_scale() -> float:
 	var value := _spawn_context.speed_multiplier
