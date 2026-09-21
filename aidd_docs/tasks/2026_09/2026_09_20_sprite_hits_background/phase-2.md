@@ -1,5 +1,5 @@
 ---
-status: pending
+status: done
 ---
 
 # Instruction: Harmonize active enemy art and hit feedback
@@ -25,7 +25,7 @@ scenes/effects/
 tests/test_enemy_feedback.gd                                 ✏️ actual variants and transition coverage
 ```
 
-Carrier scale amendment after phase-1 review: the maintainer identified the current carrier as incorrectly sized. Use the prepared 32 × 64 hull at scale one; explicitly align its collision, turret artwork/anchors and shot origins. Inspect `mother_ship_turret.tscn` for a corresponding bounded assembly correction; preserve damage and cadence. This is planned work, not an implemented geometry change.
+Carrier scale amendment after two in-game reviews: keep the prepared 32 × 64 frame grid and display the complete carrier assembly at 2× for a 64 × 128 footprint. Align its collision, turret artwork/anchors and shot origins while preserving damage and cadence. The scale and frame-mapping correction is implemented; the remainder of this phase still covers the other active enemy families.
 
 No deletions. Only change already-consistent art when required by the phase-1 contract; avoid resaving unrelated frames. Mounted turret behavior inherits the turret scene and must be tested without duplicating its implementation. Preserve existing elite runtime presentation; do not activate the entire prepared elite/action library.
 
@@ -56,7 +56,7 @@ journey
 
 1. Reconcile interceptor provenance and frame count before export. Work from preserved copies; verify unchanged idle/destruction frames unless the approved contract requires a specific correction.
 2. Apply the common material/impact treatment across active enemy and asteroid variants, respecting Lost Warden 64 and native footprints.
-3. Use the carrier at its intended native 32 × 64 size with explicit idle/hit/explode tags. Separate the authored turret components from the hull; avoid overlaying full-size standalone turret ships. Align hull/turret collision shapes and muzzle/mount anchors to the resulting assembly while preserving independent targetability.
+3. Keep the carrier runtime source on its 32 × 64 authored grid and the complete assembly at 2×, with explicit idle/hit/explode mappings. Use dedicated component turrets, aligned anchors and independent targetability.
 4. Export without trimming or unintended padding; verify frame bounds, dimensions, visible palette and source/export pixel agreement.
 
 ### `2)` Connect the shared feedback consistently

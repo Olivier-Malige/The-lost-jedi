@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" path="res://assets/sprites/enemies/carrier_port_turret.png" id="3"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(8, 11)
+size = Vector2(12, 13)
 
 [node name="mountedTurret" instance=ExtResource("1")]
 definition = ExtResource("2")
@@ -17,12 +17,12 @@ scale = Vector2(1, 1)
 texture = ExtResource("3")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0.5, -1.5)
+position = Vector2(0, -1)
 scale = Vector2(1, 1)
 shape = SubResource("1")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="5"]
-rect = Rect2(-4, -8, 9, 13)
+rect = Rect2(-7, -9, 14, 18)
 
 [node name="shootPos" parent="." index="3"]
-position = Vector2(0, 5)
+position = Vector2(0, 10)

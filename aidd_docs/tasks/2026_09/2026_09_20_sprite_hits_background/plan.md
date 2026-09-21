@@ -31,6 +31,6 @@ Background working assumption, pending maintainer preference: dark industrial sp
 
 | Decision | Why |
 | --- | --- |
-| Preserve damage, motion and cadence; use the carrier's intended 32 × 64 native hull and explicitly align its assembly during phase 2. | Maintainer feedback after phase 1 identifies the current carrier scale as incorrect. Carrier collision/anchor alignment is a proposed, bounded exception; other actors retain their geometry. |
+| Preserve damage, motion and cadence; keep the carrier's 32 × 64 authored grid and present the complete assembly at 64 × 128. | Two maintainer reviews found the 16 × 32 legacy hull and then the scale-one replacement too small in game. The 2× assembly is a bounded capital-ship exception; other actors retain their geometry. |
 | Keep editable Aseprite sources and runtime exports synchronized, with explicit frame mapping. | File names alone do not establish source provenance; the interceptor and carrier already expose mismatches. |
 | Extend the existing shared enemy feedback and three-layer background implementation. | These already provide the required runtime mechanisms; replacing them with a general animation framework or nine-layer environment system adds unnecessary scope. |

@@ -100,3 +100,19 @@ The proposed background remains dark industrial space with sparse peripheral deb
 ## Maintainer scale feedback after phase 1
 
 The maintainer identified the carrier's size as incorrect. Reinspection confirms a 16 × 32 runtime hull with two 32 × 32 mounted turret sprites, versus the prepared carrier's intended 32 × 64 hull. The earlier recommendation to redraw the carrier into the old footprint is superseded. Phase 2 now proposes native 32 × 64 integration and explicit hull/turret geometry and anchor alignment; damage, movement and cadence stay unchanged. This is a plan correction only; no runtime scale or collision was changed.
+
+## Carrier scale implementation after rebase — 2026-09-21
+
+The rebase retained the 32 × 64 replacement, but its scale-one presentation still read like a regular enemy. The complete carrier assembly now displays at 2×, giving it a 64 × 128 footprint while keeping the Sprite2D at scale one for nearest-neighbor sampling. The hull collision scales to 48 × 108 world pixels. Idle frames 0–2 and authored hit frame 3 are restored; destruction remains frames 5–10. Dedicated port/starboard turret components scale with the carrier and remain independently targetable.
+
+A focused Godot capture compared the assembled carrier with the 32 × 32 Nomad player and confirmed the intended capital-ship hierarchy. `test_native_scale.gd` and `test_enemy_feedback.gd` pass. The broader collision-alignment test still reports pre-existing pickup collision failures unrelated to this carrier change.
+
+The same rebase left literal conflict markers in `export.cfg`; they were resolved in favor of the newer `a5.1` version values. No other conflict markers remain in the inspected project text files.
+
+## Phase 2 completion — 2026-09-21
+
+The interceptor source now contains the missing fifth `damaged` frame as an explicit `Runtime Damaged Reference` layer. It exports to the existing 352 × 32 runtime sheet with zero visible-pixel differences, preserving every active idle, hit and explosion cell.
+
+The carrier’s mounted turrets now use dedicated 14 × 18 armored twin-barrel art with independent hit frames. Their 12 × 13 local housing collision, 14 × 18 visibility region and `(0, 10)` muzzle marker align with the new pixels and the carrier’s 2× assembly scale.
+
+`test_enemy_feedback.gd` now exercises all three small-rock and four large-rock variants, the five configured elite families, an independently mounted turret, repeated/beam impacts and lethal transitions. The feedback and native-scale tests pass. The general collision-alignment test also passes for the updated carrier parts; its remaining seven `power_up.tscn` assertions predate this phase and are outside its scope.
