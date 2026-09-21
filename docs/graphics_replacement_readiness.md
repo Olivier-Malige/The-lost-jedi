@@ -18,7 +18,7 @@ The produced set is sufficient to start a coordinated graphical integration. It 
 | Player weapons and shield | Primary/side sheets, five beam tiers and shield idle/reflection frames are present. | Verify atlas regions, charge timing, shield alignment, core brightness and existing glow at gameplay scale. |
 | Enemy weapons | Four new projectile sheets are present; current combat scenes still reference small legacy textures without matching flipbook layouts. | Add the correct animation/atlas mapping and check visual size against collision footprints. |
 | Dread Ark | Boss phase sheet, three projectile families with impacts, beam and destruction sequence are present. | Integrate in its owning boss phase; weapon bays, anchors and phase timing require runtime checks. |
-| Background | Nine parallax planes and editable master are present. | Replace the old two-texture background setup, preserving tiling and reviewing layered contrast/motion. |
+| Background | The Frozen Graveyard material is recomposed into a native three-layer 640 × 450 master and active far/mid/near exports. | Integration, repeat distances and existing motion response are validated. Dense gameplay visual review remains part of the final phase. |
 | HUD energy icons | New 32×32 exports exist for both players. | Existing energy scenes still apply scale `(3, 1)` in a control with minimum size `(24, 12)`: this creates a 96×32 texture extent and needs layout/scaling review. |
 | Temporary pickups | Eight-cell dark-space atlas and layered source now exist; both pickup scenes and fire-rate mapping are updated. | Integrated and headless-tested in this pass; dense gameplay visual review remains. |
 

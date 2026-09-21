@@ -81,8 +81,8 @@ func _run() -> void:
 		var profile = load("res://data/enemies/movement/" + file)
 		_check(profile.is_valid(), file + ": movement profile must remain valid")
 		_check(profile.max_x <= 640.0, file + ": movement bounds must fit native width")
-	for name in ["background_native", "background_2_native"]:
-		var texture = load("res://assets/sprites/world/" + name + ".png")
-		_check(texture.get_size() == Vector2(600, 450), "background must match native parallax repeat")
+	for name in ["far", "mid", "near"]:
+		var texture = load("res://assets/sprites/world/gameplay_background/" + name + ".png")
+		_check(texture.get_size() == Vector2(640, 450), "background must match the native parallax repeat")
 	print("Native scale: ", "PASS" if _failures == 0 else "FAIL")
 	quit(0 if _failures == 0 else 1)

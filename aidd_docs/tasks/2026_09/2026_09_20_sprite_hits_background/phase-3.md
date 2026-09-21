@@ -1,5 +1,5 @@
 ---
-status: pending
+status: done
 ---
 
 # Instruction: Produce and integrate the native background
@@ -68,3 +68,9 @@ journey
 | 1 | One coherent environment matches the agreed direction and current palette; editable layers reproduce all three exports. |
 | 2 | Background fills the current viewport at scale one and preserves existing parallax ordering, speed response and shared-scene loading. |
 | 3 | Three full far-layer repeats show no visible discontinuity or uncovered area; combat and HUD remain readable in solo and co-op. |
+
+## Completion evidence
+
+- The existing Frozen Graveyard material was recomposed from its editable source into the native 640 × 450 `far`, `mid` and `near` layers. The active exports match those source layers exactly.
+- `background.tscn` maps the layers to b3/b2/b1, keeps the existing 0.5/0.8/1.1 motion ratios and uses matching 640 × 450 repeat distances without inherited dimming.
+- `test_background.gd` verifies native texture dimensions, ordering, repeat distances, motion ramp, co-op intent averaging and three far-layer cycles at maximum speed. `test_native_scale.gd`, `test_enemy_feedback.gd` and a main-scene smoke run also pass.

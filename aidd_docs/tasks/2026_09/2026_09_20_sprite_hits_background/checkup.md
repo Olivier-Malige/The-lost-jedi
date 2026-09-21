@@ -116,3 +116,7 @@ The interceptor source now contains the missing fifth `damaged` frame as an expl
 The carrier’s mounted turrets now use dedicated 14 × 18 armored twin-barrel art with independent hit frames. Their 12 × 13 local housing collision, 14 × 18 visibility region and `(0, 10)` muzzle marker align with the new pixels and the carrier’s 2× assembly scale.
 
 `test_enemy_feedback.gd` now exercises all three small-rock and four large-rock variants, the five configured elite families, an independently mounted turret, repeated/beam impacts and lethal transitions. The feedback and native-scale tests pass. The general collision-alignment test also passes for the updated carrier parts; its remaining seven `power_up.tscn` assertions predate this phase and are outside its scope.
+
+## Phase 3 completion — 2026-09-21
+
+The active background now uses the existing Frozen Graveyard assets through a new editable 640 × 450 Aseprite master. Its `far`, `mid` and `near` exports reproduce the source layers exactly and replace the historical two-texture setup in the shared background scene. The plans retain their existing 0.5/0.8/1.1 parallax ratios, 640 × 450 repeat distances and motion response; no menu or combat mechanics changed.
