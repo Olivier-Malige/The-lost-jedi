@@ -11,6 +11,7 @@ size = Vector2(12, 13)
 [node name="mountedTurret" instance=ExtResource("1")]
 definition = ExtResource("2")
 mounted = true
+shot_speed_multiplier = 1.25
 
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(1, 1)

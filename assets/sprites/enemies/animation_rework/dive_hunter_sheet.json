@@ -123,7 +123,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 80
+    "duration": 160
    },
    {
     "filename": "dive_hunter 14.ase",
@@ -150,7 +150,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 160
+    "duration": 100
    },
    {
     "filename": "dive_hunter 17.ase",
@@ -204,7 +204,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
+    "duration": 60
    },
    {
     "filename": "dive_hunter 23.ase",
@@ -240,7 +240,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 60
+    "duration": 110
    },
    {
     "filename": "dive_hunter 27.ase",
@@ -277,15 +277,6 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 110
-   },
-   {
-    "filename": "dive_hunter 31.ase",
-    "frame": { "x": 224, "y": 96, "w": 32, "h": 32 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
-    "sourceSize": { "w": 32, "h": 32 },
-    "duration": 110
    }
  ],
  "meta": {
@@ -299,13 +290,20 @@
    { "name": "idle", "from": 0, "to": 2, "direction": "forward", "color": "#000000ff" },
    { "name": "charge", "from": 3, "to": 4, "direction": "forward", "color": "#000000ff" },
    { "name": "fire", "from": 5, "to": 5, "direction": "forward", "color": "#000000ff" },
-   { "name": "hit", "from": 6, "to": 6, "direction": "forward", "color": "#000000ff" },
-   { "name": "damaged", "from": 7, "to": 7, "direction": "forward", "color": "#000000ff" },
-   { "name": "explode", "from": 8, "to": 13, "direction": "forward", "color": "#000000ff" },
-   { "name": "hunt_ready", "from": 14, "to": 16, "direction": "forward", "color": "#000000ff" },
-   { "name": "dive_windup", "from": 17, "to": 22, "direction": "forward", "color": "#000000ff" },
-   { "name": "dive_commit", "from": 23, "to": 26, "direction": "forward", "color": "#000000ff" },
-   { "name": "dive_recover", "from": 27, "to": 31, "direction": "forward", "color": "#000000ff" }
+   { "name": "damaged", "from": 6, "to": 6, "direction": "forward", "color": "#000000ff" },
+   { "name": "explode", "from": 7, "to": 12, "direction": "forward", "color": "#000000ff" },
+   { "name": "hunt_ready", "from": 13, "to": 15, "direction": "forward", "color": "#000000ff" },
+   { "name": "dive_windup", "from": 16, "to": 21, "direction": "forward", "color": "#000000ff" },
+   { "name": "dive_commit", "from": 22, "to": 25, "direction": "forward", "color": "#000000ff" },
+   { "name": "dive_recover", "from": 26, "to": 30, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Hull", "opacity": 255, "blendMode": "normal" },
+   { "name": "Markings and Wear", "opacity": 255, "blendMode": "normal" },
+   { "name": "Engine and Weapon", "opacity": 255, "blendMode": "normal" },
+   { "name": "Destruction", "opacity": 255, "blendMode": "normal" },
+   { "name": "Armored Depth", "opacity": 255, "blendMode": "normal" },
+   { "name": "Action Mechanics", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
   ]

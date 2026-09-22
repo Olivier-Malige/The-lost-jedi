@@ -82,7 +82,7 @@ Acceptance: ships retain recognizable silhouettes; hostile shots stand out immed
 
 The maintainer authorized the start of the graphical rework after the baseline commits `f2d74fc`, `13b4802`, and `cdf14ed`.
 
-- Razor Fighter: darker wing planes and shorter Steel highlights on frames 1–4 and 6. The hit frame and seven explosion frames remain pixel-identical to the saved export.
+- Razor Fighter: darker wing planes and shorter Steel highlights on the flight and damaged frames. This pass originally preserved the dedicated hit frame; the later shared hit shader replaced and removed it while retaining the seven explosion frames.
 - Fighter elite: matching hull treatment, interrupted violet markings, and a hidden aura layer to avoid detached red fragments resembling hostile shots. The editable aura remains available. Explosion frames remain pixel-identical.
 - Dread Ark: darker wing ribs and recessed bay grooves across all twelve phase frames; darker engine housings retain amber outlets. Trench, phase accents, and weapon-state layers remain intact.
 - First-frame Steel coverage: fighter 13.0% to 4.5%; boss 22.3% to 2.0%. Elite violet coverage: 25.2% to 5.8% of visible pixels.

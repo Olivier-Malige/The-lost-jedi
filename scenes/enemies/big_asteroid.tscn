@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource path="res://scenes/enemies/enemy.gd" type="Script" id=1]
 [ext_resource path="res://scenes/enemies/asteroid.tscn" type="PackedScene" id=2]
@@ -26,83 +26,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 3, 4, 5, 6, 7, 8 ]
-}
-
-[sub_resource type="Animation" id=3]
-
-resource_name = "hit1"
-length = 0.12
-loop_mode = 0
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteAsteroid:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 0]
-}
-
-[sub_resource type="Animation" id=4]
-
-resource_name = "hit2"
-length = 0.12
-loop_mode = 0
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteAsteroid:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [10, 9]
-}
-
-[sub_resource type="Animation" id=5]
-
-resource_name = "hit3"
-length = 0.12
-loop_mode = 0
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteAsteroid:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [12, 11]
-}
-
-[sub_resource type="Animation" id=6]
-
-resource_name = "hit4"
-length = 0.12
-loop_mode = 0
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath("SpriteAsteroid:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [14, 13]
+"values": [ 2, 3, 4, 5, 6, 7 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -138,7 +62,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array( 0 ),
 "transitions": PackedFloat32Array( 1 ),
 "update": 1,
-"values": [ 9 ]
+"values": [ 8 ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -156,7 +80,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array( 0 ),
 "transitions": PackedFloat32Array( 1 ),
 "update": 1,
-"values": [ 11 ]
+"values": [ 9 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -175,16 +99,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array( 0 ),
 "transitions": PackedFloat32Array( 1 ),
 "update": 1,
-"values": [ 13 ]
+"values": [ 10 ]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
 _data = {
 "explode": SubResource( 2 ),
-"hit1": SubResource( 3 ),
-"hit2": SubResource( 4 ),
-"hit3": SubResource( 5 ),
-"hit4": SubResource( 6 ),
 "start1": SubResource( 7 ),
 "start2": SubResource( 8 ),
 "start3": SubResource( 9 ),
@@ -210,9 +130,8 @@ definition = ExtResource( 6 )
 
 scale = Vector2(1, 1)
 texture = ExtResource( 3 )
-vframes = 2
-hframes = 9
-frame = 3
+hframes = 14
+frame = 2
 _sections_unfolded = [ "Animation", "Transform3D", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]

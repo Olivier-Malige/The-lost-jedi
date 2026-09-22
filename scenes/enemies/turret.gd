@@ -24,6 +24,7 @@ enum AttackState {
 }
 
 @export var mounted := false
+@export var shot_speed_multiplier := 1.0
 @export_range(0.0, 10.0, 0.05) var initial_delay := 0.0
 
 var _attack_state := AttackState.IDLE
@@ -148,7 +149,7 @@ func _fire_aimed_projectile() -> void:
 	if direction == Vector2.ZERO:
 		direction = Vector2.DOWN
 	var spread_radians := deg_to_rad(AIM_SPREAD[_burst_index])
-	_spawn_shot_velocity(TurretShot, _shoot_origin.global_position, direction.rotated(spread_radians) * AIM_SPEED)
+	_spawn_shot_velocity(TurretShot, _shoot_origin.global_position, direction.rotated(spread_radians) * AIM_SPEED * shot_speed_multiplier)
 	_burst_index += 1
 	$sound_Shooting.playing = true
 
@@ -161,7 +162,7 @@ func _fire_ring() -> void:
 	_set_telegraph(false)
 	for index in range(RING_SHOT_COUNT):
 		var angle := _ring_offset + TAU * float(index) / float(RING_SHOT_COUNT)
-		_spawn_shot_velocity(TurretShot, _shoot_origin.global_position, Vector2.DOWN.rotated(angle) * RING_SPEED)
+		_spawn_shot_velocity(TurretShot, _shoot_origin.global_position, Vector2.DOWN.rotated(angle) * RING_SPEED * shot_speed_multiplier)
 	_ring_offset = deg_to_rad(RING_OFFSET_DEGREES) if is_zero_approx(_ring_offset) else 0.0
 	$sound_Shooting.playing = true
 	_attack_state = AttackState.RING_COOLDOWN

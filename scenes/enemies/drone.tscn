@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource path="res://scenes/enemies/enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/enemies/drone.png" type="Texture2D" id=2]
@@ -24,26 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array( 0, 0.02, 0.04, 0.08, 0.12, 0.18, 0.24, 0.3, 0.38 ),
 "transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
-}
-
-[sub_resource type="Animation" id=2]
-
-resource_name = "hit"
-length = 0.12
-loop_mode = 0
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 0]
+"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -79,7 +60,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [11, 12, 13]
+"values": [10, 11, 12]
 }
 
 [sub_resource type="Animation" id="Animation_bank_right"]
@@ -96,7 +77,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [14, 15, 16]
+"values": [13, 14, 15]
 }
 
 [sub_resource type="RectangleShape2D" id=4]
@@ -107,7 +88,6 @@ _data = {
 "explode": SubResource( 1 ),
 "bank_left": SubResource("Animation_bank_left"),
 "bank_right": SubResource("Animation_bank_right"),
-"hit": SubResource( 2 ),
 "start": SubResource( 3 )
 }
 
@@ -128,7 +108,7 @@ definition = ExtResource( 7 )
 
 scale = Vector2(1, 1)
 texture = ExtResource( 2 )
-hframes = 17
+hframes = 16
 flip_v = true
 _sections_unfolded = [ "Animation", "Transform3D" ]
 

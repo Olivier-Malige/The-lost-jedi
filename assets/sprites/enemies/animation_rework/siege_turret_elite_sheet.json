@@ -96,7 +96,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
+    "duration": 160
    },
    {
     "filename": "siege_turret_elite 11.ase",
@@ -123,7 +123,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 160
+    "duration": 100
    },
    {
     "filename": "siege_turret_elite 14.ase",
@@ -177,7 +177,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
+    "duration": 60
    },
    {
     "filename": "siege_turret_elite 20.ase",
@@ -204,7 +204,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 60
+    "duration": 110
    },
    {
     "filename": "siege_turret_elite 23.ase",
@@ -240,7 +240,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 110
+    "duration": 100
    },
    {
     "filename": "siege_turret_elite 27.ase",
@@ -303,7 +303,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
+    "duration": 60
    },
    {
     "filename": "siege_turret_elite 34.ase",
@@ -330,7 +330,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 60
+    "duration": 110
    },
    {
     "filename": "siege_turret_elite 37.ase",
@@ -367,15 +367,6 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 110
-   },
-   {
-    "filename": "siege_turret_elite 41.ase",
-    "frame": { "x": 32, "y": 160, "w": 32, "h": 32 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
-    "sourceSize": { "w": 32, "h": 32 },
-    "duration": 110
    }
  ],
  "meta": {
@@ -387,15 +378,26 @@
   "scale": "1",
   "frameTags": [
    { "name": "idle", "from": 0, "to": 0, "direction": "forward", "color": "#000000ff" },
-   { "name": "hit", "from": 1, "to": 1, "direction": "forward", "color": "#000000ff" },
-   { "name": "explode", "from": 2, "to": 10, "direction": "forward", "color": "#000000ff" },
-   { "name": "aperture_ready", "from": 11, "to": 13, "direction": "forward", "color": "#000000ff" },
-   { "name": "aim_charge", "from": 14, "to": 19, "direction": "forward", "color": "#000000ff" },
-   { "name": "aim_fire", "from": 20, "to": 22, "direction": "forward", "color": "#000000ff" },
-   { "name": "aim_recover", "from": 23, "to": 26, "direction": "forward", "color": "#000000ff" },
-   { "name": "ring_charge", "from": 27, "to": 33, "direction": "forward", "color": "#000000ff" },
-   { "name": "ring_fire", "from": 34, "to": 36, "direction": "forward", "color": "#000000ff" },
-   { "name": "ring_recover", "from": 37, "to": 41, "direction": "forward", "color": "#000000ff" }
+   { "name": "explode", "from": 1, "to": 9, "direction": "forward", "color": "#000000ff" },
+   { "name": "aperture_ready", "from": 10, "to": 12, "direction": "forward", "color": "#000000ff" },
+   { "name": "aim_charge", "from": 13, "to": 18, "direction": "forward", "color": "#000000ff" },
+   { "name": "aim_fire", "from": 19, "to": 21, "direction": "forward", "color": "#000000ff" },
+   { "name": "aim_recover", "from": 22, "to": 25, "direction": "forward", "color": "#000000ff" },
+   { "name": "ring_charge", "from": 26, "to": 32, "direction": "forward", "color": "#000000ff" },
+   { "name": "ring_fire", "from": 33, "to": 35, "direction": "forward", "color": "#000000ff" },
+   { "name": "ring_recover", "from": 36, "to": 40, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Armored Wedge", "opacity": 255, "blendMode": "normal" },
+   { "name": "Bone Ribs", "opacity": 255, "blendMode": "normal" },
+   { "name": "Central Aperture", "opacity": 255, "blendMode": "normal" },
+   { "name": "Red Targeting", "opacity": 255, "blendMode": "normal" },
+   { "name": "Amber Vents", "opacity": 255, "blendMode": "normal" },
+   { "name": "Explosion", "opacity": 255, "blendMode": "normal" },
+   { "name": "Elite Outline", "opacity": 255, "blendMode": "normal" },
+   { "name": "Elite Siege Plates", "opacity": 255, "blendMode": "normal" },
+   { "name": "Armored Depth", "opacity": 255, "blendMode": "normal" },
+   { "name": "Action Mechanics", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
    { "name": "siege_turret", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 32, "h": 32 }, "pivot": {"x": 16, "y": 16 } }] }

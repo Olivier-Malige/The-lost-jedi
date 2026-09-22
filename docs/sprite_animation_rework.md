@@ -73,7 +73,7 @@ Small and large Dark Slate variants retain their existing rotation alternatives 
 - Eight-column row atlases, no trimming or padding; use per-frame JSON rectangles rather than assuming the former layouts.
 - Aseprite frame numbers are one-based; JSON and catalog frame/event indices are zero-based.
 - Every source has its own editable layers. Existing source paths and comparisons are recorded in the catalog.
-- **930 frames** independently exported and compared pixel-for-pixel against all 54 atlas layouts.
+- **910 frames** independently exported and compared pixel-for-pixel against all 54 atlas layouts. Enemy hit frames were removed after runtime feedback moved to the shared shader.
 - Binary alpha and the Lost Warden 24 palette verified across all 55 PNGs.
 - Tag bounds, extended-library baseline visibility, non-static new enemy action tags, transparent transient endings and held charge/activation endings verified.
 - Red and blue Nomad exports have identical alpha footprints and different team colors.

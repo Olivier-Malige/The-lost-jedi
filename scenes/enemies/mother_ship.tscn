@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource path="res://scenes/enemies/mother_ship.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/enemies/grave_carrier_runtime.png" type="Texture2D" id=2]
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.18, 0.36, 0.54, 0.72, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [5, 6, 7, 8, 9, 10]
+"values": [4, 5, 6, 7, 8, 9]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("droneReactorParticles:visible")
@@ -74,25 +74,6 @@ tracks/4/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=2]
-
-resource_name = "hit"
-length = 0.12
-loop_mode = 0
-step = 0.01
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [3, 0]
-}
-
 [sub_resource type="Animation" id=3]
 
 resource_name = "start"
@@ -118,7 +99,6 @@ size = Vector2(24, 54)
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
 _data = {
 "explode": SubResource( 1 ),
-"hit": SubResource( 2 ),
 "start": SubResource( 3 )
 }
 
@@ -140,7 +120,7 @@ shoot_timer_paths = [NodePath("shootTimer")]
 
 scale = Vector2(1, 1)
 texture = ExtResource( 2 )
-hframes = 11
+hframes = 10
 _sections_unfolded = [ "Transform3D" ]
 
 [node name="anim" type="AnimationPlayer" parent="." index="1"]

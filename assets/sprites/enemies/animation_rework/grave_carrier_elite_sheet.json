@@ -96,7 +96,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 64 },
     "sourceSize": { "w": 32, "h": 64 },
-    "duration": 100
+    "duration": 180
    },
    {
     "filename": "grave_carrier_elite 11.ase",
@@ -123,7 +123,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 64 },
     "sourceSize": { "w": 32, "h": 64 },
-    "duration": 180
+    "duration": 120
    },
    {
     "filename": "grave_carrier_elite 14.ase",
@@ -168,7 +168,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 64 },
     "sourceSize": { "w": 32, "h": 64 },
-    "duration": 120
+    "duration": 60
    },
    {
     "filename": "grave_carrier_elite 19.ase",
@@ -195,7 +195,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 64 },
     "sourceSize": { "w": 32, "h": 64 },
-    "duration": 60
+    "duration": 130
    },
    {
     "filename": "grave_carrier_elite 22.ase",
@@ -231,7 +231,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 64 },
     "sourceSize": { "w": 32, "h": 64 },
-    "duration": 130
+    "duration": 120
    },
    {
     "filename": "grave_carrier_elite 26.ase",
@@ -276,7 +276,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 64 },
     "sourceSize": { "w": 32, "h": 64 },
-    "duration": 120
+    "duration": 60
    },
    {
     "filename": "grave_carrier_elite 31.ase",
@@ -303,7 +303,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 64 },
     "sourceSize": { "w": 32, "h": 64 },
-    "duration": 60
+    "duration": 130
    },
    {
     "filename": "grave_carrier_elite 34.ase",
@@ -339,7 +339,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 64 },
     "sourceSize": { "w": 32, "h": 64 },
-    "duration": 130
+    "duration": 100
    },
    {
     "filename": "grave_carrier_elite 38.ase",
@@ -393,7 +393,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 64 },
     "sourceSize": { "w": 32, "h": 64 },
-    "duration": 100
+    "duration": 70
    },
    {
     "filename": "grave_carrier_elite 44.ase",
@@ -420,7 +420,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 64 },
     "sourceSize": { "w": 32, "h": 64 },
-    "duration": 70
+    "duration": 130
    },
    {
     "filename": "grave_carrier_elite 47.ase",
@@ -457,15 +457,6 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 64 },
     "sourceSize": { "w": 32, "h": 64 },
     "duration": 130
-   },
-   {
-    "filename": "grave_carrier_elite 51.ase",
-    "frame": { "x": 96, "y": 384, "w": 32, "h": 64 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 64 },
-    "sourceSize": { "w": 32, "h": 64 },
-    "duration": 130
    }
  ],
  "meta": {
@@ -477,19 +468,32 @@
   "scale": "1",
   "frameTags": [
    { "name": "idle", "from": 0, "to": 2, "direction": "forward", "color": "#000000ff" },
-   { "name": "hit", "from": 3, "to": 3, "direction": "forward", "color": "#000000ff" },
-   { "name": "damaged", "from": 4, "to": 4, "direction": "forward", "color": "#000000ff" },
-   { "name": "explode", "from": 5, "to": 10, "direction": "forward", "color": "#000000ff" },
-   { "name": "weapons_ready", "from": 11, "to": 13, "direction": "forward", "color": "#000000ff" },
-   { "name": "port_charge", "from": 14, "to": 18, "direction": "forward", "color": "#000000ff" },
-   { "name": "port_fire", "from": 19, "to": 21, "direction": "forward", "color": "#000000ff" },
-   { "name": "port_recover", "from": 22, "to": 25, "direction": "forward", "color": "#000000ff" },
-   { "name": "starboard_charge", "from": 26, "to": 30, "direction": "forward", "color": "#000000ff" },
-   { "name": "starboard_fire", "from": 31, "to": 33, "direction": "forward", "color": "#000000ff" },
-   { "name": "starboard_recover", "from": 34, "to": 37, "direction": "forward", "color": "#000000ff" },
-   { "name": "hull_charge", "from": 38, "to": 43, "direction": "forward", "color": "#000000ff" },
-   { "name": "hull_fire", "from": 44, "to": 46, "direction": "forward", "color": "#000000ff" },
-   { "name": "hull_recover", "from": 47, "to": 51, "direction": "forward", "color": "#000000ff" }
+   { "name": "damaged", "from": 3, "to": 3, "direction": "forward", "color": "#000000ff" },
+   { "name": "explode", "from": 4, "to": 9, "direction": "forward", "color": "#000000ff" },
+   { "name": "weapons_ready", "from": 10, "to": 12, "direction": "forward", "color": "#000000ff" },
+   { "name": "port_charge", "from": 13, "to": 17, "direction": "forward", "color": "#000000ff" },
+   { "name": "port_fire", "from": 18, "to": 20, "direction": "forward", "color": "#000000ff" },
+   { "name": "port_recover", "from": 21, "to": 24, "direction": "forward", "color": "#000000ff" },
+   { "name": "starboard_charge", "from": 25, "to": 29, "direction": "forward", "color": "#000000ff" },
+   { "name": "starboard_fire", "from": 30, "to": 32, "direction": "forward", "color": "#000000ff" },
+   { "name": "starboard_recover", "from": 33, "to": 36, "direction": "forward", "color": "#000000ff" },
+   { "name": "hull_charge", "from": 37, "to": 42, "direction": "forward", "color": "#000000ff" },
+   { "name": "hull_fire", "from": 43, "to": 45, "direction": "forward", "color": "#000000ff" },
+   { "name": "hull_recover", "from": 46, "to": 50, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Hull", "opacity": 255, "blendMode": "normal" },
+   { "name": "Bone Armor Ribs", "opacity": 255, "blendMode": "normal" },
+   { "name": "Port Turret", "opacity": 255, "blendMode": "normal" },
+   { "name": "Starboard Turret", "opacity": 255, "blendMode": "normal" },
+   { "name": "Engine Trench", "opacity": 255, "blendMode": "normal" },
+   { "name": "Engine Blocks", "opacity": 255, "blendMode": "normal" },
+   { "name": "Hit and Damage", "opacity": 255, "blendMode": "normal" },
+   { "name": "Explosion", "opacity": 255, "blendMode": "normal" },
+   { "name": "Elite Outline", "opacity": 255, "blendMode": "normal" },
+   { "name": "Elite Command Plates", "opacity": 255, "blendMode": "normal" },
+   { "name": "Armored Depth", "opacity": 255, "blendMode": "normal" },
+   { "name": "Action Mechanics", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
    { "name": "ship_pivot", "keys": [{ "frame": 0, "bounds": {"x": 15, "y": 31, "w": 2, "h": 2 }, "pivot": {"x": 1, "y": 1 } }] },

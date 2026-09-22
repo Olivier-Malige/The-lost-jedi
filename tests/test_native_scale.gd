@@ -12,7 +12,9 @@ func _check(condition: bool, message: String) -> void:
 
 func _check_sprites(node: Node, path: String) -> void:
 	if node is Sprite2D:
-		_check(node.scale == Vector2.ONE, path + ": " + node.name + " must use native pixels")
+		var compact_laser := node.name == &"Sprite2D" and path.get_file() in ["tie_shot.tscn", "interceptor_shot.tscn", "interceptor_side_shot.tscn"]
+		var expected_scale := Vector2(0.75, 0.75) if compact_laser else Vector2.ONE
+		_check(node.scale == expected_scale, path + ": " + node.name + " must retain its intended pixel scale")
 	for child in node.get_children():
 		_check_sprites(child, path)
 
@@ -40,6 +42,8 @@ func _run() -> void:
 	var large_width: float = large_sprite.texture.get_width() / float(large_sprite.hframes) * large.scale.x
 	_check(large_width == 64.0, "large asteroid frames must occupy 64 world pixels")
 	_check(large.get_node("CollisionShape2D").shape.radius * large.scale.x == 26.0, "large asteroid collision must grow with its sprite")
+	_check(small.get_node("SpriteAsteroid").hframes == 8, "small asteroid atlas must exclude obsolete hit frames")
+	_check(large_sprite.hframes == 14 and large_sprite.vframes == 1, "large asteroid atlas must exclude obsolete hit frames")
 	var carrier_sprite: Sprite2D = carrier.get_node("Sprite2D")
 	var carrier_frame_size := carrier_sprite.texture.get_size() / Vector2(carrier_sprite.hframes, carrier_sprite.vframes)
 	_check(carrier_frame_size == Vector2(32, 64), "carrier source frames must retain the authored 32 by 64 grid")
@@ -47,9 +51,8 @@ func _run() -> void:
 	_check(carrier_sprite.scale == Vector2.ONE, "carrier sprite must preserve native pixel sampling")
 	_check(carrier.get_node("CollisionShape2D").shape.size * carrier.scale == Vector2(48, 108), "carrier hull collision must grow with the assembled ship")
 	var carrier_animations: AnimationPlayer = carrier.get_node("anim")
-	var carrier_hit := carrier_animations.get_animation("hit")
 	var carrier_idle := carrier_animations.get_animation("start")
-	_check(carrier_hit.track_get_key_value(0, 0) == 3, "carrier hits must use the authored hit frame")
+	_check(not carrier_animations.has_animation(&"hit"), "carrier atlas must rely on the shared hit shader")
 	_check(carrier_idle.track_get_key_count(0) == 4 and carrier_idle.track_get_key_value(0, 2) == 2, "carrier idle must use all three authored flight frames")
 	var turret_sprite: Sprite2D = carrier_turret.get_node("Sprite2D")
 	var turret_frame_size := turret_sprite.texture.get_size() / Vector2(turret_sprite.hframes, turret_sprite.vframes)

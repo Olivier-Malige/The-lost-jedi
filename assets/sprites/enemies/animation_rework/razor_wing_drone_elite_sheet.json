@@ -15,7 +15,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
+    "duration": 20
    },
    {
     "filename": "razor_wing_drone_elite 2.ase",
@@ -33,7 +33,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 20
+    "duration": 40
    },
    {
     "filename": "razor_wing_drone_elite 4.ase",
@@ -51,7 +51,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 40
+    "duration": 60
    },
    {
     "filename": "razor_wing_drone_elite 6.ase",
@@ -78,7 +78,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 60
+    "duration": 80
    },
    {
     "filename": "razor_wing_drone_elite 9.ase",
@@ -87,7 +87,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 80
+    "duration": 20
    },
    {
     "filename": "razor_wing_drone_elite 10.ase",
@@ -96,7 +96,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 20
+    "duration": 160
    },
    {
     "filename": "razor_wing_drone_elite 11.ase",
@@ -123,7 +123,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 160
+    "duration": 100
    },
    {
     "filename": "razor_wing_drone_elite 14.ase",
@@ -168,7 +168,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
+    "duration": 60
    },
    {
     "filename": "razor_wing_drone_elite 19.ase",
@@ -195,7 +195,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 60
+    "duration": 100
    },
    {
     "filename": "razor_wing_drone_elite 22.ase",
@@ -223,15 +223,6 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 100
-   },
-   {
-    "filename": "razor_wing_drone_elite 25.ase",
-    "frame": { "x": 32, "y": 96, "w": 32, "h": 32 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
-    "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
    }
  ],
  "meta": {
@@ -243,12 +234,22 @@
   "scale": "1",
   "frameTags": [
    { "name": "idle", "from": 0, "to": 0, "direction": "forward", "color": "#000000ff" },
-   { "name": "hit", "from": 1, "to": 1, "direction": "forward", "color": "#000000ff" },
-   { "name": "explode", "from": 2, "to": 10, "direction": "forward", "color": "#000000ff" },
-   { "name": "flight_ready", "from": 11, "to": 13, "direction": "forward", "color": "#000000ff" },
-   { "name": "brake_open", "from": 14, "to": 18, "direction": "forward", "color": "#000000ff" },
-   { "name": "boost_commit", "from": 19, "to": 21, "direction": "forward", "color": "#000000ff" },
-   { "name": "flight_recover", "from": 22, "to": 25, "direction": "forward", "color": "#000000ff" }
+   { "name": "explode", "from": 1, "to": 9, "direction": "forward", "color": "#000000ff" },
+   { "name": "flight_ready", "from": 10, "to": 12, "direction": "forward", "color": "#000000ff" },
+   { "name": "brake_open", "from": 13, "to": 17, "direction": "forward", "color": "#000000ff" },
+   { "name": "boost_commit", "from": 18, "to": 20, "direction": "forward", "color": "#000000ff" },
+   { "name": "flight_recover", "from": 21, "to": 24, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Hull", "opacity": 255, "blendMode": "normal" },
+   { "name": "Razor Wings", "opacity": 255, "blendMode": "normal" },
+   { "name": "Red Targeting", "opacity": 255, "blendMode": "normal" },
+   { "name": "Amber Engine", "opacity": 255, "blendMode": "normal" },
+   { "name": "Explosion", "opacity": 255, "blendMode": "normal" },
+   { "name": "Elite Outline", "opacity": 255, "blendMode": "normal" },
+   { "name": "Elite Pod and Hooks", "opacity": 255, "blendMode": "normal" },
+   { "name": "Armored Depth", "opacity": 255, "blendMode": "normal" },
+   { "name": "Action Mechanics", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
    { "name": "razor_wing_drone", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 32, "h": 32 }, "pivot": {"x": 16, "y": 16 } }] }

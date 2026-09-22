@@ -277,9 +277,6 @@ func _hit_something(dmg := 0, impact_feedback := true) -> void:
 		position.y -= 5.0
 	if life <= 0:
 		_destroy()
-	elif impact_feedback:
-		$anim.play("hit" + str(indexSprites))
-		$anim.seek(0.0)
 
 func _flash_hit() -> void:
 	if _hit_sprite == null:
@@ -306,8 +303,6 @@ func _on_anim_animation_finished(animation: StringName) -> void:
 	if animation == "explode":
 		set_physics_process(false)
 		queue_free()
-	elif animation == "hit" + str(indexSprites):
-		$anim.play(_movement_animation if definition.bank_on_turn else StringName("start" + str(indexSprites)))
 
 func _destroy() -> void:
 	destroyed = true
