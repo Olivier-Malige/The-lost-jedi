@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource path="res://scenes/enemies/tie.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/enemies/tie_sheet.png" type="Texture2D" id=2]
@@ -64,12 +64,48 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 2, 1 ]
 }
 
+[sub_resource type="Animation" id="Animation_bank_left"]
+resource_name = "bank_left"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_bank_right"]
+resource_name = "bank_right"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [16, 17, 18]
+}
+
 [sub_resource type="RectangleShape2D" id=4]
 size = Vector2(22, 21)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
 _data = {
 "explode": SubResource( 1 ),
+"bank_left": SubResource("Animation_bank_left"),
+"bank_right": SubResource("Animation_bank_right"),
 "hit": SubResource( 2 ),
 "start": SubResource( 3 )
 }
@@ -92,7 +128,7 @@ shoot_timer_paths = [NodePath("shootTimer")]
 
 scale = Vector2(1, 1)
 texture = ExtResource( 2 )
-hframes = 13
+hframes = 19
 flip_v = true
 frame = 1
 _sections_unfolded = [ "Transform3D" ]

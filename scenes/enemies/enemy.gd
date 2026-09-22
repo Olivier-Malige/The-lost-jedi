@@ -41,6 +41,7 @@ var _patrol_elapsed := 0.0
 var fire_delay_multiplier := 1.0
 var _hit_sprite: Sprite2D
 var _hit_flash_tween: Tween
+var _movement_animation := &"start"
 
 func _ready() -> void:
 	if definition == null:
@@ -70,6 +71,7 @@ func _physics_process(delta: float) -> void:
 		return
 	hitByPlayerShot = false
 	_update_movement(delta)
+	_update_ship_banking(delta)
 	if setRotation:
 		rotation += speedRotation * delta
 
@@ -142,6 +144,22 @@ func _update_movement(delta: float) -> void:
 		_:
 			translate(Vector2(speedX, speedY) * delta)
 			_apply_horizontal_bounds()
+
+
+func _update_ship_banking(_delta: float) -> void:
+	if not definition.bank_on_turn or _hit_sprite == null:
+		return
+	var current_animation := StringName($anim.current_animation)
+	if current_animation == &"explode" or String(current_animation).begins_with("hit"):
+		return
+	var animation := &"start"
+	if speedX < -1.0:
+		animation = &"bank_left"
+	elif speedX > 1.0:
+		animation = &"bank_right"
+	if _movement_animation != animation:
+		_movement_animation = animation
+		$anim.play(animation)
 
 func _update_sine_movement(delta: float) -> void:
 	var speed_scale := maxf(_movement_speed_scale(), 0.01)
@@ -289,7 +307,7 @@ func _on_anim_animation_finished(animation: StringName) -> void:
 		set_physics_process(false)
 		queue_free()
 	elif animation == "hit" + str(indexSprites):
-		$anim.play("start" + str(indexSprites))
+		$anim.play(_movement_animation if definition.bank_on_turn else StringName("start" + str(indexSprites)))
 
 func _destroy() -> void:
 	destroyed = true

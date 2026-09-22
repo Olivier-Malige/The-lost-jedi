@@ -72,6 +72,16 @@ func run() -> void:
 		var animation: AnimationPlayer = enemy.get_node("anim")
 		if kind in ["drone", "interceptor", "tie"]:
 			check(sprite.flip_v, kind + ": nose must face down the playfield")
+			check(animation.has_animation(&"bank_left") and animation.has_animation(&"bank_right"), kind + ": must expose authored left and right banking animations")
+			enemy.speedX = -120.0
+			enemy._update_ship_banking(0.016)
+			check(animation.current_animation == &"bank_left", kind + ": left movement must play the authored left banking frames")
+			enemy.speedX = 120.0
+			enemy._update_ship_banking(0.016)
+			check(animation.current_animation == &"bank_right", kind + ": right movement must play the authored right banking frames")
+			enemy.speedX = 0.0
+			enemy._update_ship_banking(0.016)
+			check(animation.current_animation == &"start", kind + ": neutral movement must return to idle")
 		if kind in ["interceptor", "tie"]:
 			check(enemy.get_node("shootFrom").position.y >= 13.0, kind + ": shots must originate at the nose")
 		sprite.self_modulate = Color(0.5, 0.8, 1.0)

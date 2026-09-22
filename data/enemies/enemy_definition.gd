@@ -22,6 +22,7 @@ enum Durability { HAZARD, FODDER, FIGHTER, SPECIALIST, HEAVY }
 
 @export_group("Presentation")
 @export_range(1, 64, 1) var sprite_variants := 1
+@export var bank_on_turn := false
 
 func is_valid() -> bool:
 	return max_health > 0 \

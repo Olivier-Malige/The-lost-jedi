@@ -12,3 +12,4 @@ durability = 2
 power_up_chance = 10
 plasma_drop_chance = 13
 movement_profile = ExtResource("2")
+bank_on_turn = true
