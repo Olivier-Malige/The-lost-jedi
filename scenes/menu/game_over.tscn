@@ -31,7 +31,8 @@ script = ExtResource( 1 )
 [node name="background" parent="." instance=ExtResource( 5 )]
 
 scroll_ignore_camera_zoom = true
-speed_Y = -60
+speed_Y = 0
+lock_scroll_speed = true
 
 [node name="Dim" type="ColorRect" parent="."]
 

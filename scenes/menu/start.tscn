@@ -35,7 +35,7 @@ script = ExtResource( 1 )
 
 scroll_ignore_camera_zoom = true
 speed_X = 0
-speed_Y = -18
+speed_Y = 0
 lock_scroll_speed = true
 
 [node name="TitleArea" type="CenterContainer" parent="."]

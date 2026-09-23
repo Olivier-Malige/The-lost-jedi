@@ -1,9 +1,30 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource path="res://scenes/world/background.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/world/gameplay_background/far.png" type="Texture2D" id=2]
 [ext_resource path="res://assets/sprites/world/gameplay_background/mid.png" type="Texture2D" id=3]
 [ext_resource path="res://assets/sprites/world/gameplay_background/near.png" type="Texture2D" id=4]
+[ext_resource path="res://scenes/world/background_opaque_objects.gdshader" type="Shader" id=5]
+
+[sub_resource type="ShaderMaterial" id="MidCloud"]
+shader = ExtResource( 5 )
+shader_parameter/draw_mode = 1
+
+[sub_resource type="ShaderMaterial" id="MidPlanets"]
+shader = ExtResource( 5 )
+shader_parameter/draw_mode = 2
+
+[sub_resource type="ShaderMaterial" id="NearObjects"]
+shader = ExtResource( 5 )
+shader_parameter/draw_mode = 4
+
+[sub_resource type="ShaderMaterial" id="NearStars"]
+shader = ExtResource( 5 )
+shader_parameter/draw_mode = 3
+
+[sub_resource type="ShaderMaterial" id="FarCloud"]
+shader = ExtResource( 5 )
+shader_parameter/draw_mode = 5
 
 [node name="background" type="ParallaxBackground"]
 
@@ -32,11 +53,22 @@ _sections_unfolded = [ "Material", "Motion", "Transform3D", "Visibility", "Z" ]
 
 [node name="stars" type="Sprite2D" parent="b1" index="0"]
 
+material = SubResource( "NearObjects" )
+z_index = 4
+z_as_relative = false
 texture = ExtResource( 4 )
 texture_filter = 1
 scale = Vector2(1, 1)
 centered = false
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform3D", "Visibility", "Z" ]
+
+[node name="StarPoints" type="Sprite2D" parent="b1" index="1"]
+material = SubResource("NearStars")
+z_index = 2
+z_as_relative = false
+texture = ExtResource(4)
+texture_filter = 1
+centered = false
 
 [node name="b2" type="ParallaxLayer" parent="." index="1"]
 
@@ -47,13 +79,37 @@ _sections_unfolded = [ "Material", "Motion", "Transform3D", "Visibility", "Z" ]
 
 [node name="stars2" type="Sprite2D" parent="b2" index="0"]
 
+material = SubResource( "MidCloud" )
+z_index = 1
+z_as_relative = false
 texture = ExtResource( 3 )
 texture_filter = 1
 scale = Vector2(1, 1)
 centered = false
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform3D", "Visibility", "Z" ]
 
-[node name="b3" type="ParallaxLayer" parent="." index="2"]
+[node name="Incoming" type="Sprite2D" parent="b2" index="1"]
+material = SubResource( "MidCloud" )
+z_index = 1
+z_as_relative = false
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+centered = false
+
+[node name="PlanetsLayer" type="ParallaxLayer" parent="." index="2"]
+motion_scale = Vector2(0.55, 0.55)
+motion_offset = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(640, 450)
+
+[node name="Planets" type="Sprite2D" parent="PlanetsLayer" index="0"]
+material = SubResource( "MidPlanets" )
+z_index = 3
+z_as_relative = false
+texture = ExtResource( 3 )
+texture_filter = 1
+centered = false
+
+[node name="b3" type="ParallaxLayer" parent="." index="3"]
 
 motion_scale = Vector2( 0.5, 0.5 )
 motion_offset = Vector2(0.5, 0.5)
@@ -62,8 +118,19 @@ _sections_unfolded = [ "Material", "Motion", "Transform3D", "Visibility", "Z" ]
 
 [node name="stars" type="Sprite2D" parent="b3" index="0"]
 
+material = SubResource("FarCloud")
+z_index = 0
+z_as_relative = false
 texture = ExtResource( 2 )
 texture_filter = 1
 scale = Vector2(1, 1)
 centered = false
 _sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform3D", "Visibility", "Z" ]
+
+[node name="Incoming" type="Sprite2D" parent="b3" index="1"]
+material = SubResource("FarCloud")
+z_index = 0
+z_as_relative = false
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+centered = false
