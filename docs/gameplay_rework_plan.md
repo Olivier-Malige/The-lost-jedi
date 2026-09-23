@@ -336,6 +336,10 @@ Validation:
 
 Status: implemented on 2026-08-30. Automated scene loading and the dedicated headless enemy-identity harness pass. Solo and co-op readability playtests in waves 9, 12, and 13 remain before approval.
 
+Maintainer revision (2026-09-22): mounted Grave Carrier turrets track the nearest living player with bounded turning and repeat aimed bursts instead of radial rings. Standalone turrets retain the original aimed-burst/ring cycle. The broader, shorter carrier silhouette has been integrated as `assets/sprites/enemies/grave_carrier_hull.png`, with separate mounted turrets, aligned collision, and the existing explosion sequence.
+
+Maintainer revision (2026-09-22): the standalone Siege Turret uses its prepared action sprite sheet. Aimed and radial warnings, firing, and recovery play their authored frames; the radial warning no longer rotates the whole sprite. Carrier-mounted turrets keep their separate sprite sheet and aimed behavior.
+
 - Keep drones as simple fodder, fighters as mobile pressure, and interceptors as spread-fire specialists. Limit this follow-up to turrets and mother ships.
 - Replace the turret's random lateral shot with a telegraphed deterministic cycle: a three-shot aimed burst, a short pause, a ten-shot radial ring, and an alternating angular offset on successive rings.
 - Lock aimed volleys to the nearest living player at telegraph time. Let each turret choose independently in local co-op.
@@ -343,7 +347,7 @@ Status: implemented on 2026-08-30. Automated scene loading and the dedicated hea
 - Teleport each mother ship to the first available upper-playfield anchor in center, left, right order. Keep it stationary and discard a fourth concurrent mother ship without reward.
 - Disable the mother ship and its mounted turrets during the 0.65-second arrival telegraph and materialization sequence.
 - Give each mother ship two independently destructible mounted turrets with 10 base health, normal run health scaling, 250 score, and no power-up drop. Stagger their attack cycles.
-- Keep the hull dangerous after both turrets are destroyed with a five-shot slow fan every 2.4 seconds.
+- Keep the hull dangerous after both turrets are destroyed with a five-shot slow fan every 2.4 seconds, emitted from its two front cannon muzzles.
 - Stop and disable every mounted turret before the hull explosion, without freeing a collision object during the physics callback.
 - Extend pooled enemy shots with full two-axis velocity while retaining the legacy horizontal-speed helper for existing enemies.
 

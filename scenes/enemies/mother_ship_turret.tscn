@@ -16,6 +16,8 @@ shot_speed_multiplier = 1.25
 [node name="Sprite2D" parent="." index="0"]
 scale = Vector2(1, 1)
 texture = ExtResource("3")
+hframes = 10
+vframes = 1
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, -1)

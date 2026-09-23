@@ -16,9 +16,11 @@ var anchor_index := -1
 var _arrival_state := ArrivalState.TELEGRAPH
 var _arrival_elapsed := 0.0
 var _mounted_turrets: Array[TurretEnemy] = []
+var _fan_side_reversed := false
 
 @onready var _teleport_timer: Timer = $TeleportTimer
-@onready var _hull_shoot_origin: Marker2D = $HullShootPos
+@onready var _left_front_cannon: Marker2D = $LeftFrontCannon
+@onready var _right_front_cannon: Marker2D = $RightFrontCannon
 @onready var _left_turret_mount: Marker2D = $LeftTurretMount
 @onready var _right_turret_mount: Marker2D = $RightTurretMount
 @onready var _shoot_timer: Timer = $shootTimer
@@ -51,9 +53,11 @@ func _on_ShootTimer_timeout() -> void:
 	if destroyed or _arrival_state != ArrivalState.ACTIVE:
 		return
 	$sound_Shooting.playing = true
-	for angle in HULL_FAN_ANGLES:
-		var velocity := Vector2.DOWN.rotated(deg_to_rad(angle)) * HULL_SHOT_SPEED
-		_spawn_shot_velocity(MotherShipShot, _hull_shoot_origin.global_position, velocity)
+	for index in HULL_FAN_ANGLES.size():
+		var muzzle := _left_front_cannon if (index + int(_fan_side_reversed)) % 2 == 0 else _right_front_cannon
+		var velocity := Vector2.DOWN.rotated(deg_to_rad(HULL_FAN_ANGLES[index])) * HULL_SHOT_SPEED
+		_spawn_shot_velocity(MotherShipShot, muzzle.global_position, velocity)
+	_fan_side_reversed = not _fan_side_reversed
 
 func _claim_anchor() -> int:
 	var occupied: Dictionary[int, bool] = {}

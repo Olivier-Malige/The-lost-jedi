@@ -3,15 +3,18 @@ extends Enemy
 
 const TurretShot := preload("res://scenes/combat/turret_shot.tscn")
 const AIM_TELEGRAPH_TIME := 0.35
+const STANDALONE_AIM_TELEGRAPH_TIME := 0.6
 const AIM_BURST_DELAY := 0.14
 const AIM_COOLDOWN := 0.65
-const RING_TELEGRAPH_TIME := 0.35
+const RING_TELEGRAPH_TIME := 0.7
 const RING_COOLDOWN := 1.1
 const AIM_SPEED := 210.0
 const RING_SPEED := 140.0
 const AIM_SPREAD := [-5.0, 0.0, 5.0]
 const RING_SHOT_COUNT := 10
 const RING_OFFSET_DEGREES := 18.0
+const MOUNTED_AIM_LIMIT := PI / 3.0
+const MOUNTED_TURN_SPEED := 5.0
 
 enum AttackState {
 	IDLE,
@@ -52,13 +55,20 @@ func _ready() -> void:
 	if mounted:
 		set_combat_enabled(false)
 	else:
+		$anim.animation_finished.connect(_on_attack_animation_finished)
 		_screen_notifier.screen_entered.connect(_on_screen_entered)
 		call_deferred("_start_if_visible")
 
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
-	if _attack_state == AttackState.RING_TELEGRAPH and not destroyed:
-		_sprite.rotation += 8.0 * delta
+	if mounted and _patterns_started and not destroyed:
+		_has_locked_target = _lock_nearest_target()
+		var aim := _resting_sprite_rotation
+		if _has_locked_target:
+			aim = clampf(Vector2.DOWN.angle_to(global_position.direction_to(_locked_target)), -MOUNTED_AIM_LIMIT, MOUNTED_AIM_LIMIT)
+		_sprite.rotation = move_toward(_sprite.rotation, aim, MOUNTED_TURN_SPEED * delta)
+	elif not mounted and _attack_state == AttackState.AIM_COOLDOWN and not destroyed:
+		_sprite.rotation = move_toward(_sprite.rotation, _resting_sprite_rotation, MOUNTED_TURN_SPEED * delta)
 
 func activate_patterns(delay := -1.0) -> void:
 	if destroyed or _patterns_started:
@@ -73,6 +83,9 @@ func stop_patterns() -> void:
 	_attack_state = AttackState.STOPPED
 	_attack_timer.stop()
 	_set_telegraph(false)
+	_sprite.rotation = _resting_sprite_rotation
+	if not destroyed:
+		$anim.play("start")
 
 func shutdown_from_parent() -> void:
 	stop_patterns()
@@ -114,7 +127,10 @@ func _on_attack_timer_timeout() -> void:
 		AttackState.AIM_BURST:
 			_continue_aim_burst()
 		AttackState.AIM_COOLDOWN:
-			_begin_ring_telegraph()
+			if mounted:
+				_begin_aim_telegraph()
+			else:
+				_begin_ring_telegraph()
 		AttackState.RING_TELEGRAPH:
 			_fire_ring()
 
@@ -122,44 +138,63 @@ func _begin_aim_telegraph() -> void:
 	_attack_state = AttackState.AIM_TELEGRAPH
 	_has_locked_target = _lock_nearest_target()
 	_set_telegraph(true)
-	_schedule(AIM_TELEGRAPH_TIME)
+	if not mounted:
+		$anim.play("aim_charge")
+	_schedule(AIM_TELEGRAPH_TIME if mounted else STANDALONE_AIM_TELEGRAPH_TIME)
 
 func _begin_aim_burst() -> void:
 	_set_telegraph(false)
 	_burst_index = 0
 	if not _has_locked_target:
 		_attack_state = AttackState.AIM_COOLDOWN
+		if not mounted:
+			$anim.play("aim_recover")
 		_schedule(AIM_COOLDOWN)
 		return
 	_attack_state = AttackState.AIM_BURST
+	if not mounted:
+		$anim.play("aim_fire")
 	_fire_aimed_projectile()
 	_schedule(AIM_BURST_DELAY)
 
 func _continue_aim_burst() -> void:
+	if mounted and not _has_locked_target:
+		_attack_state = AttackState.AIM_COOLDOWN
+		_schedule(AIM_COOLDOWN)
+		return
 	if _burst_index < AIM_SPREAD.size():
 		_fire_aimed_projectile()
 		if _burst_index < AIM_SPREAD.size():
 			_schedule(AIM_BURST_DELAY)
 			return
 	_attack_state = AttackState.AIM_COOLDOWN
+	if not mounted:
+		$anim.play("aim_recover")
 	_schedule(AIM_COOLDOWN)
 
 func _fire_aimed_projectile() -> void:
-	var direction := _shoot_origin.global_position.direction_to(_locked_target)
+	var origin := _shoot_origin.global_position
+	var direction := origin.direction_to(_locked_target)
+	if mounted:
+		origin = to_global(_shoot_origin.position.rotated(_sprite.rotation))
+		direction = Vector2.DOWN.rotated(global_rotation + _sprite.rotation)
 	if direction == Vector2.ZERO:
 		direction = Vector2.DOWN
 	var spread_radians := deg_to_rad(AIM_SPREAD[_burst_index])
-	_spawn_shot_velocity(TurretShot, _shoot_origin.global_position, direction.rotated(spread_radians) * AIM_SPEED * shot_speed_multiplier)
+	_spawn_shot_velocity(TurretShot, origin, direction.rotated(spread_radians) * AIM_SPEED * shot_speed_multiplier)
 	_burst_index += 1
 	$sound_Shooting.playing = true
 
 func _begin_ring_telegraph() -> void:
 	_attack_state = AttackState.RING_TELEGRAPH
+	_sprite.rotation = _resting_sprite_rotation
 	_set_telegraph(true)
+	$anim.play("ring_charge")
 	_schedule(RING_TELEGRAPH_TIME)
 
 func _fire_ring() -> void:
 	_set_telegraph(false)
+	$anim.play("ring_fire")
 	for index in range(RING_SHOT_COUNT):
 		var angle := _ring_offset + TAU * float(index) / float(RING_SHOT_COUNT)
 		_spawn_shot_velocity(TurretShot, _shoot_origin.global_position, Vector2.DOWN.rotated(angle) * RING_SPEED * shot_speed_multiplier)
@@ -179,7 +214,7 @@ func _lock_nearest_target() -> bool:
 			nearest_distance = distance
 			_locked_target = candidate.global_position
 			found = true
-	if found:
+	if found and not mounted:
 		_sprite.rotation = Vector2.DOWN.angle_to(_shoot_origin.global_position.direction_to(_locked_target))
 	return found
 
@@ -187,9 +222,11 @@ func _schedule(duration: float) -> void:
 	_attack_timer.start(maxf(duration * fire_delay_multiplier, 0.01))
 
 func _set_telegraph(enabled: bool) -> void:
-	modulate = Color(1.6, 0.55, 0.3, 1.0) if enabled else Color.WHITE
-	if not enabled:
-		_sprite.rotation = _resting_sprite_rotation
+	modulate = Color(1.6, 0.55, 0.3, 1.0) if mounted and enabled else Color.WHITE
+
+func _on_attack_animation_finished(animation: StringName) -> void:
+	if animation == &"ring_fire" and _attack_state == AttackState.RING_COOLDOWN and not destroyed:
+		$anim.play("ring_recover")
 
 func _destroy() -> void:
 	if destroyed:

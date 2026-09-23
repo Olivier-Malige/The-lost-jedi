@@ -13,7 +13,11 @@ func _check(condition: bool, message: String) -> void:
 func _check_sprites(node: Node, path: String) -> void:
 	if node is Sprite2D:
 		var compact_laser := node.name == &"Sprite2D" and path.get_file() in ["tie_shot.tscn", "interceptor_shot.tscn", "interceptor_side_shot.tscn"]
-		var expected_scale := Vector2(0.75, 0.75) if compact_laser else Vector2.ONE
+		var expected_scale := Vector2.ONE
+		if compact_laser:
+			expected_scale = Vector2(0.75, 0.75)
+		elif path.get_file() == "turret.tscn" and node.name == &"Sprite2D":
+			expected_scale = Vector2(1.25, 1.25)
 		_check(node.scale == expected_scale, path + ": " + node.name + " must retain its intended pixel scale")
 	for child in node.get_children():
 		_check_sprites(child, path)
@@ -35,6 +39,7 @@ func _run() -> void:
 	var small = load("res://scenes/enemies/asteroid.tscn").instantiate()
 	var large = load("res://scenes/enemies/big_asteroid.tscn").instantiate()
 	var carrier = load("res://scenes/enemies/mother_ship.tscn").instantiate()
+	var standalone_turret = load("res://scenes/enemies/turret.tscn").instantiate()
 	var carrier_turret = load("res://scenes/enemies/mother_ship_turret.tscn").instantiate()
 	_check(small.scale == Vector2.ONE, "small asteroids must retain their native footprint")
 	_check(large.scale == Vector2(2, 2), "large asteroids must visibly differ at an integer scale")
@@ -46,15 +51,24 @@ func _run() -> void:
 	_check(large_sprite.hframes == 14 and large_sprite.vframes == 1, "large asteroid atlas must exclude obsolete hit frames")
 	var carrier_sprite: Sprite2D = carrier.get_node("Sprite2D")
 	var carrier_frame_size := carrier_sprite.texture.get_size() / Vector2(carrier_sprite.hframes, carrier_sprite.vframes)
-	_check(carrier_frame_size == Vector2(32, 64), "carrier source frames must retain the authored 32 by 64 grid")
-	_check(carrier.scale == Vector2(2, 2), "carrier assembly must read as a 64 by 128 capital ship")
+	_check(carrier_frame_size == Vector2(48, 56), "carrier hull must use the broader production sprite")
+	_check(carrier.scale == Vector2(2, 2), "carrier assembly must read as a 96 by 112 capital ship")
 	_check(carrier_sprite.scale == Vector2.ONE, "carrier sprite must preserve native pixel sampling")
-	_check(carrier.get_node("CollisionShape2D").shape.size * carrier.scale == Vector2(48, 108), "carrier hull collision must grow with the assembled ship")
+	_check(carrier.get_node("CollisionShape2D").shape.size * carrier.scale == Vector2(80, 96), "carrier hull collision must fit the broad hull")
 	var carrier_animations: AnimationPlayer = carrier.get_node("anim")
-	var carrier_idle := carrier_animations.get_animation("start")
 	_check(not carrier_animations.has_animation(&"hit"), "carrier atlas must rely on the shared hit shader")
-	_check(carrier_idle.track_get_key_count(0) == 4 and carrier_idle.track_get_key_value(0, 2) == 2, "carrier idle must use all three authored flight frames")
+	_check(carrier.get_node("ExplosionSprite").hframes == 10, "carrier explosion must retain the authored sequence")
+	_check(carrier.get_node("LeftTurretMount").position == Vector2(-14, -5) and carrier.get_node("RightTurretMount").position == Vector2(14, -5), "carrier turret mounts must align with hull sockets")
+	_check(carrier.get_node("LeftFrontCannon").position == Vector2(-14, 15) and carrier.get_node("RightFrontCannon").position == Vector2(14, 15), "carrier shots must start from the two front cannon muzzles")
+	var standalone_sprite: Sprite2D = standalone_turret.get_node("Sprite2D")
+	_check(standalone_sprite.hframes == 8 and standalone_sprite.vframes == 6, "standalone siege turret must use its action animation sheet")
+	_check(standalone_sprite.scale == Vector2(1.25, 1.25), "standalone siege turret must be slightly larger than its 32-pixel source frame")
+	_check(standalone_turret.get_node("CollisionShape2D").shape.size == Vector2(28, 26), "standalone siege turret collision must fit its larger visual")
+	var standalone_anim: AnimationPlayer = standalone_turret.get_node("anim")
+	_check(standalone_anim.get_animation("aim_charge").track_get_key_count(0) == 6, "siege turret aim charge must play all authored frames")
+	_check(standalone_anim.get_animation("ring_charge").track_get_key_count(0) == 7, "siege turret radial warning must play all authored frames")
 	var turret_sprite: Sprite2D = carrier_turret.get_node("Sprite2D")
+	_check(turret_sprite.scale == Vector2.ONE, "carrier-mounted turret must retain its original scale")
 	var turret_frame_size := turret_sprite.texture.get_size() / Vector2(turret_sprite.hframes, turret_sprite.vframes)
 	_check(turret_frame_size == Vector2(32, 32), "carrier turret source frames must retain the authored 32 by 32 grid")
 	_check(carrier_turret.get_node("CollisionShape2D").shape.size == Vector2(12, 13), "carrier turret collision must cover the redesigned armored housing")
@@ -63,6 +77,7 @@ func _run() -> void:
 	_check(fragment.scale == small.scale, "detached fragments must retain the small asteroid footprint")
 	fragment.free()
 	carrier_turret.free()
+	standalone_turret.free()
 	carrier.free()
 	large.free()
 	small.free()
