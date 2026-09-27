@@ -1,14 +1,13 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource path="res://scenes/enemies/turret.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/enemies/turret.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/sprites/enemies/animation_rework/siege_turret_sheet.png" type="Texture2D" id=2]
 [ext_resource path="res://assets/audio/sfx/enemies/enemy_hit.wav" type="AudioStream" id=3]
 [ext_resource path="res://assets/audio/sfx/enemies/turret_explode.wav" type="AudioStream" id=4]
 [ext_resource type="Resource" path="res://data/enemies/turret.tres" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-size = Vector2( 20, 20 )
+size = Vector2(28, 26)
 
 [sub_resource type="Animation" id=2]
 
@@ -26,26 +25,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
-}
-
-[sub_resource type="Animation" id=3]
-
-resource_name = "hit"
-length = 0.2
-loop_mode = 0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.1 ),
-"transitions": PackedFloat32Array( 1, 1 ),
-"update": 1,
-"values": [ 1, 0 ]
+"values": [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -67,10 +47,87 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="Animation" id="aim_charge"]
+resource_name = "aim_charge"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [13, 14, 15, 16, 17, 18]
+}
+
+[sub_resource type="Animation" id="aim_fire"]
+resource_name = "aim_fire"
+length = 0.18
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [19, 20, 21]
+}
+
+[sub_resource type="Animation" id="aim_recover"]
+resource_name = "aim_recover"
+length = 0.44
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.22, 0.33),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [22, 23, 24, 25]
+}
+
+[sub_resource type="Animation" id="ring_charge"]
+resource_name = "ring_charge"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [26, 27, 28, 29, 30, 31, 32]
+}
+
+[sub_resource type="Animation" id="ring_fire"]
+resource_name = "ring_fire"
+length = 0.18
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [33, 34, 35]
+}
+
+[sub_resource type="Animation" id="ring_recover"]
+resource_name = "ring_recover"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.11, 0.22, 0.33, 0.44),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
 _data = {
+"aim_charge": SubResource("aim_charge"),
+"aim_fire": SubResource("aim_fire"),
+"aim_recover": SubResource("aim_recover"),
 "explode": SubResource( 2 ),
-"hit": SubResource( 3 ),
+"ring_charge": SubResource("ring_charge"),
+"ring_fire": SubResource("ring_fire"),
+"ring_recover": SubResource("ring_recover"),
 "start": SubResource( 4 )
 }
 
@@ -89,15 +146,16 @@ shoot_timer_paths = [NodePath("ShotDelay")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 
-scale = Vector2( 4, 4 )
+scale = Vector2(1.25, 1.25)
 texture = ExtResource( 2 )
-hframes = 11
+hframes = 8
+vframes = 6
 _sections_unfolded = [ "Transform3D" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 1.94112, -0.433393 )
-scale = Vector2( 3.308, 3.15154 )
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
 shape = SubResource( 1 )
 
 [node name="anim" type="AnimationPlayer" parent="." index="2"]
@@ -114,7 +172,7 @@ blend_times = [  ]
 
 [node name="shootPos" type="Marker2D" parent="." index="3"]
 
-position = Vector2( 0, -0.0126801 )
+position = Vector2(0, -0.003170025)
 
 [node name="ShotDelay" type="Timer" parent="." index="4"]
 
@@ -125,7 +183,7 @@ autostart = false
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="5"]
 
-rect = Rect2( -10, -10, 20, 20 )
+rect = Rect2(-20, -20, 40, 40)
 
 [node name="sound_Hit" type="AudioStreamPlayer2D" parent="." index="6"]
 

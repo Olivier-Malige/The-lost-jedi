@@ -1,10 +1,24 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource path="res://scenes/menu/start.gd" type="Script" id="1"]
 [ext_resource path="res://assets/fonts/vermin_vibes_1989.ttf" type="FontFile" id="2"]
 [ext_resource path="res://assets/fonts/slkscr.ttf" type="FontFile" id="3"]
 [ext_resource path="res://assets/audio/music/imperial.ogg" type="AudioStream" id="4"]
 [ext_resource path="res://scenes/world/background.tscn" type="PackedScene" id="5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxTitleFrame"]
+bg_color = Color(0.0235294, 0.027451, 0.0470588, 0.36)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.839216, 0.839216, 0.32549, 0.9)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(0.611765, 0.12549, 0.12549, 0.45)
+shadow_size = 3
 
 [node name="start" type="Control"]
 
@@ -20,67 +34,112 @@ script = ExtResource( 1 )
 [node name="background" parent="." instance=ExtResource( 5 )]
 
 scroll_ignore_camera_zoom = true
-speed_X = -60
+speed_X = 0
+speed_Y = 0
+lock_scroll_speed = true
 
 [node name="TitleArea" type="CenterContainer" parent="."]
 
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = 100.0
-offset_top = 60.0
-offset_right = -100.0
-offset_bottom = 460.0
+offset_left = 50
+offset_top = 12
+offset_right = -50
+offset_bottom = 142
 grow_horizontal = 2
 mouse_filter = 2
 
-[node name="Content" type="VBoxContainer" parent="TitleArea"]
+[node name="TitleFrame" type="PanelContainer" parent="TitleArea"]
 
-custom_minimum_size = Vector2( 560, 180 )
+custom_minimum_size = Vector2(420, 118)
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_styles/panel = SubResource("StyleBoxTitleFrame")
 
-[node name="LostWarden" type="Label" parent="TitleArea/Content"]
+[node name="Margin" type="MarginContainer" parent="TitleArea/TitleFrame"]
 
-custom_minimum_size = Vector2( 0, 110 )
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="Content" type="VBoxContainer" parent="TitleArea/TitleFrame/Margin"]
+
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Eyebrow" type="Label" parent="TitleArea/TitleFrame/Margin/Content"]
+
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.611765, 0.666667, 0.752941, 1)
+theme_override_fonts/font = ExtResource(3)
+theme_override_font_sizes/font_size = 8
+text = "SECTOR 07 // WARDEN SIGNAL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LostWarden" type="Label" parent="TitleArea/TitleFrame/Margin/Content"]
+
+custom_minimum_size = Vector2(0, 43)
 layout_mode = 2
 theme_override_colors/font_color = Color( 0.839216, 0.839216, 0.32549, 1 )
 theme_override_colors/font_shadow_color = Color( 0.611765, 0.12549, 0.12549, 1 )
-theme_override_constants/shadow_offset_x = 6
-theme_override_constants/shadow_offset_y = 4
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource( 2 )
-theme_override_font_sizes/font_size = 96
+theme_override_font_sizes/font_size = 38
 text = "LOST WARDEN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Tagline" type="Label" parent="TitleArea/Content"]
+[node name="TitleLine" type="ColorRect" parent="TitleArea/TitleFrame/Margin/Content"]
 
-custom_minimum_size = Vector2( 0, 40 )
+custom_minimum_size = Vector2(0, 1.5)
+layout_mode = 2
+color = Color(0.611765, 0.12549, 0.12549, 0.95)
+
+[node name="Tagline" type="Label" parent="TitleArea/TitleFrame/Margin/Content"]
+
+custom_minimum_size = Vector2(0, 15)
 layout_mode = 2
 theme_override_colors/font_color = Color( 0.952941, 0.921569, 0.866667, 1 )
 theme_override_fonts/font = ExtResource( 3 )
-theme_override_font_sizes/font_size = 28
-text = "ARCADE STARFIGHTER"
+theme_override_font_sizes/font_size = 10
+text = "ARCADE STARFIGHTER // HOLD THE VOID"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Version" type="Label" parent="TitleArea/Content"]
+[node name="Version" type="Label" parent="TitleArea/TitleFrame/Margin/Content"]
 
-custom_minimum_size = Vector2( 0, 22 )
+custom_minimum_size = Vector2(0, 11)
 layout_mode = 2
 theme_override_colors/font_color = Color( 0.611765, 0.666667, 0.752941, 1 )
 theme_override_fonts/font = ExtResource( 3 )
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 8
 text = "ALPHA-8"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TitleLine" type="ColorRect" parent="TitleArea/Content"]
+[node name="ControlsHint" type="Label" parent="."]
 
-custom_minimum_size = Vector2( 0, 3 )
-layout_mode = 2
-color = Color( 0.611765, 0.12549, 0.12549, 0.95 )
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -18
+offset_bottom = -5
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.611765, 0.666667, 0.752941, 0.9)
+theme_override_fonts/font = ExtResource(3)
+theme_override_font_sizes/font_size = 8
+text = "ARROWS / D-PAD TO NAVIGATE  •  ENTER / START TO CONFIRM"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 

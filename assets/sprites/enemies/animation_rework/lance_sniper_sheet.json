@@ -123,7 +123,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 32, "h": 48 },
-    "duration": 80
+    "duration": 180
    },
    {
     "filename": "lance_sniper 14.ase",
@@ -150,7 +150,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 32, "h": 48 },
-    "duration": 180
+    "duration": 100
    },
    {
     "filename": "lance_sniper 17.ase",
@@ -222,7 +222,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 32, "h": 48 },
-    "duration": 100
+    "duration": 50
    },
    {
     "filename": "lance_sniper 25.ase",
@@ -249,7 +249,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 32, "h": 48 },
-    "duration": 50
+    "duration": 130
    },
    {
     "filename": "lance_sniper 28.ase",
@@ -295,15 +295,6 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
     "sourceSize": { "w": 32, "h": 48 },
     "duration": 130
-   },
-   {
-    "filename": "lance_sniper 33.ase",
-    "frame": { "x": 32, "y": 192, "w": 32, "h": 48 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 48 },
-    "sourceSize": { "w": 32, "h": 48 },
-    "duration": 130
    }
  ],
  "meta": {
@@ -317,13 +308,20 @@
    { "name": "idle", "from": 0, "to": 2, "direction": "forward", "color": "#000000ff" },
    { "name": "charge", "from": 3, "to": 4, "direction": "forward", "color": "#000000ff" },
    { "name": "fire", "from": 5, "to": 5, "direction": "forward", "color": "#000000ff" },
-   { "name": "hit", "from": 6, "to": 6, "direction": "forward", "color": "#000000ff" },
-   { "name": "damaged", "from": 7, "to": 7, "direction": "forward", "color": "#000000ff" },
-   { "name": "explode", "from": 8, "to": 13, "direction": "forward", "color": "#000000ff" },
-   { "name": "sight_ready", "from": 14, "to": 16, "direction": "forward", "color": "#000000ff" },
-   { "name": "lock_charge", "from": 17, "to": 24, "direction": "forward", "color": "#000000ff" },
-   { "name": "lance_fire", "from": 25, "to": 27, "direction": "forward", "color": "#000000ff" },
-   { "name": "vent_recover", "from": 28, "to": 33, "direction": "forward", "color": "#000000ff" }
+   { "name": "damaged", "from": 6, "to": 6, "direction": "forward", "color": "#000000ff" },
+   { "name": "explode", "from": 7, "to": 12, "direction": "forward", "color": "#000000ff" },
+   { "name": "sight_ready", "from": 13, "to": 15, "direction": "forward", "color": "#000000ff" },
+   { "name": "lock_charge", "from": 16, "to": 23, "direction": "forward", "color": "#000000ff" },
+   { "name": "lance_fire", "from": 24, "to": 26, "direction": "forward", "color": "#000000ff" },
+   { "name": "vent_recover", "from": 27, "to": 32, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Hull", "opacity": 255, "blendMode": "normal" },
+   { "name": "Markings and Wear", "opacity": 255, "blendMode": "normal" },
+   { "name": "Engine and Weapon", "opacity": 255, "blendMode": "normal" },
+   { "name": "Destruction", "opacity": 255, "blendMode": "normal" },
+   { "name": "Armored Depth", "opacity": 255, "blendMode": "normal" },
+   { "name": "Action Mechanics", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
   ]

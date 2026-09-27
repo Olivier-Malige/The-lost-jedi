@@ -9,6 +9,10 @@ The project has two existing formats: the GIMP source `assets/sources/world/back
 
 Existing scene settings remain unchanged: 0.75 sprite scale, 1200×900 mirroring, and motion ratios 1.1 / 0.8 / 0.5. The original textures and scene were not overwritten. The compatibility textures have transparent edges on all four sides; widescreen layers are prepared for vertical repeat. Validation passed for all six native masters, all 33 matching exports, dimensions, layer counts and repeat boundaries. Runtime integration and visual playback in the existing scene remain untested.
 
+## Native Wave Themes
+
+The gameplay scene uses the native 640×450 three-layer format. Frozen Graveyard remains the base theme for waves 1–6. Violet Orbit takes over for waves 7–12, and Red Rift for wave 13 onward. The two editable sources are `assets/sources/world/gameplay_background_violet_orbit.aseprite` and `assets/sources/world/gameplay_background_red_rift.aseprite`; each has the `far`, `mid`, and `near` layers exported under `assets/sprites/world/gameplay_background/<variant>/`.
+
 ## Original 1600×1200 Nine-Layer Set
 
 Three preparation backgrounds extend the existing 1600×1200, nine-layer parallax master. The original master and its current exports remain unchanged. No scenes, scripts, TileSets or gameplay integration changed.

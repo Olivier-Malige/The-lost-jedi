@@ -6,8 +6,8 @@
     "sheet": "assets/sprites/enemies/animation_rework/asteroid_sheet_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/asteroid_sheet_sheet.json",
     "original": "assets/sources/enemies/asteroid_sheet.ase",
-    "original_frames": 11,
-    "frames": 11,
+    "original_frames": 8,
+    "frames": 8,
     "width": 32,
     "height": 32,
     "tags": [
@@ -19,44 +19,23 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit_1",
+        "name": "rotation_2",
         "from": 1,
         "to": 1,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "rotation_2",
+        "name": "rotation_3",
         "from": 2,
         "to": 2,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "hit_2",
-        "from": 3,
-        "to": 3,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "rotation_3",
-        "from": 4,
-        "to": 4,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "hit_3",
-        "from": 5,
-        "to": 5,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "breakup",
-        "from": 6,
-        "to": 10,
+        "from": 3,
+        "to": 7,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -71,8 +50,8 @@
     "sheet": "assets/sprites/enemies/animation_rework/big_asteroid_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/big_asteroid_sheet.json",
     "original": "assets/sources/enemies/big_asteroid.ase",
-    "original_frames": 18,
-    "frames": 18,
+    "original_frames": 14,
+    "frames": 14,
     "width": 32,
     "height": 32,
     "tags": [
@@ -84,65 +63,37 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit_1",
-        "from": 1,
-        "to": 1,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "breakup",
-        "from": 3,
-        "to": 8,
+        "from": 2,
+        "to": 7,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "rotation_2",
+        "from": 8,
+        "to": 8,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "rotation_3",
         "from": 9,
         "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "hit_2",
+        "name": "rotation_4",
         "from": 10,
         "to": 10,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "rotation_3",
-        "from": 11,
-        "to": 11,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "hit_3",
-        "from": 12,
-        "to": 12,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "rotation_4",
-        "from": 13,
-        "to": 13,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "hit_4",
-        "from": 14,
-        "to": 14,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "debris_tail",
-        "from": 15,
-        "to": 17,
+        "from": 11,
+        "to": 13,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -157,99 +108,6 @@
     "sheet": "assets/sprites/enemies/animation_rework/dive_hunter_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/dive_hunter_sheet.json",
     "original": "assets/sources/enemies/test_library/dive_hunter.ase",
-    "original_frames": 14,
-    "frames": 32,
-    "width": 32,
-    "height": 32,
-    "tags": [
-      {
-        "name": "idle",
-        "from": 0,
-        "to": 2,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "charge",
-        "from": 3,
-        "to": 4,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "fire",
-        "from": 5,
-        "to": 5,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "hit",
-        "from": 6,
-        "to": 6,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "damaged",
-        "from": 7,
-        "to": 7,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "explode",
-        "from": 8,
-        "to": 13,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "hunt_ready",
-        "from": 14,
-        "to": 16,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "dive_windup",
-        "from": 17,
-        "to": 22,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "dive_commit",
-        "from": 23,
-        "to": 26,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "dive_recover",
-        "from": 27,
-        "to": 31,
-        "direction": "forward",
-        "color": "#000000ff"
-      }
-    ],
-    "anchors": [],
-    "events": [
-      {
-        "tag": "dive_commit",
-        "frame": 23,
-        "kind": "movement_commit",
-        "status": "proposed integration marker"
-      }
-    ]
-  },
-  {
-    "name": "furnace_bomber",
-    "domain": "enemies",
-    "source": "assets/sources/enemies/animation_rework/furnace_bomber.ase",
-    "sheet": "assets/sprites/enemies/animation_rework/furnace_bomber_sheet.png",
-    "metadata": "assets/sprites/enemies/animation_rework/furnace_bomber_sheet.json",
-    "original": "assets/sources/enemies/test_library/furnace_bomber.ase",
     "original_frames": 14,
     "frames": 31,
     "width": 32,
@@ -277,51 +135,130 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit",
+        "name": "damaged",
         "from": 6,
         "to": 6,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "damaged",
-        "from": 7,
-        "to": 7,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "explode",
-        "from": 8,
-        "to": 13,
+        "from": 7,
+        "to": 12,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "payload_ready",
-        "from": 14,
-        "to": 16,
+        "name": "hunt_ready",
+        "from": 13,
+        "to": 15,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "bay_open",
-        "from": 17,
-        "to": 22,
+        "name": "dive_windup",
+        "from": 16,
+        "to": 21,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "payload_release",
-        "from": 23,
+        "name": "dive_commit",
+        "from": 22,
         "to": 25,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "bay_close",
+        "name": "dive_recover",
         "from": 26,
         "to": 30,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "anchors": [],
+    "events": [
+      {
+        "tag": "dive_commit",
+        "frame": 22,
+        "kind": "movement_commit",
+        "status": "proposed integration marker"
+      }
+    ]
+  },
+  {
+    "name": "furnace_bomber",
+    "domain": "enemies",
+    "source": "assets/sources/enemies/animation_rework/furnace_bomber.ase",
+    "sheet": "assets/sprites/enemies/animation_rework/furnace_bomber_sheet.png",
+    "metadata": "assets/sprites/enemies/animation_rework/furnace_bomber_sheet.json",
+    "original": "assets/sources/enemies/test_library/furnace_bomber.ase",
+    "original_frames": 14,
+    "frames": 30,
+    "width": 32,
+    "height": 32,
+    "tags": [
+      {
+        "name": "idle",
+        "from": 0,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "charge",
+        "from": 3,
+        "to": 4,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "fire",
+        "from": 5,
+        "to": 5,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "damaged",
+        "from": 6,
+        "to": 6,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "explode",
+        "from": 7,
+        "to": 12,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "payload_ready",
+        "from": 13,
+        "to": 15,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "bay_open",
+        "from": 16,
+        "to": 21,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "payload_release",
+        "from": 22,
+        "to": 24,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "bay_close",
+        "from": 25,
+        "to": 29,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -339,7 +276,7 @@
     "events": [
       {
         "tag": "payload_release",
-        "frame": 25,
+        "frame": 24,
         "kind": "payload_spawn",
         "status": "proposed integration marker"
       }
@@ -352,8 +289,8 @@
     "sheet": "assets/sprites/enemies/animation_rework/grave_carrier_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/grave_carrier_sheet.json",
     "original": "assets/sources/enemies/grave_carrier_32x64.ase",
-    "original_frames": 11,
-    "frames": 52,
+    "original_frames": 10,
+    "frames": 51,
     "width": 32,
     "height": 64,
     "tags": [
@@ -365,93 +302,86 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit",
+        "name": "damaged",
         "from": 3,
         "to": 3,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "damaged",
-        "from": 4,
-        "to": 4,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "explode",
-        "from": 5,
-        "to": 10,
+        "from": 4,
+        "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "weapons_ready",
-        "from": 11,
-        "to": 13,
+        "from": 10,
+        "to": 12,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "port_charge",
-        "from": 14,
-        "to": 18,
+        "from": 13,
+        "to": 17,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "port_fire",
-        "from": 19,
-        "to": 21,
+        "from": 18,
+        "to": 20,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "port_recover",
-        "from": 22,
-        "to": 25,
+        "from": 21,
+        "to": 24,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "starboard_charge",
-        "from": 26,
-        "to": 30,
+        "from": 25,
+        "to": 29,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "starboard_fire",
-        "from": 31,
-        "to": 33,
+        "from": 30,
+        "to": 32,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "starboard_recover",
-        "from": 34,
-        "to": 37,
+        "from": 33,
+        "to": 36,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "hull_charge",
-        "from": 38,
-        "to": 43,
+        "from": 37,
+        "to": 42,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "hull_fire",
-        "from": 44,
-        "to": 46,
+        "from": 43,
+        "to": 45,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "hull_recover",
-        "from": 47,
-        "to": 51,
+        "from": 46,
+        "to": 50,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -473,19 +403,19 @@
     "events": [
       {
         "tag": "port_fire",
-        "frame": 19,
+        "frame": 18,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       },
       {
         "tag": "starboard_fire",
-        "frame": 31,
+        "frame": 30,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       },
       {
         "tag": "hull_fire",
-        "frame": 44,
+        "frame": 43,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       }
@@ -498,8 +428,8 @@
     "sheet": "assets/sprites/enemies/animation_rework/grave_carrier_elite_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/grave_carrier_elite_sheet.json",
     "original": "assets/sources/enemies/grave_carrier_elite_32x64.ase",
-    "original_frames": 11,
-    "frames": 52,
+    "original_frames": 10,
+    "frames": 51,
     "width": 32,
     "height": 64,
     "tags": [
@@ -511,93 +441,86 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit",
+        "name": "damaged",
         "from": 3,
         "to": 3,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "damaged",
-        "from": 4,
-        "to": 4,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "explode",
-        "from": 5,
-        "to": 10,
+        "from": 4,
+        "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "weapons_ready",
-        "from": 11,
-        "to": 13,
+        "from": 10,
+        "to": 12,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "port_charge",
-        "from": 14,
-        "to": 18,
+        "from": 13,
+        "to": 17,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "port_fire",
-        "from": 19,
-        "to": 21,
+        "from": 18,
+        "to": 20,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "port_recover",
-        "from": 22,
-        "to": 25,
+        "from": 21,
+        "to": 24,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "starboard_charge",
-        "from": 26,
-        "to": 30,
+        "from": 25,
+        "to": 29,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "starboard_fire",
-        "from": 31,
-        "to": 33,
+        "from": 30,
+        "to": 32,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "starboard_recover",
-        "from": 34,
-        "to": 37,
+        "from": 33,
+        "to": 36,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "hull_charge",
-        "from": 38,
-        "to": 43,
+        "from": 37,
+        "to": 42,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "hull_fire",
-        "from": 44,
-        "to": 46,
+        "from": 43,
+        "to": 45,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "hull_recover",
-        "from": 47,
-        "to": 51,
+        "from": 46,
+        "to": 50,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -619,19 +542,19 @@
     "events": [
       {
         "tag": "port_fire",
-        "frame": 19,
+        "frame": 18,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       },
       {
         "tag": "starboard_fire",
-        "frame": 31,
+        "frame": 30,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       },
       {
         "tag": "hull_fire",
-        "frame": 44,
+        "frame": 43,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       }
@@ -645,7 +568,7 @@
     "metadata": "assets/sprites/enemies/animation_rework/lance_sniper_sheet.json",
     "original": "assets/sources/enemies/test_library/lance_sniper.ase",
     "original_frames": 14,
-    "frames": 34,
+    "frames": 33,
     "width": 32,
     "height": 48,
     "tags": [
@@ -671,51 +594,44 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit",
+        "name": "damaged",
         "from": 6,
         "to": 6,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "damaged",
-        "from": 7,
-        "to": 7,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "explode",
-        "from": 8,
-        "to": 13,
+        "from": 7,
+        "to": 12,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "sight_ready",
-        "from": 14,
-        "to": 16,
+        "from": 13,
+        "to": 15,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "lock_charge",
-        "from": 17,
-        "to": 24,
+        "from": 16,
+        "to": 23,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "lance_fire",
-        "from": 25,
-        "to": 27,
+        "from": 24,
+        "to": 26,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "vent_recover",
-        "from": 28,
-        "to": 33,
+        "from": 27,
+        "to": 32,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -729,7 +645,7 @@
     "events": [
       {
         "tag": "lance_fire",
-        "frame": 25,
+        "frame": 24,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       }
@@ -742,8 +658,8 @@
     "sheet": "assets/sprites/enemies/animation_rework/razor_fighter_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/razor_fighter_sheet.json",
     "original": "assets/sources/enemies/tie_sheet.ase",
-    "original_frames": 13,
-    "frames": 28,
+    "original_frames": 18,
+    "frames": 27,
     "width": 32,
     "height": 32,
     "tags": [
@@ -755,51 +671,44 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit",
+        "name": "damaged",
         "from": 4,
         "to": 4,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "damaged",
-        "from": 5,
-        "to": 5,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "explode",
-        "from": 6,
-        "to": 12,
+        "from": 5,
+        "to": 11,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "weapons_ready",
-        "from": 13,
-        "to": 15,
+        "from": 12,
+        "to": 14,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "attack_charge",
-        "from": 16,
-        "to": 20,
+        "from": 15,
+        "to": 19,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "attack_fire",
-        "from": 21,
-        "to": 23,
+        "from": 20,
+        "to": 22,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "attack_recover",
-        "from": 24,
-        "to": 27,
+        "from": 23,
+        "to": 26,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -817,7 +726,7 @@
     "events": [
       {
         "tag": "attack_fire",
-        "frame": 21,
+        "frame": 20,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       }
@@ -830,8 +739,8 @@
     "sheet": "assets/sprites/enemies/animation_rework/razor_fighter_elite_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/razor_fighter_elite_sheet.json",
     "original": "assets/sources/enemies/razor_fighter_elite.ase",
-    "original_frames": 13,
-    "frames": 28,
+    "original_frames": 18,
+    "frames": 27,
     "width": 32,
     "height": 32,
     "tags": [
@@ -843,51 +752,44 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit",
+        "name": "damaged",
         "from": 4,
         "to": 4,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "damaged",
-        "from": 5,
-        "to": 5,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "explode",
-        "from": 6,
-        "to": 12,
+        "from": 5,
+        "to": 11,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "weapons_ready",
-        "from": 13,
-        "to": 15,
+        "from": 12,
+        "to": 14,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "attack_charge",
-        "from": 16,
-        "to": 20,
+        "from": 15,
+        "to": 19,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "attack_fire",
-        "from": 21,
-        "to": 23,
+        "from": 20,
+        "to": 22,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "attack_recover",
-        "from": 24,
-        "to": 27,
+        "from": 23,
+        "to": 26,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -905,7 +807,7 @@
     "events": [
       {
         "tag": "attack_fire",
-        "frame": 21,
+        "frame": 20,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       }
@@ -918,8 +820,8 @@
     "sheet": "assets/sprites/enemies/animation_rework/razor_wing_drone_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/razor_wing_drone_sheet.json",
     "original": "assets/sources/enemies/drone.ase",
-    "original_frames": 11,
-    "frames": 26,
+    "original_frames": 16,
+    "frames": 25,
     "width": 32,
     "height": 32,
     "tags": [
@@ -931,44 +833,37 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit",
-        "from": 1,
-        "to": 1,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "explode",
-        "from": 2,
-        "to": 10,
+        "from": 1,
+        "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "flight_ready",
-        "from": 11,
-        "to": 13,
+        "from": 10,
+        "to": 12,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "brake_open",
-        "from": 14,
-        "to": 18,
+        "from": 13,
+        "to": 17,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "boost_commit",
-        "from": 19,
-        "to": 21,
+        "from": 18,
+        "to": 20,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "flight_recover",
-        "from": 22,
-        "to": 25,
+        "from": 21,
+        "to": 24,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -977,7 +872,7 @@
     "events": [
       {
         "tag": "boost_commit",
-        "frame": 19,
+        "frame": 18,
         "kind": "movement_commit",
         "status": "proposed integration marker"
       }
@@ -990,8 +885,8 @@
     "sheet": "assets/sprites/enemies/animation_rework/razor_wing_drone_elite_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/razor_wing_drone_elite_sheet.json",
     "original": "assets/sources/enemies/razor_wing_drone_elite.ase",
-    "original_frames": 11,
-    "frames": 26,
+    "original_frames": 16,
+    "frames": 25,
     "width": 32,
     "height": 32,
     "tags": [
@@ -1003,44 +898,37 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit",
-        "from": 1,
-        "to": 1,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "explode",
-        "from": 2,
-        "to": 10,
+        "from": 1,
+        "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "flight_ready",
-        "from": 11,
-        "to": 13,
+        "from": 10,
+        "to": 12,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "brake_open",
-        "from": 14,
-        "to": 18,
+        "from": 13,
+        "to": 17,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "boost_commit",
-        "from": 19,
-        "to": 21,
+        "from": 18,
+        "to": 20,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "flight_recover",
-        "from": 22,
-        "to": 25,
+        "from": 21,
+        "to": 24,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -1049,7 +937,7 @@
     "events": [
       {
         "tag": "boost_commit",
-        "frame": 19,
+        "frame": 18,
         "kind": "movement_commit",
         "status": "proposed integration marker"
       }
@@ -1062,8 +950,8 @@
     "sheet": "assets/sprites/enemies/animation_rework/siege_turret_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/siege_turret_sheet.json",
     "original": "assets/sources/enemies/turret.ase",
-    "original_frames": 11,
-    "frames": 42,
+    "original_frames": 10,
+    "frames": 41,
     "width": 32,
     "height": 32,
     "tags": [
@@ -1075,65 +963,58 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit",
-        "from": 1,
-        "to": 1,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "explode",
-        "from": 2,
-        "to": 10,
+        "from": 1,
+        "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "aperture_ready",
-        "from": 11,
-        "to": 13,
+        "from": 10,
+        "to": 12,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "aim_charge",
-        "from": 14,
-        "to": 19,
+        "from": 13,
+        "to": 18,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "aim_fire",
-        "from": 20,
-        "to": 22,
+        "from": 19,
+        "to": 21,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "aim_recover",
-        "from": 23,
-        "to": 26,
+        "from": 22,
+        "to": 25,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "ring_charge",
-        "from": 27,
-        "to": 33,
+        "from": 26,
+        "to": 32,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "ring_fire",
-        "from": 34,
-        "to": 36,
+        "from": 33,
+        "to": 35,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "ring_recover",
-        "from": 37,
-        "to": 41,
+        "from": 36,
+        "to": 40,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -1147,13 +1028,13 @@
     "events": [
       {
         "tag": "aim_fire",
-        "frame": 20,
+        "frame": 19,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       },
       {
         "tag": "ring_fire",
-        "frame": 34,
+        "frame": 33,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       }
@@ -1166,8 +1047,8 @@
     "sheet": "assets/sprites/enemies/animation_rework/siege_turret_elite_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/siege_turret_elite_sheet.json",
     "original": "assets/sources/enemies/siege_turret_elite.ase",
-    "original_frames": 11,
-    "frames": 42,
+    "original_frames": 10,
+    "frames": 41,
     "width": 32,
     "height": 32,
     "tags": [
@@ -1179,65 +1060,58 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit",
-        "from": 1,
-        "to": 1,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "explode",
-        "from": 2,
-        "to": 10,
+        "from": 1,
+        "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "aperture_ready",
-        "from": 11,
-        "to": 13,
+        "from": 10,
+        "to": 12,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "aim_charge",
-        "from": 14,
-        "to": 19,
+        "from": 13,
+        "to": 18,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "aim_fire",
-        "from": 20,
-        "to": 22,
+        "from": 19,
+        "to": 21,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "aim_recover",
-        "from": 23,
-        "to": 26,
+        "from": 22,
+        "to": 25,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "ring_charge",
-        "from": 27,
-        "to": 33,
+        "from": 26,
+        "to": 32,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "ring_fire",
-        "from": 34,
-        "to": 36,
+        "from": 33,
+        "to": 35,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "ring_recover",
-        "from": 37,
-        "to": 41,
+        "from": 36,
+        "to": 40,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -1251,13 +1125,13 @@
     "events": [
       {
         "tag": "aim_fire",
-        "frame": 20,
+        "frame": 19,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       },
       {
         "tag": "ring_fire",
-        "frame": 34,
+        "frame": 33,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       }
@@ -1270,8 +1144,8 @@
     "sheet": "assets/sprites/enemies/animation_rework/talon_interceptor_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/talon_interceptor_sheet.json",
     "original": "assets/sources/enemies/interceptor.ase",
-    "original_frames": 11,
-    "frames": 26,
+    "original_frames": 16,
+    "frames": 25,
     "width": 32,
     "height": 32,
     "tags": [
@@ -1283,51 +1157,44 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit",
+        "name": "damaged",
         "from": 3,
         "to": 3,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "damaged",
-        "from": 4,
-        "to": 4,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "explode",
-        "from": 5,
-        "to": 10,
+        "from": 4,
+        "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "weapons_ready",
-        "from": 11,
-        "to": 13,
+        "from": 10,
+        "to": 12,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "attack_charge",
-        "from": 14,
-        "to": 18,
+        "from": 13,
+        "to": 17,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "attack_fire",
-        "from": 19,
-        "to": 21,
+        "from": 18,
+        "to": 20,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "attack_recover",
-        "from": 22,
-        "to": 25,
+        "from": 21,
+        "to": 24,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -1349,7 +1216,7 @@
     "events": [
       {
         "tag": "attack_fire",
-        "frame": 19,
+        "frame": 18,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       }
@@ -1362,8 +1229,8 @@
     "sheet": "assets/sprites/enemies/animation_rework/talon_interceptor_elite_sheet.png",
     "metadata": "assets/sprites/enemies/animation_rework/talon_interceptor_elite_sheet.json",
     "original": "assets/sources/enemies/talon_interceptor_elite.ase",
-    "original_frames": 11,
-    "frames": 26,
+    "original_frames": 16,
+    "frames": 25,
     "width": 32,
     "height": 32,
     "tags": [
@@ -1375,51 +1242,44 @@
         "color": "#000000ff"
       },
       {
-        "name": "hit",
+        "name": "damaged",
         "from": 3,
         "to": 3,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "damaged",
-        "from": 4,
-        "to": 4,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
         "name": "explode",
-        "from": 5,
-        "to": 10,
+        "from": 4,
+        "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "weapons_ready",
-        "from": 11,
-        "to": 13,
+        "from": 10,
+        "to": 12,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "attack_charge",
-        "from": 14,
-        "to": 18,
+        "from": 13,
+        "to": 17,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "attack_fire",
-        "from": 19,
-        "to": 21,
+        "from": 18,
+        "to": 20,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "attack_recover",
-        "from": 22,
-        "to": 25,
+        "from": 21,
+        "to": 24,
         "direction": "forward",
         "color": "#000000ff"
       }
@@ -1441,7 +1301,7 @@
     "events": [
       {
         "tag": "attack_fire",
-        "frame": 19,
+        "frame": 18,
         "kind": "projectile_spawn",
         "status": "proposed integration marker"
       }

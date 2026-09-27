@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3]
+[gd_scene load_steps=11 format=3]
 
 [ext_resource path="res://scenes/enemies/tie.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/enemies/tie_sheet.png" type="Texture2D" id=2]
@@ -23,26 +23,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 6, 7, 8, 9, 10, 11, 12 ]
-}
-
-[sub_resource type="Animation" id=2]
-
-resource_name = "hit"
-length = 0.5
-loop_mode = 0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 2, 4, 3, 4 ]
+"values": [ 5, 6, 7, 8, 9, 10, 11 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -64,20 +45,54 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 2, 1 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="Animation" id="Animation_bank_left"]
+resource_name = "bank_left"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [12, 13, 14]
+}
 
-size = Vector2( 28.313, 20 )
+[sub_resource type="Animation" id="Animation_bank_right"]
+resource_name = "bank_right"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [15, 16, 17]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+size = Vector2(22, 21)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
 _data = {
 "explode": SubResource( 1 ),
-"hit": SubResource( 2 ),
+"bank_left": SubResource("Animation_bank_left"),
+"bank_right": SubResource("Animation_bank_right"),
 "start": SubResource( 3 )
 }
 
 [node name="Tie" type="Area2D"]
 
-position = Vector2( 0.157784, 0 )
+position = Vector2(0.039446, 0)
 input_pickable = true
 gravity_direction = Vector2( 0, 1 )
 gravity = 98.0
@@ -91,9 +106,10 @@ shoot_timer_paths = [NodePath("shootTimer")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 
-scale = Vector2( 4, 4 )
+scale = Vector2(1, 1)
 texture = ExtResource( 2 )
-hframes = 13
+hframes = 18
+flip_v = true
 frame = 1
 _sections_unfolded = [ "Transform3D" ]
 
@@ -111,12 +127,12 @@ blend_times = [  ]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="2"]
 
-rect = Rect2( -10, -10, 20, 20 )
+rect = Rect2(-2.5, -2.5, 5, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( 0.0352709, -0.303366 )
-scale = Vector2( 1.07139, 1.20155 )
+position = Vector2(0, -0.5)
+scale = Vector2(1, 1)
 shape = SubResource( 4 )
 
 [node name="shootTimer" type="Timer" parent="." index="4"]
@@ -128,7 +144,7 @@ autostart = true
 
 [node name="shootFrom" type="Marker2D" parent="." index="5"]
 
-position = Vector2( -0.237831, 14.5618 )
+position = Vector2(0, 13)
 
 [node name="sound_Hit" type="AudioStreamPlayer2D" parent="." index="6"]
 

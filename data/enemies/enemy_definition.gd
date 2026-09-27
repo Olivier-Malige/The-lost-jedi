@@ -18,10 +18,11 @@ enum Durability { HAZARD, FODDER, FIGHTER, SPECIALIST, HEAVY }
 @export var drops_on_destroy := false
 @export var drop_scene: PackedScene
 @export_range(0, 100, 1) var drop_count := 1
-@export_range(0.0, 1000.0, 1.0) var drop_range := 64.0
+@export_range(0.0, 1000.0, 1.0) var drop_range := 32.0
 
 @export_group("Presentation")
 @export_range(1, 64, 1) var sprite_variants := 1
+@export var bank_on_turn := false
 
 func is_valid() -> bool:
 	return max_health > 0 \

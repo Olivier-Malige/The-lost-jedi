@@ -1,12 +1,13 @@
 extends Enemy
 
 const MountedTurretScene := preload("res://scenes/enemies/mother_ship_turret.tscn")
+const STARBOARD_TURRET_TEXTURE := preload("res://assets/sprites/enemies/carrier_starboard_turret.png")
 const MotherShipShot := preload("res://scenes/combat/mother_ship_shot.tscn")
 const TELEGRAPH_TIME := 0.45
 const MATERIALIZE_TIME := 0.2
 const ANCHOR_HEIGHT_RATIO := 0.27
-const ANCHOR_HORIZONTAL_OFFSET_RATIO := 0.21
-const HULL_SHOT_SPEED := 320.0
+const ANCHOR_HORIZONTAL_OFFSET := 112.0
+const HULL_SHOT_SPEED := 200.0
 const HULL_FAN_ANGLES := [-24.0, -12.0, 0.0, 12.0, 24.0]
 
 enum ArrivalState { TELEGRAPH, MATERIALIZING, ACTIVE }
@@ -15,9 +16,11 @@ var anchor_index := -1
 var _arrival_state := ArrivalState.TELEGRAPH
 var _arrival_elapsed := 0.0
 var _mounted_turrets: Array[TurretEnemy] = []
+var _fan_side_reversed := false
 
 @onready var _teleport_timer: Timer = $TeleportTimer
-@onready var _hull_shoot_origin: Marker2D = $HullShootPos
+@onready var _left_front_cannon: Marker2D = $LeftFrontCannon
+@onready var _right_front_cannon: Marker2D = $RightFrontCannon
 @onready var _left_turret_mount: Marker2D = $LeftTurretMount
 @onready var _right_turret_mount: Marker2D = $RightTurretMount
 @onready var _shoot_timer: Timer = $shootTimer
@@ -50,9 +53,11 @@ func _on_ShootTimer_timeout() -> void:
 	if destroyed or _arrival_state != ArrivalState.ACTIVE:
 		return
 	$sound_Shooting.playing = true
-	for angle in HULL_FAN_ANGLES:
-		var velocity := Vector2.DOWN.rotated(deg_to_rad(angle)) * HULL_SHOT_SPEED
-		_spawn_shot_velocity(MotherShipShot, _hull_shoot_origin.global_position, velocity)
+	for index in HULL_FAN_ANGLES.size():
+		var muzzle := _left_front_cannon if (index + int(_fan_side_reversed)) % 2 == 0 else _right_front_cannon
+		var velocity := Vector2.DOWN.rotated(deg_to_rad(HULL_FAN_ANGLES[index])) * HULL_SHOT_SPEED
+		_spawn_shot_velocity(MotherShipShot, muzzle.global_position, velocity)
+	_fan_side_reversed = not _fan_side_reversed
 
 func _claim_anchor() -> int:
 	var occupied: Dictionary[int, bool] = {}
@@ -70,7 +75,7 @@ func _claim_anchor() -> int:
 func _anchor_positions() -> Array[Vector2]:
 	var viewport_rect := get_viewport_rect()
 	var center := viewport_rect.position + Vector2(viewport_rect.size.x * 0.5, viewport_rect.size.y * ANCHOR_HEIGHT_RATIO)
-	var offset := viewport_rect.size.x * ANCHOR_HORIZONTAL_OFFSET_RATIO
+	var offset := ANCHOR_HORIZONTAL_OFFSET
 	return [center, center + Vector2(-offset, 0.0), center + Vector2(offset, 0.0)]
 
 func _spawn_mounted_turrets() -> void:
@@ -78,6 +83,8 @@ func _spawn_mounted_turrets() -> void:
 	var mounts: Array[Marker2D] = [_left_turret_mount, _right_turret_mount]
 	for index in range(mounts.size()):
 		var turret := MountedTurretScene.instantiate() as TurretEnemy
+		if index == 1:
+			turret.get_node("Sprite2D").texture = STARBOARD_TURRET_TEXTURE
 		var context := EnemySpawnContext.new()
 		context.health_multiplier = health_multiplier
 		context.movement_seed = _derived_seed(_spawn_context.movement_seed, index + 1)

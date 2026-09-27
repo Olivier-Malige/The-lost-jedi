@@ -96,7 +96,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
+    "duration": 160
    },
    {
     "filename": "talon_interceptor 11.ase",
@@ -123,7 +123,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 160
+    "duration": 90
    },
    {
     "filename": "talon_interceptor 14.ase",
@@ -168,7 +168,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 90
+    "duration": 50
    },
    {
     "filename": "talon_interceptor 19.ase",
@@ -195,7 +195,7 @@
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
-    "duration": 50
+    "duration": 100
    },
    {
     "filename": "talon_interceptor 22.ase",
@@ -223,15 +223,6 @@
     "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "sourceSize": { "w": 32, "h": 32 },
     "duration": 100
-   },
-   {
-    "filename": "talon_interceptor 25.ase",
-    "frame": { "x": 32, "y": 96, "w": 32, "h": 32 },
-    "rotated": false,
-    "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 32, "h": 32 },
-    "sourceSize": { "w": 32, "h": 32 },
-    "duration": 100
    }
  ],
  "meta": {
@@ -243,13 +234,21 @@
   "scale": "1",
   "frameTags": [
    { "name": "idle", "from": 0, "to": 2, "direction": "forward", "color": "#000000ff" },
-   { "name": "hit", "from": 3, "to": 3, "direction": "forward", "color": "#000000ff" },
-   { "name": "damaged", "from": 4, "to": 4, "direction": "forward", "color": "#000000ff" },
-   { "name": "explode", "from": 5, "to": 10, "direction": "forward", "color": "#000000ff" },
-   { "name": "weapons_ready", "from": 11, "to": 13, "direction": "forward", "color": "#000000ff" },
-   { "name": "attack_charge", "from": 14, "to": 18, "direction": "forward", "color": "#000000ff" },
-   { "name": "attack_fire", "from": 19, "to": 21, "direction": "forward", "color": "#000000ff" },
-   { "name": "attack_recover", "from": 22, "to": 25, "direction": "forward", "color": "#000000ff" }
+   { "name": "damaged", "from": 3, "to": 3, "direction": "forward", "color": "#000000ff" },
+   { "name": "explode", "from": 4, "to": 9, "direction": "forward", "color": "#000000ff" },
+   { "name": "weapons_ready", "from": 10, "to": 12, "direction": "forward", "color": "#000000ff" },
+   { "name": "attack_charge", "from": 13, "to": 17, "direction": "forward", "color": "#000000ff" },
+   { "name": "attack_fire", "from": 18, "to": 20, "direction": "forward", "color": "#000000ff" },
+   { "name": "attack_recover", "from": 21, "to": 24, "direction": "forward", "color": "#000000ff" }
+  ],
+  "layers": [
+   { "name": "Hull", "opacity": 255, "blendMode": "normal" },
+   { "name": "Talon Blades", "opacity": 255, "blendMode": "normal" },
+   { "name": "Red Core and Markings", "opacity": 255, "blendMode": "normal" },
+   { "name": "Amber Engines", "opacity": 255, "blendMode": "normal" },
+   { "name": "Explosion", "opacity": 255, "blendMode": "normal" },
+   { "name": "Armored Depth", "opacity": 255, "blendMode": "normal" },
+   { "name": "Action Mechanics", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
    { "name": "talon_interceptor", "keys": [{ "frame": 0, "bounds": {"x": 0, "y": 0, "w": 32, "h": 32 }, "pivot": {"x": 16, "y": 16 } }] }

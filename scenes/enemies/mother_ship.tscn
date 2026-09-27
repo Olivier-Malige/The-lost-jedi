@@ -1,12 +1,13 @@
 [gd_scene load_steps=11 format=3]
 
 [ext_resource path="res://scenes/enemies/mother_ship.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/enemies/mother_ship.png" type="Texture2D" id=2]
+[ext_resource path="res://assets/sprites/enemies/grave_carrier_runtime.png" type="Texture2D" id=2]
 [ext_resource path="res://scenes/enemies/drone_reactor_particles.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/audio/sfx/enemies/mother_ship_hit.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/audio/sfx/enemies/mother_ship_explode.wav" type="AudioStream" id=5]
 [ext_resource path="res://assets/audio/sfx/enemies/interceptor_shoot.wav" type="AudioStream" id=6]
 [ext_resource type="Resource" path="res://data/enemies/mother_ship.tres" id=7]
+[ext_resource type="Texture2D" path="res://assets/sprites/enemies/grave_carrier_hull.png" id="8"]
 
 [sub_resource type="Animation" id=1]
 
@@ -14,16 +15,16 @@ length = 1.0
 loop_mode = 0
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("ExplosionSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.18, 0.36, 0.54, 0.72, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
+"values": [4, 5, 6, 7, 8, 9]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("droneReactorParticles:visible")
@@ -73,58 +74,42 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false ]
 }
-
-[sub_resource type="Animation" id=2]
-
-resource_name = "hit"
-length = 0.4
-loop_mode = 0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite2D:visible")
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 1, 0, 1, 0 ]
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("ExplosionSprite:visible")
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id=3]
 
 resource_name = "start"
-length = 1.0
-loop_mode = 0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
+length = 0.8
+loop_mode = 1
+step = 0.2
 
 [sub_resource type="RectangleShape2D" id=4]
-
-size = Vector2( 20, 20 )
+size = Vector2(40, 48)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1"]
 _data = {
 "explode": SubResource( 1 ),
-"hit": SubResource( 2 ),
 "start": SubResource( 3 )
 }
 
 [node name="motherShip" type="Area2D" index="0"]
 
+scale = Vector2(2, 2)
 input_pickable = true
 gravity_direction = Vector2( 0, 1 )
 gravity = 98.0
@@ -138,10 +123,14 @@ shoot_timer_paths = [NodePath("shootTimer")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 
-scale = Vector2( 4, 4 )
-texture = ExtResource( 2 )
-hframes = 11
+scale = Vector2(1, 1)
+texture = ExtResource("8")
 _sections_unfolded = [ "Transform3D" ]
+
+[node name="ExplosionSprite" type="Sprite2D" parent="." index="1"]
+visible = false
+texture = ExtResource( 2 )
+hframes = 10
 
 [node name="anim" type="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -157,25 +146,29 @@ blend_times = [  ]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="2"]
 
-rect = Rect2( -10, -10, 20, 20 )
+rect = Rect2(-24, -28, 48, 56)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( 0.491587, -10.1347 )
-scale = Vector2( 2.50991, 4.13043 )
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
 shape = SubResource( 4 )
 
-[node name="HullShootPos" type="Marker2D" parent="." index="4"]
+[node name="LeftFrontCannon" type="Marker2D" parent="." index="4"]
 
-position = Vector2(0, 48)
+position = Vector2(-14, 15)
+
+[node name="RightFrontCannon" type="Marker2D" parent="."]
+
+position = Vector2(14, 15)
 
 [node name="LeftTurretMount" type="Marker2D" parent="." index="5"]
 
-position = Vector2(-34, 4)
+position = Vector2(-14, -5)
 
 [node name="RightTurretMount" type="Marker2D" parent="." index="6"]
 
-position = Vector2(34, 4)
+position = Vector2(14, -5)
 
 [node name="shootTimer" type="Timer" parent="." index="8"]
 
@@ -189,19 +182,19 @@ one_shot = true
 
 [node name="droneReactorParticles" parent="." index="9" instance=ExtResource( 3 )]
 
-position = Vector2( -17.9999, -65.8506 )
+position = Vector2(-15, 26)
 
 [node name="droneReactorParticles2" parent="." index="10" instance=ExtResource( 3 )]
 
-position = Vector2( -13.9999, -65.8506 )
+position = Vector2(-13, 26)
 
 [node name="droneReactorParticles3" parent="." index="11" instance=ExtResource( 3 )]
 
-position = Vector2( 14.0001, -65.8506 )
+position = Vector2(13, 26)
 
 [node name="droneReactorParticles4" parent="." index="12" instance=ExtResource( 3 )]
 
-position = Vector2( 18.0001, -65.8506 )
+position = Vector2(15, 26)
 
 [node name="sound_Hit" type="AudioStreamPlayer2D" parent="." index="13"]
 

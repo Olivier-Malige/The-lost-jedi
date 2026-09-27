@@ -1,12 +1,12 @@
 extends Shot
 
-const SPEED_Y := 550.0
+const SPEED_Y := 275.0
 const _ProjectileGlow := preload("res://scenes/combat/projectile_glow.gd")
 
 @export var damage := 10
 @export var noDamageToGroup := ""
-@export var glow_color := Color(0.2, 1.0, 0.36, 0.42)
-@export_range(1.0, 3.0, 0.05) var core_brightness := 1.45
+@export var glow_color := Color(1.0, 0.2, 0.1, 0.0)
+@export_range(1.0, 3.0, 0.05) var core_brightness := 1.0
 @export var glow_spread := Vector2(1.65, 0.85)
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _create_projectile_glow() -> void:
 	var source_sprite := get_node_or_null("Sprite2D") as Sprite2D
-	if source_sprite == null:
+	if source_sprite == null or glow_color.a <= 0.0:
 		return
 	_ProjectileGlow.create(source_sprite, glow_color, core_brightness, glow_spread)
 
@@ -26,6 +26,17 @@ func prepare() -> void:
 	speedX = 0.0
 	trowbackByShield = false
 	rotation = 0
+	_restart_flight.call_deferred()
+
+
+func _restart_flight() -> void:
+	if not is_inside_tree() or get_meta("pooled", false):
+		return
+	var animation_player := get_node_or_null("AnimationPlayer") as AnimationPlayer
+	if animation_player:
+		animation_player.stop()
+		animation_player.play(&"flight")
+		animation_player.advance(0.0)
 
 func is_enemy() -> bool:
 	return true

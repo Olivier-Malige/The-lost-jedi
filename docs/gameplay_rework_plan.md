@@ -39,6 +39,19 @@ Permanent meta-progression, unlockable ships, profile levels, and account-wide u
 
 Preparation phase B delivered the direct 1066 by 800 viewport, responsive Web presentation, redesigned menus and HUD, browser-fullscreen recovery, the Lost Warden release identity, the approved 24-color palette, itch.io page art, and a validated release archive. Updated gameplay screenshots remain intentionally deferred until the sprite rework is visible. Candidate replacement music is preserved for later review and is not active in the current build.
 
+## Native pixel presentation follow-up — 2026-09-15
+
+Maintainer-requested presentation revision, independent of later gameplay phases:
+
+- Render at 640 × 400 logical pixels, with a 1280 × 800 default window, preserved aspect ratio and nearest sampling. Display scaling fits the available screen fractionally, following the maintainer's fullscreen feedback, instead of leaving large margins between integer scale steps. Camera zoom remains 1. Source pixels remain native in the logical viewport, though physical pixel blocks can differ by one screen pixel at fractional display scales.
+- Use native sprite scale 1 for player, enemies, projectiles, shields and pickups. Beam tiles use one source pixel per logical pixel: 8-pixel normal width and 16-pixel overdrive width.
+- Reserve 104 pixels on each side for the HUD; the central combat area is 432 pixels wide. Center the camera, player spawn and wave lanes within it. Increase rank-label sizes and plasma-bar widths to use the extra interface space.
+- Convert world distances and speeds to the smaller coordinate system while preserving time-based cadence, damage and wave timing. Resize local collision shapes and weapon markers with their associated sprites. Formerly enlarged enemies and projectiles have smaller relative silhouettes at native scale; this is an intentional consequence of the shared art grid and needs gameplay feel review.
+- Use 600 × 450 native background exports with matching parallax repeat distances. Keep original artwork. Reproduce each export with `aseprite --batch INPUT.png --scale 0.375 --save-as OUTPUT_native.png` from the original 1600 × 1200 texture.
+- Procedural glows and transient interface animations remain effects rather than sprite-resolution overrides. Pause controls render above combat effects.
+
+Validation: `tests/test_native_scale.gd`, `tests/player/test_fire_input.gd`, and `tests/player/test_beam_effect.gd`, run with `godot --headless --path . --script <path>`. Native-resolution title, co-op HUD, beams and pause have been inspected in the Compatibility renderer. Full-run balance and Web export validation remain separate checks.
+
 ## Phase 0 — Track and commit the roadmap
 
 - Create `codex/dynamic-gameplay-rework` from the current HEAD.
@@ -145,6 +158,8 @@ Planned commits:
 ## Phase 1 follow-up — Dedicated weapon inputs
 
 Status: implemented on 2026-08-30. This control pass separates sustained primary fire from plasma-beam charging and slightly shortens its charge cadence for the dedicated input.
+
+Maintainer-requested revision (2026-09-14): primary fire remains immediate and repeats while held, including equipped side cannons. The base interval is now 0.30 seconds (previously 0.18 seconds), configured in `data/player/player_stats.tres`. Existing fire-rate upgrade reductions remain unchanged. Releasing stops fire; pressing again during cooldown cannot bypass the interval. Regression check: `godot --headless --path . --script tests/player/test_fire_input.gd`.
 
 - Keep primary fire on Space, Insert, keypad `+`, and A/Cross. Fire immediately and continue at the loadout's current fire delay while held.
 - Charge the plasma beam independently with left Shift or B/Circle, then release it at the highest reached tier.
@@ -321,6 +336,10 @@ Validation:
 
 Status: implemented on 2026-08-30. Automated scene loading and the dedicated headless enemy-identity harness pass. Solo and co-op readability playtests in waves 9, 12, and 13 remain before approval.
 
+Maintainer revision (2026-09-22): mounted Grave Carrier turrets track the nearest living player with bounded turning and repeat aimed bursts instead of radial rings. Standalone turrets retain the original aimed-burst/ring cycle. The broader, shorter carrier silhouette has been integrated as `assets/sprites/enemies/grave_carrier_hull.png`, with separate mounted turrets, aligned collision, and the existing explosion sequence.
+
+Maintainer revision (2026-09-22): the standalone Siege Turret uses its prepared action sprite sheet. Aimed and radial warnings, firing, and recovery play their authored frames; the radial warning no longer rotates the whole sprite. Carrier-mounted turrets keep their separate sprite sheet and aimed behavior.
+
 - Keep drones as simple fodder, fighters as mobile pressure, and interceptors as spread-fire specialists. Limit this follow-up to turrets and mother ships.
 - Replace the turret's random lateral shot with a telegraphed deterministic cycle: a three-shot aimed burst, a short pause, a ten-shot radial ring, and an alternating angular offset on successive rings.
 - Lock aimed volleys to the nearest living player at telegraph time. Let each turret choose independently in local co-op.
@@ -328,7 +347,7 @@ Status: implemented on 2026-08-30. Automated scene loading and the dedicated hea
 - Teleport each mother ship to the first available upper-playfield anchor in center, left, right order. Keep it stationary and discard a fourth concurrent mother ship without reward.
 - Disable the mother ship and its mounted turrets during the 0.65-second arrival telegraph and materialization sequence.
 - Give each mother ship two independently destructible mounted turrets with 10 base health, normal run health scaling, 250 score, and no power-up drop. Stagger their attack cycles.
-- Keep the hull dangerous after both turrets are destroyed with a five-shot slow fan every 2.4 seconds.
+- Keep the hull dangerous after both turrets are destroyed with a five-shot slow fan every 2.4 seconds, emitted from its two front cannon muzzles.
 - Stop and disable every mounted turret before the hull explosion, without freeing a collision object during the physics callback.
 - Extend pooled enemy shots with full two-axis velocity while retaining the legacy horizontal-speed helper for existing enemies.
 
@@ -570,6 +589,14 @@ Planned commits:
 - `test(gameplay): add deterministic run coverage`
 - `chore(balance): tune endless run progression`
 - `docs: document dynamic gameplay systems`
+
+## Sound Design phase — Suno audio production and interactive music
+
+Status: planning approved on 2026-09-27; audio production and runtime implementation have not started. Suno production is pending the maintainer's subscription.
+
+The dedicated [Sound Design production and integration plan](sound_design_plan.md) defines the two musical themes, seamless screen transitions, wave-based arrangements, replacement sound effects, and robotic power-up announcements.
+
+This is a separate audio workstream. Execute only its explicitly requested subphase, verify it before the next, and keep gameplay phases and meta-progression outside its scope. Its eventual audio replacement supersedes earlier reuse-existing-audio guidance only for this dedicated phase. Recording this plan does not activate candidate music or change the next gameplay implementation step.
 
 ## Main interfaces
 

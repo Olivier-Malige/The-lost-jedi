@@ -6,6 +6,7 @@ const EliteIndicatorScene := preload("res://scenes/enemies/elite_indicator.gd")
 const PowerUpScene := preload("res://scenes/ui/power_up.tscn")
 const PlasmaCellScene := preload("res://scenes/ui/plasma_cell.tscn")
 const PROJECTILE_SPEED_MULTIPLIER := 1.1
+const HIT_FLASH_MATERIAL := preload("res://scenes/effects/enemy_hit_flash.tres")
 
 enum RewardDrop { NONE, PLASMA, POWER_UP }
 enum PatrolState { ENTERING, PATROLLING, EXITING }
@@ -38,6 +39,9 @@ var _sine_wave_offset := 0.0
 var _patrol_state := PatrolState.ENTERING
 var _patrol_elapsed := 0.0
 var fire_delay_multiplier := 1.0
+var _hit_sprite: Sprite2D
+var _hit_flash_tween: Tween
+var _movement_animation := &"start"
 
 func _ready() -> void:
 	if definition == null:
@@ -54,6 +58,11 @@ func _ready() -> void:
 	_initialize_movement()
 	_configure_collision()
 	_play_spawn_animation()
+	_hit_sprite = get_node_or_null("Sprite2D") as Sprite2D
+	if _hit_sprite == null:
+		_hit_sprite = get_node_or_null("SpriteAsteroid") as Sprite2D
+	if _hit_sprite:
+		_hit_sprite.material = HIT_FLASH_MATERIAL
 	if elite:
 		_setup_elite_indicator()
 
@@ -62,6 +71,7 @@ func _physics_process(delta: float) -> void:
 		return
 	hitByPlayerShot = false
 	_update_movement(delta)
+	_update_ship_banking(delta)
 	if setRotation:
 		rotation += speedRotation * delta
 
@@ -104,7 +114,7 @@ func _initialize_movement() -> void:
 	_movement_phase = phase_rng.randf_range(0.0, TAU)
 	_movement_direction = -1.0 if phase_rng.randi_range(0, 1) == 0 else 1.0
 	_target_horizontal_speed = _movement_direction * _movement_profile.horizontal_speed * _movement_speed_scale()
-	global_position.x = clampf(global_position.x, _movement_profile.min_x, _movement_profile.max_x)
+	global_position.x = clampf(global_position.x, _movement_min_x(), _movement_max_x())
 	if _movement_profile.mode == MovementProfile.Mode.SINE:
 		_sine_wave_offset = _current_sine_wave_offset()
 	if _movement_profile.mode == MovementProfile.Mode.DRIFT:
@@ -134,6 +144,22 @@ func _update_movement(delta: float) -> void:
 		_:
 			translate(Vector2(speedX, speedY) * delta)
 			_apply_horizontal_bounds()
+
+
+func _update_ship_banking(_delta: float) -> void:
+	if not definition.bank_on_turn or _hit_sprite == null:
+		return
+	var current_animation := StringName($anim.current_animation)
+	if current_animation == &"explode" or String(current_animation).begins_with("hit"):
+		return
+	var animation := &"start"
+	if speedX < -1.0:
+		animation = &"bank_left"
+	elif speedX > 1.0:
+		animation = &"bank_right"
+	if _movement_animation != animation:
+		_movement_animation = animation
+		$anim.play(animation)
 
 func _update_sine_movement(delta: float) -> void:
 	var speed_scale := maxf(_movement_speed_scale(), 0.01)
@@ -190,13 +216,13 @@ func _update_patrol_exit(delta: float) -> void:
 
 func _apply_horizontal_bounds() -> void:
 	var bounced := false
-	if global_position.x < _movement_profile.min_x:
-		global_position.x = _movement_profile.min_x
+	if global_position.x < _movement_min_x():
+		global_position.x = _movement_min_x()
 		_movement_direction = 1.0
 		speedX = absf(speedX)
 		bounced = true
-	elif global_position.x > _movement_profile.max_x:
-		global_position.x = _movement_profile.max_x
+	elif global_position.x > _movement_max_x():
+		global_position.x = _movement_max_x()
 		_movement_direction = -1.0
 		speedX = -absf(speedX)
 		bounced = true
@@ -205,6 +231,18 @@ func _apply_horizontal_bounds() -> void:
 	if _movement_profile.mode == MovementProfile.Mode.SMOOTH_ZIGZAG:
 		_movement_time = 0.0
 	_target_horizontal_speed = _movement_direction * _movement_profile.horizontal_speed * _movement_speed_scale()
+
+
+func _movement_min_x() -> float:
+	return _movement_profile.min_x + _playfield_side_width()
+
+
+func _movement_max_x() -> float:
+	return _movement_profile.max_x + _playfield_side_width()
+
+
+func _playfield_side_width() -> float:
+	return maxf((get_viewport_rect().size.x - 640.0) * 0.5, 0.0)
 
 func _movement_speed_scale() -> float:
 	var value := _spawn_context.speed_multiplier
@@ -230,6 +268,8 @@ func _hit_something(dmg := 0, impact_feedback := true) -> void:
 	if destroyed:
 		return
 	life -= dmg
+	if dmg > 0:
+		_flash_hit()
 	if _elite_indicator:
 		_elite_indicator.set_health(life)
 	if impact_feedback:
@@ -237,8 +277,19 @@ func _hit_something(dmg := 0, impact_feedback := true) -> void:
 		position.y -= 5.0
 	if life <= 0:
 		_destroy()
-	elif impact_feedback:
-		$anim.play("hit" + str(indexSprites))
+
+func _flash_hit() -> void:
+	if _hit_sprite == null:
+		return
+	if _hit_flash_tween and _hit_flash_tween.is_valid():
+		_hit_flash_tween.kill()
+	_set_hit_flash(1.0)
+	_hit_flash_tween = create_tween()
+	_hit_flash_tween.tween_interval(0.04)
+	_hit_flash_tween.tween_method(_set_hit_flash, 1.0, 0.0, 0.08).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+
+func _set_hit_flash(amount: float) -> void:
+	_hit_sprite.set_instance_shader_parameter(&"hit_flash", amount)
 
 func _on_area_entered(area: Area2D) -> void:
 	if not destroyed and area.has_method("_hit_something"):
@@ -252,8 +303,6 @@ func _on_anim_animation_finished(animation: StringName) -> void:
 	if animation == "explode":
 		set_physics_process(false)
 		queue_free()
-	elif animation == "hit" + str(indexSprites):
-		$anim.play("start" + str(indexSprites))
 
 func _destroy() -> void:
 	destroyed = true
