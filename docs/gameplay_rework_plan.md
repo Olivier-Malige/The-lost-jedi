@@ -590,6 +590,14 @@ Planned commits:
 - `chore(balance): tune endless run progression`
 - `docs: document dynamic gameplay systems`
 
+## Sound Design phase — Suno audio production and interactive music
+
+Status: planning approved on 2026-09-27; audio production and runtime implementation have not started. Suno production is pending the maintainer's subscription.
+
+The dedicated [Sound Design production and integration plan](sound_design_plan.md) defines the two musical themes, seamless screen transitions, wave-based arrangements, replacement sound effects, and robotic power-up announcements.
+
+This is a separate audio workstream. Execute only its explicitly requested subphase, verify it before the next, and keep gameplay phases and meta-progression outside its scope. Its eventual audio replacement supersedes earlier reuse-existing-audio guidance only for this dedicated phase. Recording this plan does not activate candidate music or change the next gameplay implementation step.
+
 ## Main interfaces
 
 - Extend `UpgradeDefinition` with display name, description, icon, maximum rank, and repeatable status.
