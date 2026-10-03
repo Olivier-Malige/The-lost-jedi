@@ -2,15 +2,15 @@
 
 ## Direction and workflow
 
-Plan revised: 2026-09-27. Production and implementation have not started. This is the dedicated Sound Design phase of the [gameplay roadmap](gameplay_rework_plan.md); complete and verify each requested subphase before starting the next.
+Plan revised: 2026-09-29. Phase 1 prompt catalog prepared; Suno generation and Godot implementation have not started. This is the dedicated Sound Design phase of the [gameplay roadmap](gameplay_rework_plan.md); complete and verify each requested subphase before starting the next.
 
 The maintainer uploads `assets/audio/music/game.mp3` to Suno as the reference and selects the generated results. The agent prepares English prompts and handles technical preparation and Godot integration. No preliminary listening report, tempo analysis, or key analysis is required before writing prompts. Check timing and loop boundaries after generation, using the selected exports.
 
-The maintainer still needs the Suno subscription for production. Prompt preparation can start now.
+The maintainer has an active Suno Pro subscription. Prompt preparation and music generation can proceed.
 
 ## Phase 1 — Prepare the prompts
 
-Create an English catalog of copy-ready prompts for the following assets:
+The copy-ready English prompt catalog is in [suno_prompt_catalog.md](suno_prompt_catalog.md). It covers gameplay, menu, and game-over music; screen bridges; existing sound-effect families; and all six upgrade announcements. Use the catalog prompts directly and adjust them through listening iterations in Suno.
 
 | Asset | Direction |
 | --- | --- |
@@ -24,11 +24,11 @@ Create an English catalog of copy-ready prompts for the following assets:
 
 Use a hybrid arcade sound-effect palette. Announcements share one clear, lightly vocoded robotic voice, spoken rather than sung, approximately one second long, without background music. Each prompt states its purpose, desired character, approximate duration, and whether it should loop. Request distinct musical sections and short transitions without requiring measured BPM or key at this stage.
 
-Done when: the catalog covers the music, transitions, existing effects, and six announcements and can be used directly with the uploaded reference.
+Done: the catalog covers the music, transitions, existing effects, and six announcements.
 
 ## Phase 2 — Generate and select in Suno
 
-- The maintainer supplies `game.mp3` as the example, requests the planned modifications, and iterates on the results using the prompts.
+- The maintainer supplies `game.mp3` as the example, requests the planned modifications, and iterates on the results using the prompts in the catalog.
 - Start with the extended gameplay remix, the atmospheric theme, and one robotic announcement. Once their direction works, produce the remaining variations, bridges, effects, and voices.
 - Keep the gameplay melody recognizable, with synth and guitar solos and alternating intensity. Keep menu music atmospheric while retaining a compatible sound palette.
 - Export the chosen results as WAV, keeping stems when available and useful for editing. The maintainer validates the musical choices by listening.
